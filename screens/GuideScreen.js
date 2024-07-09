@@ -7,9 +7,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function GuideScreen() {
   return (
     <ScrollView>
-      <SafeAreaView>
+    
       <Text>guide</Text>
-      </SafeAreaView>
+      
     </ScrollView>
   )
 }
