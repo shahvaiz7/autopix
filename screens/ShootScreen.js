@@ -1,13 +1,20 @@
-import { StyleSheet, Text, View,ScrollView ,TouchableOpacity,Image} from 'react-native'
-import React , { useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Button from '../component/Button';
-import * as ImagePicker from 'expo-image-picker';
-import { Camera, CameraType } from 'expo-camera/legacy';
-import { CameraView, useCameraPermissions } from 'expo-camera';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+} from "react-native";
+import React, { useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Button from "../component/Button";
+import * as ImagePicker from "expo-image-picker";
+import { Camera, CameraType } from "expo-camera/legacy";
+import { CameraView, useCameraPermissions } from "expo-camera";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-
-export default function ShootScreen({navigation}) {
+export default function ShootScreen({ navigation }) {
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
@@ -26,69 +33,91 @@ export default function ShootScreen({navigation}) {
     }
   };
 
-
-
-  
   return (
-   
-    <View  style={styles.containerView}>
-      <View style={styles.topBar} >
-      {/* <Text> NAme</Text>
-      <Text> NAme</Text> */}
-      
-
+    <View style={styles.containerView}>
+      <View style={styles.topBar}>
         <View>
-         <Text> NAme</Text>
+          <Text> NAme</Text>
         </View>
         <View>
           <Text> Logo</Text>
         </View>
-
       </View>
       <View style={styles.bodyContent}>
-   
-       {image && <Image source={{ uri: image }} style={styles.image} />}
-        <Button
-            label="Shoot"
-          
-          />
+        {image && <Image source={{ uri: image }} style={styles.image} />}
 
-          
-             
-        <Button
-            label="Upload"
-            onPress={pickImage}
-          />
- </View>
-         
+        <TouchableOpacity style={styles.blockContent}>
+          <View>
+            <MaterialCommunityIcons name="camera" size={100} color={"#89929A"} />
+          </View>
+          <View
+            style={{
+              width: "100%",
+              justifyContent: "flex-start",
+            }}
+          >
+            <Text  style={{
+             color:'white',
+             fontSize:20,
+             padding:10,
+             margin:10
+            }}> Shoot </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.blockContent} onPress={pickImage}>
+          <View>
+            <MaterialCommunityIcons name="upload" size={100} color={"#89929A"} />
+          </View>
+          <View
+            style={{
+              width: "100%",
+              justifyContent: "flex-start",
+            }}
+          >
+            <Text  style={{
+             color:'white',
+             fontSize:20,
+             padding:10,
+             margin:10
+            }}> Upload </Text>
+          </View>
+        </TouchableOpacity>
+        {/* <Button label="Shoot" />
 
+        <Button label="Upload" onPress={pickImage} /> */}
+      </View>
     </View>
-  
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-  containerView:{
-    flex:1,
-    justifyContent:'space-between',
-    
-    
+  containerView: {
+    flex: 1,
+    justifyContent: "space-between",
   },
-  image:{
-    height:300,
-    width:300
-
+  image: {
+    height: 300,
+    width: 300,
   },
-  topBar:{
-    flex:.1,
-    flexDirection:'row',
-    margin:10,
-    justifyContent:'space-between'
-  
+  topBar: {
+    flex: 0.1,
+    flexDirection: "row",
+    margin: 10,
+    justifyContent: "space-between",
+  },
+  bodyContent: {
+    flex: 1,
+    alignItems: "center",
+    margin:10
+  },
+  blockContent:{
+    flex:.6,
+    backgroundColor:'#284E54',
+    width:'100%',
+    justifyContent:'center',
+    alignItems:'center',
+    borderRadius:25,
+    margin:10
     
-  },
-  bodyContent:{
-    flex:.5,
-    alignItems:'center'
   }
-})
+});

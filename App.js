@@ -16,6 +16,12 @@ import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import HomeScreen from './screens/HomeScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import ProfileDetails from './screens/ProfileDetails';
+import AccountSetting from './screens/AccountSetting';
+import ShareApp from './screens/ShareApp';
+import SupportPage from './screens/SupportPage';
+import AboutScreen from './screens/AboutScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -27,6 +33,12 @@ export default function App() {
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Signup" component={SignupScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen name="Profiledetails" component={ProfileDetails} />
+      <Stack.Screen name="AccountSetting" component={AccountSetting} />
+      <Stack.Screen name="Shareapp" component={ShareApp} />
+      <Stack.Screen name="Support" component={SupportPage} />
+      <Stack.Screen name="About" component={AboutScreen} />
       </Stack.Navigator>
     
     </NavigationContainer>

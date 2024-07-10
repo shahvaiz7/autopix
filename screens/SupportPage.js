@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function ShareApp() {
+export default function SupportPage() {
   return (
     <View>
-      <Text>ShareApp</Text>
+      <Text>SupportPage</Text>
     </View>
   )
 }

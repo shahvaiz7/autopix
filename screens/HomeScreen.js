@@ -15,7 +15,7 @@ const Tab = createMaterialBottomTabNavigator();
 export default function HomeScreen() {
   return (
   
-     <Tab.Navigator>
+     <Tab.Navigator >
     
     <Tab.Screen name="Shoot" component={ShootScreen}   
       options={{
@@ -25,6 +25,7 @@ export default function HomeScreen() {
           ),
         }}/>
     <Tab.Screen name="Order" component={OrderScreen}
+    
      options={{
       tabBarLabel: 'Order',
       tabBarIcon: ({ color }) => (
