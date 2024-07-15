@@ -1,9 +1,9 @@
-import { StyleSheet, Text, TouchableOpacity, View ,Image} from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View ,Image,ScrollView} from 'react-native'
 import React from 'react'
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 export default function ProfileScreen({navigation}) {
   return (
-    <View style={styles.containerView}>
+    <ScrollView style={styles.containerView}>
       <View style={styles.topBack}>
         
       
@@ -67,14 +67,14 @@ export default function ProfileScreen({navigation}) {
        </TouchableOpacity>
       </View>
      
-    </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    justifyContent: "space-between",
+   
     backgroundColor:'#1D6167'
   },
   topBack:{

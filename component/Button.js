@@ -6,13 +6,12 @@ export default function Button({ label, onPress,backgroundColor }) {
     <TouchableOpacity
       style={{
         borderRadius: 8,
-        height: 50,
-        width: 245,
+        padding:10,
+        width:250,
         justifyContent: "center",
         alignItems: "center",
         alignContent:'center',
-        backgroundColor: "green",
-        marginTop: 20,
+        backgroundColor: "#1FDE00",
       }}
       activeOpacity={0.7}
       onPress={onPress}

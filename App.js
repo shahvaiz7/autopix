@@ -22,6 +22,8 @@ import AccountSetting from './screens/AccountSetting';
 import ShareApp from './screens/ShareApp';
 import SupportPage from './screens/SupportPage';
 import AboutScreen from './screens/AboutScreen';
+import CreateOrder from './screens/CreateOrder';
+import GuideScreen from './screens/GuideScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -39,6 +41,8 @@ export default function App() {
       <Stack.Screen name="Shareapp" component={ShareApp} />
       <Stack.Screen name="Support" component={SupportPage} />
       <Stack.Screen name="About" component={AboutScreen} />
+      <Stack.Screen name="CreateOrder" component={CreateOrder} />
+      <Stack.Screen name="Guide" component={GuideScreen} />
       </Stack.Navigator>
     
     </NavigationContainer>

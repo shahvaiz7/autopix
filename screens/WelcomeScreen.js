@@ -23,6 +23,11 @@ export default function WelcomeScreen({navigation}) {
      <View style={styles.buttonblock}>
         <Button  label="Login"
             onPress={() => navigation.navigate("Login")}/>
+             
+        
+     </View>
+     <View style={styles.buttonblock}>
+      
              <Button  label="Sign up"
             onPress={() => navigation.navigate("Signup")}/>
       
@@ -74,6 +79,8 @@ const styles = StyleSheet.create({
 
       },
       buttonblock:{
+      padding:5
+        
 
       },
       

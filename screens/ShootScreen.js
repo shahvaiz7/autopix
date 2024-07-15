@@ -36,19 +36,34 @@ export default function ShootScreen({ navigation }) {
   return (
     <View style={styles.containerView}>
       <View style={styles.topBar}>
-        <View>
-          <Text> NAme</Text>
+        <View style={styles.ProfileDetails}>
+        <Image
+              style={{ width:40, height: 40 ,borderRadius:50}}
+              source={require("../assets/logoblack.jpeg")}
+            />
+            <View>
+            <Text style={{
+              fontSize:12,
+              color:'#ffffff'
+            }}> Welcome back, </Text>
+            <Text style={{
+              fontSize:16,
+              color:'#ffffff',
+              fontWeight:'bold'
+            }}> Mr. Rahim Mia</Text>
+            </View>
+        
         </View>
-        <View>
-          <Text> Logo</Text>
-        </View>
+        <TouchableOpacity>
+        <MaterialCommunityIcons name="bell" size={20} color={"#ffffff"} />
+        </TouchableOpacity>
       </View>
       <View style={styles.bodyContent}>
         {image && <Image source={{ uri: image }} style={styles.image} />}
 
         <TouchableOpacity style={styles.blockContent}>
           <View>
-            <MaterialCommunityIcons name="camera" size={100} color={"#89929A"} />
+            <MaterialCommunityIcons name="camera" size={100} color={"#ffffff"} />
           </View>
           <View
             style={{
@@ -66,7 +81,7 @@ export default function ShootScreen({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity style={styles.blockContent} onPress={pickImage}>
           <View>
-            <MaterialCommunityIcons name="upload" size={100} color={"#89929A"} />
+            <MaterialCommunityIcons name="upload" size={100} color={"#ffffff"} />
           </View>
           <View
             style={{
@@ -94,6 +109,7 @@ const styles = StyleSheet.create({
   containerView: {
     flex: 1,
     justifyContent: "space-between",
+    backgroundColor: "#1B5865",
   },
   image: {
     height: 300,
@@ -105,13 +121,17 @@ const styles = StyleSheet.create({
     margin: 10,
     justifyContent: "space-between",
   },
+  ProfileDetails:{
+    flexDirection:'row'
+    
+  },
   bodyContent: {
     flex: 1,
     alignItems: "center",
     margin:10
   },
   blockContent:{
-    flex:.6,
+    flex:.4,
     backgroundColor:'#284E54',
     width:'100%',
     justifyContent:'center',
