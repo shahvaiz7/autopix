@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   FormView: {
-    flex: 0.3,
+    flex: 0.4,
     width: "100%",
     justifyContent: "center",
     padding: 10,
