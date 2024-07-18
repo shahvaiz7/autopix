@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View ,Image,ScrollView} from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View ,Image,ScrollView,Linking} from 'react-native'
 import React from 'react'
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 export default function ProfileScreen({navigation}) {
@@ -48,7 +48,7 @@ export default function ProfileScreen({navigation}) {
                   color={"white"}
                 />
        </TouchableOpacity>
-       <TouchableOpacity style={styles.options} onPress={() => navigation.navigate("Support")}> 
+       <TouchableOpacity style={styles.options} onPress = {() => {Linking.openURL('https://autopix.no/supports')}}> 
         <Text style={styles.CardText}>Support</Text>
         <MaterialCommunityIcons
                   name="arrow-collapse-right"

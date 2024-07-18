@@ -23,7 +23,7 @@ export default function GuideScreen({navigation}) {
             height: 30,
             width: 200,
             alignItems: "center",
-          }} onPress={() => navigation.navigate("#")}
+          }} onPress={() => navigation.navigate("Guidesteps")}
         >
           <Text style={{ color: "#ffffff",fontSize:16 }}>  <MaterialCommunityIcons
                   name="plus"
@@ -36,12 +36,12 @@ export default function GuideScreen({navigation}) {
        <View style={styles.OrderCard}>
        <View style={styles.CardHead}>
         <Text style={styles.CardText}> Instruction #01</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Guidesteps")}>
               <Text style={styles.CardText}>
                 Edit{" "}
                 <MaterialCommunityIcons
-                  name="asterisk"
-                  size={12}
+                  name="archive-cog"
+                  size={16}
                   color={"#ffffff"}
                 />
               </Text>
