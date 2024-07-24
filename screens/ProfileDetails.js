@@ -1,11 +1,31 @@
 import { StyleSheet, Text, TouchableOpacity, View ,Image} from 'react-native'
-import React from 'react'
+import React , { useState } from 'react'
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
+import * as ImagePicker from "expo-image-picker";
 export default function ProfileDetails({navigation}) {
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+      allowsMultipleSelection: true
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
   return (
     <View style={styles.containerView}>
+
        <View style={styles.topBack}>
         <Image
                 style={{ width: "100%", height: 120 }}
@@ -13,14 +33,15 @@ export default function ProfileDetails({navigation}) {
               />
         </View>
         <View style={styles.profileInfo}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={pickImage}>
         <Image
                 style={{ width:120, height: 120 ,borderRadius:50}}
-                source={require("../assets/logoblack.jpeg")}
+                source={{ uri: image }}
               />
+              
             </TouchableOpacity>
        
-          <Text  style={{ color:'white',fontSize:20,fontWeight:'semibold'}}> Md Rohim Miya  </Text>
+          <Text  style={{ color:'white',fontSize:20,fontWeight:'semibold'}}> Md Rohim Mia  </Text>
           <Text style={{ color:'#C0CACB',fontSize:14,fontWeight:'semibold'}}> Company: Graphic IT BD  </Text>
         </View>
         <View style={styles.optionList}>

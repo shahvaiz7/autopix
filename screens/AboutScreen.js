@@ -9,7 +9,7 @@ import {
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-export default function AboutScreen() {
+export default function AboutScreen({navigation}) {
  
     return (
       <ScrollView style={styles.containerView}>
