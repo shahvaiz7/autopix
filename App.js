@@ -32,21 +32,21 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen name="Welcome" component={WelcomeScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Signup" component={SignupScreen} />
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Profile" component={ProfileScreen} />
-      <Stack.Screen name="Profiledetails" component={ProfileDetails} />
-      <Stack.Screen name="AccountSetting" component={AccountSetting} />
-      <Stack.Screen name="Shareapp" component={ShareApp} />
-      <Stack.Screen name="Support" component={SupportPage} />
-      <Stack.Screen name="About" component={AboutScreen} />
-      <Stack.Screen name="CreateOrder" component={CreateOrder} />
-      <Stack.Screen name="Guide" component={GuideScreen} />
-      <Stack.Screen name="Guidesteps" component={GuideSteps} />
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Signup" component={SignupScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Profiledetails" component={ProfileDetails} />
+        <Stack.Screen name="AccountSetting" component={AccountSetting} />
+        <Stack.Screen name="Shareapp" component={ShareApp} />
+        <Stack.Screen name="Support" component={SupportPage} />
+        <Stack.Screen name="About" component={AboutScreen} />
+        <Stack.Screen name="CreateOrder" component={CreateOrder} />
+        <Stack.Screen name="Guide" component={GuideScreen} />
+        <Stack.Screen name="Guidesteps" component={GuideSteps} />
       </Stack.Navigator>
-    
+
     </NavigationContainer>
   );
 }
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
 });
 
-
+// After Successful clone from Git hub just run :# npm install -i  to get all the node modules
 // Bottom tab navigator#  npm install @react-navigation/bottom-tabs
 // Import :::import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 

@@ -9,7 +9,7 @@ import {
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-export default function AccountSetting() {
+export default function AccountSetting({ navigation }) {
   return (
     <ScrollView style={styles.containerView}>
       <View style={styles.HeaderView}>
