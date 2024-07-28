@@ -21,9 +21,13 @@ export default function ShootScreen({ navigation }) {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
+      // allowsEditing: true,
+      allowsMultipleSelection:true,
+      // cameraType: CameraType.back,
       aspect: [4, 3],
       quality: 1,
+      orderedSelection:true,
+      // mediaTypes:ImagePicker.MediaTypeOptions.Images,
     });
 
     console.log(result);

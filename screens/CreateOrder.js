@@ -74,10 +74,7 @@ export default function CreateOrder({navigation}) {
           {" "}
           Mon-Sat 08:00-17:00 GMT{" "}
         </Text>
-        <Picker
-       
-        >
-           
+        <Picker>
           <Picker.Item label="Next Day" value="java"/>
           <Picker.Item label="2 Days " value="js" />
           <Picker.Item label="Next week" value="java" />

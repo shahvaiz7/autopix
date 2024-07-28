@@ -61,7 +61,7 @@ export default function AboutScreen({navigation}) {
       flex: 0.2,
     },
     HeaderView: {
-      flex: 0.1,
+      flex: 0.3,
       width: "100%",
     },
     profileInfo: {
