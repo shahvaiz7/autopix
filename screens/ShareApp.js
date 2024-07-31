@@ -4,14 +4,19 @@ import {
   TouchableOpacity,
   View,
   Image,
+  Linking,
   ScrollView,
 } from "react-native";
-import React from "react";
+import Reac,{useState, useEffect}  from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Button from "../component/Button";
 import TextInput from "../component/TextInput";
+import * as OpenAnything from 'react-native-openanything';
+//npm install react-native-openanything
+
 
 export default function ShareApp({navigation}) {
+  const [email, setEmail] = useState();
   return (
     <ScrollView style={styles.containerView}>
       <View style={styles.HeaderView}>
@@ -32,15 +37,17 @@ export default function ShareApp({navigation}) {
           keyboardAppearance="dark"
           returnKeyType="next"
           returnKeyLabel="next"
+          onChangeText={newtext => setEmail(newtext)}
+          defaultValue={email}
         />
         <View style={styles.Bottom}>
-           <Button label="Send" onPress={() => navigation.navigate("#")} />
-           </View>
+           <Button label="Send" onPress={() => OpenAnything.Email(to = email, subject = "Install from here", body = "link###")} /> 
+       </View>
       </View>
     </ScrollView>
   );
 }
-
+//Email(to = false, subject = false, body = false, cc = false, bcc = false)
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,

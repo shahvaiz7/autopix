@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../component/Button";
 import * as ImagePicker from "expo-image-picker";
@@ -16,6 +16,30 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 export default function ShootScreen({ navigation }) {
   const [image, setImage] = useState(null);
+  const [camera, setCamera] = useState(null);
+//   const requestPermission = async () => {
+//     const { granted } = await Camera.requestCameraPermissionsAsync();
+
+//     if (!granted) {
+//         Alert.alert(
+//             'Device settings alert',
+//             'You need to allow camera permissions for this to work'
+//         );
+//     }
+// }
+
+// const takePhoto = async (options) => {
+//     options = {mediaTypes: ImagePicker.MediaTypeOptions.Images, ...options };
+
+//     return await ImagePicker.launchCameraAsync(options);
+// }
+
+// useEffect(() => {
+//     requestPermission();
+// }, []);
+
+
+ 
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -27,6 +51,7 @@ export default function ShootScreen({ navigation }) {
       aspect: [4, 3],
       quality: 1,
       orderedSelection:true,
+      
       // mediaTypes:ImagePicker.MediaTypeOptions.Images,
     });
 
@@ -54,7 +79,7 @@ export default function ShootScreen({ navigation }) {
               fontSize:16,
               color:'#ffffff',
               fontWeight:'bold'
-            }}> Mr. Rahim Mia</Text>
+            }}> Mr. Rahim </Text>
             </View>
         
         </View>
@@ -65,7 +90,7 @@ export default function ShootScreen({ navigation }) {
       <View style={styles.bodyContent}>
         {image && <Image source={{ uri: image }} style={styles.image} />}
 
-        <TouchableOpacity style={styles.blockContent}>
+        <TouchableOpacity style={styles.blockContent} >
           <View>
             <MaterialCommunityIcons name="camera" size={100} color={"#ffffff"} />
           </View>
@@ -105,6 +130,7 @@ export default function ShootScreen({ navigation }) {
 
         <Button label="Upload" onPress={pickImage} /> */}
       </View>
+     
     </View>
   );
 }

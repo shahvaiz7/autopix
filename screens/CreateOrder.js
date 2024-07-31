@@ -26,7 +26,7 @@ export default function CreateOrder({navigation}) {
       <View style={styles.FormView}>
         <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
           {" "}
-          Enter Registration or Car ID{" "}
+          Enter Registration or Car ID no{" "}
         </Text>
         <TextInput
           placeholder="Enter ID"

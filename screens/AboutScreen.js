@@ -5,10 +5,11 @@ import {
   View,
   Image,
   ScrollView,
+  Linking,
 } from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-
+// To use weblink adress just import Linking and use the navigation like : onPress = {() => {Linking.openURL('#')}}
 export default function AboutScreen({navigation}) {
  
     return (
@@ -25,7 +26,7 @@ export default function AboutScreen({navigation}) {
         <View style={styles.optionList}>
           <TouchableOpacity
             style={styles.options}
-            onPress={() => navigation.navigate("#")}
+            onPress = {() => {Linking.openURL('https://autopix.no/privacy-policy/')}}
           >
             <Text style={styles.CardText}>Privacy Policy </Text>
             <MaterialCommunityIcons
@@ -36,7 +37,7 @@ export default function AboutScreen({navigation}) {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.options}
-            onPress={() => navigation.navigate("#")}
+            onPress = {() => {Linking.openURL('https://autopix.no/terms-of-service')}}
           >
             <Text style={styles.CardText}>Terms & Conditions</Text>
             <MaterialCommunityIcons

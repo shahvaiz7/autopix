@@ -6,7 +6,7 @@ import Button from "../component/Button";
 import * as ImagePicker from "expo-image-picker";
 export default function ProfileDetails({ navigation }) {
   const [image, setImage] = useState(null);
-
+  
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -14,7 +14,7 @@ export default function ProfileDetails({ navigation }) {
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
-      allowsMultipleSelection: true
+      allowsMultipleSelection: false
     });
 
     console.log(result);
@@ -35,9 +35,10 @@ export default function ProfileDetails({ navigation }) {
       <View style={styles.profileInfo}>
         <TouchableOpacity onPress={pickImage}>
           <Image
-            style={{ width: 120, height: 120, borderRadius: 50 }}
+            style={{ width: 120, height: 120, borderRadius: 50,backgroundColor:'gray' }}
             source={{ uri: image }}
           />
+         
 
         </TouchableOpacity>
 
