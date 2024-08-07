@@ -2,9 +2,19 @@ import { StyleSheet, Text, View ,Image} from 'react-native'
 import React from 'react'
 import Button from '../component/Button'
 
+import { LinearGradient } from 'expo-linear-gradient';
+//npx expo install expo-linear-gradient
+
 export default function WelcomeScreen({navigation}) {
   return (
-    <View style={styles.Container}>
+    // <LinearGradient
+    //     // Button Linear Gradient
+    //     colors={['#2199F3', '#39D0A1','#34C4B2','#1D6167']}
+    //     style={styles.Container}>
+        
+     
+    
+    <View style={styles.Container}> 
      <View style={styles.logoblock}>
      <Image
         style={styles.logo1}
@@ -34,6 +44,7 @@ export default function WelcomeScreen({navigation}) {
         
      </View>
     </View>
+    // </LinearGradient>
   )
 }
 
@@ -42,7 +53,7 @@ const styles = StyleSheet.create({
     Container: {
         flex:1,
         alignItems: "center",
-        backgroundColor:"#174A58"
+        backgroundColor: "#293D4F",
       },
       logo1:{
        height:80,
