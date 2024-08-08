@@ -28,8 +28,8 @@ export default function AccountSetting({ navigation }) {
         >
           <Text style={styles.CardText}>Notification </Text>
           <MaterialCommunityIcons
-            name="arrow-collapse-right"
-            size={20}
+            name="greater-than"
+            size={18}
             color={"white"}
           />
         </TouchableOpacity>
@@ -39,8 +39,8 @@ export default function AccountSetting({ navigation }) {
         >
           <Text style={styles.CardText}>Privacy Setting</Text>
           <MaterialCommunityIcons
-            name="arrow-collapse-right"
-            size={20}
+            name="greater-than"
+            size={18}
             color={"white"}
           />
         </TouchableOpacity>
@@ -50,8 +50,8 @@ export default function AccountSetting({ navigation }) {
         >
           <Text style={styles.CardText}>Permissions</Text>
           <MaterialCommunityIcons
-            name="arrow-collapse-right"
-            size={20}
+            name="greater-than"
+            size={18}
             color={"white"}
           />
         </TouchableOpacity>
@@ -67,24 +67,23 @@ const styles = StyleSheet.create({
     backgroundColor: "#1D6167",
   },
   topBack: {
-    flex: 0.2,
+    flex: 0.3,
   },
   HeaderView: {
-    flex: 0.1,
+    flex: 0.2,
     width: "100%",
+    marginBottom:20
   },
-  profileInfo: {
-    flex: 0.3,
-    alignContent: "center",
-    alignItems: "center",
-    margin: -10,
-  },
+  
   optionList: {
     alignContent: "center",
     alignItems: "center",
     justifyContent: "center",
-    flex: 0.7,
-    padding: 10,
+    flex: 0.5,
+    padding: 5,
+    backgroundColor: "#1F2932",
+    borderRadius:10
+    
   },
   options: {
     margin: 5,
@@ -95,6 +94,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#1F2932",
     width: "100%",
+    borderBottomColor:'gray',
+    borderBottomWidth:.10,
+    width:'100%',
   },
   CardText: {
     color: "#ffffff",

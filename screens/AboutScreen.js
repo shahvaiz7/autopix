@@ -30,8 +30,8 @@ export default function AboutScreen({navigation}) {
           >
             <Text style={styles.CardText}>Privacy Policy </Text>
             <MaterialCommunityIcons
-              name="arrow-collapse-right"
-              size={20}
+              name="greater-than"
+              size={18}
               color={"white"}
             />
           </TouchableOpacity>
@@ -41,8 +41,8 @@ export default function AboutScreen({navigation}) {
           >
             <Text style={styles.CardText}>Terms & Conditions</Text>
             <MaterialCommunityIcons
-              name="arrow-collapse-right"
-              size={20}
+              name="greater-than"
+              size={18}
               color={"white"}
             />
           </TouchableOpacity>
@@ -64,6 +64,7 @@ export default function AboutScreen({navigation}) {
     HeaderView: {
       flex: 0.3,
       width: "100%",
+      marginBottom:20
     },
     profileInfo: {
       flex: 0.3,
@@ -77,6 +78,8 @@ export default function AboutScreen({navigation}) {
       justifyContent: "center",
       flex: 0.7,
       padding: 10,
+      backgroundColor: "#1F2932",
+      borderRadius:10
     },
     options: {
       margin: 5,
@@ -87,6 +90,9 @@ export default function AboutScreen({navigation}) {
       flexDirection: "row",
       backgroundColor: "#1F2932",
       width: "100%",
+      borderBottomColor:'gray',
+      borderBottomWidth:.10,
+      
     },
     CardText: {
       color: "#ffffff",

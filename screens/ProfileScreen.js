@@ -24,47 +24,51 @@ export default function ProfileScreen({navigation}) {
         <Text style={{ color:'#C0CACB',fontSize:14,fontWeight:'semibold'}}> Company: Graphic IT BD  </Text>
       </View>
       <View style={styles.optionList}>
-       <TouchableOpacity style={styles.options}  onPress={() => navigation.navigate("Profiledetails")}> 
+      <View style={styles.optionListOne}>
+       <TouchableOpacity style={styles.optionsTop}  onPress={() => navigation.navigate("Profiledetails")}> 
         <Text style={styles.CardText}>Profile </Text>
         <MaterialCommunityIcons
-                  name="arrow-collapse-right"
-                  size={20}
+                  name="greater-than"
+                  size={18}
                   color={"white"}
                 />
        </TouchableOpacity>
-       <TouchableOpacity style={styles.options} onPress={() => navigation.navigate("AccountSetting")}> 
+       <TouchableOpacity style={styles.optionsTop} onPress={() => navigation.navigate("AccountSetting")}> 
         <Text style={styles.CardText}>Account Setting</Text>
         <MaterialCommunityIcons
-                  name="arrow-collapse-right"
-                  size={20}
+                  name="greater-than"
+                  size={18}
                   color={"white"}
                 />
        </TouchableOpacity>
+       </View>
+       <View style={styles.optionListTwo}>
        <TouchableOpacity style={styles.options} onPress={() => navigation.navigate("Shareapp")}> 
-        <Text style={styles.CardText}>Share app</Text>
+        <Text style={styles.CardTextTwo}>Share app</Text>
         <MaterialCommunityIcons
-                  name="arrow-collapse-right"
-                  size={20}
+                  name="greater-than"
+                  size={18}
                   color={"white"}
                 />
        </TouchableOpacity>
        <TouchableOpacity style={styles.options} onPress = {() => {Linking.openURL('https://autopix.no/supports')}}> 
-        <Text style={styles.CardText}>Support</Text>
+        <Text style={styles.CardTextTwo}>Support</Text>
         <MaterialCommunityIcons
-                  name="arrow-collapse-right"
-                  size={20}
+                  name="greater-than"
+                  size={18}
                   color={"white"}
                 />
        </TouchableOpacity>
        <TouchableOpacity style={styles.options} onPress={() => navigation.navigate("About")} > 
-        <Text style={styles.CardText}>About</Text>
+        <Text style={styles.CardTextTwo}>About</Text>
         <MaterialCommunityIcons
-                  name="arrow-collapse-right"
-                  size={20}
+                  name="greater-than"
+                  size={18}
                   color={"white"}
                   
                 />
        </TouchableOpacity>
+       </View>
       </View>
      
     </ScrollView>
@@ -74,40 +78,71 @@ export default function ProfileScreen({navigation}) {
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-   
     backgroundColor:'#1D6167'
   },
   topBack:{
-    flex:.20,
+    flex:.10,
   },
   profileInfo:{
-    flex:.30,
+    flex:.20,
     alignContent:'center',
     alignItems:'center',
-    margin:-10
+    margin:-10,
+    
   },
   optionList:{
-   
     alignContent:'center',
     alignItems:'center',
     justifyContent:'center',
-    flex:.70,
-    padding:10
+    padding:10,
+    flex:.80,
+  },
+  optionListOne:{
+    
+
+  },
+  optionListTwo:{
+    backgroundColor:'#1F2932',
+    borderRadius:20,
+    margin:5,
+    padding:5
+
   },
   options:{
-    margin:5,
-    padding:12,
+    margin:8,
+    padding:10,
     borderRadius:10,
     color:'white',
     justifyContent:'space-between',
     flexDirection:'row',
     backgroundColor:'#1F2932',
-    width:'100%'
+    borderBottomColor:'gray',
+    borderBottomWidth:.10,
+    width:'100%',
+  },
+  optionsTop:{
+    margin:5,
+    padding:12,
+    borderRadius:10,
+    color:'white',
+    width:'100%',
+    justifyContent:'space-between',
+    flexDirection:'row',
+    backgroundColor:'#1F2932',
+
   },
   CardText: {
     color: "#ffffff",
     fontStyle: "italic",
-    fontSize:14
+    fontSize:14,
+    
+  },
+  CardTextTwo: {
+    color: "#ffffff",
+    fontStyle: "italic",
+    fontSize:14,
+  
+   
     
   },
 })

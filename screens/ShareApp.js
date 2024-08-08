@@ -21,13 +21,13 @@ export default function ShareApp({navigation}) {
     <ScrollView style={styles.containerView}>
       <View style={styles.HeaderView}>
         <Text style={styles.AllText}>Share App  </Text>
-       
-      </View>
-      <View style={styles.optionList}>
-      <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+        <Text style={{  color: "#ffffff" ,marginLeft:10}}>
           {" "}
           Email{" "}
         </Text>
+      </View>
+      <View style={styles.optionList}>
+      
         <TextInput
           icon="mail"
           placeholder="Enter your email"
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     fontSize: 20,
     fontWeight: "bold",
+    padding:10
   },
   Bottom:{
     padding:10
