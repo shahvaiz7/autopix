@@ -23,7 +23,7 @@ export default function GuideScreen({navigation}) {
             height: 30,
             width: 200,
             alignItems: "center",
-          }} onPress={() => navigation.navigate("Guidesteps")}
+          }} onPress={() => navigation.navigate("GuideAdd")}
         >
           <Text style={{ color: "#ffffff",fontSize:16 }}>  <MaterialCommunityIcons
                   name="plus"
@@ -50,7 +50,7 @@ export default function GuideScreen({navigation}) {
         <View style={styles.OrderBody}>
           <View style={{ flex: 0.5 }}>
             <Image
-              style={{ width: 130, height: 120, }}
+              style={{ width: 130, height: 120,borderRadius:25 }}
               source={require("../assets/logoblack.jpeg")}
             />
           </View>

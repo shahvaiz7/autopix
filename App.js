@@ -25,6 +25,9 @@ import AboutScreen from './screens/AboutScreen';
 import CreateOrder from './screens/CreateOrder';
 import GuideScreen from './screens/GuideScreen';
 import GuideSteps from './screens/GuideSteps';
+import GuideAdd from './screens/GuideAdd';
+import BackgroundType from './screens/BackgroundType';
+import BackgroundList from './screens/BackgroundList';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -45,6 +48,9 @@ export default function App() {
         <Stack.Screen name="CreateOrder" component={CreateOrder} />
         <Stack.Screen name="Guide" component={GuideScreen} />
         <Stack.Screen name="Guidesteps" component={GuideSteps} />
+        <Stack.Screen name="GuideAdd" component={GuideAdd} />
+        <Stack.Screen name="BackgroundType" component={BackgroundType} />
+        <Stack.Screen name="BackgroundList" component={BackgroundList} />
       </Stack.Navigator>
 
     </NavigationContainer>

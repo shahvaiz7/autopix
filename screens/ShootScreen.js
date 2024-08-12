@@ -7,11 +7,7 @@ import {
   Image,
 } from "react-native";
 import React, { useState,useEffect } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import Button from "../component/Button";
 import * as ImagePicker from "expo-image-picker";
-import { Camera, CameraType } from "expo-camera/legacy";
-import { CameraView, useCameraPermissions } from "expo-camera";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function ShootScreen({ navigation }) {
