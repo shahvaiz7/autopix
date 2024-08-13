@@ -5,36 +5,50 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  Alert,
 } from "react-native";
 import React, { useState,useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function ShootScreen({ navigation }) {
   const [image, setImage] = useState(null);
   const [camera, setCamera] = useState(null);
-//   const requestPermission = async () => {
-//     const { granted } = await Camera.requestCameraPermissionsAsync();
-
-//     if (!granted) {
-//         Alert.alert(
-//             'Device settings alert',
-//             'You need to allow camera permissions for this to work'
-//         );
-//     }
-// }
-
-// const takePhoto = async (options) => {
-//     options = {mediaTypes: ImagePicker.MediaTypeOptions.Images, ...options };
-
-//     return await ImagePicker.launchCameraAsync(options);
-// }
-
-// useEffect(() => {
-//     requestPermission();
-// }, []);
 
 
+  // const verifyPermissions = async()=> {
+  //   const access =(Permissions.CAMERA);
+  //   if (access.status !== 'granted'){
+  //     Alert.alert(
+  //       'Insufficient Permission',
+  //        'Need to grant camera app permission',
+  //        [{text:'OK'}]
+  //        );
+  //     return false;
+  //   }
+  //   return true;
+  // };
+ 
+
+const takeImageHandler = async () => {
+  // const hasPermission = await verifyPermissions();
+  // if(!hasPermission){
+  //   return;
+  // }
+ 
+   ImagePicker.PermissionStatus.GRANTED;
+ const cameraphoto =  await ImagePicker.launchCameraAsync(
+  {
+   allowsMultipleSelection:true
+  
+  }
+ );
+  if (!cameraphoto.canceled) {
+    setImage(cameraphoto.assets[0].uri);
+  }
+
+};
  
 
   const pickImage = async () => {
@@ -59,7 +73,7 @@ export default function ShootScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.containerView}>
+    <ScrollView style={styles.containerView}>
       <View style={styles.topBar}>
         <View style={styles.ProfileDetails}>
         <Image
@@ -86,7 +100,7 @@ export default function ShootScreen({ navigation }) {
       <View style={styles.bodyContent}>
         {image && <Image source={{ uri: image }} style={styles.image} />}
 
-        <TouchableOpacity style={styles.blockContent} >
+        <TouchableOpacity style={styles.blockContent} onPress={takeImageHandler} >
           <View>
             <MaterialCommunityIcons name="camera" size={100} color={"#ffffff"} />
           </View>
@@ -127,19 +141,20 @@ export default function ShootScreen({ navigation }) {
         <Button label="Upload" onPress={pickImage} /> */}
       </View>
      
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    justifyContent: "space-between",
+    
     backgroundColor: "#1B5865",
   },
   image: {
     height: 300,
     width: 300,
+    resizeMode:'contain'
   },
   topBar: {
     flex: 0.1,
