@@ -15,7 +15,25 @@ const Tab = createMaterialBottomTabNavigator();
 export default function HomeScreen() {
   return (
   
-     <Tab.Navigator >
+     <Tab.Navigator activeColor="#1FDE00"
+     activeIndicatorStyle={{backgroundColor:'#18222B'}}
+     inactiveColor="#ffffff"
+     shifting={false}
+     barStyle={{ backgroundColor: '#18222B', 
+                  position:'absolute',
+                  bottom:10,
+                  paddingVertical:5,
+                   marginHorizontal:5,
+                   borderRadius:5 ,
+                   borderColor:'#1FDE00',
+                   borderWidth:2,
+                   paddingRight:45,
+                   borderTopRightRadius:75,
+                   borderTopLeftRadius:75,
+                   paddingLeft:45,
+                  
+                  }}
+     >
     
     <Tab.Screen name="Shoot" component={ShootScreen}   
       options={{
@@ -23,10 +41,12 @@ export default function HomeScreen() {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="camera" color={color} size={26} />
           ),
+          
         }}/>
     <Tab.Screen name="Order" component={OrderScreen}
     
      options={{
+      // tabBarBadge: true,
       tabBarLabel: 'Order',
       tabBarIcon: ({ color }) => (
         <MaterialCommunityIcons name="note" color={color} size={26} />
@@ -34,7 +54,7 @@ export default function HomeScreen() {
     }} />
     <Tab.Screen name="Guide" component={GuideScreen}
      options={{
-      tabBarLabel: 'Guide',
+     
       tabBarIcon: ({ color }) => (
         <MaterialCommunityIcons name="folder" color={color} size={26} />
       ),
