@@ -14,13 +14,15 @@ export default function TextInput({ icon, ...otherProps }) {
                 borderColor: validationColor,
                 borderWidth: StyleSheet.hairlineWidth,
                 padding: 8,
+                
             }}
         >
-           
+
             <View style={{ flex: 1 }}>
                 <RNTextInput
                     underlineColorAndroid="transparent"
                     placeholderTextColor="gray"
+                    color='white'
                     {...otherProps}
                 />
             </View>

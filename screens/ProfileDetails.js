@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
   },
   Bottom: {
     flex: 0.1,
-    width: "100%",
-    alignItems: "center",
+    width: "90%",
+    paddingLeft: 30
   },
 })

@@ -11,6 +11,7 @@ import React, { useState,useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function ShootScreen({ navigation }) {
   const [image, setImage] = useState(null);
@@ -74,6 +75,12 @@ const takeImageHandler = async () => {
 
   return (
     <ScrollView style={styles.containerView}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['#A52306', '#020202']}
+        locations={[0.1, 0.3]}
+        style={styles.containerView}
+      >
       <View style={styles.topBar}>
         <View style={styles.ProfileDetails}>
         <Image
@@ -101,7 +108,9 @@ const takeImageHandler = async () => {
         {image && <Image source={{ uri: image }} style={styles.image} />}
 
         <TouchableOpacity style={styles.blockContent} onPress={takeImageHandler} >
-          <View>
+          <View  style={{
+             paddingTop:40
+            }}>
             <MaterialCommunityIcons name="camera" size={100} color={"#ffffff"} />
           </View>
           <View
@@ -113,13 +122,14 @@ const takeImageHandler = async () => {
             <Text  style={{
              color:'white',
              fontSize:20,
-             padding:10,
              margin:10
             }}> Shoot </Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.blockContent} onPress={pickImage}>
-          <View>
+          <View  style={{
+             paddingTop:40
+            }}>
             <MaterialCommunityIcons name="upload" size={100} color={"#ffffff"} />
           </View>
           <View
@@ -131,7 +141,6 @@ const takeImageHandler = async () => {
             <Text  style={{
              color:'white',
              fontSize:20,
-             padding:10,
              margin:10
             }}> Upload </Text>
           </View>
@@ -140,7 +149,7 @@ const takeImageHandler = async () => {
 
         <Button label="Upload" onPress={pickImage} /> */}
       </View>
-     
+     </LinearGradient>
     </ScrollView>
   );
 }
@@ -149,7 +158,7 @@ const styles = StyleSheet.create({
   containerView: {
     flex: 1,
     
-    backgroundColor: "#1B5865",
+    backgroundColor: "#020202",
   },
   image: {
     height: 300,
@@ -173,7 +182,8 @@ const styles = StyleSheet.create({
   },
   blockContent:{
     flex:.4,
-    backgroundColor:'#284E54',
+    borderWidth:2,
+    borderColor:'gray',
     width:'100%',
     justifyContent:'center',
     alignItems:'center',

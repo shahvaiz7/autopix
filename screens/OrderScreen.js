@@ -8,9 +8,16 @@ import {
 } from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { LinearGradient } from 'expo-linear-gradient';
 export default function OrderScreen({navigation}) {
   return (
     <View style={styles.containerView}>
+       <LinearGradient
+        // Background Linear Gradient
+        colors={['#A52306', '#020202']}
+        locations={[0.1, 0.3]}
+        style={styles.containerView}
+      >
       <View style={styles.topBar}>
         <View>
           <Text
@@ -43,7 +50,7 @@ export default function OrderScreen({navigation}) {
         <View style={styles.OrderCard}>
           <View style={{ flex: 0.4 }}>
             <Image
-              style={{ width: 130, height: 120, borderRadius: 35 }}
+              style={{ width: 100, height: 110, borderRadius: 25 }}
               source={require("../assets/logoblack.jpeg")}
             />
           </View>
@@ -72,7 +79,12 @@ export default function OrderScreen({navigation}) {
             >
               Pending{" "}
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity style={{
+               borderWidth:1,
+               borderColor:'gray',
+               padding:8,
+               borderRadius:15
+              }}>
               <Text style={styles.CardText}>
                 Option{" "}
                 <MaterialCommunityIcons
@@ -266,6 +278,7 @@ export default function OrderScreen({navigation}) {
           </View>
         </View>
       </ScrollView>
+      </LinearGradient>
     </View>
   );
 }
@@ -290,8 +303,9 @@ const styles = StyleSheet.create({
     margin: 15,
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "#283F45",
-    margin: 10,
+   borderWidth:1,
+   borderColor:'gray',
+   padding:2,
     borderRadius: 25,
   },
   CardText: {

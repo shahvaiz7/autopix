@@ -7,7 +7,7 @@
     "icon": "./assets/logoblack.jpeg",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/autopix.jpeg",
+      "image": "./assets/logo-orange.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },

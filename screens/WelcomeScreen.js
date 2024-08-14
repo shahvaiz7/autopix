@@ -1,48 +1,48 @@
-import { StyleSheet, Text, View ,Image} from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import Button from '../component/Button'
 
 import { LinearGradient } from 'expo-linear-gradient';
 //npx expo install expo-linear-gradient
 
-export default function WelcomeScreen({navigation}) {
+export default function WelcomeScreen({ navigation }) {
   return (
     // <LinearGradient
     //     // Button Linear Gradient
     //     colors={['#2199F3', '#39D0A1','#34C4B2','#1D6167']}
     //     style={styles.Container}>
-        
-     
-    
-    <View style={styles.Container}> 
-     <View style={styles.logoblock}>
-     <Image
-        style={styles.logo1}
-        source={require("../assets/logoblack.jpeg")}
-      />
-     <Image
-        style={styles.logo2}
-        source={require("../assets/autopix.jpeg")}
-      />
-       
-     </View>
-     <View style={styles.textblock}>
+
+
+
+    <View style={styles.Container}>
+      <View style={styles.logoblock}>
+        <Image
+          style={styles.logo1}
+          source={require("../assets/logoblack.jpeg")}
+        />
+        <Image
+          style={styles.logo2}
+          source={require("../assets/autopix.jpeg")}
+        />
+
+      </View>
+      <View style={styles.textblock}>
         <Text style={styles.textBrand}>Great Photo Drive Brand Success  </Text>
-        
-     </View>
-     <View style={styles.buttonblock}>
-        <Button  label="Login"
-            onPress={() => navigation.navigate("Login")}/>
-             
-        
-     </View>
-     <View style={styles.buttonblock}>
-      
-             <Button  label="Sign up"
-            onPress={() => navigation.navigate("Signup")}/>
-      
-        
-     </View>
+
+      </View>
+      <View style={styles.buttonblock}>
+        <Button label="Login"
+          onPress={() => navigation.navigate("Login")} />
+
+
+      </View>
+      <View style={styles.buttonblock}>
+
+        <Button label="Sign up"
+          onPress={() => navigation.navigate("Signup")} />
+
+
+      </View>
     </View>
     // </LinearGradient>
   )
@@ -50,50 +50,52 @@ export default function WelcomeScreen({navigation}) {
 
 const styles = StyleSheet.create({
 
-    Container: {
-        flex:1,
-        alignItems: "center",
-        backgroundColor: "#293D4F",
-      },
-      logo1:{
-       height:80,
-       width:80
+  Container: {
+    flex: 1,
+    alignItems: "center",
+    backgroundColor: "#020202",
+  },
+  logo1: {
+    height: 80,
+    width: 80,
+    backgroundColor:'red',
 
-      },
-      logo2:{
-        height:100,
-        width:300,
-        resizeMode:"contain"
+  },
+  logo2: {
+    height: 100,
+    width: 300,
+    resizeMode: "contain",
+    
 
-      },
-      logoblock:{
-        flex:.5,
-        alignContent:'center',
-        alignItems:'center',
-        margin:50
+  },
+  logoblock: {
+    flex: .5,
+    alignContent: 'center',
+    alignItems: 'center',
+    margin: 50
 
-      },
-      textblock:{
-        flex:.3,
-        alignContent:'center',
-        alignItems:'center',
-       
+  },
+  textblock: {
+    flex: .3,
+    alignContent: 'center',
+    alignItems: 'center',
 
 
-      },
-      textBrand:{
-        fontWeight:'heavy',
-        fontSize: 40,
-        color:"#ffffff",
-       fontStyle:'italic',
-       textAlign:'center'
 
-      },
-      buttonblock:{
-      padding:5
-        
+  },
+  textBrand: {
+    fontWeight: 'heavy',
+    fontSize: 40,
+    color: "#ffffff",
+    fontStyle: 'italic',
+    textAlign: 'center'
 
-      },
-      
+  },
+  buttonblock: {
+    padding: 5
+
+
+  },
+
 
 })

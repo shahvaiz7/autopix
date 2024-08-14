@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     padding:10
   },
   Bottom:{
-    padding:10
+    padding:10,
+    width:"80%",
   }
 });
