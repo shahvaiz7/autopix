@@ -8,10 +8,17 @@ import {
 } from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function AccountSetting({ navigation }) {
   return (
-    <ScrollView style={styles.containerView}>
+    <View style={styles.containerView}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['#A52306', '#020202']}
+        locations={[0.1, 0.3]}
+        style={styles.containerView}
+      >
       <View style={styles.HeaderView}>
         <Text style={styles.AllText}> Account Settings </Text>
         <Text
@@ -56,33 +63,32 @@ export default function AccountSetting({ navigation }) {
           />
         </TouchableOpacity>
       </View>
-    </ScrollView>
+      </LinearGradient>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   containerView: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: "#1D6167",
+    flex:1,
+    justifyContent:'flex-start' 
   },
-  topBack: {
-    flex: 0.3,
-  },
+  
   HeaderView: {
-    flex: 0.2,
+    flex: 0.1,
     width: "100%",
-    marginBottom:20
+    paddingTop:10
+   
   },
   
   optionList: {
     alignContent: "center",
     alignItems: "center",
-    justifyContent: "center",
-    flex: 0.5,
-    padding: 5,
-    backgroundColor: "#1F2932",
-    borderRadius:10
+    justifyContent:'center',
+    flex: 0.25,
+    borderRadius:10,
+    borderWidth:2,
+    borderColor:'gray'
     
   },
   options: {
@@ -92,7 +98,6 @@ const styles = StyleSheet.create({
     color: "white",
     justifyContent: "space-between",
     flexDirection: "row",
-    backgroundColor: "#1F2932",
     width: "100%",
     borderBottomColor:'gray',
     borderBottomWidth:.10,

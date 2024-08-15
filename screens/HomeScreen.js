@@ -8,6 +8,7 @@ import ShootScreen from './ShootScreen';
 import OrderScreen from './OrderScreen';
 import GuideScreen from './GuideScreen';
 import ProfileScreen from './ProfileScreen';
+import GuideAdd from './GuideAdd';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -25,15 +26,16 @@ export default function HomeScreen() {
         bottom: 10,
         paddingVertical: 5,
         marginHorizontal: 5,
-        borderRadius: 5,
         borderColor: '#FF4A22',
-        borderWidth: 2,
+        borderWidth: 4,
         paddingRight: 42,
-        borderTopRightRadius: 75,
-        borderTopLeftRadius: 75,
+        borderTopRightRadius: 130,
+        borderTopLeftRadius: 130,
         paddingLeft: 42,
         borderBottomLeftRadius: 45,
         borderBottomRightRadius: 45,
+        transform:[{ scaleY: .8}],
+        
 
       }}
     >
@@ -55,11 +57,11 @@ export default function HomeScreen() {
             <MaterialCommunityIcons name="note" color={color} size={26} />
           ),
         }} />
-      <Tab.Screen name="Guide" component={GuideScreen}
+      <Tab.Screen name="Guide" component={GuideAdd}
         options={{
 
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="folder" color={color} size={26} />
+            <MaterialCommunityIcons name="folder-open-outline" color={color} size={26} />
           ),
         }} />
       <Tab.Screen name="Profile" component={ProfileScreen}

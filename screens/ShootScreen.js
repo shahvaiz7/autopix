@@ -41,7 +41,9 @@ const takeImageHandler = async () => {
    ImagePicker.PermissionStatus.GRANTED;
  const cameraphoto =  await ImagePicker.launchCameraAsync(
   {
-   allowsMultipleSelection:true
+    mediaTypes: ImagePicker.MediaTypeOptions.All,
+    allowsMultipleSelection:true,
+   allowsEditing: true,
   
   }
  );

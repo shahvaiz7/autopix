@@ -12,13 +12,20 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Button from "../component/Button";
 import TextInput from "../component/TextInput";
 import * as OpenAnything from 'react-native-openanything';
+import { LinearGradient } from 'expo-linear-gradient';
 //npm install react-native-openanything
 
 
 export default function ShareApp({navigation}) {
   const [email, setEmail] = useState();
   return (
-    <ScrollView style={styles.containerView}>
+    <View style={styles.containerView}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['#A52306', '#020202']}
+        locations={[0.1, 0.3]}
+        style={styles.containerView}
+      >
       <View style={styles.HeaderView}>
         <Text style={styles.AllText}>Share App  </Text>
         <Text style={{  color: "#ffffff" ,marginLeft:10}}>
@@ -44,15 +51,17 @@ export default function ShareApp({navigation}) {
            <Button label="Send" onPress={() => OpenAnything.Email(to = email, subject = "Install from here", body = "link###")} /> 
        </View>
       </View>
-    </ScrollView>
+      </LinearGradient>
+    </View>
   );
 }
 //Email(to = false, subject = false, body = false, cc = false, bcc = false)
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    padding: 20,
-    backgroundColor: "#1D6167",
+  },
+  HeaderView:{
+    flex: .1,
   },
 
   
@@ -60,7 +69,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
     justifyContent: "center",
-    flex: 0.6,
+    flex: 0.2,
     padding: 10,
    
   },

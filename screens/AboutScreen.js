@@ -8,12 +8,19 @@ import {
   Linking,
 } from "react-native";
 import React from "react";
+import { LinearGradient } from 'expo-linear-gradient';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 // To use weblink adress just import Linking and use the navigation like : onPress = {() => {Linking.openURL('#')}}
 export default function AboutScreen({navigation}) {
  
     return (
-      <ScrollView style={styles.containerView}>
+      <View style={styles.containerView}>
+        <LinearGradient
+        // Background Linear Gradient
+        colors={['#A52306', '#020202']}
+        locations={[0.1, 0.3]}
+        style={styles.containerView}
+      >
         <View style={styles.HeaderView}>
           <Text style={styles.AllText}>About  </Text>
           <Text
@@ -48,38 +55,27 @@ export default function AboutScreen({navigation}) {
           </TouchableOpacity>
          
         </View>
-      </ScrollView>
+        </LinearGradient>
+      </View>
     );
   }
   
   const styles = StyleSheet.create({
     containerView: {
       flex: 1,
-      padding: 10,
-      backgroundColor: "#1D6167",
+      
+   
     },
-    topBack: {
-      flex: 0.2,
-    },
+    
     HeaderView: {
-      flex: 0.3,
+      flex: 0.1,
       width: "100%",
-      marginBottom:20
+     padding:10
     },
-    profileInfo: {
-      flex: 0.3,
-      alignContent: "center",
-      alignItems: "center",
-      margin: -10,
-    },
+   
     optionList: {
-      alignContent: "center",
-      alignItems: "center",
-      justifyContent: "center",
-      flex: 0.7,
-      padding: 10,
-      backgroundColor: "#1F2932",
-      borderRadius:10
+      
+      flex: 0.2,
     },
     options: {
       margin: 5,
@@ -88,7 +84,7 @@ export default function AboutScreen({navigation}) {
       color: "white",
       justifyContent: "space-between",
       flexDirection: "row",
-      backgroundColor: "#1F2932",
+      
       width: "100%",
       borderBottomColor:'gray',
       borderBottomWidth:.10,

@@ -2,6 +2,8 @@ import { StyleSheet, Text, View,TouchableOpacity,Switch ,Image} from 'react-nati
 import React, {useState} from 'react';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import * as ImagePicker from "expo-image-picker";
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 export default function GuideAdd({navigation,route}) {
     const id = route.params;
@@ -38,6 +40,12 @@ export default function GuideAdd({navigation,route}) {
       };
   return (
     <View style={styles.containerView}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['#A52306', '#020202']}
+        locations={[0.1, 0.3]}
+        style={styles.containerView}
+      >
      <View style={styles.InstructionView}>
     
         <View style={styles.OptionView} onPress={() => navigation.navigate("#")}>
@@ -53,18 +61,18 @@ export default function GuideAdd({navigation,route}) {
         value={backgroundswitch}
       />
         </View>
-        <View  style={styles.imageContainer}>
+     {backgroundswitch && <View  style={styles.imageContainer}>
         {/* <TouchableOpacity  style={styles.addImage} onPress={pickBackground} > */}
         <TouchableOpacity  style={styles.addImage} onPress={() => navigation.navigate("BackgroundType")} >
         <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
         </TouchableOpacity>
         {background && <Image source={{ uri: background }} style={styles.logo1} />}
-       {id && <Text> Id: {id}</Text>}
+       
         {/* <Image
         style={styles.logo1}
         source={require("../assets/logoblack.jpeg")}
       /> */}
-        </View>
+        </View>}
     </View>
     <View style={styles.InstructionView}>
     
@@ -140,7 +148,7 @@ export default function GuideAdd({navigation,route}) {
             <Text style={styles.CardText}>Logo : Yes /.. No  </Text>
             <Text style={styles.CardText}>License Plate : Yes /  No</Text>
           </View>
-    
+          </LinearGradient>
     </View>
   )
 }
@@ -151,10 +159,13 @@ const styles = StyleSheet.create({
         backgroundColor: "#1D6167",
       },
       InstructionView:{
-        backgroundColor:'#222C35',
+        borderWidth:1,
+        borderColor:'gray',
         borderRadius:15,
         paddingBottom:10,
-        margin:15
+        margin:15,
+      
+        shadowOpacity:0.2
       },
       OptionView:{
         justifyContent:'space-between',

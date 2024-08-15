@@ -1,17 +1,21 @@
-import { StyleSheet, Text, TouchableOpacity, View ,Image,ScrollView,Linking} from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View ,Image,ScrollView,Linking,ImageBackground} from 'react-native'
 import React from 'react'
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { LinearGradient } from 'expo-linear-gradient';
 export default function ProfileScreen({navigation}) {
+  
+  const image = require("../assets/logoblack.jpeg");
   return (
+  
     <ScrollView style={styles.containerView}>
-      <View style={styles.topBack}>
-        
-      
-      <Image
-              style={{ width: "100%", height: 150 }}
-              source={require("../assets/logowhite.jpeg")}
-            />
-      </View>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['#A52306', '#020202']}
+        locations={[0.1, 0.3]}
+       
+      >
+       <ImageBackground source={image}>
+     
       <View style={styles.profileInfo}>
       <TouchableOpacity>
       <Image
@@ -20,9 +24,13 @@ export default function ProfileScreen({navigation}) {
             />
           </TouchableOpacity>
      
-        <Text  style={{ color:'white',fontSize:20,fontWeight:'semibold'}}> Md Rohim Miya  </Text>
-        <Text style={{ color:'#C0CACB',fontSize:14,fontWeight:'semibold'}}> Company: Graphic IT BD  </Text>
+       
       </View>
+      </ImageBackground>
+      <View style={styles.profileInfo}>
+      <Text  style={{ color:'white',fontSize:20,fontWeight:'semibold'}}> Md Rohim Miya  </Text>
+        <Text style={{ color:'#C0CACB',fontSize:14,fontWeight:'semibold'}}> Company: Graphic IT BD  </Text>
+        </View>
       <View style={styles.optionList}>
       <View style={styles.optionListOne}>
        <TouchableOpacity style={styles.optionsTop}  onPress={() => navigation.navigate("Profiledetails")}> 
@@ -70,7 +78,7 @@ export default function ProfileScreen({navigation}) {
        </TouchableOpacity>
        </View>
       </View>
-     
+      </LinearGradient>
     </ScrollView>
   )
 }
@@ -78,16 +86,23 @@ export default function ProfileScreen({navigation}) {
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    backgroundColor:'#1D6167'
+    backgroundColor:'#020202'
   },
   topBack:{
     flex:.10,
+   backgroundColor:'gray',
+   height:100,
+   marginTops:-20
+   
   },
   profileInfo:{
-    flex:.20,
+    flex:.30,
     alignContent:'center',
     alignItems:'center',
-    margin:-10,
+   
+    
+    
+   
     
   },
   optionList:{
@@ -102,7 +117,8 @@ const styles = StyleSheet.create({
 
   },
   optionListTwo:{
-    backgroundColor:'#1F2932',
+   borderWidth:1,
+   borderColor:'gray',
     borderRadius:20,
     margin:5,
     padding:5
@@ -115,7 +131,7 @@ const styles = StyleSheet.create({
     color:'white',
     justifyContent:'space-between',
     flexDirection:'row',
-    backgroundColor:'#1F2932',
+    
     borderBottomColor:'gray',
     borderBottomWidth:.10,
     width:'100%',
@@ -128,7 +144,9 @@ const styles = StyleSheet.create({
     width:'100%',
     justifyContent:'space-between',
     flexDirection:'row',
-    backgroundColor:'#1F2932',
+    borderWidth:1,
+    borderColor:'gray',
+   
 
   },
   CardText: {

@@ -4,6 +4,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import * as ImagePicker from "expo-image-picker";
+import { LinearGradient } from 'expo-linear-gradient';
 export default function ProfileDetails({ navigation }) {
   const [image, setImage] = useState(null);
   
@@ -25,6 +26,12 @@ export default function ProfileDetails({ navigation }) {
   };
   return (
     <ScrollView style={styles.containerView}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['#A52306', '#020202']}
+        locations={[0.1, 0.3]}
+        style={styles.containerView}
+      >
 
       <View style={styles.topBack}>
         <Image
@@ -111,7 +118,7 @@ export default function ProfileDetails({ navigation }) {
       <View style={styles.Bottom}>
         <Button label="Save" onPress={() => navigation.navigate("Profile")} />
       </View>
-
+      </LinearGradient>
     </ScrollView>
   )
 }
@@ -119,8 +126,7 @@ export default function ProfileDetails({ navigation }) {
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-
-    backgroundColor: '#1D6167'
+    backgroundColor: '#020202'
   },
   topBack: {
     flex: .10,
@@ -137,16 +143,7 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'center'
   },
-  options: {
-    margin: 5,
-    padding: 12,
-    borderRadius: 10,
-    color: 'white',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    backgroundColor: '#1F2932',
-    width: '100%'
-  },
+  
   CardText: {
     color: "#ffffff",
     fontStyle: "italic",
@@ -154,7 +151,7 @@ const styles = StyleSheet.create({
 
   },
   Bottom: {
-    flex: 0.1,
+    flex: 0.2,
     width: "90%",
     paddingLeft: 30
   },
