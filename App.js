@@ -4,14 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-
-
-
-
 //npm install @react-navigation/material-bottom-tabs react-native-paper react-native-vector-icons
-
-
-
 import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import HomeScreen from './screens/HomeScreen';
@@ -28,6 +21,9 @@ import GuideSteps from './screens/GuideSteps';
 import GuideAdd from './screens/GuideAdd';
 import BackgroundType from './screens/BackgroundType';
 import BackgroundList from './screens/BackgroundList';
+import FloorList from './screens/FloorList';
+import LogoList from './screens/LogoList';
+import NpList from './screens/NpList';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -38,7 +34,7 @@ export default function App() {
         {/* <Stack.Screen name="Welcome" component={WelcomeScreen} /> */}
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ header: () => null }}/>
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="Profiledetails" component={ProfileDetails} />
         <Stack.Screen name="AccountSetting" component={AccountSetting} />
@@ -51,6 +47,11 @@ export default function App() {
         <Stack.Screen name="GuideAdd" component={GuideAdd} />
         <Stack.Screen name="BackgroundType" component={BackgroundType} />
         <Stack.Screen name="BackgroundList" component={BackgroundList} />
+        <Stack.Screen name="FloorList" component={FloorList} />
+        <Stack.Screen name="LogoList" component={LogoList} />
+        <Stack.Screen name="NpList" component={NpList} />
+
+
       </Stack.Navigator>
 
     </NavigationContainer>

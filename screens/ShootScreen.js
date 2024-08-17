@@ -113,7 +113,10 @@ const takeImageHandler = async () => {
           <View  style={{
              paddingTop:40
             }}>
-            <MaterialCommunityIcons name="camera" size={100} color={"#ffffff"} />
+            <Image
+                style={{ width: 110, height: 130, borderRadius: 25 }}
+                source={require("../assets/camera.png")}
+              />
           </View>
           <View
             style={{
@@ -132,7 +135,10 @@ const takeImageHandler = async () => {
           <View  style={{
              paddingTop:40
             }}>
-            <MaterialCommunityIcons name="upload" size={100} color={"#ffffff"} />
+           <Image
+                style={{ width: 200, height: 130, borderRadius: 25 }}
+                source={require("../assets/upload.png")}
+              />
           </View>
           <View
             style={{

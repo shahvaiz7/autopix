@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView ,KeyboardAvoidingView,Platform} from 'react-native'
 import React, { useState } from 'react'
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import TextInput from "../component/TextInput";
@@ -26,6 +26,7 @@ export default function ProfileDetails({ navigation }) {
   };
   return (
     <ScrollView style={styles.containerView}>
+     
       <LinearGradient
         // Background Linear Gradient
         colors={['#A52306', '#020202']}
@@ -36,7 +37,7 @@ export default function ProfileDetails({ navigation }) {
       <View style={styles.topBack}>
         <Image
           style={{ width: "100%", height: 120 }}
-          source={require("../assets/logowhite.jpeg")}
+          source={require("../assets/logo-orange.png")}
         />
       </View>
       <View style={styles.profileInfo}>
@@ -53,6 +54,8 @@ export default function ProfileDetails({ navigation }) {
         <Text style={{ color: '#C0CACB', fontSize: 14, fontWeight: 'semibold' }}> Company: Graphic IT BD  </Text>
       </View>
       <View style={styles.optionList}>
+      <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
 
         <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
           {" "}
@@ -67,6 +70,7 @@ export default function ProfileDetails({ navigation }) {
           keyboardAppearance="dark"
           returnKeyType="next"
           returnKeyLabel="next"
+          
         />
         <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
           {" "}
@@ -113,12 +117,14 @@ export default function ProfileDetails({ navigation }) {
         />
 
 
-
+</KeyboardAvoidingView>
       </View>
       <View style={styles.Bottom}>
         <Button label="Save" onPress={() => navigation.navigate("Profile")} />
       </View>
+      
       </LinearGradient>
+     
     </ScrollView>
   )
 }
@@ -141,6 +147,7 @@ const styles = StyleSheet.create({
   optionList: {
     flex: .60,
     padding: 20,
+    marginTop:25,
     justifyContent: 'center'
   },
   

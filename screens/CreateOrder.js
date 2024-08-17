@@ -11,13 +11,20 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../component/Button";
 import TextInput from "../component/TextInput";
 import { Picker } from "@react-native-picker/picker";
+import { LinearGradient } from 'expo-linear-gradient';
 //npx expo install @react-native-picker/picker
 
 export default function CreateOrder({navigation}) {
   return (
     <ScrollView style={styles.containerView}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['#A52306', '#020202']}
+        locations={[0.1, 0.3]}
+        style={styles.containerView}
+      >
       <View style={styles.HeaderView}>
-        <Text style={styles.AllText}> Create A new order </Text>
+        <Text style={styles.AllText}> Create a new order </Text>
         <Text style={{ padding: 5, color: "#ffffff" }}>
           {" "}
           Select instruction and delivery time{" "}
@@ -26,7 +33,7 @@ export default function CreateOrder({navigation}) {
       <View style={styles.FormView}>
         <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
           {" "}
-          Enter Registration or Car ID no{" "}
+          Enter Registration or Car ID {" "}
         </Text>
         <TextInput
           placeholder="Enter ID"
@@ -74,6 +81,8 @@ export default function CreateOrder({navigation}) {
           {" "}
           Mon-Sat 08:00-17:00 GMT{" "}
         </Text>
+        
+        
         <Picker>
           <Picker.Item label="Next Day" value="java"/>
           <Picker.Item label="2 Days " value="js" />
@@ -84,6 +93,7 @@ export default function CreateOrder({navigation}) {
       <View style={styles.SubmitView}>
         <Button label="Next" onPress={() => navigation.navigate("#")} />
       </View>
+      </LinearGradient>
     </ScrollView>
   );
 }
@@ -91,7 +101,7 @@ export default function CreateOrder({navigation}) {
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    backgroundColor: "#1B5865",
+    backgroundColor: "#020202",
   },
   HeaderView: {
     flex: 0.2,
@@ -115,8 +125,8 @@ const styles = StyleSheet.create({
   },
   SubmitView: {
     flex: 0.1,
-    width: "100%",
-    alignItems: "center",
+    width: "90%",
+   paddingLeft:50
   },
 
   AllText: {

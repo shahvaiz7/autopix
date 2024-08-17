@@ -7,6 +7,7 @@ import {
   Image,
 } from "react-native";
 import React from "react";
+import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../component/Button";
 import TextInput from "../component/TextInput";
@@ -21,6 +22,7 @@ export default function LoginScreen({ navigation }) {
         locations={[0.1, 0.3]}
         style={styles.containerView}
       >
+        
         <View style={styles.HeaderView}>
           <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff", fontSize: 24 }}> CarLine </Text>
           {/* <Image

@@ -4,7 +4,7 @@
     "slug": "autopix",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logoblack.jpeg",
+    "icon": "./assets/logo-orange.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/logo-orange.png",
@@ -22,6 +22,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }

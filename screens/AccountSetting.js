@@ -71,13 +71,14 @@ export default function AccountSetting({ navigation }) {
 const styles = StyleSheet.create({
   containerView: {
     flex:1,
-    justifyContent:'flex-start' 
+    justifyContent:'flex-start' ,
+    
   },
   
   HeaderView: {
     flex: 0.1,
     width: "100%",
-    paddingTop:10
+    padding:10
    
   },
   
@@ -85,16 +86,21 @@ const styles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
     justifyContent:'center',
+    margin:10,
     flex: 0.25,
     borderRadius:10,
     borderWidth:2,
-    borderColor:'gray'
+    borderColor:'gray',
+    paddingBottom:20
+    
     
   },
   options: {
     margin: 5,
     padding: 12,
+    paddingBottom:10,
     borderRadius: 10,
+  
     color: "white",
     justifyContent: "space-between",
     flexDirection: "row",
@@ -102,6 +108,7 @@ const styles = StyleSheet.create({
     borderBottomColor:'gray',
     borderBottomWidth:.10,
     width:'100%',
+   
   },
   CardText: {
     color: "#ffffff",

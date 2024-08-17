@@ -2,9 +2,12 @@ import { StyleSheet, Text, TouchableOpacity, View ,Image,ScrollView,Linking,Imag
 import React from 'react'
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { LinearGradient } from 'expo-linear-gradient';
+
+
 export default function ProfileScreen({navigation}) {
   
-  const image = require("../assets/logoblack.jpeg");
+  const image = require("../assets/logo-blue.png");
+  const image2 = require("../assets/bottomtab.png");
   return (
   
     <ScrollView style={styles.containerView}>
@@ -16,11 +19,11 @@ export default function ProfileScreen({navigation}) {
       >
        <ImageBackground source={image}>
      
-      <View style={styles.profileInfo}>
+      <View style={styles.profilePic}>
       <TouchableOpacity>
       <Image
               style={{ width:120, height: 120 ,borderRadius:50}}
-              source={require("../assets/logoblack.jpeg")}
+              source={require("../assets/profile-img.png")}
             />
           </TouchableOpacity>
      
@@ -78,6 +81,16 @@ export default function ProfileScreen({navigation}) {
        </TouchableOpacity>
        </View>
       </View>
+      {/* <ImageBackground source={image2}>
+     
+     <View style={styles.profileInfo}>
+     <TouchableOpacity>
+    <Text>test </Text>
+         </TouchableOpacity>
+    
+      
+     </View>
+     </ImageBackground> */}
       </LinearGradient>
     </ScrollView>
   )
@@ -95,12 +108,21 @@ const styles = StyleSheet.create({
    marginTops:-20
    
   },
+  profilePic:{
+    alignContent:'center',
+    alignItems:'center',
+    paddingTop: 80,
+    marginBottom:-40
+    
+
+  },
+
   profileInfo:{
     flex:.30,
     alignContent:'center',
     alignItems:'center',
-   
-    
+   height:90,
+   paddingTop:40,
     
    
     

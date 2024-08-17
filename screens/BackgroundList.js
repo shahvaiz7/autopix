@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
-import { FlatList, View, Text, TouchableOpacity ,StyleSheet,Image} from 'react-native';
+import { FlatList, View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 const data = [
-  { id: 1,
-    image:require('../assets/red-car3.png'), 
+  {
+    id: 1,
+    image: require('../assets/background1.png'),
   },
-  { id: 2,
-    image:require('../assets/red-car2.png'), 
+  {
+    id: 2,
+    image: require('../assets/background2.png'),
   },
-  { id: 3,
-    image:require('../assets/car.png'), 
+  {
+    id: 3,
+    image: require('../assets/background3.png'),
   },
-  { id: 4,
-    image:require('../assets/logo1.png'), 
-  },
-  { id: 5,
-    image:require('../assets/logo2.png'), 
-  },
-  
+
+
   // ... more items
 ];
 
 
-export default function BackgroundList({navigation}) {
-    const [selectedIds, setSelectedIds] = useState([]);
+export default function BackgroundList({ navigation }) {
+  const [selectedIds, setSelectedIds] = useState([]);
 
   const toggleItemSelect = (id) => {
     if (selectedIds.includes(id)) {
@@ -40,10 +38,10 @@ export default function BackgroundList({navigation}) {
         <TouchableOpacity
           onPress={() => toggleItemSelect(item.id)}
           style={{
-            backgroundColor: selectedIds.includes(item.id) ? 'blue' : 'white',borderRadius:25,padding:10,margin:10
+            backgroundColor: selectedIds.includes(item.id) ? 'blue' : 'white', borderRadius: 25, padding: 10, margin: 10
           }}
         >
-       {item.image &&  <Image  style={styles.imageBox} source={item.image}/>}
+          {item.image && <Image style={styles.imageBox} source={item.image} />}
         </TouchableOpacity>
       )}
       keyExtractor={item => item.id}
@@ -54,9 +52,9 @@ export default function BackgroundList({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    imageBox:{
-        width:'100%',
-        height:150,
-        
-    }
+  imageBox: {
+    width: '100%',
+    height: 150,
+
+  }
 })
