@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import React, { useState,useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
-import * as Permissions from "expo-permissions";
+
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -38,7 +38,7 @@ const takeImageHandler = async () => {
   //   return;
   // }
  
-   ImagePicker.PermissionStatus.GRANTED;
+   //ImagePicker.PermissionStatus.GRANTED;
  const cameraphoto =  await ImagePicker.launchCameraAsync(
   {
     mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -167,6 +167,7 @@ const styles = StyleSheet.create({
     flex: 1,
     
     backgroundColor: "#020202",
+    paddingBottom:100
   },
   image: {
     height: 300,
@@ -178,6 +179,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     margin: 10,
     justifyContent: "space-between",
+    paddingTop:30
   },
   ProfileDetails:{
     flexDirection:'row'

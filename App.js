@@ -24,6 +24,8 @@ import BackgroundList from './screens/BackgroundList';
 import FloorList from './screens/FloorList';
 import LogoList from './screens/LogoList';
 import NpList from './screens/NpList';
+import SuccessScreen from './screens/SuccessScreen';
+import UploadingScreen from './screens/UploadingScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -50,6 +52,8 @@ export default function App() {
         <Stack.Screen name="FloorList" component={FloorList} />
         <Stack.Screen name="LogoList" component={LogoList} />
         <Stack.Screen name="NpList" component={NpList} />
+        <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
+        <Stack.Screen name="UploadingScreen" component={UploadingScreen} />
 
 
       </Stack.Navigator>

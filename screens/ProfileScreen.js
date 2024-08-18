@@ -105,7 +105,8 @@ const styles = StyleSheet.create({
     flex:.10,
    backgroundColor:'gray',
    height:100,
-   marginTops:-20
+   marginTops:-20,
+   paddingTop:30
    
   },
   profilePic:{

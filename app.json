@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "autopix",
-    "slug": "autopix",
+    "name": "carline",
+    "slug": "carline",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo-orange.png",
@@ -16,7 +16,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo-orange.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.gitbd.carline"

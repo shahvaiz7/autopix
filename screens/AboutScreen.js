@@ -84,7 +84,6 @@ export default function AboutScreen({navigation}) {
       color: "white",
       justifyContent: "space-between",
       flexDirection: "row",
-      
       width: "100%",
       borderBottomColor:'gray',
       borderBottomWidth:.10,

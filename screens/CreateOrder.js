@@ -59,7 +59,7 @@ export default function CreateOrder({navigation}) {
           {" "}
           Instructions{" "}
         </Text>
-        <TouchableOpacity style={styles.InstructionView} onPress={() => navigation.navigate("Guide")}>
+        <TouchableOpacity style={styles.InstructionView} onPress={() => navigation.navigate("GuideAdd")}>
             <Text style={styles.InstructionText}> Background : Yes </Text>
             <Text style={styles.InstructionText}> Floor : Not Selected  </Text>
             <Text style={styles.InstructionText}> Logo : Yes  </Text>
@@ -91,7 +91,7 @@ export default function CreateOrder({navigation}) {
         </Picker>
       </View>
       <View style={styles.SubmitView}>
-        <Button label="Next" onPress={() => navigation.navigate("#")} />
+        <Button label="Next" onPress={() => navigation.navigate("UploadingScreen")} />
       </View>
       </LinearGradient>
     </ScrollView>

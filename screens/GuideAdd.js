@@ -76,7 +76,7 @@ export default function GuideAdd({ navigation, route }) {
             <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("BackgroundType")} >
               <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
             </TouchableOpacity>
-            {background && <Image source={{ uri: background }} style={styles.logo1} />}
+            {id && <Image source={{ uri: background }} style={styles.logo1} />}
 
             {/* <Image
         style={styles.logo1}
@@ -171,12 +171,15 @@ const styles = StyleSheet.create({
   Head:{
     alignContent:'center',
     alignItems:'center',
-    padding:10
+    padding:10,
+    paddingTop:50
   },
 
   containerView: {
     flex: 1,
     backgroundColor: "#020202",
+    paddingBottom:80
+    
     
 
   },
@@ -186,6 +189,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     paddingBottom: 10,
     margin: 15,
+
 
     shadowOpacity: 0.2
   },

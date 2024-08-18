@@ -26,7 +26,7 @@ export default function BackgroundList({ navigation }) {
   const toggleItemSelect = (id) => {
     if (selectedIds.includes(id)) {
       setSelectedIds(prevIds => prevIds.filter(itemId => itemId !== id));
-      navigation.navigate("GuideAdd")
+      navigation.navigate("Home",{id})
     } else {
       setSelectedIds(prevIds => [...prevIds, id]);
     }

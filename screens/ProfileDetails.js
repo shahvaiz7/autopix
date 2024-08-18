@@ -120,7 +120,7 @@ export default function ProfileDetails({ navigation }) {
 </KeyboardAvoidingView>
       </View>
       <View style={styles.Bottom}>
-        <Button label="Save" onPress={() => navigation.navigate("Profile")} />
+        <Button label="Save" onPress={() => navigation.navigate("Home")} />
       </View>
       
       </LinearGradient>
