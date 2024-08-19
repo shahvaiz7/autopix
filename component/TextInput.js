@@ -2,7 +2,7 @@ import React from "react";
 import { TextInput as RNTextInput, View, StyleSheet } from "react-native";
 import { Entypo as Icon } from "@expo/vector-icons";
 
-export default function TextInput({ icon, ...otherProps }) {
+export default function TextInput({ icon, numberOfLines, ...otherProps }) {
     const validationColor = "gray";
     return (
         <View

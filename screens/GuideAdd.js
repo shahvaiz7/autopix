@@ -7,6 +7,7 @@ import Button from '../component/Button';
 
 
 export default function GuideAdd({ navigation, route }) {
+  const bgswitch = route.params;
   const id = route.params;
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
@@ -56,9 +57,7 @@ export default function GuideAdd({ navigation, route }) {
             </Text>
           </View>
         <View style={styles.InstructionView}>
-        
-
-          <View style={styles.OptionView}>
+         <View style={styles.OptionView}>
             <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
               {" "}
               Background{" "}
@@ -73,10 +72,11 @@ export default function GuideAdd({ navigation, route }) {
           </View>
           {backgroundSwitch && <View style={styles.imageContainer}>
             {/* <TouchableOpacity  style={styles.addImage} onPress={pickBackground} > */}
-            <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("BackgroundType")} >
+            <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("BackgroundList",{bgswitch})} >
               <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
             </TouchableOpacity>
-            {id && <Image source={{ uri: background }} style={styles.logo1} />}
+            {background && <Image source={{ background }} style={styles.logo1} />}
+            {/* <Text  style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}> Id : {id}</Text> */}
 
             {/* <Image
         style={styles.logo1}

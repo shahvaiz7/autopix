@@ -20,23 +20,25 @@ const data = [
 ];
 
 
-export default function BackgroundList({ navigation }) {
+export default function BackgroundList({ navigation,route }) {
   const [selectedIds, setSelectedIds] = useState([]);
+  //const {bg,id} = route.params.BackgroundList;
+ 
 
-  const toggleItemSelect = (id) => {
-    if (selectedIds.includes(id)) {
-      setSelectedIds(prevIds => prevIds.filter(itemId => itemId !== id));
-      navigation.navigate("Home",{id})
-    } else {
-      setSelectedIds(prevIds => [...prevIds, id]);
-    }
-  };
+  // const toggleItemSelect = (id) => {
+  //   if (selectedIds.includes(id)) {
+  //     setSelectedIds(prevIds => prevIds.filter(itemId => itemId !== id));
+  //     navigation.navigate("Home",)
+  //   } else {
+  //     setSelectedIds(prevIds => [...prevIds, id]);
+  //   }
+  // };
   return (
     <FlatList
       data={data}
       renderItem={({ item }) => (
         <TouchableOpacity
-          onPress={() => toggleItemSelect(item.id)}
+          onPress={() => navigation.navigate("GuideAdd",{background: item})}
           style={{
             backgroundColor: selectedIds.includes(item.id) ? 'blue' : 'white', borderRadius: 25, padding: 10, margin: 10
           }}
