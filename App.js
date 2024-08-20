@@ -78,4 +78,4 @@ const styles = StyleSheet.create({
 //            const Tab = createBottomTabNavigator();
 
 
-
+// git reset --hard :: if any local change happen and you forgot the and also undo the changes and pull the new changes from git 

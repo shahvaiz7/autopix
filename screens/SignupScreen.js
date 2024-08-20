@@ -11,6 +11,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../component/Button";
 import TextInput from "../component/TextInput";
 import { LinearGradient } from 'expo-linear-gradient';
+//npm install react-native-gradient-texts
+//import GradientText from "react-native-gradient-texts";
+
 export default function SignupScreen({ navigation }) {
   return (
 
@@ -86,24 +89,25 @@ export default function SignupScreen({ navigation }) {
           />
         </View>
         <View style={styles.SubmitView}>
-          <Button label="Sign Up" onPress={() => navigation.navigate("Login")} />
+          <Button label="sign up" onPress={() => navigation.navigate("Login")} />
         </View>
         <TouchableOpacity style={styles.BottomView} onPress={() => navigation.navigate("Login")}>
-            <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+          <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+            {" "}
+            Already have an account?{" "}
+            <Text
+              style={{
+                fontWeight: "bold",
+                padding: 10,
+                color: 'rgb(125, 37, 17)',
+              }}
+            >
               {" "}
-              Already have an account?{" "}
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  padding: 10,
-                  color: "#1FDE00",
-                }}
-              >
-                {" "}
-                Sign In
-              </Text>{" "}
-            </Text>
-          </TouchableOpacity>
+              Sign In
+            </Text>{" "}
+
+          </Text>
+        </TouchableOpacity>
       </LinearGradient>
     </View>
   );
@@ -131,8 +135,8 @@ const styles = StyleSheet.create({
     width: "80%",
     paddingLeft: 60
   },
-  BottomView:{
-    alignItems:'center'
+  BottomView: {
+    alignItems: 'center'
 
   },
   Bottom: {

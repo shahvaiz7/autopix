@@ -16,12 +16,13 @@ export default function OrderScreen({ navigation }) {
   return (
     <View style={styles.containerView}>
     
-      <LinearGradient
+      {/* <LinearGradient
         // Background Linear Gradient
         colors={['#A52306', '#020202']}
         locations={[0.1, 0.3]}
         style={styles.containerView}
-      >
+      > */}
+       <ImageBackground source={require("../assets/background.png")} style={styles.containerView} >
         <View style={styles.topBar}>
           <View>
             <Text
@@ -738,7 +739,7 @@ export default function OrderScreen({ navigation }) {
           </View>
         </View> */}
         </ScrollView>
-      </LinearGradient>
+        </ImageBackground>
     </View>
   );
 }

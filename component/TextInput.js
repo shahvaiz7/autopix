@@ -9,11 +9,11 @@ export default function TextInput({ icon, numberOfLines, ...otherProps }) {
             style={{
                 flexDirection: "row",
                 alignItems: "center",
-                height: 48,
+                height: 58,
                 borderRadius: 8,
                 borderColor: validationColor,
                 borderWidth: StyleSheet.hairlineWidth,
-                padding: 8,
+                padding: 16,
                 
             }}
         >
@@ -23,11 +23,13 @@ export default function TextInput({ icon, numberOfLines, ...otherProps }) {
                     underlineColorAndroid="transparent"
                     placeholderTextColor="gray"
                     color='white'
+                    
+                   
                     {...otherProps}
                 />
             </View>
             <View style={{ padding: 2 }}>
-                <Icon name={icon} color={validationColor} size={24} />
+                <Icon name={icon} color={'white'} size={24} />
             </View>
         </View>
     );

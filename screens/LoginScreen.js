@@ -12,6 +12,9 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../component/Button";
 
+//npm install react-native-gradient-texts
+//import GradientText from "react-native-gradient-texts";
+
 import TextInput from "../component/TextInput";
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -19,17 +22,17 @@ export default function LoginScreen({ navigation }) {
   //const image = require("../assets/background.png");
   return (
     <ScrollView style={styles.containerView}>
-      
+
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
-      {/* <LinearGradient
+        {/* <LinearGradient
         // Background Linear Gradient
         colors={['#A52306', '#020202']}
         locations={[0.1, 0.3]}
         style={styles.containerView}
       > */}
-        
+
         <View style={styles.HeaderView}>
-          <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff", fontSize: 24 }}> CarLine </Text>
+          <Text style={{ fontWeight: 'medium', padding: 10, color: "#ffffff", fontSize: 30 }}> CarLine </Text>
           {/* <Image
           style={{ width: 80, height: 80 }}
           source={require("../assets/logoblack.jpeg")}
@@ -37,27 +40,28 @@ export default function LoginScreen({ navigation }) {
           <Text style={styles.AllText}> Welcome Back! </Text>
         </View>
         <View style={styles.FormView}>
-          <Text style={{ fontWeight: "bold", paddingBottom:8,color: "#ffffff" }}>
+          <Text style={{ fontWeight: 'medium', fontSize: 16, paddingBottom: 8, color: "#ffffff" }}>
             {" "}
             Email{" "}
           </Text>
           <TextInput
-            
-            placeholder="Enter your email"
+
+            placeholder="Enter here...."
             autoCapitalize="none"
             autoCompleteType="email"
             keyboardType="email-address"
             keyboardAppearance="dark"
             returnKeyType="next"
             returnKeyLabel="next"
+            style={{ fontSize: 14 }}
           />
-          <Text style={{ fontWeight: "bold", paddingBottom:8,paddingTop:15, color: "#ffffff" }}>
+          <Text style={{ fontWeight: 'medium', fontSize: 16, paddingBottom: 8, paddingTop: 15, color: "#ffffff" }}>
             {" "}
             Password{" "}
           </Text>
           <TextInput
             icon="eye"
-            placeholder="Enter your Password"
+            placeholder="*******"
             autoCapitalize="none"
             autoCompleteType="password"
             keyboardType="password"
@@ -65,44 +69,46 @@ export default function LoginScreen({ navigation }) {
             returnKeyType="next"
             returnKeyLabel="next"
             secureTextEntry={true}
-            
+
           />
-       
+
         </View>
         <View style={styles.SubmitView}>
-        <Button label="Login" onPress={() => navigation.navigate("Home")} />
+          <Button label="Login" onPress={() => navigation.navigate("Home")} />
           <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
-            <Text style={{  padding: 10, color: "#ffffff" }}>
-              {" "}
+            <Text style={{ padding: 10, color: "#ffffff" ,fontSize:16}} >
+              { " "}
               New User?{" "}
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  padding: 10,
-                  color: "#FF4A22",
-                }}
-              >
-                {" "}
-                Sign Up
-              </Text>{" "}
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.Bottom}>
-          <TouchableOpacity onPress={() => navigation.navigate("#")}>
             <Text
               style={{
-                padding: 20,
-                color: "#ffffff",
+                fontWeight: "bold",
+                padding: 10,
+                color: "#FF4A22",
+              
               }}
             >
               {" "}
-              Forget Password?{" "}
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-    </ScrollView>
+              Sign Up
+            </Text>{" "}
+          </Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.Bottom}>
+        <TouchableOpacity onPress={() => navigation.navigate("#")}>
+          <Text
+            style={{
+              padding: 20,
+              color: "#ffffff",
+              fontSize:16
+            }}
+          >
+            {" "}
+            Forget Password?{" "}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
+    </ScrollView >
   );
 }
 
@@ -110,15 +116,15 @@ const styles = StyleSheet.create({
   containerView: {
     flex: 1,
     backgroundColor: "#020202",
-    
+
   },
   HeaderView: {
     flex: 0.2,
-    padding:20,
+    padding: 20,
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    paddingTop:80
+    paddingTop: 80
   },
   FormView: {
     flex: 0.4,
@@ -127,12 +133,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   SubmitView: {
-    alignContent:'center',
+    alignContent: 'center',
     alignItems: "center",
-    padding:20,
-    
-    
-    
+    padding: 20,
+
+
+
   },
   Bottom: {
     flex: 0.2,
@@ -141,8 +147,8 @@ const styles = StyleSheet.create({
   },
   AllText: {
     color: "#ffffff",
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 24,
+    fontWeight: 'medium',
   },
   InputBlock: {
     justifyContent: "flex-start",
