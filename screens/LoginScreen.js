@@ -5,23 +5,28 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  ImageBackground
 } from "react-native";
 import React from "react";
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../component/Button";
+
 import TextInput from "../component/TextInput";
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function LoginScreen({ navigation }) {
+  //const image = require("../assets/background.png");
   return (
     <ScrollView style={styles.containerView}>
-      <LinearGradient
+      
+      <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
+      {/* <LinearGradient
         // Background Linear Gradient
         colors={['#A52306', '#020202']}
         locations={[0.1, 0.3]}
         style={styles.containerView}
-      >
+      > */}
         
         <View style={styles.HeaderView}>
           <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff", fontSize: 24 }}> CarLine </Text>
@@ -32,7 +37,7 @@ export default function LoginScreen({ navigation }) {
           <Text style={styles.AllText}> Welcome Back! </Text>
         </View>
         <View style={styles.FormView}>
-          <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+          <Text style={{ fontWeight: "bold", paddingBottom:8,color: "#ffffff" }}>
             {" "}
             Email{" "}
           </Text>
@@ -46,7 +51,7 @@ export default function LoginScreen({ navigation }) {
             returnKeyType="next"
             returnKeyLabel="next"
           />
-          <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+          <Text style={{ fontWeight: "bold", paddingBottom:8,paddingTop:15, color: "#ffffff" }}>
             {" "}
             Password{" "}
           </Text>
@@ -62,10 +67,10 @@ export default function LoginScreen({ navigation }) {
             secureTextEntry={true}
             
           />
+       
         </View>
         <View style={styles.SubmitView}>
-          <Button label="Login" onPress={() => navigation.navigate("Home")} />
-
+        <Button label="Login" onPress={() => navigation.navigate("Home")} />
           <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
             <Text style={{  padding: 10, color: "#ffffff" }}>
               {" "}
@@ -96,7 +101,7 @@ export default function LoginScreen({ navigation }) {
             </Text>
           </TouchableOpacity>
         </View>
-      </LinearGradient>
+      </ImageBackground>
     </ScrollView>
   );
 }
@@ -104,8 +109,8 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    
     backgroundColor: "#020202",
+    
   },
   HeaderView: {
     flex: 0.2,
@@ -113,6 +118,7 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
+    paddingTop:80
   },
   FormView: {
     flex: 0.4,
@@ -121,10 +127,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   SubmitView: {
-    flex: 0.2,
-  paddingHorizontal:10,
-  paddingVertical:20,
+    alignContent:'center',
     alignItems: "center",
+    padding:20,
+    
+    
+    
   },
   Bottom: {
     flex: 0.2,

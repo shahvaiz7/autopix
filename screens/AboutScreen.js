@@ -6,6 +6,7 @@ import {
   Image,
   ScrollView,
   Linking,
+  ImageBackground,
 } from "react-native";
 import React from "react";
 import { LinearGradient } from 'expo-linear-gradient';
@@ -14,13 +15,8 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 export default function AboutScreen({navigation}) {
  
     return (
-      <View style={styles.containerView}>
-        <LinearGradient
-        // Background Linear Gradient
-        colors={['#A52306', '#020202']}
-        locations={[0.1, 0.3]}
-        style={styles.containerView}
-      >
+      <ImageBackground style={styles.containerView} source={require("../assets/background.png")}>
+        
         <View style={styles.HeaderView}>
           <Text style={styles.AllText}>About  </Text>
           <Text
@@ -31,6 +27,7 @@ export default function AboutScreen({navigation}) {
           </Text>
         </View>
         <View style={styles.optionList}>
+          
           <TouchableOpacity
             style={styles.options}
             onPress = {() => {Linking.openURL('https://autopix.no/privacy-policy/')}}
@@ -55,16 +52,15 @@ export default function AboutScreen({navigation}) {
           </TouchableOpacity>
          
         </View>
-        </LinearGradient>
-      </View>
+      
+      </ImageBackground>
     );
   }
   
   const styles = StyleSheet.create({
     containerView: {
       flex: 1,
-      
-   
+      padding:15
     },
     
     HeaderView: {
@@ -74,8 +70,15 @@ export default function AboutScreen({navigation}) {
     },
    
     optionList: {
-      
       flex: 0.2,
+      borderWidth:1,
+      borderColor:'gray',
+      width:'100%',
+      justifyContent:'center',
+      alignItems:'center',
+      borderRadius:15,
+      backgroundColor: 'rgba(.25, 52, 52, 0.3)'
+     
     },
     options: {
       margin: 5,

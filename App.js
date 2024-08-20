@@ -32,17 +32,17 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator >
         {/* <Stack.Screen name="Welcome" component={WelcomeScreen} /> */}
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Signup" component={SignupScreen} />
+        <Stack.Screen name="Login" component={LoginScreen}  options={{ header: () => null }}/>
+        <Stack.Screen name="Signup" component={SignupScreen} options={{ header: () => null }}/>
         <Stack.Screen name="Home" component={HomeScreen} options={{ header: () => null }}/>
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="Profiledetails" component={ProfileDetails} />
-        <Stack.Screen name="AccountSetting" component={AccountSetting} />
-        <Stack.Screen name="Shareapp" component={ShareApp} />
+        <Stack.Screen name="Profile" component={ProfileScreen} options={{ header: () => null }}/>
+        <Stack.Screen name="Profiledetails" component={ProfileDetails} options={{ header: () => null }}/>
+        <Stack.Screen name="AccountSetting" component={AccountSetting}options={{ header: () => null }} />
+        <Stack.Screen name="Shareapp" component={ShareApp} options={{ header: () => null }} />
         <Stack.Screen name="Support" component={SupportPage} />
-        <Stack.Screen name="About" component={AboutScreen} />
+        <Stack.Screen name="About" component={AboutScreen} options={{ header: () => null }} />
         <Stack.Screen name="CreateOrder" component={CreateOrder} />
         <Stack.Screen name="Guide" component={GuideScreen} />
         <Stack.Screen name="Guidesteps" component={GuideSteps} />

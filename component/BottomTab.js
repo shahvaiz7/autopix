@@ -13,8 +13,9 @@ export default function BottomTab({ state, descriptors, navigation }) {
     }
     return (
        
-        <ImageBackground source={image}>
+       
             <View style={styles.tabbar} >
+                 <ImageBackground source={image}>
    
             {state.routes.map((route, index) => {
                 const { options } = descriptors[route.key];
@@ -64,9 +65,9 @@ export default function BottomTab({ state, descriptors, navigation }) {
                     </TouchableOpacity>
                 );
             })}
-            
+             </ImageBackground>
         </View>
-        </ImageBackground>
+       
     );
 }
 const styles = StyleSheet.create({
@@ -75,7 +76,6 @@ const styles = StyleSheet.create({
         margin:20,
         flexDirection:'row'  ,
         alignItems:'center',
-
 
     },
     tabbarItem:{

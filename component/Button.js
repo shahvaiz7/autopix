@@ -1,26 +1,52 @@
 import React from "react";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text,StyleSheet ,ImageBackground,View} from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
+import { RNSVGSvgAndroid } from "react-native-svg";
+
 
 export default function Button({ label, onPress, backgroundColor }) {
+  const image = require("../assets/button.png");
   return (
-    <TouchableOpacity
-      style={{
-        borderRadius: 8,
-        padding: 10,
-        width: '100%',
-        justifyContent: "center",
-        alignItems: "center",
-        alignContent: 'center',
-        backgroundColor: "#FF4A22",
-      }}
-      activeOpacity={0.7}
-      onPress={onPress}
-    >
+    
+    <ImageBackground
+      source={image}
+      style={{  width:'100%'}}
+      imageStyle={{ borderRadius:15}}
+        // Background Linear Gradient
+       // colors={['#A52306', '#ffffff']}
+        // start={{x: 0.3, y: 0.8}} end={{x: 0.1, y: .5}}
+        // locations={[0.9,0.1]}
+        
+        // colors={['#A52306','#FFC0B3', '#FFC0B3']}
+        // start={{x: 0, y: .5}} 
+        // end={{x: .5, y: 0}}
+        // locations={[.1,.5,.9]}
+       
+      >
+    <TouchableOpacity  style={styles.containerView}  activeOpacity={0.7}
+      onPress={onPress}>
+   
+     
+       
       <Text
-        style={{ fontSize: 18, color: "white", textTransform: "uppercase" }}
+        style={{ fontSize: 18, color: "white"}}
       >
         {label}
       </Text>
+   
     </TouchableOpacity>
+
+    </ImageBackground>
+  
   );
 }
+const styles = StyleSheet.create({
+  containerView:{
+  margin:10,
+  alignContent:'center',
+  alignItems:'center',
+  
+ 
+    
+  }
+})

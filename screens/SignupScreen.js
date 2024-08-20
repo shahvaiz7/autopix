@@ -86,7 +86,7 @@ export default function SignupScreen({ navigation }) {
           />
         </View>
         <View style={styles.SubmitView}>
-          <Button label="Sign Up" onPress={() => navigation.navigate("Welcome")} />
+          <Button label="Sign Up" onPress={() => navigation.navigate("Login")} />
         </View>
         <TouchableOpacity style={styles.BottomView} onPress={() => navigation.navigate("Login")}>
             <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>

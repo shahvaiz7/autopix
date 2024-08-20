@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   Alert,
+  ImageBackground
 } from "react-native";
 import React, { useState,useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
@@ -17,7 +18,7 @@ export default function ShootScreen({ navigation }) {
   const [image, setImage] = useState(null);
   const [camera, setCamera] = useState(null);
 
-
+ 
   // const verifyPermissions = async()=> {
   //   const access =(Permissions.CAMERA);
   //   if (access.status !== 'granted'){
@@ -77,12 +78,13 @@ const takeImageHandler = async () => {
 
   return (
     <ScrollView style={styles.containerView}>
-      <LinearGradient
+        <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
+      {/* <LinearGradient
         // Background Linear Gradient
         colors={['#A52306', '#020202']}
         locations={[0.1, 0.3]}
         style={styles.containerView}
-      >
+      > */}
       <View style={styles.topBar}>
         <View style={styles.ProfileDetails}>
         <Image
@@ -109,7 +111,10 @@ const takeImageHandler = async () => {
       <View style={styles.bodyContent}>
         {image && <Image source={{ uri: image }} style={styles.image} />}
 
+      
+        {/* <ImageBackground source={require("../assets/cardback.png")} resizeMode='cover' > */}
         <TouchableOpacity style={styles.blockContent} onPress={takeImageHandler} >
+        <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius:25}} style={styles.imageBack} >
           <View  style={{
              paddingTop:40
             }}>
@@ -130,8 +135,12 @@ const takeImageHandler = async () => {
              margin:10
             }}> Shoot </Text>
           </View>
-        </TouchableOpacity>
+          </ImageBackground> 
+          </TouchableOpacity>
+          {/* </ImageBackground> */}
+        
         <TouchableOpacity style={styles.blockContent} onPress={pickImage}>
+        <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius:25}} style={styles.imageBack} >
           <View  style={{
              paddingTop:40
             }}>
@@ -152,12 +161,13 @@ const takeImageHandler = async () => {
              margin:10
             }}> Upload </Text>
           </View>
+          </ImageBackground>
         </TouchableOpacity>
         {/* <Button label="Shoot" />
 
         <Button label="Upload" onPress={pickImage} /> */}
       </View>
-     </LinearGradient>
+     </ImageBackground>
     </ScrollView>
   );
 }
@@ -191,14 +201,23 @@ const styles = StyleSheet.create({
     margin:10
   },
   blockContent:{
-    flex:.4,
-    borderWidth:2,
+    flex:.2,
+    borderWidth:1,
     borderColor:'gray',
     width:'100%',
     justifyContent:'center',
     alignItems:'center',
     borderRadius:25,
     margin:10
+  },
+  imageBack:{
+    flex:.2,
+    width:'100%',
+    justifyContent:'center',
+    alignItems:'center',
+    borderRadius:25,
     
+
+
   }
 });

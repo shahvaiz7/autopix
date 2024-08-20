@@ -5,7 +5,9 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  StatusBar
+  StatusBar,
+  ImageBackground
+  
 } from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -36,12 +38,12 @@ export default function OrderScreen({ navigation }) {
           <TouchableOpacity
             style={{
               borderColor: "#ffffff",
-              borderWidth: 2,
-              paddingTop: 2,
-              borderRadius: 10,
-              height: 30,
+              borderWidth: 1,
+              borderRadius: 35,
+              height: 35,
               width: 120,
               alignItems: "center",
+              justifyContent:'center'
             }} onPress={() => navigation.navigate("CreateOrder")}
           >
             <Text style={{ color: "#ffffff" }}> Create Order </Text>
@@ -49,9 +51,10 @@ export default function OrderScreen({ navigation }) {
         </View>
         <ScrollView style={styles.bodyContent}>
           <View style={styles.OrderCard}>
+          <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius:25}} style={styles.imageBack} >
             <View style={styles.OrderCardImage}>
               <Image
-                style={{ width: 110, height: 130, borderRadius: 25 }}
+                style={{ width: 119, height: 153, borderRadius: 22 }}
                 source={require("../assets/Rectangle 17 (3).png")}
               />
             </View>
@@ -59,21 +62,21 @@ export default function OrderScreen({ navigation }) {
 
               <View style={styles.OrderCardDetailsOne}>
                 <Text style={styles.CardHead}> #5625554 </Text>
-
               </View>
               <View style={styles.OrderCardDetailsTwo}>
                 <TouchableOpacity style={{
                   borderWidth: 1,
                   borderColor: 'gray',
                   padding: 5,
-                  borderRadius: 15
+                  borderRadius: 10
                 }}>
                   <Text style={styles.CardText}>
                     BG{" "}
                     <MaterialCommunityIcons
-                      name="check-circle"
+                      name="bookmark-check"
                       size={12}
                       color={"red"}
+                      backgroundColor='white'
                     />
                   </Text>
                 </TouchableOpacity>
@@ -86,7 +89,7 @@ export default function OrderScreen({ navigation }) {
                   <Text style={styles.CardText}>
                     Floor{" "}
                     <MaterialCommunityIcons
-                      name="bookmark-remove"
+                      name="bookmark-remove-outline"
                       size={12}
                       color={"red"}
                     />
@@ -132,8 +135,8 @@ export default function OrderScreen({ navigation }) {
                 <TouchableOpacity style={{
                   borderWidth: 1,
                   borderColor: 'gray',
-                  padding: 8,
-                  borderRadius: 15
+                  padding: 5,
+                  borderRadius: 10
                 }}>
                   <Text style={styles.CardText}>
                     Edit{" "}
@@ -147,7 +150,7 @@ export default function OrderScreen({ navigation }) {
               </View>
             </View>
 
-
+           </ImageBackground>
           </View>
           <View style={styles.OrderCard}>
             <View style={styles.OrderCardImage}>
@@ -753,7 +756,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     margin: 10,
     justifyContent: "space-between",
-    paddingTop:30
+    paddingTop:35
   },
   bodyContent: {
     flex: 0.8,
@@ -767,29 +770,41 @@ const styles = StyleSheet.create({
     padding: 2,
     borderRadius: 25,
   },
+ imageBack:{
+  
+    flexDirection: "row",
+    width:'100%',
+    borderRadius: 25,
+ },
+  
   OrderCardImage: {
     flex: .40
   },
   OrderCardDetails: {
-    flex: .70,
-    paddingRight: 10
+    flex: .60,
+    paddingRight: 10,
+    
+    paddingTop:8
 
   },
   OrderCardDetailsTwo: {
     flexDirection: 'row',
-    padding: 5,
+    padding:5,
     justifyContent: 'space-around'
   },
   OrderCardDetailsThree: {
     justifyContent: 'center',
     alignContent: 'center',
     width: '60%',
+    
     alignItems: 'center'
   },
   OrderCardDetailsFour: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingLeft:10,
+    paddingTop:10
   },
 
   CardHead: {
@@ -800,7 +815,7 @@ const styles = StyleSheet.create({
   },
   CardText: {
     color: "#ffffff",
-    fontStyle: "italic",
+    
     fontWeight: "bold",
     fontSize: 12
   },
