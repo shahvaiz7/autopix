@@ -11,10 +11,19 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../component/Button";
 import TextInput from "../component/TextInput";
 import { LinearGradient } from 'expo-linear-gradient';
+import { useFonts, DMSans_400Regular,
+  DMSans_500Medium,
+  DMSans_700Bold,
+   } from "@expo-google-fonts/dm-sans";
 //npm install react-native-gradient-texts
 //import GradientText from "react-native-gradient-texts";
 
 export default function SignupScreen({ navigation }) {
+
+  useFonts({DMSans_400Regular,
+    DMSans_500Medium,
+    DMSans_700Bold,});
+
   return (
 
     <View style={styles.containerView}>
@@ -30,13 +39,13 @@ export default function SignupScreen({ navigation }) {
           <Text style={styles.AllText}>  Welcome Back! </Text>
         </View>
         <View style={styles.FormView}>
-          <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+          <Text style={styles.InputHead}>
             {" "}
             Name{" "}
           </Text>
           <TextInput
 
-            placeholder="Enter your Name"
+            placeholder="Enter here..."
             autoCapitalize="none"
             autoCompleteType="email"
             keyboardType="email-address"
@@ -44,13 +53,13 @@ export default function SignupScreen({ navigation }) {
             returnKeyType="next"
             returnKeyLabel="next"
           />
-          <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+         <Text style={styles.InputHead}>
             {" "}
             Email{" "}
           </Text>
           <TextInput
-            icon="mail"
-            placeholder="Enter your email"
+            
+            placeholder="Enter here...."
             autoCapitalize="none"
             autoCompleteType="email"
             keyboardType="email-address"
@@ -58,13 +67,13 @@ export default function SignupScreen({ navigation }) {
             returnKeyType="next"
             returnKeyLabel="next"
           />
-          <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+         <Text style={styles.InputHead}>
             {" "}
             Password{" "}
           </Text>
           <TextInput
-            icon="key"
-            placeholder="Enter your Password"
+            icon="eye"
+            placeholder="********"
             autoCapitalize="none"
             autoCompleteType="password"
             keyboardType="password"
@@ -73,13 +82,13 @@ export default function SignupScreen({ navigation }) {
             returnKeyLabel="next"
             secureTextEntry={true}
           />
-          <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+         <Text style={styles.InputHead}>
             {" "}
             Company{" "}
           </Text>
           <TextInput
 
-            placeholder="Enter your company"
+            placeholder="Enter here....."
             autoCapitalize="none"
             autoCompleteType="email"
             keyboardType="email-address"
@@ -92,14 +101,15 @@ export default function SignupScreen({ navigation }) {
           <Button label="sign up" onPress={() => navigation.navigate("Login")} />
         </View>
         <TouchableOpacity style={styles.BottomView} onPress={() => navigation.navigate("Login")}>
-          <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+          <Text style={{ padding: 10, color: "#ffffff" ,fontSize:16, fontFamily:'DMSans_400Regular' }}>
             {" "}
             Already have an account?{" "}
             <Text
               style={{
                 fontWeight: "bold",
                 padding: 10,
-                color: 'rgb(125, 37, 17)',
+                color: 'rgb(255, 37, 17)',
+                fontSize:16, fontFamily:'DMSans_400Regular' 
               }}
             >
               {" "}
@@ -119,11 +129,18 @@ const styles = StyleSheet.create({
   },
   HeaderView: {
 
-    width: "100%",
+  
     justifyContent: "center",
     alignItems: "center",
-    padding: 40
+    paddingTop: 100
   },
+  InputHead:{
+    fontSize: 16,
+    fontFamily:'DMSans_500Medium',
+     padding: 10, 
+     color: "#ffffff"
+  },
+
   FormView: {
 
     width: "100%",
@@ -132,22 +149,20 @@ const styles = StyleSheet.create({
   },
   SubmitView: {
 
-    width: "80%",
-    paddingLeft: 60
+    width: "100%",
+    padding:16
   },
   BottomView: {
     alignItems: 'center'
 
   },
   Bottom: {
-
-    width: "80%",
     alignItems: "center",
   },
   AllText: {
     color: "#ffffff",
     fontSize: 20,
-    fontWeight: "bold",
+   fontFamily:'DMSans_500Medium',
   },
   InputBlock: {
     justifyContent: "flex-start",

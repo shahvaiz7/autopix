@@ -5,6 +5,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  ImageBackground
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -38,7 +39,7 @@ export default function CreateOrder({ navigation }) {
             Enter Registration or Car ID{" "}
           </Text>
           <TextInput
-            placeholder="Enter ID"
+            placeholder="Enter here..."
             autoCapitalize="none"
             returnKeyType="next"
             returnKeyLabel="next"
@@ -49,12 +50,13 @@ export default function CreateOrder({ navigation }) {
           </Text>
      
           <TextInput
-            icon="mail"
-            placeholder="Enter your massage"
+           
+            placeholder="Enter here...."
             autoCapitalize="none"
             keyboardAppearance="dark"
             returnKeyType="next"
             returnKeyLabel="next"
+           
             
           />
          
@@ -66,10 +68,12 @@ export default function CreateOrder({ navigation }) {
             style={styles.InstructionView}
             onPress={() => navigation.navigate("GuideAdd")}
           >
+             <ImageBackground source={require("../assets/cardback.png")} style={styles.imageBack} >
             <Text style={styles.InstructionText}> Background : Yes </Text>
             <Text style={styles.InstructionText}> Floor : Not Selected </Text>
             <Text style={styles.InstructionText}> Logo : Yes </Text>
             <Text style={styles.InstructionText}> Licence Plate : No </Text>
+            </ImageBackground>
           </TouchableOpacity>
           <Text
             style={{
@@ -133,16 +137,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#020202",
   },
+  imageBack: {
+   
+
+  },
   HeaderView: {
     flex: 0.2,
     width: "100%",
     padding: 10,
   },
   InstructionView: {
-    backgroundColor: "#222C35",
-    opacity: 0.8,
-    padding: 16,
-    borderRadius: 15,
+
   },
   InstructionText: {
     color: "#ffffff",
@@ -155,8 +160,9 @@ const styles = StyleSheet.create({
   },
   SubmitView: {
     flex: 0.1,
-    width: "90%",
-    paddingLeft: 50,
+    width: "100%",
+    padding:15
+  
   },
 
   AllText: {

@@ -9,7 +9,7 @@ export default function TextInput({ icon, numberOfLines, ...otherProps }) {
             style={{
                 flexDirection: "row",
                 alignItems: "center",
-                height: 58,
+                height: 54,
                 borderRadius: 8,
                 borderColor: validationColor,
                 borderWidth: StyleSheet.hairlineWidth,
@@ -29,7 +29,7 @@ export default function TextInput({ icon, numberOfLines, ...otherProps }) {
                 />
             </View>
             <View style={{ padding: 2 }}>
-                <Icon name={icon} color={'white'} size={24} />
+                <Icon name={icon} color={'white'} size={18} />
             </View>
         </View>
     );

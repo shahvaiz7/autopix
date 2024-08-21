@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     
     borderBottomColor:'gray',
-    borderBottomWidth:.10,
+    borderBottomWidth:.50,
     width:'100%',
   },
   optionsTop:{
@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     borderWidth:1,
     borderColor:'gray',
+    
    
 
   },

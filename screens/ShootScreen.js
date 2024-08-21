@@ -10,28 +10,16 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
-
+import { useFonts, DMSans_400Regular,
+  DMSans_500Medium,
+  DMSans_700Bold,
+   } from "@expo-google-fonts/dm-sans";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function ShootScreen({ navigation }) {
   const [image, setImage] = useState(null);
   const [camera, setCamera] = useState(null);
-
-
-  // const verifyPermissions = async()=> {
-  //   const access =(Permissions.CAMERA);
-  //   if (access.status !== 'granted'){
-  //     Alert.alert(
-  //       'Insufficient Permission',
-  //        'Need to grant camera app permission',
-  //        [{text:'OK'}]
-  //        );
-  //     return false;
-  //   }
-  //   return true;
-  // };
-
 
   const takeImageHandler = async () => {
     // const hasPermission = await verifyPermissions();
@@ -75,29 +63,27 @@ export default function ShootScreen({ navigation }) {
       setImage(result.assets[0].uri);
     }
   };
-
+  useFonts({DMSans_400Regular,
+    DMSans_500Medium,
+    DMSans_700Bold,});
   return (
     <View style={styles.containerView}>
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
         <ScrollView>
-        {/* <LinearGradient
-        // Background Linear Gradient
-        colors={['#A52306', '#020202']}
-        locations={[0.1, 0.3]}
-        style={styles.containerView}
-      > */}
         <View style={styles.topBar}>
           <View style={styles.ProfileDetails}>
             <Image
               style={{ width: 40, height: 40, borderRadius: 50 }}
-              source={require("../assets/logoblack.jpeg")}
+              source={require("../assets/profile-img.png")}
             />
             <View>
               <Text style={{
                 fontSize: 12,
-                color: '#ffffff'
+                color: '#C0CACB',
+                fontFamily:'DMSans_400Regular'
               }}> Welcome back, </Text>
               <Text style={{
+                fontFamily:'DMSans_500Medium',
                 fontSize: 16,
                 color: '#ffffff',
                 fontWeight: 'bold'
@@ -106,7 +92,7 @@ export default function ShootScreen({ navigation }) {
 
           </View>
           <TouchableOpacity>
-            <MaterialCommunityIcons name="bell" size={20} color={"#ffffff"} />
+            <MaterialCommunityIcons name="bell-badge-outline" size={24} color={"#ffffff"} />
           </TouchableOpacity>
         </View>
         <View style={styles.bodyContent}>
@@ -120,7 +106,7 @@ export default function ShootScreen({ navigation }) {
                 paddingTop: 40
               }}>
                 <Image
-                  style={{ width: 110, height: 130, borderRadius: 25 }}
+                  style={{ width: 90, height: 60, borderRadius: 25 }}
                   source={require("../assets/camera.png")}
                 />
               </View>
@@ -132,7 +118,8 @@ export default function ShootScreen({ navigation }) {
               >
                 <Text style={{
                   color: 'white',
-                  fontSize: 20,
+                  fontSize: 16,
+                  fontFamily:'DMSans_500Medium',
                   margin: 10
                 }}> Shoot </Text>
               </View>
@@ -142,25 +129,23 @@ export default function ShootScreen({ navigation }) {
 
           <TouchableOpacity style={styles.blockContent} onPress={pickImage}>
             <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
-              <View style={{
-                paddingTop: 40
-              }}>
-                <Image
-                  style={{ width: 120, height: 100, borderRadius: 25 }}
+              <Image
+                  style={{ width: 70, height: 70, borderRadius: 25 }}
                   source={require("../assets/upload.png")}
                 />
-              </View>
+             
               <View
                 style={{
                   width: "100%",
                   justifyContent: "flex-start",
                 }}
               >
-                <Text style={{
+                {/* <Text style={{
                   color: 'white',
-                  fontSize: 20,
+                  fontSize: 16,
+                  fontFamily:'DMSans_500Medium',
                   margin: 10
-                }}> Upload </Text>
+                }}> Upload </Text> */}
               </View>
             </ImageBackground>
           </TouchableOpacity>
@@ -186,7 +171,7 @@ const styles = StyleSheet.create({
     paddingBottom:80
   },
   image: {
-    height: 220,
+    height: 188,
     width: '100%',
     resizeMode: 'stretch',
     borderRadius:25
@@ -196,7 +181,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     margin: 10,
     justifyContent: "space-between",
-    paddingTop: 30
+    paddingTop: 50
   },
   ProfileDetails: {
     flexDirection: 'row'
@@ -212,14 +197,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'gray',
     width: '100%',
+    height:192,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 25,
-    margin: 10
+    margin: 15
   },
   imageBack: {
-    flex: .2,
+   
     width: '100%',
+    height:190,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 25,

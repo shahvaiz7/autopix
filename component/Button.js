@@ -3,9 +3,15 @@ import { TouchableOpacity, Text,StyleSheet ,ImageBackground,View} from "react-na
 import { LinearGradient } from 'expo-linear-gradient';
 import { RNSVGSvgAndroid } from "react-native-svg";
 
-
+import { useFonts, DMSans_400Regular,
+  DMSans_500Medium,
+  DMSans_700Bold,
+   } from "@expo-google-fonts/dm-sans";
 export default function Button({ label, onPress, backgroundColor }) {
   const image = require("../assets/button.png");
+  useFonts({DMSans_400Regular,
+    DMSans_500Medium,
+    DMSans_700Bold,});
   return (
     
     <ImageBackground
@@ -29,7 +35,8 @@ export default function Button({ label, onPress, backgroundColor }) {
      
        
       <Text
-        style={{ fontSize: 18, color: "white"}}
+        style={{ fontSize: 16,
+          fontFamily:'DMSans_500Medium', color: "white"}}
       >
         {label}
       </Text>

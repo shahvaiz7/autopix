@@ -73,20 +73,15 @@ export default function HomeScreen() {
   // shifting={true}
   barStyle={{
 
-    backgroundColor: '#020202',
+    backgroundColor: 'transparent',
     position: 'absolute',
-   bottom: 5,
-    paddingVertical: 5,
-    marginHorizontal: 5,
+    bottom: 5,
     borderColor: '#FF4A22',
     borderWidth: 2,
-    borderRadius: 10,
-    paddingRight: 42,
-    borderTopRightRadius: 130,
-    borderTopLeftRadius: 130,
-    paddingLeft: 42,
-    borderBottomLeftRadius: 45,
-    borderBottomRightRadius: 45,
+    borderTopRightRadius: 60,
+    borderTopLeftRadius: 60,
+    borderBottomLeftRadius: 40,
+    borderBottomRightRadius: 40,
     transform: [{ scaleY: .8 }],
 
 

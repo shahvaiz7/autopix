@@ -159,7 +159,7 @@ export default function GuideAdd({ navigation, route }) {
           <Text style={styles.CardText}>License Plate : Yes /  No</Text>
         </View> */}
         <View style={styles.Bottom}>
-        <Button label="Create Instruction" onPress={() => navigation.navigate("#")} />
+       {(backgroundSwitch ||npSwitch ||  logoSwitch||floorSwitch) && <Button label="Create Instruction" onPress={() => navigation.navigate("#")} /> }
         
       </View>
       </LinearGradient>
@@ -195,7 +195,11 @@ const styles = StyleSheet.create({
   },
   OptionView: {
     justifyContent: 'space-between',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignContent:'center',
+    alignItems:'center',
+    paddingRight:10,
+    paddingTop:10
 
   },
   addImage: {
