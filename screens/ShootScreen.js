@@ -97,9 +97,6 @@ export default function ShootScreen({ navigation }) {
         </View>
         <View style={styles.bodyContent}>
           
-
-
-          {/* <ImageBackground source={require("../assets/cardback.png")} resizeMode='cover' > */}
           <TouchableOpacity style={styles.blockContent} onPress={takeImageHandler} >
             <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
               <View style={{
@@ -125,7 +122,7 @@ export default function ShootScreen({ navigation }) {
               </View>
             </ImageBackground>
           </TouchableOpacity>
-          {/* </ImageBackground> */}
+        
 
           <TouchableOpacity style={styles.blockContent} onPress={pickImage}>
             <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
@@ -153,9 +150,7 @@ export default function ShootScreen({ navigation }) {
           <Image source={{ uri: image }} style={styles.image} />
             
           </TouchableOpacity>}
-          {/* <Button label="Shoot" />
-
-        <Button label="Upload" onPress={pickImage} /> */}
+        
         </View>
         </ScrollView>
       </ImageBackground>

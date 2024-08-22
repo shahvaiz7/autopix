@@ -4,6 +4,7 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
+  StatusBar,
   Image,
 } from "react-native";
 import React from "react";
@@ -27,6 +28,8 @@ export default function SignupScreen({ navigation }) {
   return (
 
     <View style={styles.containerView}>
+      {/* <StatusBar backgroundColor={"#A52306"}/> */}
+      
       <LinearGradient
         // Background Linear Gradient
         colors={['#A52306', '#020202']}
@@ -128,11 +131,9 @@ const styles = StyleSheet.create({
     flex: 1
   },
   HeaderView: {
-
-  
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 100
+    paddingTop: 30
   },
   InputHead:{
     fontSize: 16,

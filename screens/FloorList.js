@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FlatList, View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-
+import { FlatList, View, Text, TouchableOpacity, StyleSheet, Image ,ImageBackground} from 'react-native';
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 const data = [
     {
         id: 1,
@@ -39,22 +39,29 @@ export default function FloorList({ navigation }) {
         }
     };
     return (
+        <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
         <FlatList
             data={data}
             renderItem={({ item }) => (
                 <TouchableOpacity
                     onPress={() => toggleItemSelect(item.id)}
                     style={{
-                        backgroundColor: selectedIds.includes(item.id) ? 'blue' : 'white', borderRadius: 25, padding: 10, margin: 10
+                        backgroundColor: selectedIds.includes(item.id) ? 'blue' : '#020202', borderRadius: 25, padding: 10, margin: 10
                     }}
+                    
                 >
+                   {/* { item.id && <View style={styles.selectIcon}>
+                      <MaterialCommunityIcons name="check-circle" size={24} color={"red"} />
+                      </View> } */}
+                   {/* {{selectedIds.includes(item.id) ? <MaterialCommunityIcons name="check-circle" size={24} color={"red"} />: null }} */}
                     {item.image && <Image style={styles.imageBox} source={item.image} />}
+                  
                 </TouchableOpacity>
             )}
             keyExtractor={item => item.id}
             extraData={selectedIds} // Important! This ensures FlatList re-renders when state changes
         />
-
+        </ImageBackground>
     )
 }
 
@@ -62,6 +69,11 @@ const styles = StyleSheet.create({
     imageBox: {
         width: '100%',
         height: 150,
+        borderRadius:25
 
-    }
+    },
+    selectIcon:{
+        justifyContent:'flex-start',alignItems:'flex-start',alignSelf:'flex-start', position:'absolute'
+
+    },
 })

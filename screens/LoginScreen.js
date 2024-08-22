@@ -6,10 +6,11 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
+  StatusBar
   
 } from "react-native";
 import React , { useState, useEffect }  from "react";
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../component/Button";
 import { useFonts, DMSans_400Regular,
@@ -30,7 +31,7 @@ export default function LoginScreen({ navigation }) {
     DMSans_700Bold,});
   return (
     <ScrollView style={styles.containerView}>
-
+<StatusBar backgroundColor={"#A52306"}/>
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
         {/* <LinearGradient
         // Background Linear Gradient

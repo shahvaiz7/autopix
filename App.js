@@ -33,10 +33,17 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator >
+      <Stack.Navigator>
         {/* <Stack.Screen name="Welcome" component={WelcomeScreen} /> */}
-        <Stack.Screen name="Login" component={LoginScreen}  options={{ header: () => null }}/>
-        <Stack.Screen name="Signup" component={SignupScreen} options={{ header: () => null }}/>
+        <Stack.Screen name="Login" component={LoginScreen}   options={{ header: () => null }}/>
+        <Stack.Screen name="Signup" component={SignupScreen} 
+        options={{headerTitleStyle:{ fontFamily:'DMSans_500Medium', fontSize:18} ,
+                  title:'signup',
+                  headerTitleAlign:'center',
+                  headerTintColor:'white',
+         headerStyle:{ backgroundColor:'#A52306',
+
+        }}}/>
         <Stack.Screen name="Home" component={HomeScreen} options={{ header: () => null }}/>
         <Stack.Screen name="Profile" component={ProfileScreen} options={{ header: () => null }}/>
         <Stack.Screen name="Profiledetails" component={ProfileDetails} options={{ header: () => null }}/>
@@ -80,3 +87,4 @@ const styles = StyleSheet.create({
 
 
 // git reset --hard :: if any local change happen and you forgot the and also undo the changes and pull the new changes from git 
+// I uninstalled expo-font and used the command npx expo install expo-font to install expo-font and the issue disappeared
