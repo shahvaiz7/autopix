@@ -20,21 +20,23 @@ export default function CreateOrder({ navigation }) {
 
   return (
     <ScrollView style={styles.containerView}>
-      <LinearGradient
-        // Background Linear Gradient
-        colors={["#A52306", "#020202"]}
-        locations={[0.1, 0.3]}
-        style={styles.containerView}
-      >
+      <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
+
         <View style={styles.HeaderView}>
           <Text style={styles.AllText}> Create a new order </Text>
-          <Text style={{ padding: 5, color: "#ffffff" }}>
+          <Text style={{
+            padding: 5, color: "#b6b6b6", fontSize: 14,
+            fontFamily: 'DMSans_400Regular',
+          }}>
             {" "}
             Select instruction and delivery time{" "}
           </Text>
         </View>
         <View style={styles.FormView}>
-          <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+          <Text style={{
+            fontSize: 16,
+            fontFamily: 'DMSans_500Medium', padding: 5, color: "#ffffff"
+          }}>
             {" "}
             Enter Registration or Car ID{" "}
           </Text>
@@ -44,23 +46,29 @@ export default function CreateOrder({ navigation }) {
             returnKeyType="next"
             returnKeyLabel="next"
           />
-          <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+          <Text style={{
+            fontSize: 16,
+            fontFamily: 'DMSans_500Medium', padding: 5, color: "#ffffff"
+          }}>
             {" "}
             Enter Message{" "}
           </Text>
-     
+
           <TextInput
-           
+
             placeholder="Enter here...."
             autoCapitalize="none"
             keyboardAppearance="dark"
             returnKeyType="next"
             returnKeyLabel="next"
-           
-            
+
+
           />
-         
-          <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+
+          <Text style={{
+            fontSize: 16,
+            fontFamily: 'DMSans_500Medium', padding: 10, color: "#ffffff"
+          }}>
             {" "}
             Instructions{" "}
           </Text>
@@ -68,25 +76,28 @@ export default function CreateOrder({ navigation }) {
             style={styles.InstructionView}
             onPress={() => navigation.navigate("GuideAdd")}
           >
-             <ImageBackground source={require("../assets/cardback.png")} style={styles.imageBack} >
-            <Text style={styles.InstructionText}> Background : Yes </Text>
-            <Text style={styles.InstructionText}> Floor : Not Selected </Text>
-            <Text style={styles.InstructionText}> Logo : Yes </Text>
-            <Text style={styles.InstructionText}> Licence Plate : No </Text>
+            <ImageBackground source={require("../assets/cardback.png")} style={styles.imageBack} resizeMode='stretch' borderRadius={15}>
+              <Text style={styles.InstructionText}> Background : Yes </Text>
+              <Text style={styles.InstructionText}> Floor : Not Selected </Text>
+              <Text style={styles.InstructionText}> Logo : Yes </Text>
+              <Text style={styles.InstructionText}> Licence Plate : No </Text>
             </ImageBackground>
           </TouchableOpacity>
           <Text
             style={{
               color: "#ffffff",
               fontSize: 20,
-              fontWeight: "bold",
+              fontFamily: 'DMSans_500Medium',
               paddingTop: 20,
             }}
           >
             {" "}
             Delivery Time{" "}
           </Text>
-          <Text style={{ padding: 5, color: "#ffffff" }}>
+          <Text style={{
+            padding: 5, color: "#b6b6b6", fontSize: 14,
+            fontFamily: 'DMSans_500Medium',
+          }}>
             {" "}
             Mon-Sat 08:00-17:00 GMT{" "}
           </Text>
@@ -105,12 +116,12 @@ export default function CreateOrder({ navigation }) {
               dropdownIconColor={'white'}
               selectionColor={'white'}
               mode={'dialog'}
-              color={'gray'}
-              style={{color:'white'}}
+              color={'red'}
+              style={{ color: '#ffffff', backgroundColor: 'black' }}
             >
-              <Picker.Item label="24 Hours" value="24"/>
-              <Picker.Item label="3 Days" value="js"   />
-              <Picker.Item label="7 Days" value="js"   />
+              <Picker.Item label="24 Hours" value="24" />
+              <Picker.Item label="3 Days" value="js" />
+              <Picker.Item label="7 Days" value="js" />
             </Picker>
           </View>
 
@@ -127,7 +138,8 @@ export default function CreateOrder({ navigation }) {
             onPress={() => navigation.navigate("UploadingScreen")}
           />
         </View>
-      </LinearGradient>
+
+      </ImageBackground>
     </ScrollView>
   );
 }
@@ -138,7 +150,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#020202",
   },
   imageBack: {
-   
+
+    borderWidth: 1,
+    borderColor: 'gray',
+    padding: 20,
+
+    borderRadius: 15
 
   },
   HeaderView: {
@@ -161,14 +178,14 @@ const styles = StyleSheet.create({
   SubmitView: {
     flex: 0.1,
     width: "100%",
-    padding:15
-  
+    padding: 15
+
   },
 
   AllText: {
     color: "#ffffff",
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 24,
+    fontFamily: 'DMSans_500Medium',
   },
   InputBlock: {
     justifyContent: "flex-start",

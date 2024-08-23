@@ -20,7 +20,7 @@ export default function AboutScreen({navigation}) {
         <View style={styles.HeaderView}>
           <Text style={styles.AllText}>About  </Text>
           <Text
-            style={{ color: "#C0CACB", fontSize: 14, fontWeight: "semibold" }}
+            style={{ color: "#C0CACB", fontSize: 14, fontFamily:'DMSans_400Regular' }}
           >
             {" "}
           Version 1.0.0{" "}
@@ -60,7 +60,7 @@ export default function AboutScreen({navigation}) {
   const styles = StyleSheet.create({
     containerView: {
       flex: 1,
-      padding:15
+      padding:10
     },
     
     HeaderView: {
@@ -70,11 +70,10 @@ export default function AboutScreen({navigation}) {
     },
    
     optionList: {
-      flex: 0.2,
+      flex: 0.18,
       borderWidth:1,
       borderColor:'gray',
       width:'100%',
-      justifyContent:'center',
       alignItems:'center',
       borderRadius:15,
       backgroundColor: 'rgba(.25, 52, 52, 0.3)'
@@ -89,18 +88,19 @@ export default function AboutScreen({navigation}) {
       flexDirection: "row",
       width: "100%",
       borderBottomColor:'gray',
-      borderBottomWidth:.10,
+      borderBottomWidth:.5,
       
     },
     CardText: {
       color: "#ffffff",
-      fontStyle: "italic",
+      fontFamily:'DMSans_500Medium',
+    
       fontSize: 14,
     },
     AllText: {
       color: "#ffffff",
-      fontSize: 20,
-      fontWeight: "bold",
+      fontFamily:'DMSans_500Medium',
+    fontSize:24,
     },
   });
   

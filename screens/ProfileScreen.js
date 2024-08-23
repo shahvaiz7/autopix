@@ -2,12 +2,21 @@ import { StyleSheet, Text, TouchableOpacity, View ,Image,ScrollView,Linking,Imag
 import React from 'react'
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { LinearGradient } from 'expo-linear-gradient';
-
+import {
+  useFonts, DMSans_400Regular,
+  DMSans_500Medium,
+  DMSans_700Bold,
+} from "@expo-google-fonts/dm-sans";
 
 export default function ProfileScreen({navigation}) {
   
   const image = require("../assets/logo-blue.png");
   const image2 = require("../assets/bottomtab.png");
+  useFonts({
+    DMSans_400Regular,
+    DMSans_500Medium,
+    DMSans_700Bold,
+  });
   return (
   
     <ScrollView style={styles.containerView}>
@@ -31,8 +40,8 @@ export default function ProfileScreen({navigation}) {
       </View>
       </ImageBackground>
       <View style={styles.profileInfo}>
-      <Text  style={{ color:'white',fontSize:20,fontWeight:'semibold'}}> Md Rohim Miya  </Text>
-        <Text style={{ color:'#C0CACB',fontSize:14,fontWeight:'semibold'}}> Company: Graphic IT BD  </Text>
+      <Text  style={{ color:'white',fontSize:20,fontFamily:'DMSans_500Medium'}}> Md Rohim Miya  </Text>
+        <Text style={{ color:'#C0CACB',fontSize:16,fontFamily:'DMSans_400Regular'}}> Company: Graphic IT BD  </Text>
         </View>
       <View style={styles.optionList}>
       <View style={styles.optionListOne}>
@@ -55,7 +64,7 @@ export default function ProfileScreen({navigation}) {
        </View>
        <View style={styles.optionListTwo}>
        <TouchableOpacity style={styles.options} onPress={() => navigation.navigate("Shareapp")}> 
-        <Text style={styles.CardTextTwo}>Share app</Text>
+        <Text style={styles.CardText}>Share app</Text>
         <MaterialCommunityIcons
                   name="greater-than"
                   size={18}
@@ -63,7 +72,7 @@ export default function ProfileScreen({navigation}) {
                 />
        </TouchableOpacity>
        <TouchableOpacity style={styles.options} onPress = {() => {Linking.openURL('https://autopix.no/supports')}}> 
-        <Text style={styles.CardTextTwo}>Support</Text>
+        <Text style={styles.CardText}>Support</Text>
         <MaterialCommunityIcons
                   name="greater-than"
                   size={18}
@@ -71,7 +80,7 @@ export default function ProfileScreen({navigation}) {
                 />
        </TouchableOpacity>
        <TouchableOpacity style={styles.options} onPress={() => navigation.navigate("About")} > 
-        <Text style={styles.CardTextTwo}>About</Text>
+        <Text style={styles.CardText}>About</Text>
         <MaterialCommunityIcons
                   name="greater-than"
                   size={18}
@@ -139,6 +148,20 @@ const styles = StyleSheet.create({
     
 
   },
+  optionsTop:{
+    margin:5,
+    padding:12,
+    borderRadius:10,
+    color:'white',
+    width:'100%',
+    justifyContent:'space-between',
+    flexDirection:'row',
+    borderWidth:1,
+    borderColor:'gray',
+    
+   
+
+  },
   optionListTwo:{
    borderWidth:1,
    borderColor:'gray',
@@ -159,23 +182,10 @@ const styles = StyleSheet.create({
     borderBottomWidth:.50,
     width:'100%',
   },
-  optionsTop:{
-    margin:5,
-    padding:12,
-    borderRadius:10,
-    color:'white',
-    width:'100%',
-    justifyContent:'space-between',
-    flexDirection:'row',
-    borderWidth:1,
-    borderColor:'gray',
-    
-   
-
-  },
+  
   CardText: {
     color: "#ffffff",
-    fontStyle: "italic",
+    fontFamily: 'DMSans_500Medium',
     fontSize:14,
     
   },

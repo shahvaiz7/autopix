@@ -6,40 +6,52 @@ import {
   TouchableOpacity,
   StatusBar,
   Image,
+  ImageBackground
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Button from "../component/Button";
 import TextInput from "../component/TextInput";
 import { LinearGradient } from 'expo-linear-gradient';
-import { useFonts, DMSans_400Regular,
+import {
+  useFonts, DMSans_400Regular,
   DMSans_500Medium,
   DMSans_700Bold,
-   } from "@expo-google-fonts/dm-sans";
+} from "@expo-google-fonts/dm-sans";
 //npm install react-native-gradient-texts
 //import GradientText from "react-native-gradient-texts";
 
 export default function SignupScreen({ navigation }) {
 
-  useFonts({DMSans_400Regular,
+  useFonts({
+    DMSans_400Regular,
     DMSans_500Medium,
-    DMSans_700Bold,});
+    DMSans_700Bold,
+  });
 
   return (
 
     <View style={styles.containerView}>
-      {/* <StatusBar backgroundColor={"#A52306"}/> */}
-      
-      <LinearGradient
-        // Background Linear Gradient
-        colors={['#A52306', '#020202']}
-        locations={[0.1, 0.3]}
-        style={styles.containerView}
-      >
-        <View style={styles.HeaderView}>
+      <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
+        {/* <StatusBar backgroundColor={"#A52306"}/> */}
 
-          <Text style={styles.AllText}>Sing Up </Text>
-          <Text style={styles.AllText}>  Welcome Back! </Text>
+
+
+        <View style={styles.HeaderView}>
+          <View style={styles.TitleBar}>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")} >
+              <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
+            </TouchableOpacity>
+            <Text style={styles.CardText}>sign up </Text>
+            <Text>       </Text>
+
+          </View>
+          <View style={styles.welcomeBar}>
+
+            <Text style={styles.AllText}>Sing Up </Text>
+            <Text style={styles.AllText}>  Welcome Back! </Text>
+          </View>
         </View>
         <View style={styles.FormView}>
           <Text style={styles.InputHead}>
@@ -56,12 +68,12 @@ export default function SignupScreen({ navigation }) {
             returnKeyType="next"
             returnKeyLabel="next"
           />
-         <Text style={styles.InputHead}>
+          <Text style={styles.InputHead}>
             {" "}
             Email{" "}
           </Text>
           <TextInput
-            
+
             placeholder="Enter here...."
             autoCapitalize="none"
             autoCompleteType="email"
@@ -70,7 +82,7 @@ export default function SignupScreen({ navigation }) {
             returnKeyType="next"
             returnKeyLabel="next"
           />
-         <Text style={styles.InputHead}>
+          <Text style={styles.InputHead}>
             {" "}
             Password{" "}
           </Text>
@@ -85,7 +97,7 @@ export default function SignupScreen({ navigation }) {
             returnKeyLabel="next"
             secureTextEntry={true}
           />
-         <Text style={styles.InputHead}>
+          <Text style={styles.InputHead}>
             {" "}
             Company{" "}
           </Text>
@@ -104,7 +116,7 @@ export default function SignupScreen({ navigation }) {
           <Button label="sign up" onPress={() => navigation.navigate("Login")} />
         </View>
         <TouchableOpacity style={styles.BottomView} onPress={() => navigation.navigate("Login")}>
-          <Text style={{ padding: 10, color: "#ffffff" ,fontSize:16, fontFamily:'DMSans_400Regular' }}>
+          <Text style={{ padding: 10, color: "#ffffff", fontSize: 16, fontFamily: 'DMSans_400Regular' }}>
             {" "}
             Already have an account?{" "}
             <Text
@@ -112,7 +124,7 @@ export default function SignupScreen({ navigation }) {
                 fontWeight: "bold",
                 padding: 10,
                 color: 'rgb(255, 37, 17)',
-                fontSize:16, fontFamily:'DMSans_400Regular' 
+                fontSize: 16, fontFamily: 'DMSans_400Regular'
               }}
             >
               {" "}
@@ -121,25 +133,34 @@ export default function SignupScreen({ navigation }) {
 
           </Text>
         </TouchableOpacity>
-      </LinearGradient>
+
+      </ImageBackground>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   containerView: {
-    flex: 1
+    flex: 1,
+    backgroundColor: "#020202",
   },
   HeaderView: {
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 30
+    paddingTop: 60,
+    paddingLeft: 10
   },
-  InputHead:{
+  welcomeBar: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: 30,
+
+  },
+  InputHead: {
     fontSize: 16,
-    fontFamily:'DMSans_500Medium',
-     padding: 10, 
-     color: "#ffffff"
+    fontFamily: 'DMSans_500Medium',
+    padding: 10,
+    color: "#ffffff"
   },
 
   FormView: {
@@ -148,10 +169,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 10,
   },
+  TitleBar: {
+    color: 'white',
+    width: '100%',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    paddingBottom: 10
+
+  },
   SubmitView: {
 
     width: "100%",
-    padding:16
+    padding: 16
   },
   BottomView: {
     alignItems: 'center'
@@ -163,9 +192,13 @@ const styles = StyleSheet.create({
   AllText: {
     color: "#ffffff",
     fontSize: 20,
-   fontFamily:'DMSans_500Medium',
+    fontFamily: 'DMSans_500Medium',
   },
   InputBlock: {
     justifyContent: "flex-start",
+  },
+  CardText: {
+    color: "#ffffff",
+    fontFamily: 'DMSans_500Medium', fontSize: 18
   },
 });

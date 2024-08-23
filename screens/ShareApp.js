@@ -28,7 +28,7 @@ export default function ShareApp({ navigation }) {
       >
         <View style={styles.HeaderView}>
           <Text style={styles.AllText}>Share App  </Text>
-          <Text style={{ color: "#ffffff", marginLeft: 10 }}>
+          <Text style={{ color: "#ffffff", marginLeft: 10 ,fontFamily:'DMSans_500Medium',fontSize:14}}>
             {" "}
             Email{" "}
           </Text>
@@ -36,8 +36,8 @@ export default function ShareApp({ navigation }) {
         <View style={styles.optionList}>
 
           <TextInput
-            icon="mail"
-            placeholder="Enter your email"
+            
+            placeholder="Enter email.."
             autoCapitalize="none"
             autoCompleteType="email"
             keyboardType="email-address"
@@ -59,9 +59,11 @@ export default function ShareApp({ navigation }) {
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
+    
   },
   HeaderView: {
     flex: .1,
+    marginTop:10
   },
 
 
@@ -69,19 +71,20 @@ const styles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
     justifyContent: "center",
-    flex: 0.2,
+    flex: 0.1,
     padding: 10,
+    paddingTop:40,
 
   },
 
   AllText: {
     color: "#ffffff",
-    fontSize: 20,
-    fontWeight: "bold",
+    fontFamily:'DMSans_500Medium',
+    fontSize:24,
     padding: 10
   },
   Bottom: {
-    padding: 10,
-    width: "80%",
+    padding:10,
+    width: "100%",
   }
 });

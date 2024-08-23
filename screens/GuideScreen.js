@@ -5,67 +5,463 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  StatusBar,
+  ImageBackground
+
 } from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-
-
-export default function GuideScreen({navigation}) {
+import { LinearGradient } from 'expo-linear-gradient';
+export default function GuideScreen({ navigation }) {
   return (
     <View style={styles.containerView}>
-      <View style={styles.topBar}>
-        
-        <TouchableOpacity
-          style={{
-            borderColor: "#ffffff",
-            borderWidth: 2,
-            borderRadius: 10,
-            height: 30,
-            width: 200,
-            alignItems: "center",
-          }} onPress={() => navigation.navigate("GuideAdd")}
-        >
-          <Text style={{ color: "#ffffff",fontSize:16 }}>  <MaterialCommunityIcons
-                  name="plus"
-                  size={16}
-                  color={"#ffffff"}
-                /> Create Instruction </Text>
-        </TouchableOpacity>
-      </View>
-      <ScrollView style={styles.bodyContent}>
-       <View style={styles.OrderCard}>
-       <View style={styles.CardHead}>
-        <Text style={styles.CardText}> Instruction #01</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Guidesteps")}>
-              <Text style={styles.CardText}>
-                Edit{" "}
-                <MaterialCommunityIcons
-                  name="archive-cog"
-                  size={16}
-                  color={"#ffffff"}
-                />
-              </Text>
-            </TouchableOpacity>
-            </View> 
-        <View style={styles.OrderBody}>
-          <View style={{ flex: 0.5 }}>
-            <Image
-              style={{ width: 130, height: 120,borderRadius:25 }}
-              source={require("../assets/logoblack.jpeg")}
-            />
+
+      {/* <LinearGradient
+        // Background Linear Gradient
+        colors={['#A52306', '#020202']}
+        locations={[0.1, 0.3]}
+        style={styles.containerView}
+      > */}
+      <ImageBackground source={require("../assets/background.png")} style={styles.containerView} >
+        <View style={styles.topBar}>
+          <View>
+            <Text
+              style={{
+                color: "#ffffff",
+                fontSize: 24,
+                fontWeight: "condensedBold",
+              }}
+            >
+              {" "}
+              Instruction{" "}
+            </Text>
           </View>
-          <View
-            style={{ flex: 0.5, justifyContent: "space-between", margin: 10 }}
+          <TouchableOpacity
+            style={{
+              borderColor: "#ffffff",
+              borderWidth: 1,
+              borderRadius: 35,
+              height: 35,
+              width: 150,
+              alignItems: "center",
+              justifyContent: 'center'
+            }} onPress={() => navigation.navigate("GuideAdd")}
           >
-            <Text style={styles.CardText}> Background : 05</Text>
-            <Text style={styles.CardText}> Floor : 02 </Text>
-            <Text style={styles.CardText}>Logo : Yes </Text>
-            <Text style={styles.CardText}>License Plate : No</Text>
+            <Text style={{ color: "#ffffff" }}> Create Instruction </Text>
+          </TouchableOpacity>
+        </View>
+        <ScrollView style={styles.bodyContent}>
+          <View style={styles.OrderCard}>
+            <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
+              <View style={styles.OrderCardImage}>
+                <Image
+                  style={{ width: 119, height: 153, borderRadius: 22 }}
+                  source={require("../assets/Rectangle 17 (3).png")}
+                />
+              </View>
+              <View style={styles.OrderCardDetails}>
+
+                <View style={styles.OrderCardDetailsOne}>
+                  <Text style={styles.CardHead}> #5625554 </Text>
+                </View>
+                <View style={styles.OrderCardDetailsTwo}>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 10
+                  }}>
+                    <Text style={styles.CardText}>
+                      BG{" "}
+                      <MaterialCommunityIcons
+                        name="check-circle"
+                        size={12}
+                        color={"red"}
+
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 15
+                  }}>
+                    <Text style={styles.CardText}>
+                      Floor{" "}
+                      <MaterialCommunityIcons
+                        name="bookmark-remove-outline"
+                        size={12}
+                        color={"red"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 15
+                  }}>
+                    <Text style={styles.CardText}>
+                      Logo{" "}
+                      <MaterialCommunityIcons
+                        name="check-circle"
+                        size={12}
+                        color={"red"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+
+                </View>
+                <View style={styles.OrderCardDetailsThree}>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 15
+                  }}>
+                    <Text style={styles.CardText}>
+                      Number Plate{" "}
+                      <MaterialCommunityIcons
+                        name="check-circle"
+                        size={12}
+                        color={"red"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.OrderCardDetailsFour}>
+
+                  <Text style={styles.CardText}>2 Days ago </Text>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 10
+                  }}>
+                    <Text style={styles.CardText}>
+                      Edit{" "}
+                      <MaterialCommunityIcons
+                        name="pen"
+                        size={14}
+                        color={"#ffffff"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+            </ImageBackground>
+          </View>
+          <View style={styles.OrderCard}>
+            <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
+              <View style={styles.OrderCardImage}>
+                <Image
+                  style={{ width: 119, height: 153, borderRadius: 22 }}
+                  source={require("../assets/Rectangle 17 (3).png")}
+                />
+              </View>
+              <View style={styles.OrderCardDetails}>
+
+                <View style={styles.OrderCardDetailsOne}>
+                  <Text style={styles.CardHead}> #5625554 </Text>
+                </View>
+                <View style={styles.OrderCardDetailsTwo}>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 10
+                  }}>
+                    <Text style={styles.CardText}>
+                      BG{" "}
+                      <MaterialCommunityIcons
+                        name="check-circle"
+                        size={12}
+                        color={"red"}
+
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 15
+                  }}>
+                    <Text style={styles.CardText}>
+                      Floor{" "}
+                      <MaterialCommunityIcons
+                        name="bookmark-remove-outline"
+                        size={12}
+                        color={"red"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 15
+                  }}>
+                    <Text style={styles.CardText}>
+                      Logo{" "}
+                      <MaterialCommunityIcons
+                        name="check-circle"
+                        size={12}
+                        color={"red"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+
+                </View>
+                <View style={styles.OrderCardDetailsThree}>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 15
+                  }}>
+                    <Text style={styles.CardText}>
+                      Number Plate{" "}
+                      <MaterialCommunityIcons
+                        name="check-circle"
+                        size={12}
+                        color={"red"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.OrderCardDetailsFour}>
+
+                  <Text style={styles.CardText}>2 Days ago </Text>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 10
+                  }}>
+                    <Text style={styles.CardText}>
+                      Edit{" "}
+                      <MaterialCommunityIcons
+                        name="pen"
+                        size={14}
+                        color={"#ffffff"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+            </ImageBackground>
+          </View>
+          <View style={styles.OrderCard}>
+            <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
+              <View style={styles.OrderCardImage}>
+                <Image
+                  style={{ width: 119, height: 153, borderRadius: 22 }}
+                  source={require("../assets/Rectangle 17 (3).png")}
+                />
+              </View>
+              <View style={styles.OrderCardDetails}>
+
+                <View style={styles.OrderCardDetailsOne}>
+                  <Text style={styles.CardHead}> #5625554 </Text>
+                </View>
+                <View style={styles.OrderCardDetailsTwo}>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 10
+                  }}>
+                    <Text style={styles.CardText}>
+                      BG{" "}
+                      <MaterialCommunityIcons
+                        name="check-circle"
+                        size={12}
+                        color={"red"}
+
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 15
+                  }}>
+                    <Text style={styles.CardText}>
+                      Floor{" "}
+                      <MaterialCommunityIcons
+                        name="bookmark-remove-outline"
+                        size={12}
+                        color={"red"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 15
+                  }}>
+                    <Text style={styles.CardText}>
+                      Logo{" "}
+                      <MaterialCommunityIcons
+                        name="check-circle"
+                        size={12}
+                        color={"red"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+
+                </View>
+                <View style={styles.OrderCardDetailsThree}>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 15
+                  }}>
+                    <Text style={styles.CardText}>
+                      Number Plate{" "}
+                      <MaterialCommunityIcons
+                        name="check-circle"
+                        size={12}
+                        color={"red"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.OrderCardDetailsFour}>
+
+                  <Text style={styles.CardText}>2 Days ago </Text>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 10
+                  }}>
+                    <Text style={styles.CardText}>
+                      Edit{" "}
+                      <MaterialCommunityIcons
+                        name="pen"
+                        size={14}
+                        color={"#ffffff"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+            </ImageBackground>
+          </View>
+          <View style={styles.OrderCard}>
+            <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
+              <View style={styles.OrderCardImage}>
+                <Image
+                  style={{ width: 119, height: 153, borderRadius: 22 }}
+                  source={require("../assets/Rectangle 17 (3).png")}
+                />
+              </View>
+              <View style={styles.OrderCardDetails}>
+
+                <View style={styles.OrderCardDetailsOne}>
+                  <Text style={styles.CardHead}> #5625554 </Text>
+                </View>
+                <View style={styles.OrderCardDetailsTwo}>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 10
+                  }}>
+                    <Text style={styles.CardText}>
+                      BG{" "}
+                      <MaterialCommunityIcons
+                        name="check-circle"
+                        size={12}
+                        color={"red"}
+
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 15
+                  }}>
+                    <Text style={styles.CardText}>
+                      Floor{" "}
+                      <MaterialCommunityIcons
+                        name="bookmark-remove-outline"
+                        size={12}
+                        color={"red"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 15
+                  }}>
+                    <Text style={styles.CardText}>
+                      Logo{" "}
+                      <MaterialCommunityIcons
+                        name="check-circle"
+                        size={12}
+                        color={"red"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+
+                </View>
+                <View style={styles.OrderCardDetailsThree}>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 15
+                  }}>
+                    <Text style={styles.CardText}>
+                      Number Plate{" "}
+                      <MaterialCommunityIcons
+                        name="check-circle"
+                        size={12}
+                        color={"red"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.OrderCardDetailsFour}>
+
+                  <Text style={styles.CardText}>2 Days ago </Text>
+                  <TouchableOpacity style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    padding: 5,
+                    borderRadius: 10
+                  }}>
+                    <Text style={styles.CardText}>
+                      Edit{" "}
+                      <MaterialCommunityIcons
+                        name="pen"
+                        size={14}
+                        color={"#ffffff"}
+                      />
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+            </ImageBackground>
           </View>
          
-        </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </ImageBackground>
     </View>
   );
 }
@@ -74,42 +470,76 @@ const styles = StyleSheet.create({
   containerView: {
     flex: 1,
     justifyContent: "space-between",
-    backgroundColor: "#1D6167",
+    backgroundColor: "#020202",
+    
   },
 
   topBar: {
     flex: 0.1,
     flexDirection: "row",
     margin: 10,
-    justifyContent: 'center',
-  },
-  CardHead:{
-    flex: 1,
-    flexDirection:'row',
     justifyContent: "space-between",
-    margin: 15,
+    paddingTop: 35
   },
   bodyContent: {
     flex: 0.8,
-  },
-  OrderBody: {
-    margin: 15,
-    flexDirection: "row",
-    justifyContent: 'space-around',
-    backgroundColor: "#283F45",
-    margin: 10,
-    borderRadius: 25,
-  },
-  OrderCard:{
-    backgroundColor: "#283F45",
-    margin: 10,
-    borderRadius: 25,
-   
 
   },
-  CardText: {
+  OrderCard: {
+    margin: 10,
+    flexDirection: "row",
+    borderWidth: 1,
+    borderColor: 'gray',
+    padding: 2,
+    borderRadius: 25,
+  },
+  imageBack: {
+
+    flexDirection: "row",
+    width: '100%',
+    borderRadius: 25,
+  },
+
+  OrderCardImage: {
+    flex: .40
+  },
+  OrderCardDetails: {
+    flex: .60,
+    paddingRight: 10,
+
+    paddingTop: 8
+
+  },
+  OrderCardDetailsTwo: {
+    flexDirection: 'row',
+    padding: 5,
+    justifyContent: 'space-around'
+  },
+  OrderCardDetailsThree: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    width: '60%',
+
+    alignItems: 'center'
+  },
+  OrderCardDetailsFour: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingLeft: 10,
+    paddingTop: 10
+  },
+
+  CardHead: {
     color: "#ffffff",
     fontStyle: "italic",
     fontWeight: "bold",
+    fontSize: 18
+  },
+  CardText: {
+    color: "#ffffff",
+
+    fontWeight: "bold",
+    fontSize: 12
   },
 });

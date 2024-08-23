@@ -40,13 +40,14 @@ export default function FloorList({ navigation }) {
     };
     return (
         <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
+            <View >
         <FlatList
             data={data}
             renderItem={({ item }) => (
                 <TouchableOpacity
                     onPress={() => toggleItemSelect(item.id)}
                     style={{
-                        backgroundColor: selectedIds.includes(item.id) ? 'blue' : '#020202', borderRadius: 25, padding: 10, margin: 10
+                        backgroundColor: selectedIds.includes(item.id) ? 'blue' : 'transparent', borderRadius: 25, padding: 10, margin: 10
                     }}
                     
                 >
@@ -61,6 +62,7 @@ export default function FloorList({ navigation }) {
             keyExtractor={item => item.id}
             extraData={selectedIds} // Important! This ensures FlatList re-renders when state changes
         />
+        </View>
         </ImageBackground>
     )
 }
