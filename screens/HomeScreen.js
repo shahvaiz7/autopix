@@ -60,67 +60,68 @@ export default function HomeScreen() {
     //   <Tabs.Screen name="ProfileScreen" options={{ title: "Profile" }} />
 
     // </Tabs>
-//   );
-// };
+    //   );
+    // };
 
-<Tab.Navigator activeColor="#FF4A22"
-  activeIndicatorStyle={{ backgroundColor: '#020202' }}
-  inactiveColor="#ffffff"
-  // screenOptions={{
-  //   tabBarStyle: { position: 'absolute' },
-  // }}
+    <Tab.Navigator activeColor="#FF4A22"
+      activeIndicatorStyle={{ backgroundColor: '#020202' }}
+      inactiveColor="#ffffff"
+      // screenOptions={{
+      //   tabBarStyle: { position: 'absolute' },
+      // }}
 
-  // shifting={true}
-  barStyle={{
+      // shifting={true}
+      barStyle={{
 
-    backgroundColor: 'transparent',
-    position: 'absolute',
-    bottom: 5,
-    borderColor: '#FF4A22',
-    borderWidth: 2,
-    borderTopRightRadius: 60,
-    borderTopLeftRadius: 60,
-    borderBottomLeftRadius: 40,
-    borderBottomRightRadius: 40,
-    transform: [{ scaleY: .8 }],
+        backgroundColor: 'transparent',
+        position: 'absolute',
+        bottom: 5,
+        borderColor: '#FF4A22',
+        borderWidth: 2,
+        borderTopRightRadius: 60,
+        borderTopLeftRadius: 60,
+        borderBottomLeftRadius: 40,
+        borderBottomRightRadius: 40,
+        transform: [{ scaleY: .8 }],
 
 
-  }}
->
+      }}
+    >
 
-  <Tab.Screen name="Shoot" component={ShootScreen}
-    options={{
-      title: 'Shoot',
-      tabBarIcon: ({ color }) => (
-        <MaterialCommunityIcons name="camera-outline" color={color} size={26} />
-      ),
+      <Tab.Screen name="Shoot" component={ShootScreen}
+        options={{
+          title: 'Shoot',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="camera-outline" color={color} size={26} />
+          ),
 
-    }} />
-  <Tab.Screen name="Order" component={OrderScreen}
+        }} />
+      <Tab.Screen name="Order" component={OrderScreen}
 
-    options={{
-      // tabBarBadge: true,
-      tabBarLabel: 'Order',
-      tabBarIcon: ({ color }) => (
-        <MaterialCommunityIcons name="note-outline" color={color} size={26} />
-      ),
-    }} />
-  <Tab.Screen name="Guide" component={GuideAdd}
-    options={{
+        options={{
+          // tabBarBadge: true,
+          tabBarLabel: 'Order',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="note-outline" color={color} size={26} />
+          ),
+        }} />
+      <Tab.Screen name="Guide" component={GuideAdd}
+        options={{
 
-      tabBarIcon: ({ color }) => (
-        <MaterialCommunityIcons name="folder-open-outline" color={color} size={26} />
-      ),
-    }} />
-  <Tab.Screen name="Profile" component={ProfileScreen}
-    options={{
-      tabBarLabel: 'Profile',
-      tabBarIcon: ({ color }) => (
-        <MaterialCommunityIcons name="account-outline" color={color} size={26} />
-      ),
-    }} />
-</Tab.Navigator>
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="folder-open-outline" color={color} size={26} />
+          ),
+        }} />
+      <Tab.Screen name="Profile" component={ProfileScreen}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="account-outline" color={color} size={26} />
+          ),
+        }} />
+    </Tab.Navigator>
 
-  ) }
+  )
+}
 
 const styles = StyleSheet.create({})

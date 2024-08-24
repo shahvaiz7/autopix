@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View, Image,TouchableOpacity,ScrollView} from 'react-native'
+import { StyleSheet, Text, View, Image,TouchableOpacity,ScrollView,ImageBackground} from 'react-native'
 import React from 'react'
 
 export default function BackgroundType({navigation}) {
   return (
     <ScrollView style={styles.containerView}>
+       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
      <TouchableOpacity style={styles.ListView}  onPress={() => navigation.navigate("BackgroundList")}>
      <Text style={{ color: "#ffffff",fontSize:16 }}> Interior </Text>
      <Image
@@ -32,6 +33,7 @@ export default function BackgroundType({navigation}) {
         source={require("../assets/red-car3.png")}
       />
      </TouchableOpacity>
+     </ImageBackground>
     </ScrollView>
   )
 }

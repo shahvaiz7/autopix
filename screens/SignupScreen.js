@@ -39,11 +39,20 @@ export default function SignupScreen({ navigation }) {
 
 
         <View style={styles.HeaderView}>
-          <View style={styles.TitleBar}>
+          <View style={{
+            color: 'white',
+            width: '100%',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            paddingBottom: 10
+          }}>
             <TouchableOpacity onPress={() => navigation.navigate("Login")} >
               <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
             </TouchableOpacity>
-            <Text style={styles.CardText}>sign up </Text>
+            <Text style={{
+              color: "#ffffff",
+              fontFamily: 'DMSans_500Medium', fontSize: 18
+            }}>sign up </Text>
             <Text>       </Text>
 
           </View>

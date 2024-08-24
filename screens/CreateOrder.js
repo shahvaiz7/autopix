@@ -13,6 +13,7 @@ import Button from "../component/Button";
 import TextInput from "../component/TextInput";
 import { Picker } from "@react-native-picker/picker";
 import { LinearGradient } from "expo-linear-gradient";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 //npx expo install @react-native-picker/picker
 
 export default function CreateOrder({ navigation }) {
@@ -23,6 +24,24 @@ export default function CreateOrder({ navigation }) {
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
 
         <View style={styles.HeaderView}>
+          <View style={{
+            color: 'white',
+            width: '100%',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            paddingTop: 30,
+            paddingBottom:20
+          }}>
+            <TouchableOpacity onPress={() => navigation.navigate("OrderScreen")} >
+              <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
+            </TouchableOpacity>
+            <Text style={{
+              color: "#ffffff",
+              fontFamily: 'DMSans_500Medium', fontSize: 18
+            }}>Create order </Text>
+            <Text>       </Text>
+
+          </View>
           <Text style={styles.AllText}> Create a new order </Text>
           <Text style={{
             padding: 5, color: "#b6b6b6", fontSize: 14,

@@ -31,6 +31,9 @@ import PrivecySetting from './screens/PrivecySetting';
 import CarLine from './screens/CarLine';
 import NotificationScreen from './screens/NotificationScreen';
 
+import CameraScreen from './screens/CameraScreen';
+import OrderScreen from './screens/OrderScreen';
+
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -86,16 +89,7 @@ export default function App() {
 
             }
           }} />
-        <Stack.Screen name="CreateOrder" component={CreateOrder}
-          options={{
-            headerTitleStyle: { fontFamily: 'DMSans_500Medium', fontSize: 18 },
-            title: 'Create Order',
-            headerTitleAlign: 'center',
-            headerTintColor: 'white',
-            headerStyle: {
-              backgroundColor: '#882919',
-            }
-          }} />
+        <Stack.Screen name="CreateOrder" component={CreateOrder} options={{ header: () => null }} />
         <Stack.Screen name="Guide" component={GuideScreen} />
         <Stack.Screen name="Guidesteps" component={GuideSteps} />
         <Stack.Screen name="GuideAdd" component={GuideAdd} options={{ header: () => null }} />
@@ -150,6 +144,7 @@ export default function App() {
         <Stack.Screen name="SuccessScreen" component={SuccessScreen} options={{ header: () => null }} />
         <Stack.Screen name="UploadingScreen" component={UploadingScreen} options={{ header: () => null }} />
         <Stack.Screen name="NotificationScreen" component={NotificationScreen} options={{ header: () => null }} />
+        <Stack.Screen name="OrderScreen" component={OrderScreen} options={{ header: () => null }} />
 
         <Stack.Screen name="PrivecySetting" component={PrivecySetting} options={{
           headerTitleStyle: { fontFamily: 'DMSans_500Medium', fontSize: 18 },
@@ -161,6 +156,7 @@ export default function App() {
           }
         }} />
         <Stack.Screen name="GuideScreen" component={GuideScreen} options={{ header: () => null }} />
+        <Stack.Screen name="CameraScreen" component={CameraScreen} options={{ header: () => null }} />
 
 
       </Stack.Navigator>

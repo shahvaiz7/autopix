@@ -100,7 +100,7 @@ export default function ShootScreen({ navigation }) {
           </View>
           <View style={styles.bodyContent}>
 
-            <TouchableOpacity style={styles.blockContent} onPress={takeImageHandler} >
+            <TouchableOpacity style={styles.blockContent} onPress={() => navigation.navigate("CameraScreen")} >
               <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
                 <View style={{
                   paddingTop: 40
@@ -149,7 +149,7 @@ export default function ShootScreen({ navigation }) {
                 </View>
               </ImageBackground>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.blockContent}  >
+            <TouchableOpacity style={styles.blockContent} >
 
               {image && <Image source={{ uri: image }} style={styles.image} />}
 

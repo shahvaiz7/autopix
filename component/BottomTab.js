@@ -15,7 +15,7 @@ export default function BottomTab({ state, descriptors, navigation }) {
        
        
             <View style={styles.tabbar} >
-                 <ImageBackground source={image}>
+                 <ImageBackground source={require("../assets/bottomtab.png")}>
    
             {state.routes.map((route, index) => {
                 const { options } = descriptors[route.key];

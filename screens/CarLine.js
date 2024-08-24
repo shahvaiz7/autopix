@@ -82,7 +82,7 @@ export default function CarLine({ navigation }) {
 
                         <TouchableOpacity style={styles.blockContent} >
                             <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }}
-                                style={{ width: 315, height: 300 }} >
+                                style={{ width: 315, height: 250 }} >
                                 <View
                                     style={{
                                         flex: 1,

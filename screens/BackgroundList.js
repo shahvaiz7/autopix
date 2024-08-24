@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FlatList, View, Text, TouchableOpacity, StyleSheet, Image,ImageBackground } from 'react-native';
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 const data = [
   {
@@ -54,10 +55,18 @@ export default function BackgroundList({ navigation,route }) {
         <TouchableOpacity
           onPress={() => navigation.navigate("GuideAdd",{background: item})}
           style={{
-            backgroundColor: selectedIds.includes(item.id) ? 'blue' : 'transparent', borderRadius: 35, padding: 10, margin: 10
+            backgroundColor: 'transparent', borderRadius: 35, padding: 10, margin: 10
           }}
         >
-          {item.image && <Image style={styles.imageBox} source={item.image} />}
+          
+          
+       
+          <View>
+            <Image style={styles.imageBox} source={item.image} />
+          <View style={styles.SelectIcon}> 
+            <MaterialCommunityIcons name="check-circle" size={24} color={"white"} />
+          </View> 
+          </View>
         </TouchableOpacity>
       )}
       keyExtractor={item => item.id}
@@ -78,5 +87,19 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 170,
     borderRadius: 25
-  }
+  },
+  SelectIcon: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 8,
+    left: 6,
+    height: 30,
+    width: 30,
+    backgroundColor: 'transparent',
+    borderRadius: 45
+
+
+
+  },
 })
