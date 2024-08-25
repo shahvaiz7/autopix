@@ -1,13 +1,15 @@
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Torch from 'react-native-torch';
 
 export default function CameraScreen({ navigation }) {
-  const { facing, setFacing } = useState < CameraType > ('back');
+  const {facing, setFacing} = useState<CameraType>('back');
   const [permission, requestPermission] = useCameraPermissions();
   const [isTorchOn, setIsTorchOn] = useState(false);
+  const [photo,setPhoto]= useState(null);
+  const cameraRef= useRef<CameraView | null>(null);
 
   const flashFunction = () => {
     console.log('checking state', isTorchOn);
@@ -65,7 +67,7 @@ export default function CameraScreen({ navigation }) {
           <TouchableOpacity style={styles.button} >
             <MaterialCommunityIcons name="camera-plus" size={44} color={"white"} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} >
+          <TouchableOpacity style={styles.button} onPress={handleTakePhoto} >
             <MaterialCommunityIcons name="camera-iris" size={70} color={"#FF4A22"} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>

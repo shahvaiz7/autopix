@@ -62,7 +62,7 @@ export default function OrderScreen({ navigation }) {
               <View style={styles.OrderCardDetails}>
 
                 <View style={styles.OrderCardDetailsOne}>
-                  <Text style={styles.CardHead}> #5625554 </Text>
+                  <Text style={styles.IDText}> #5625554 </Text>
                 </View>
                 <View style={styles.OrderCardDetailsTwo}>
                   <TouchableOpacity style={{
@@ -71,7 +71,7 @@ export default function OrderScreen({ navigation }) {
                     padding: 5,
                     borderRadius: 10
                   }}>
-                    <Text style={styles.CardText}>
+                    <Text style={styles.CardText2}>
                       BG{" "}
                       <MaterialCommunityIcons
                         name="check-circle"
@@ -87,7 +87,7 @@ export default function OrderScreen({ navigation }) {
                     padding: 5,
                     borderRadius: 15
                   }}>
-                    <Text style={styles.CardText}>
+                    <Text style={styles.CardText2}>
                       Floor{" "}
                       <MaterialCommunityIcons
                         name="bookmark-remove-outline"
@@ -102,7 +102,7 @@ export default function OrderScreen({ navigation }) {
                     padding: 5,
                     borderRadius: 15
                   }}>
-                    <Text style={styles.CardText}>
+                    <Text style={styles.CardText2}>
                       Logo{" "}
                       <MaterialCommunityIcons
                         name="check-circle"
@@ -120,7 +120,7 @@ export default function OrderScreen({ navigation }) {
                     padding: 5,
                     borderRadius: 15
                   }}>
-                    <Text style={styles.CardText}>
+                    <Text style={styles.CardText2}>
                       Number Plate{" "}
                       <MaterialCommunityIcons
                         name="check-circle"
@@ -132,7 +132,7 @@ export default function OrderScreen({ navigation }) {
                 </View>
                 <View style={styles.OrderCardDetailsFour}>
 
-                  <Text style={styles.CardText}>2 Days ago </Text>
+                  <Text style={styles.CardText2}>2 Days ago </Text>
                   <TouchableOpacity style={{
                     borderWidth: 1,
                     borderColor: 'gray',
@@ -396,7 +396,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: 10,
-    paddingTop: 10
+    paddingTop: 20
   },
   IDText: {
     color: "#ffffff",
@@ -425,6 +425,11 @@ const styles = StyleSheet.create({
   CardText: {
     color: "#ffffff",
     fontSize: 14,
+    fontFamily: 'DMSans_400Regular',
+  },
+  CardText2: {
+    color: "#ffffff",
+    fontSize: 12,
     fontFamily: 'DMSans_400Regular',
   },
 });

@@ -48,7 +48,7 @@ export default function LogoList({ navigation }) {
             data={data}
             renderItem={({ item }) => (
                 <TouchableOpacity
-                    onPress={() => toggleItemSelect(item.id)}
+                onPress={() => navigation.navigate("GuideAdd",{background: item})}
                     style={{
                         backgroundColor: selectedIds.includes(item.id) ? 'blue' : 'transparent', borderRadius: 25, padding: 10, margin: 10
                     }}

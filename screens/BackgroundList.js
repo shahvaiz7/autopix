@@ -63,9 +63,9 @@ export default function BackgroundList({ navigation,route }) {
        
           <View>
             <Image style={styles.imageBox} source={item.image} />
-          <View style={styles.SelectIcon}> 
+          {/* <View style={styles.SelectIcon}> 
             <MaterialCommunityIcons name="check-circle" size={24} color={"white"} />
-          </View> 
+          </View>  */}
           </View>
         </TouchableOpacity>
       )}
