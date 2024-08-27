@@ -24,9 +24,19 @@ import { LinearGradient } from 'expo-linear-gradient';
 export default function LoginScreen({ navigation }) {
   //const image = require("../assets/background.png");
 
+  const [password, setPassword] = useState('');
+
+  // State variable to track password visibility
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Function to toggle the password visibility state
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <ScrollView style={styles.containerView}>
-      
+
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
         {/* <LinearGradient
         // Background Linear Gradient
@@ -49,6 +59,8 @@ export default function LoginScreen({ navigation }) {
             Email{" "}
           </Text>
           <TextInput
+            inputHieght={54}
+            inputAlign={'center'}
 
             placeholder="Enter here...."
             autoCapitalize="none"
@@ -64,7 +76,11 @@ export default function LoginScreen({ navigation }) {
             Password{" "}
           </Text>
           <TextInput
-            icon="eye"
+            inputHieght={54}
+            inputAlign={'center'}
+
+            onPress={toggleShowPassword}
+            icon={showPassword ? 'eye-off' : 'eye'}
             placeholder="*******"
             autoCapitalize="none"
             autoCompleteType="password"
@@ -72,7 +88,9 @@ export default function LoginScreen({ navigation }) {
             keyboardAppearance="dark"
             returnKeyType="next"
             returnKeyLabel="next"
-            secureTextEntry={true}
+            secureTextEntry={!showPassword}
+            value={password}
+            onChangeText={setPassword}
 
           />
 

@@ -16,8 +16,9 @@ export default function Button({ label, onPress, backgroundColor }) {
     
     <ImageBackground
       source={image}
-      style={{  width:'100%'}}
-      imageStyle={{ borderRadius:15}}
+      style={{  width:'100%' ,height:54,justifyContent:'center'}}
+      
+      imageStyle={{ borderRadius:10}}
         // Background Linear Gradient
        // colors={['#A52306', '#ffffff']}
         // start={{x: 0.3, y: 0.8}} end={{x: 0.1, y: .5}}

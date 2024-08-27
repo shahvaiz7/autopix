@@ -165,11 +165,11 @@ export default function OrderScreen({ navigation }) {
               <View style={{ margin: 10 }}>
                 <Text style={styles.IDText}> #5625554 </Text>
                 <Text style={styles.ImageCount}> 5 Images </Text>
-                <View style={{ paddingTop:70,paddingLeft:5 }}>
-                <Text style={styles.DayCount}>2 Days ago </Text>
+                <View style={{ paddingTop: 70, paddingLeft: 5 }}>
+                  <Text style={styles.DayCount}>2 Days ago </Text>
                 </View>
               </View>
-              <View style={{padding:30,}}>
+              <View style={{ padding: 30, }}>
                 <Text
                   style={{
                     color: "red",
@@ -186,20 +186,20 @@ export default function OrderScreen({ navigation }) {
             <View
               style={{
                 flex: 0.3,
-                justifyContent:'flex-end',
-                paddingBottom:20
+                justifyContent: 'flex-end',
+                paddingBottom: 20
               }}
             >
 
               <TouchableOpacity style={{
-                borderWidth:1,
-                borderColor:'gray',
-                borderRadius:15,
-                width:80,
-                height:30,
-                alignContent:'center',
-                alignItems:'center',
-                justifyContent:'center'
+                borderWidth: 1,
+                borderColor: 'gray',
+                borderRadius: 15,
+                width: 80,
+                height: 30,
+                alignContent: 'center',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}>
                 <Text style={styles.CardText}>
                   Option{" "}
@@ -223,11 +223,11 @@ export default function OrderScreen({ navigation }) {
               <View style={{ margin: 10 }}>
                 <Text style={styles.IDText}> #5625554 </Text>
                 <Text style={styles.ImageCount}> 5 Images </Text>
-                <View style={{ paddingTop:70,paddingLeft:5 }}>
-                <Text style={styles.DayCount}>2 Days ago </Text>
+                <View style={{ paddingTop: 70, paddingLeft: 5 }}>
+                  <Text style={styles.DayCount}>2 Days ago </Text>
                 </View>
               </View>
-              <View style={{padding:25,}}>
+              <View style={{ padding: 25, }}>
                 <Text
                   style={{
                     color: "#71F6B3",
@@ -244,20 +244,20 @@ export default function OrderScreen({ navigation }) {
             <View
               style={{
                 flex: 0.3,
-                justifyContent:'flex-end',
-                paddingBottom:20
+                justifyContent: 'flex-end',
+                paddingBottom: 20
               }}
             >
 
               <TouchableOpacity style={{
-                borderWidth:1,
-                borderColor:'gray',
-                borderRadius:15,
-                width:80,
-                height:30,
-                alignContent:'center',
-                alignItems:'center',
-                justifyContent:'center'
+                borderWidth: 1,
+                borderColor: 'gray',
+                borderRadius: 15,
+                width: 80,
+                height: 30,
+                alignContent: 'center',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}>
                 <Text style={styles.CardText}>
                   Option{" "}
@@ -273,19 +273,19 @@ export default function OrderScreen({ navigation }) {
           <View style={styles.OrderCard}>
             <View style={{ flex: 0.4 }}>
               <Image
-                style={{ width: 119, height: 153, borderRadius: 22 }}
+                style={{ width: 119, height: 124, borderRadius: 22 }}
                 source={require("../assets/Rectangle 17 (3).png")}
               />
             </View>
             <View style={{ flex: 0.4, flexDirection: 'row' }}>
-              <View style={{ margin: 10 }}>
+              <View>
                 <Text style={styles.IDText}> #5625554 </Text>
                 <Text style={styles.ImageCount}> 5 Images </Text>
-                <View style={{ paddingTop:70,paddingLeft:5 }}>
-                <Text style={styles.DayCount}>2 Days ago </Text>
+                <View style={{ paddingTop: 45, paddingLeft: 10 }}>
+                  <Text style={styles.DayCount}>2 Days ago </Text>
                 </View>
               </View>
-              <View style={{padding:30,}}>
+              <View style={{ paddingTop: 20, paddingLeft: 45 }}>
                 <Text
                   style={{
                     color: "yellow",
@@ -302,26 +302,26 @@ export default function OrderScreen({ navigation }) {
             <View
               style={{
                 flex: 0.3,
-                justifyContent:'flex-end',
-                paddingBottom:20
+                justifyContent: 'flex-end',
+                paddingBottom: 20
               }}
             >
 
               <TouchableOpacity style={{
-                borderWidth:1,
-                borderColor:'gray',
-                borderRadius:15,
-                width:80,
-                height:30,
-                alignContent:'center',
-                alignItems:'center',
-                justifyContent:'center'
+                borderWidth: 1,
+                borderColor: 'gray',
+                borderRadius: 15,
+                width: 80,
+                height: 30,
+                alignContent: 'center',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}>
                 <Text style={styles.CardText}>
                   Option{" "}
                   <MaterialCommunityIcons
-                    name="tools"
-                    size={12}
+                    name="ship-wheel"
+                    size={16}
                     color={"#ffffff"}
                   />
                 </Text>
@@ -354,7 +354,7 @@ const styles = StyleSheet.create({
 
   },
   OrderCard: {
-    flex:1,
+    flex: 1,
     margin: 10,
     flexDirection: "row",
     borderWidth: 1,
@@ -402,11 +402,13 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     fontSize: 16,
     fontFamily: 'DMSans_500Medium',
+    paddingLeft: 4
   },
   ImageCount: {
     color: "#ffffff",
     fontSize: 14,
     fontFamily: 'DMSans_400Regular',
+    paddingLeft: 4
 
   },
   DayCount: {

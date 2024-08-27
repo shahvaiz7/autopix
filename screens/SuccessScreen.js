@@ -42,12 +42,13 @@ export default function SuccessScreen({navigation}) {
               alignItems:'center',
               justifyContent:'center',
               borderRadius: 10,
-              height: 50,
-              width: 200,
+              height: 54,
+              width: '90%',
               alignItems: "center",
             }} onPress={() => navigation.navigate("CreateOrder")}
           >
-            <Text style={{ color: "#ffffff" , fontWeight:'bold'}}> Create New Order </Text>
+            <Text style={{ color: "#ffffff" , fontSize: 16,
+    fontFamily: 'DMSans_500Medium',}}> Create New Order </Text>
           </TouchableOpacity>
 
        

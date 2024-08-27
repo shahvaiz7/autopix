@@ -64,11 +64,7 @@ export default function ShootScreen({ navigation }) {
       setImage(result.assets[0].uri);
     }
   };
-  useFonts({
-    DMSans_400Regular,
-    DMSans_500Medium,
-    DMSans_700Bold,
-  });
+
   return (
     <View style={styles.containerView}>
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
@@ -180,7 +176,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     margin: 10,
     justifyContent: "space-between",
-    paddingTop: 50
+    paddingTop: 40
   },
   ProfileDetails: {
     flexDirection: 'row'

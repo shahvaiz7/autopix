@@ -1,8 +1,9 @@
 import React from "react";
-import { TextInput as RNTextInput, View, StyleSheet } from "react-native";
+import { TextInput as RNTextInput, View, StyleSheet, TouchableOpacity } from "react-native";
 import { Entypo as Icon } from "@expo/vector-icons";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-export default function TextInput({ inputHieght,inputAlign,icon, numberOfLines, ...otherProps }) {
+export default function TextInput({ onPress, inputHieght, inputAlign, icon, numberOfLines, ...otherProps }) {
     const validationColor = "gray";
     return (
         <View
@@ -13,9 +14,9 @@ export default function TextInput({ inputHieght,inputAlign,icon, numberOfLines, 
                 borderRadius: 8,
                 borderColor: validationColor,
                 borderWidth: StyleSheet.hairlineWidth,
-                paddingLeft:16,
-                
-                
+                paddingLeft: 16,
+
+
             }}
         >
 
@@ -24,14 +25,14 @@ export default function TextInput({ inputHieght,inputAlign,icon, numberOfLines, 
                     underlineColorAndroid="transparent"
                     placeholderTextColor="gray"
                     color='white'
-                    
-                   
+
+
                     {...otherProps}
                 />
             </View>
-            <View>
-                <Icon name={icon} color={'white'} size={18} />
-            </View>
+            <TouchableOpacity onPress={onPress}>
+                <MaterialCommunityIcons name={icon} color={'white'} size={18} paddingRight={20} />
+            </TouchableOpacity>
         </View>
     );
 }

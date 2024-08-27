@@ -100,7 +100,7 @@ export default function CreateOrder({ navigation }) {
             onPress={() => navigation.navigate("GuideAdd")}
           >
             <ImageBackground source={require("../assets/cardback.png")} style={styles.imageBack} resizeMode='stretch' borderRadius={15}>
-              <Text style={styles.InstructionText}> Background : Yes </Text>
+              <Text style={styles.InstructionText}> BG : Yes </Text>
               <Text style={styles.InstructionText}> Floor : Not Selected </Text>
               <Text style={styles.InstructionText}> Logo : Yes </Text>
               <Text style={styles.InstructionText}> Licence Plate : No </Text>
@@ -190,7 +190,9 @@ const styles = StyleSheet.create({
 
   },
   InstructionText: {
-    color: "#ffffff",
+    color: "#B6B6B6",
+    fontSize: 14,
+    fontFamily: 'DMSans_500Medium',
   },
   FormView: {
     flex: 0.7,

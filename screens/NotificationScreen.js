@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     },
     HeadBlock: {
         padding: 20,
-        marginTop: 30,
+        marginTop: 20,
     
 
     },

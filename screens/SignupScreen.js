@@ -8,7 +8,7 @@ import {
   Image,
   ImageBackground
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Button from "../component/Button";
@@ -24,15 +24,19 @@ import {
 
 export default function SignupScreen({ navigation }) {
 
-  useFonts({
-    DMSans_400Regular,
-    DMSans_500Medium,
-    DMSans_700Bold,
-  });
+  const [password, setPassword] = useState('');
+
+  // State variable to track password visibility
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Function to toggle the password visibility state
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
 
-    <View style={styles.containerView}>
+    <ScrollView style={styles.containerView}>
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
         {/* <StatusBar backgroundColor={"#A52306"}/> */}
 
@@ -68,7 +72,8 @@ export default function SignupScreen({ navigation }) {
             Name{" "}
           </Text>
           <TextInput
-
+            inputHieght={54}
+            inputAlign={'center'}
             placeholder="Enter here..."
             autoCapitalize="none"
             autoCompleteType="email"
@@ -82,7 +87,8 @@ export default function SignupScreen({ navigation }) {
             Email{" "}
           </Text>
           <TextInput
-
+            inputHieght={54}
+            inputAlign={'center'}
             placeholder="Enter here...."
             autoCapitalize="none"
             autoCompleteType="email"
@@ -96,15 +102,21 @@ export default function SignupScreen({ navigation }) {
             Password{" "}
           </Text>
           <TextInput
-            icon="eye"
-            placeholder="********"
+            inputHieght={54}
+            inputAlign={'center'}
+
+            onPress={toggleShowPassword}
+            icon={showPassword ? 'eye-off' : 'eye'}
+            placeholder="*******"
             autoCapitalize="none"
             autoCompleteType="password"
             keyboardType="password"
             keyboardAppearance="dark"
             returnKeyType="next"
             returnKeyLabel="next"
-            secureTextEntry={true}
+            secureTextEntry={!showPassword}
+            value={password}
+            onChangeText={setPassword}
           />
           <Text style={styles.InputHead}>
             {" "}
@@ -119,6 +131,8 @@ export default function SignupScreen({ navigation }) {
             keyboardAppearance="dark"
             returnKeyType="next"
             returnKeyLabel="next"
+            inputHieght={54}
+            inputAlign={'center'}
           />
         </View>
         <View style={styles.SubmitView}>
@@ -144,7 +158,7 @@ export default function SignupScreen({ navigation }) {
         </TouchableOpacity>
 
       </ImageBackground>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -156,7 +170,7 @@ const styles = StyleSheet.create({
   HeaderView: {
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 60,
+    paddingTop: 40,
     paddingLeft: 10
   },
   welcomeBar: {
@@ -177,6 +191,7 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     padding: 10,
+    paddingTop:40
   },
   TitleBar: {
     color: 'white',
