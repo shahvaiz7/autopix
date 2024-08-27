@@ -3,14 +3,15 @@ import React, { useRef, useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Torch from 'react-native-torch';
+import PreviewImage from './PreviewImage';
 
 export default function CameraScreen({ navigation }) {
-  const {facing, setFacing} = useState<CameraType>('back');
+  const [facing, setFacing] = useState('back');
   const [permission, requestPermission] = useCameraPermissions();
-  const [isTorchOn, setIsTorchOn] = useState(false);
-  const [photo,setPhoto]= useState(null);
-  const cameraRef= useRef<CameraView | null>(null);
+  const [photo, setPhoto] = useState(null);
+  const cameraRef = useRef(null);
 
+  const [isTorchOn, setIsTorchOn] = useState(false);
   const flashFunction = () => {
     console.log('checking state', isTorchOn);
     setIsTorchOn(!isTorchOn)
@@ -35,6 +36,7 @@ export default function CameraScreen({ navigation }) {
   function toggleCameraFacing() {
     setFacing(current => (current === 'back' ? 'front' : 'back'));
   }
+ 
   const handleTakePhoto = async () => {
     if (cameraRef.current) {
       const options = {
@@ -49,6 +51,8 @@ export default function CameraScreen({ navigation }) {
   };
 
   const handleRetakePhoto = () => setPhoto(null);
+  if (photo) return <PreviewImage photo={photo} handleRetakePhoto={handleRetakePhoto} />
+
 
   return (
     <View style={styles.container}>
