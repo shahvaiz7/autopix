@@ -9,6 +9,9 @@ import Button from '../component/Button';
 export default function GuideAdd({ navigation, route }) {
   const bgswitch = route.params;
   const id = route.params;
+  const  image = route.params;
+const backgroundImage = route.params;
+
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
@@ -72,7 +75,7 @@ export default function GuideAdd({ navigation, route }) {
               <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("BackgroundType", { bgswitch })} >
                 <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
               </TouchableOpacity>
-              {background && <Image source={{ background }} style={styles.logo1} />}
+               <Image source={backgroundImage} style={styles.logo1} />
               {/* <Text  style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}> Id : {id}</Text> */}
 
               {/* <Image
@@ -127,6 +130,31 @@ export default function GuideAdd({ navigation, route }) {
           </View>
           <View style={styles.InstructionView}>
 
+          <View style={styles.OptionView} onPress={() => navigation.navigate("#")}>
+            <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+              {" "}
+              Number Plate{" "} 
+            </Text>
+            <Switch
+              trackColor={{ false: '#767577', true: '#81b0ff' }}
+              thumbColor={npSwitch ? '#FF4A22' : '#ffffff'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={togglenpSwitch}
+              value={npSwitch}
+            />
+          </View>
+{npSwitch && <View style={styles.imageContainer}>
+  <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("NpList")} >
+  <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
+
+  </TouchableOpacity>
+  <Image source={image} style={styles.logo1}/>
+  
+  
+</View>}
+</View>
+          {/* <View style={styles.InstructionView}>
+
             <View style={styles.OptionView} onPress={() => navigation.navigate("#")}>
               <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
                 {" "}
@@ -146,7 +174,7 @@ export default function GuideAdd({ navigation, route }) {
               </TouchableOpacity>
               {background && <Image source={{ uri: background }} style={styles.logo1} />}
             </View>}
-          </View>
+          </View> */}
           {/* <View
           style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center', margin: 10 }}
         >
@@ -208,11 +236,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 20,
-    borderRadius: 5
+    borderRadius: 5,
+    
 
   },
   imageContainer: {
     flexDirection: 'row',
+
   },
   logo1: {
     height: 60,

@@ -2,18 +2,19 @@ import React from "react";
 import { TextInput as RNTextInput, View, StyleSheet } from "react-native";
 import { Entypo as Icon } from "@expo/vector-icons";
 
-export default function TextInput({ icon, numberOfLines, ...otherProps }) {
+export default function TextInput({ inputHieght,inputAlign,icon, numberOfLines, ...otherProps }) {
     const validationColor = "gray";
     return (
         <View
             style={{
                 flexDirection: "row",
-                alignItems: "center",
-                height: 54,
+                alignItems: inputAlign,
+                height: inputHieght,
                 borderRadius: 8,
                 borderColor: validationColor,
                 borderWidth: StyleSheet.hairlineWidth,
-                padding: 16,
+                paddingLeft:16,
+                
                 
             }}
         >
@@ -28,7 +29,7 @@ export default function TextInput({ icon, numberOfLines, ...otherProps }) {
                     {...otherProps}
                 />
             </View>
-            <View style={{ padding: 2 }}>
+            <View>
                 <Icon name={icon} color={'white'} size={18} />
             </View>
         </View>

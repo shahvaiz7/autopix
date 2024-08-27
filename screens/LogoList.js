@@ -34,30 +34,22 @@ const data = [
 export default function LogoList({ navigation }) {
     const [selectedIds, setSelectedIds] = useState([]);
 
-    const toggleItemSelect = (id) => {
-        if (selectedIds.includes(id)) {
-            setSelectedIds(prevIds => prevIds.filter(itemId => itemId !== id));
-            navigation.navigate("GuideAdd")
-        } else {
-            setSelectedIds(prevIds => [...prevIds, id]);
-        }
-    };
     return (
         <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
         <FlatList
             data={data}
             renderItem={({ item }) => (
                 <TouchableOpacity
-                onPress={() => navigation.navigate("GuideAdd",{background: item})}
+                onPress={() => navigation.navigate("GuideAdd")}
                     style={{
-                        backgroundColor: selectedIds.includes(item.id) ? 'blue' : 'transparent', borderRadius: 25, padding: 10, margin: 10
+                        backgroundColor: 'transparent', borderRadius: 25, padding: 10, margin: 10
                     }}
                 >
                     {item.image && <Image style={styles.imageBox} source={item.image} />}
                 </TouchableOpacity>
             )}
             keyExtractor={item => item.id}
-            extraData={selectedIds} // Important! This ensures FlatList re-renders when state changes
+             // Important! This ensures FlatList re-renders when state changes
         />
         </ImageBackground>
 

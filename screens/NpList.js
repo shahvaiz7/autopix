@@ -8,7 +8,7 @@ const data = [
     },
     {
         id: 2,
-        image: require('../assets/car.png'),
+        image: require('../assets/floor1.png'),
     },
     {
         id: 3,
@@ -33,33 +33,25 @@ const data = [
 
 
 export default function NpList({ navigation }) {
-    const [selectedIds, setSelectedIds] = useState([]);
-
-    const toggleItemSelect = (id) => {
-        if (selectedIds.includes(id)) {
-            setSelectedIds(prevIds => prevIds.filter(itemId => itemId = id));
-            navigation.navigate("GuideAdd")
-        } else {
-            setSelectedIds(prevIds => [...prevIds, id]);
-        }
-    };
     return (
         <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
-        <FlatList
+            <View>
+         <FlatList
             data={data}
+            keyExtractor={item => item.id}
             renderItem={({ item }) => (
                 <TouchableOpacity
-                onPress={() => navigation.navigate("GuideAdd",{background: item})}
+                   onPress={() => navigation.navigate("GuideAdd",item.image,item.id)}
                     style={{
-                        backgroundColor: selectedIds.includes(item.id) ? 'red' : 'transparent', borderRadius: 25, padding: 10, margin: 10
+                        backgroundColor: 'transparent', borderRadius: 25, padding: 10, margin: 10
                     }}
                 >
-                    {item.image && <Image style={styles.imageBox} source={item.image} />}
+                <Image style={styles.imageBox} source={item.image} />
                 </TouchableOpacity>
             )}
-            keyExtractor={item => item.id}
-            extraData={selectedIds} // Important! This ensures FlatList re-renders when state changes
+             // Important! This ensures FlatList re-renders when state changes
         />
+        </View>
         </ImageBackground>
 
     )

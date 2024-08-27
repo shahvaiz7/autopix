@@ -64,6 +64,8 @@ export default function CreateOrder({ navigation }) {
             autoCapitalize="none"
             returnKeyType="next"
             returnKeyLabel="next"
+            inputHieght={54}
+           paddingTop={12}
           />
           <Text style={{
             fontSize: 16,
@@ -80,6 +82,8 @@ export default function CreateOrder({ navigation }) {
             keyboardAppearance="dark"
             returnKeyType="next"
             returnKeyLabel="next"
+            inputHieght={78}
+            numberOfLines={5}
 
 
           />

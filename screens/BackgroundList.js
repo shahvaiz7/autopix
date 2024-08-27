@@ -5,27 +5,27 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 const data = [
   {
     id: 1,
-    image: require('../assets/background1.png'),
+    backgroundImage: require('../assets/background1.png'),
   },
   {
     id: 2,
-    image: require('../assets/background2.png'),
+    backgroundImage: require('../assets/background2.png'),
   },
   {
     id: 3,
-    image: require('../assets/background3.png'),
+    backgroundImage: require('../assets/background3.png'),
   },
   {
     id: 4,
-    image: require('../assets/background1.png'),
+    backgroundImage: require('../assets/background1.png'),
   },
   {
     id: 5,
-    image: require('../assets/background2.png'),
+    backgroundImage: require('../assets/background2.png'),
   },
   {
     id: 6,
-    image: require('../assets/background3.png'),
+    backgroundImage: require('../assets/background3.png'),
   },
 
 
@@ -53,16 +53,14 @@ export default function BackgroundList({ navigation,route }) {
       data={data}
       renderItem={({ item }) => (
         <TouchableOpacity
-          onPress={() => navigation.navigate("GuideAdd",{background: item})}
+          onPress={() => navigation.navigate("GuideAdd",item.backgroundImage)}
           style={{
             backgroundColor: 'transparent', borderRadius: 35, padding: 10, margin: 10
           }}
         >
-          
-          
        
           <View>
-            <Image style={styles.imageBox} source={item.image} />
+            <Image style={styles.imageBox} source={item.backgroundImage} />
           {/* <View style={styles.SelectIcon}> 
             <MaterialCommunityIcons name="check-circle" size={24} color={"white"} />
           </View>  */}
@@ -70,7 +68,7 @@ export default function BackgroundList({ navigation,route }) {
         </TouchableOpacity>
       )}
       keyExtractor={item => item.id}
-      extraData={selectedIds} // Important! This ensures FlatList re-renders when state changes
+      // Important! This ensures FlatList re-renders when state changes
     />
     </ImageBackground>
 

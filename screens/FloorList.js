@@ -30,39 +30,37 @@ const data = [
 export default function FloorList({ navigation }) {
     const [selectedIds, setSelectedIds] = useState([]);
 
-    const toggleItemSelect = (id) => {
-        if (selectedIds.includes(id)) {
-            setSelectedIds(prevIds => prevIds.filter(itemId => itemId !== id));
-            navigation.navigate("GuideAdd")
-        } else {
-            setSelectedIds(prevIds => [...prevIds, id]);
-        }
-    };
+    // const toggleItemSelect = (id) => {
+    //     if (selectedIds.includes(id)) {
+    //         setSelectedIds(prevIds => prevIds.filter(itemId => itemId !== id));
+    //         navigation.navigate("GuideAdd")
+    //     } else {
+    //         setSelectedIds(prevIds => [...prevIds, id]);
+    //     }
+    // };
     return (
         <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
-            <View >
         <FlatList
             data={data}
             renderItem={({ item }) => (
                 <TouchableOpacity
-                onPress={() => navigation.navigate("GuideAdd",{background: item})}
-                    style={{
-                        backgroundColor: selectedIds.includes(item.id) ? 'blue' : 'transparent', borderRadius: 25, padding: 10, margin: 10
-                    }}
-                    
-                >
-                   {/* { item.id && <View style={styles.selectIcon}>
-                      <MaterialCommunityIcons name="check-circle" size={24} color={"red"} />
-                      </View> } */}
-                   {/* {{selectedIds.includes(item.id) ? <MaterialCommunityIcons name="check-circle" size={24} color={"red"} />: null }} */}
-                    {item.image && <Image style={styles.imageBox} source={item.image} />}
-                  
-                </TouchableOpacity>
+                onPress={() => navigation.navigate("GuideAdd")}
+                style={{
+                  backgroundColor: 'transparent', borderRadius: 35, padding: 10, margin: 10
+                }}
+              >
+             
+                <View>
+                  <Image style={styles.imageBox} source={item.image} />
+                {/* <View style={styles.SelectIcon}> 
+                  <MaterialCommunityIcons name="check-circle" size={24} color={"white"} />
+                </View>  */}
+                </View>
+              </TouchableOpacity>
             )}
             keyExtractor={item => item.id}
             extraData={selectedIds} // Important! This ensures FlatList re-renders when state changes
         />
-        </View>
         </ImageBackground>
     )
 }

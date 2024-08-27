@@ -75,7 +75,8 @@ export default function ProfileDetails({ navigation }) {
               Name{" "}
             </Text>
             <TextInput
-
+              inputHieght={54}
+              inputAlign={'center'}
               placeholder="Enter your Name"
               autoCapitalize="none"
               autoCompleteType="email"
@@ -90,7 +91,8 @@ export default function ProfileDetails({ navigation }) {
               Email{" "}
             </Text>
             <TextInput
-              
+              inputHieght={54}
+              inputAlign={'center'}
               placeholder="Enter your email"
               autoCapitalize="none"
               autoCompleteType="email"
@@ -105,6 +107,8 @@ export default function ProfileDetails({ navigation }) {
               Company{" "}
             </Text>
             <TextInput
+            inputHieght={54}
+            inputAlign={'center'}
 
               placeholder="Enter your company"
               autoCapitalize="none"
@@ -119,7 +123,8 @@ export default function ProfileDetails({ navigation }) {
               Password{" "}
             </Text>
             <TextInput
-             
+              inputHieght={54}
+              inputAlign={'center'}
               placeholder="Enter your Password"
               autoCapitalize="none"
               autoCompleteType="password"
