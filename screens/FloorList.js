@@ -40,6 +40,28 @@ export default function FloorList({ navigation }) {
     // };
     return (
         <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
+             <View style={{
+            color: 'white',
+            width: '100%',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            paddingTop: 40,
+            paddingLeft:10
+          }}>
+            <TouchableOpacity onPress={() => navigation.navigate("GuideAdd")}  style={{flexDirection:'row'}}>
+              <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
+              <Text style={{
+              color: "#ffffff",
+              fontFamily: 'DMSans_500Medium', fontSize: 18
+            }}> </Text>
+            </TouchableOpacity>
+            <Text style={{
+              color: "#ffffff",
+              fontFamily: 'DMSans_500Medium', fontSize: 18
+            }}> Floor</Text>
+            <Text>       </Text>
+
+        </View>
         <FlatList
             data={data}
             renderItem={({ item }) => (

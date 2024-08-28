@@ -51,7 +51,181 @@ export default function OrderScreen({ navigation }) {
           </TouchableOpacity>
         </View>
         <ScrollView style={styles.bodyContent}>
+        <View style={styles.OrderCard}>
+            <View style={{ flex: 0.4 }}>
+              <Image
+                style={{ width: 119, height: 124, borderRadius: 22 }}
+                source={require("../assets/Rectangle 17 (3).png")}
+              />
+            </View>
+            <View style={{ flex: 0.4, flexDirection: 'row' }}>
+              <View>
+                <Text style={styles.IDText}> #5625554 </Text>
+                <Text style={styles.ImageCount}> 5 Images </Text>
+                <View style={{ paddingTop: 45, paddingLeft: 10 }}>
+                  <Text style={styles.DayCount}>2 Days ago </Text>
+                </View>
+              </View>
+              <View style={{ paddingTop: 20, paddingLeft: 45 }}>
+                <Text
+                  style={{
+                    color: "yellow",
+                    fontSize: 14,
+                    fontFamily: 'DMSans_500Medium',
+                  }}
+                >
+                  Pending{" "}
+                </Text>
+              </View>
+
+            </View>
+
+            <View
+              style={{
+                flex: 0.3,
+                justifyContent: 'flex-end',
+                paddingBottom: 20
+              }}
+            >
+
+              <TouchableOpacity style={{
+                borderWidth: 1,
+                borderColor: 'gray',
+                borderRadius: 15,
+                width: 80,
+                height: 30,
+                alignContent: 'center',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Text style={styles.CardText}>
+                  Option{" "}
+                  <MaterialCommunityIcons
+                    name="ship-wheel"
+                    size={14}
+                    color={"#ffffff"}
+                  />
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
           <View style={styles.OrderCard}>
+            <View style={{ flex: 0.4 }}>
+              <Image
+                style={{ width: 119, height: 124, borderRadius: 22 }}
+                source={require("../assets/Rectangle 17 (3).png")}
+              />
+            </View>
+            <View style={{ flex: 0.4, flexDirection: 'row' }}>
+              <View>
+                <Text style={styles.IDText}> #5625554 </Text>
+                <Text style={styles.ImageCount}> 5 Images </Text>
+                <View style={{ paddingTop: 45, paddingLeft: 10 }}>
+                  <Text style={styles.DayCount}>2 Days ago </Text>
+                </View>
+              </View>
+              <View style={{ paddingTop: 20, paddingLeft: 45 }}>
+              <Text
+                  style={{
+                    color: "red",
+                    fontSize: 14,
+                    fontFamily: 'DMSans_500Medium',
+                  }}
+                >
+                  Cancel{" "}
+                </Text>
+              </View>
+
+            </View>
+
+            <View
+              style={{
+                flex: 0.3,
+                justifyContent: 'flex-end',
+                paddingBottom: 20
+              }}
+            >
+
+              <TouchableOpacity style={{
+                borderWidth: 1,
+                borderColor: 'gray',
+                borderRadius: 15,
+                width: 80,
+                height: 30,
+                alignContent: 'center',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Text style={styles.CardText}>
+                  Option{" "}
+                  <MaterialCommunityIcons
+                    name="ship-wheel"
+                    size={14}
+                    color={"#ffffff"}
+                  />
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={styles.OrderCard}>
+            <View style={{ flex: 0.4 }}>
+              <Image
+                style={{ width: 119, height: 124, borderRadius: 22 }}
+                source={require("../assets/Rectangle 17 (3).png")}
+              />
+            </View>
+            <View style={{ flex: 0.4, flexDirection: 'row' }}>
+              <View>
+                <Text style={styles.IDText}> #5625554 </Text>
+                <Text style={styles.ImageCount}> 5 Images </Text>
+                <View style={{ paddingTop: 45, paddingLeft: 10 }}>
+                  <Text style={styles.DayCount}>2 Days ago </Text>
+                </View>
+              </View>
+              <View style={{ paddingTop: 20, paddingLeft: 45 }}>
+              <Text
+                  style={{
+                    color: "#71F6B3",
+                    fontSize: 14,
+                    fontFamily: 'DMSans_500Medium',
+                  }}
+                >
+                  Approved{" "}
+                </Text>
+              </View>
+
+            </View>
+
+            <View
+              style={{
+                flex: 0.3,
+                justifyContent: 'flex-end',
+                paddingBottom: 20
+              }}
+            >
+
+              <TouchableOpacity style={{
+                borderWidth: 1,
+                borderColor: 'gray',
+                borderRadius: 15,
+                width: 80,
+                height: 30,
+                alignContent: 'center',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Text style={styles.CardText}>
+                  Option{" "}
+                  <MaterialCommunityIcons
+                    name="ship-wheel"
+                    size={14}
+                    color={"#ffffff"}
+                  />
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          {/* <View style={styles.OrderCard}>
             <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
               <View style={styles.OrderCardImage}>
                 <Image
@@ -152,9 +326,9 @@ export default function OrderScreen({ navigation }) {
               </View>
 
             </ImageBackground>
-          </View>
+          </View> */}
 
-          <View style={styles.OrderCard}>
+          {/* <View style={styles.OrderCard}>
             <View style={{ flex: 0.4 }}>
               <Image
                 style={{ width: 119, height: 153, borderRadius: 22 }}
@@ -269,7 +443,7 @@ export default function OrderScreen({ navigation }) {
                 </Text>
               </TouchableOpacity>
             </View>
-          </View>
+          </View> */}
           <View style={styles.OrderCard}>
             <View style={{ flex: 0.4 }}>
               <Image

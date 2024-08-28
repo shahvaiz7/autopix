@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView, KeyboardAvoidingView, Platform } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView, KeyboardAvoidingView, Platform,ImageBackground } from 'react-native'
 import React, { useState } from 'react'
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import TextInput from "../component/TextInput";
@@ -36,16 +36,34 @@ export default function ProfileDetails({ navigation }) {
     DMSans_700Bold,
   });
   return (
+    <View style={styles.containerView}> 
     <ScrollView style={styles.containerView}>
 
-      <LinearGradient
-        // Background Linear Gradient
-        colors={['#A52306', '#020202']}
-        locations={[0.1, 0.3]}
-        style={styles.containerView}
-      >
+      <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
 
         <View style={styles.topBack}>
+        <View style={{
+            color: 'white',
+            width: '100%',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            paddingTop: 40,
+            paddingLeft:20
+          }}>
+            <TouchableOpacity onPress={() => navigation.navigate("ProfileScreen")}  style={{flexDirection:'row'}}>
+              <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
+              <Text style={{
+              color: "#ffffff",
+              fontFamily: 'DMSans_500Medium', fontSize: 18
+            }}> Back</Text>
+            </TouchableOpacity>
+            <Text style={{
+              color: "#ffffff",
+              fontFamily: 'DMSans_500Medium', fontSize: 18
+            }}> </Text>
+            <Text>       </Text>
+
+        </View>
           <Image
             style={{ width: "100%", height: 120 }}
             source={require("../assets/logo-orange.png")}
@@ -142,9 +160,10 @@ export default function ProfileDetails({ navigation }) {
           <Button label="Save" onPress={() => navigation.navigate("Home")} />
         </View>
 
-      </LinearGradient>
+      </ImageBackground>
 
     </ScrollView>
+    </View>
   )
 }
 

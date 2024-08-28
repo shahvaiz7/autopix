@@ -101,18 +101,10 @@ export default function LoginScreen({ navigation }) {
             <Text style={styles.RegularText}>
               {" "}
               New User?{" "}
-              <Text
-                style={{
-                  fontFamily: 'DMSans_700Bold',
-                  padding: 10,
-                  color: "#FF4A22",
-                  fontSize: 16
-
-                }}
-              >
-                {" "}
-                Sign Up
-              </Text>{" "}
+              <Image
+                  style={{ width: 60, height: 20,resizeMode:'contain' }}
+                  source={require("../assets/signup.png")}
+                />
             </Text>
           </TouchableOpacity>
         </View>

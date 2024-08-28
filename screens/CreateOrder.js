@@ -124,13 +124,7 @@ export default function CreateOrder({ navigation }) {
             {" "}
             Mon-Sat 08:00-17:00 GMT{" "}
           </Text>
-          <View
-            style={{
-              backgroundColor: "#222C35",
-              opacity: 0.8,
-              borderRadius: 15,
-            }}
-          >
+          <ImageBackground source={require("../assets/pickerback.png")} style={styles.pickerBack} resizeMode='stretch' borderRadius={15}>
             <Picker
               selectedValue={selectedTime}
               onValueChange={(itemValue, itemIndex) =>
@@ -140,12 +134,13 @@ export default function CreateOrder({ navigation }) {
               selectionColor={'white'}
               mode={'dialog'}
               color={'red'}
-              style={{ color: '#ffffff', backgroundColor: 'black' }}
+              style={{ color: '#ffffff' }}
             >
               <Picker.Item label="24 Hours" value="24" />
               <Picker.Item label="3 Days" value="js" />
               <Picker.Item label="7 Days" value="js" />
             </Picker>
+            </ImageBackground>
           </View>
 
           {/* <Picker>
@@ -154,7 +149,7 @@ export default function CreateOrder({ navigation }) {
           <Picker.Item label="Next week" value="java" />
           <Picker.Item label="5 Days " value="js" />
         </Picker> */}
-        </View>
+        
         <View style={styles.SubmitView}>
           <Button
             label="Next"
@@ -179,6 +174,13 @@ const styles = StyleSheet.create({
     padding: 20,
 
     borderRadius: 15
+
+  },
+  pickerBack:{
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 15,
+    
 
   },
   HeaderView: {

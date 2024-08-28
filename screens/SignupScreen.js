@@ -139,22 +139,17 @@ export default function SignupScreen({ navigation }) {
           <Button label="sign up" onPress={() => navigation.navigate("Login")} />
         </View>
         <TouchableOpacity style={styles.BottomView} onPress={() => navigation.navigate("Login")}>
-          <Text style={{ padding: 10, color: "#ffffff", fontSize: 16, fontFamily: 'DMSans_400Regular' }}>
+          <Text style={{ padding: 2, color: "#ffffff", fontSize: 16, fontFamily: 'DMSans_400Regular' }}>
             {" "}
             Already have an account?{" "}
-            <Text
-              style={{
-                fontWeight: "bold",
-                padding: 10,
-                color: 'rgb(255, 37, 17)',
-                fontSize: 16, fontFamily: 'DMSans_400Regular'
-              }}
-            >
-              {" "}
-              Sign In
-            </Text>{" "}
-
+            <Image
+                  style={{ width: 60, height: 25 ,resizeMode:'contain'}}
+                  
+                  source={require("../assets/signin.png")}
+                />
           </Text>
+          
+            
         </TouchableOpacity>
 
       </ImageBackground>

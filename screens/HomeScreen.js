@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,ImageBackground } from 'react-native'
 import React from 'react'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from "@react-navigation/native";
@@ -19,7 +19,8 @@ const Tab = createMaterialBottomTabNavigator();
 
 export default function HomeScreen() {
   return (
-    // <Tab.Navigator tabBar={props => <BottomTab {...props} />} headerShown={false}>
+    // <Tab.Navigator tabBar={props => <BottomTab {...props} />}>
+    
     //   <Tab.Screen
     //     name="Shoot"
     //     component={ShootScreen}
@@ -27,30 +28,31 @@ export default function HomeScreen() {
     //       headerShown: false,
     //       tabBarLabel: 'Shoot',
     //       tabBarIcon: () => (
-    //         <MaterialCommunityIcons name="home" size={24} />
+    //         <MaterialCommunityIcons name="camera-outline" size={24} />
     //       ),
-    //       tabBarBadge: 3,
+          
     //     }}
 
     //   />
     //   <Tab.Screen name="Order"  component={OrderScreen} options={{
     //     headerShown: false,
     //     tabBarIcon: ({ color }) => (
-    //       <MaterialCommunityIcons name="note" color={color} size={26} />
+    //       <MaterialCommunityIcons name="note-outline" color={color} size={26} />
     //     ),
     //   }} />
     //   <Tab.Screen name="Guide" component={GuideAdd} options={{
     //     headerShown: false,
     //     tabBarIcon: ({ color }) => (
-    //       <MaterialCommunityIcons name="note" color={color} size={26} />
+    //       <MaterialCommunityIcons name="folder-open-outline" color={color} size={26} />
     //     ),
     //   }} />
     //   <Tab.Screen name="Profile" component={ProfileScreen} options={{
     //     headerShown: false,
     //     tabBarIcon: ({ color }) => (
-    //       <MaterialCommunityIcons name="note" color={color} size={26} />
+    //       <MaterialCommunityIcons name="account-outline" color={color} size={26} />
     //     ),
     //   }} />
+    
     // </Tab.Navigator>
     // <Tabs tabBar={props => <BottomTab {...props} />}>
 

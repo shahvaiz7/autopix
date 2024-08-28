@@ -31,6 +31,32 @@ export default function PrivecySetting({ navigation }) {
         <View style={styles.containerView}>
             <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>
                 <View style={styles.HeaderView}>
+                <View style={{
+            color: 'white',
+            width: '100%',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            paddingTop: 40,
+            paddingLeft:10
+          }}>
+            <TouchableOpacity onPress={() => navigation.navigate("AccountSetting")}  style={{flexDirection:'row'}}>
+              <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
+              <Text style={{
+              color: "#ffffff",
+              fontFamily: 'DMSans_500Medium', fontSize: 18
+            }}> </Text>
+            </TouchableOpacity>
+            <Text style={{
+              color: "#ffffff",
+              fontFamily: 'DMSans_500Medium', fontSize: 18
+            }}> Privecy Settings</Text>
+            <Text>       </Text>
+
+        </View>
+        <View style={{
+            paddingTop: 25,
+            paddingLeft:5
+          }}> 
                     <Text style={styles.AllText}> Privecy Settings </Text>
                     <Text
                         style={{ color: "#C0CACB", fontSize: 14, fontFamily: 'DMSans_400Regular', padding: 5 }}
@@ -38,6 +64,7 @@ export default function PrivecySetting({ navigation }) {
                         {" "}
                         We Collect Information that helps us {"\n"}enhance your experience{" "}
                     </Text>
+                    </View>
                 </View>
 
 
@@ -91,7 +118,7 @@ const styles = StyleSheet.create({
     },
 
     HeaderView: {
-        flex: 0.1,
+        flex: 0.2,
         width: "100%",
         padding: 10,
         paddingBottom: 30

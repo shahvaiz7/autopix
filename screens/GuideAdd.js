@@ -10,7 +10,7 @@ export default function GuideAdd({ navigation, route }) {
   const bgswitch = route.params;
   const id = route.params;
   const  image = route.params;
-const backgroundImage = route.params;
+  const backgroundImage = route.params;
 
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);

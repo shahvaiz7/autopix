@@ -1,4 +1,4 @@
-import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
+import { CameraView, CameraType, useCameraPermissions,Camera } from 'expo-camera';
 import React, { useRef, useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -10,11 +10,13 @@ export default function CameraScreen({ navigation }) {
   const [permission, requestPermission] = useCameraPermissions();
   const [photo, setPhoto] = useState(null);
   const cameraRef = useRef(null);
-
+ // const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const [isTorchOn, setIsTorchOn] = useState(false);
   const flashFunction = () => {
     console.log('checking state', isTorchOn);
-    setIsTorchOn(!isTorchOn)
+    setIsTorchOn(!isTorchOn);
+    
+    
   };
 
 

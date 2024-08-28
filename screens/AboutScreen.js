@@ -18,6 +18,32 @@ export default function AboutScreen({navigation}) {
       <ImageBackground style={styles.containerView} source={require("../assets/background.png")}>
         
         <View style={styles.HeaderView}>
+        <View style={{
+            color: 'white',
+            width: '100%',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            paddingTop: 40,
+            
+          }}>
+            <TouchableOpacity onPress={() => navigation.navigate("ProfileScreen")}  style={{flexDirection:'row'}}>
+              <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
+              <Text style={{
+              color: "#ffffff",
+              fontFamily: 'DMSans_500Medium', fontSize: 18
+            }}> </Text>
+            </TouchableOpacity>
+            <Text style={{
+              color: "#ffffff",
+              fontFamily: 'DMSans_500Medium', fontSize: 18
+            }}> About </Text>
+            <Text>       </Text>
+
+        </View>
+        <View style={{
+            paddingTop: 25,
+            paddingLeft:5
+          }}> 
           <Text style={styles.AllText}>About  </Text>
           <Text
             style={{ color: "#C0CACB", fontSize: 14, fontFamily:'DMSans_400Regular' }}
@@ -25,6 +51,7 @@ export default function AboutScreen({navigation}) {
             {" "}
           Version 1.0.0{" "}
           </Text>
+          </View>
         </View>
         <View style={styles.optionList}>
           
@@ -64,9 +91,9 @@ export default function AboutScreen({navigation}) {
     },
     
     HeaderView: {
-      flex: 0.1,
+      flex: 0.2,
       width: "100%",
-     padding:10
+     
     },
    
     optionList: {

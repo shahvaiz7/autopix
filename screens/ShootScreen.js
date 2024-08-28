@@ -90,8 +90,10 @@ export default function ShootScreen({ navigation }) {
               </View>
 
             </View>
-            <TouchableOpacity onPress={() => navigation.navigate("NotificationScreen")} >
-              <MaterialCommunityIcons name="bell-badge-outline" size={24} color={"#ffffff"} />
+            <TouchableOpacity onPress={() => navigation.navigate("NotificationScreen")} style={{
+                  backgroundColor:'#653024',borderRadius:25,height:30,width:30,justifyContent:'center',alignContent:'center',alignItems:'center'
+                }} >
+              <MaterialCommunityIcons name="bell-badge-outline" size={18} color={"#ffffff"} />
             </TouchableOpacity>
           </View>
           <View style={styles.bodyContent}>

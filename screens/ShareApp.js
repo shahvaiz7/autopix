@@ -6,6 +6,7 @@ import {
   Image,
   Linking,
   ScrollView,
+  ImageBackground
 } from "react-native";
 import Reac, { useState, useEffect } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -20,23 +21,46 @@ export default function ShareApp({ navigation }) {
   const [email, setEmail] = useState();
   return (
     <View style={styles.containerView}>
-      <LinearGradient
-        // Background Linear Gradient
-        colors={['#A52306', '#020202']}
-        locations={[0.1, 0.3]}
-        style={styles.containerView}
-      >
+       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>
         <View style={styles.HeaderView}>
+        <View style={{
+            color: 'white',
+            width: '100%',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            paddingTop: 40,
+            paddingLeft:10
+          }}>
+            <TouchableOpacity onPress={() => navigation.navigate("ProfileScreen")}  style={{flexDirection:'row'}}>
+              <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
+              <Text style={{
+              color: "#ffffff",
+              fontFamily: 'DMSans_500Medium', fontSize: 18
+            }}> </Text>
+            </TouchableOpacity>
+            <Text style={{
+              color: "#ffffff",
+              fontFamily: 'DMSans_500Medium', fontSize: 18
+            }}> Share App</Text>
+            <Text>       </Text>
+
+        </View>
+        <View style={{
+            paddingTop: 25,
+            paddingLeft:5
+          }}> 
           <Text style={styles.AllText}>Share App  </Text>
           <Text style={{ color: "#ffffff", marginLeft: 10 ,fontFamily:'DMSans_500Medium',fontSize:14}}>
             {" "}
             Email{" "}
           </Text>
+          </View>
         </View>
         <View style={styles.optionList}>
 
           <TextInput
-            
+              inputHieght={54}
+              inputAlign={'center'}
             placeholder="Enter email.."
             autoCapitalize="none"
             autoCompleteType="email"
@@ -51,7 +75,7 @@ export default function ShareApp({ navigation }) {
             <Button label="Send" onPress={() => OpenAnything.Email(to = email, subject = "Install from here", body = "link###")} />
           </View>
         </View>
-      </LinearGradient>
+      </ImageBackground>
     </View>
   );
 }
@@ -62,7 +86,7 @@ const styles = StyleSheet.create({
     
   },
   HeaderView: {
-    flex: .1,
+    flex: .22,
     marginTop:10
   },
 
