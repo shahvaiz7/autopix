@@ -1,88 +1,108 @@
-import { View, Text, TouchableOpacity,StyleSheet ,ImageBackground} from 'react-native';
-import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { Component } from 'react';
+
 export default function BottomTab({ state, descriptors, navigation }) {
-    const image = require("../assets/bottomtab.png");
     const icon = {
-        Shoot:() => <MaterialCommunityIcons name="note"  size={26} /> ,
-        Order:() => <MaterialCommunityIcons name="note"  size={26} />,
-        Guide:() => <MaterialCommunityIcons name="note"  size={26} />,
-        profile:() => <MaterialCommunityIcons name="note"  size={26}/>
-       
+        Shoot: (props) => <MaterialCommunityIcons name="camera-outline" size={26} {...props} />,
+        Order: (props) => <MaterialCommunityIcons name="note-outline" size={26} {...props} />,
+        Guide: (props) => <MaterialCommunityIcons name="folder-open-outline" size={26} {...props} />,
+        Profile: (props) => <MaterialCommunityIcons name="account-outline" size={26} {...props} />
+
     }
+    // const icon = {
+    //     Shoot: function (props) {
+    //         return (MaterialCommunityIcons, { name: "camera-outline", size: 26, ...props });
+    //     },
+    //     Order: function (props) {
+    //         return (MaterialCommunityIcons, { name: "note-outline", size: 26, ...props });
+    //     },
+    //     Guide: function (props) {
+    //         return (MaterialCommunityIcons, { name: "folder-open-outline", size: 26, ...props });
+    //     },
+    //     profile: function (props) {
+    //         return (MaterialCommunityIcons, { name: "account-outline", size: 26, ...props });
+    //     }
+    // };
     return (
-       
-       
-            <View style={styles.tabbar} >
-                 <ImageBackground source={require("../assets/bottomtab.png")}>
-   
-            {state.routes.map((route, index) => {
-                const { options } = descriptors[route.key];
-                const label =
-                    options.tabBarLabel !== undefined
-                        ? options.tabBarLabel
-                        : options.title !== undefined
-                            ? options.title
-                            : route.name;
+        <View>
+            <ImageBackground source={require("../assets/bottomtab.png")} style={styles.tabbar} imageStyle={{resizeMode:'stretch',marginTop:-30}} >
+                {state.routes.map((route, index) => {
+                    const { options } = descriptors[route.key];
+                    const label =
+                        options.tabBarLabel !== undefined
+                            ? options.tabBarLabel
+                            : options.title !== undefined
+                                ? options.title
+                                : route.name;
 
-                const isFocused = state.index === index;
+                    const isFocused = state.index === index;
 
-                const onPress = () => {
-                    const event = navigation.emit({
-                        type: 'tabPress',
-                        target: route.key,
-                        canPreventDefault: true,
-                    });
+                    const onPress = () => {
+                        const event = navigation.emit({
+                            type: 'tabPress',
+                            target: route.key,
+                            canPreventDefault: true,
+                        });
 
-                    if (!isFocused && !event.defaultPrevented) {
-                        navigation.navigate(route.name, route.params);
-                    }
-                };
+                        if (!isFocused && !event.defaultPrevented) {
+                            navigation.navigate(route.name, route.params);
+                        }
+                    };
 
-                const onLongPress = () => {
-                    navigation.emit({
-                        type: 'tabLongPress',
-                        target: route.key,
-                    });
-                };
+                    const onLongPress = () => {
+                        navigation.emit({
+                            type: 'tabLongPress',
+                            target: route.key,
+                        });
+                    };
 
-                return (
-                    <TouchableOpacity
-                        key={route.name}
-                        accessibilityRole="button"
-                        accessibilityState={isFocused ? { selected: true } : {}}
-                        accessibilityLabel={options.tabBarAccessibilityLabel}
-                        testID={options.tabBarTestID}
-                        onPress={onPress}
-                        onLongPress={onLongPress}
-                        style={styles.tabbarItem}
-                    >
-                       
-                        <Text style={{ color: isFocused ? '#A52306' : 'white', fontWeight:'bold'}}>
-                            {label}
-                        </Text>
-                    </TouchableOpacity>
-                );
-            })}
-             </ImageBackground>
+                    return (
+                        <TouchableOpacity
+                            accessibilityRole="button"
+                            accessibilityState={isFocused ? { selected: true } : {}}
+                            accessibilityLabel={options.tabBarAccessibilityLabel}
+                            testID={options.tabBarTestID}
+                            onPress={onPress}
+                            onLongPress={onLongPress}
+                            style={styles.tabbarItem}
+                        >
+                            {
+                            icon[route.name]({
+                                color: isFocused ? '#FF4A22' : '#ffffff'
+                            })
+                            }
+                            {/* <MaterialCommunityIcons name="camera-outline" size={18} color={isFocused ? '#FF4A22' : '#ffffff'} /> */}
+                            <Text style={{ color: isFocused ? '#FF4A22' : '#ffffff' }}>
+                                {label}
+                            </Text>
+                        </TouchableOpacity>
+                    );
+                })}
+            </ImageBackground>
         </View>
-       
     );
 }
 const styles = StyleSheet.create({
-    tabbar:{
-        padding:15,
-        margin:20,
-        flexDirection:'row'  ,
-        alignItems:'center',
+    tabbar: {
+
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#000000',
+        paddingBottom:15,
+        
+
+
+
+
 
     },
-    tabbarItem:{
-        flex:1,
-        justifyContent:'center',
-        alignContent:'center',
-        alignItems:'center',
-        
+    tabbarItem: {
+        flex: 1,
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+
+
+
     }
 })

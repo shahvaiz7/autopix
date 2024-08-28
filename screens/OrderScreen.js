@@ -513,7 +513,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     backgroundColor: "#020202",
-    paddingBottom: 40
+    paddingBottom: 10
   },
 
   topBar: {

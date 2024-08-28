@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
   containerView: {
     flex: 1,
     backgroundColor: "#020202",
-    paddingBottom: 40
+    paddingBottom: 10
 
 
 

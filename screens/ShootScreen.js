@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     backgroundColor: "#020202",
-    paddingBottom: 80
+    paddingBottom: 10
   },
   image: {
     height: 188,

@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View,ImageBackground } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground } from 'react-native'
 import React from 'react'
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+//import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from "@react-navigation/native";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Tabs } from "expo-router";
@@ -14,46 +14,46 @@ import BottomTab from '../component/BottomTab';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 //npm install @react-navigation/bottom-tabs
 
-const Tab = createMaterialBottomTabNavigator();
-//const Tab = createBottomTabNavigator();
+//const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function HomeScreen() {
   return (
-    // <Tab.Navigator tabBar={props => <BottomTab {...props} />}>
-    
-    //   <Tab.Screen
-    //     name="Shoot"
-    //     component={ShootScreen}
-    //     options={{
-    //       headerShown: false,
-    //       tabBarLabel: 'Shoot',
-    //       tabBarIcon: () => (
-    //         <MaterialCommunityIcons name="camera-outline" size={24} />
-    //       ),
-          
-    //     }}
+    <Tab.Navigator tabBar={props => <BottomTab {...props} />}>
 
-    //   />
-    //   <Tab.Screen name="Order"  component={OrderScreen} options={{
-    //     headerShown: false,
-    //     tabBarIcon: ({ color }) => (
-    //       <MaterialCommunityIcons name="note-outline" color={color} size={26} />
-    //     ),
-    //   }} />
-    //   <Tab.Screen name="Guide" component={GuideAdd} options={{
-    //     headerShown: false,
-    //     tabBarIcon: ({ color }) => (
-    //       <MaterialCommunityIcons name="folder-open-outline" color={color} size={26} />
-    //     ),
-    //   }} />
-    //   <Tab.Screen name="Profile" component={ProfileScreen} options={{
-    //     headerShown: false,
-    //     tabBarIcon: ({ color }) => (
-    //       <MaterialCommunityIcons name="account-outline" color={color} size={26} />
-    //     ),
-    //   }} />
-    
-    // </Tab.Navigator>
+      <Tab.Screen
+        name="Shoot"
+        component={ShootScreen}
+        options={{
+          headerShown: false,
+          tabBarLabel: 'Shoot',
+          tabBarIcon: () => (
+            <MaterialCommunityIcons name="camera-outline" size={24} />
+          ),
+
+        }}
+
+      />
+      <Tab.Screen name="Order" component={OrderScreen} options={{
+        headerShown: false,
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="note-outline" color={color} size={26} />
+        ),
+      }} />
+      <Tab.Screen name="Guide" component={GuideAdd} options={{
+        headerShown: false,
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="folder-open-outline" color={color} size={26} />
+        ),
+      }} />
+      <Tab.Screen name="Profile" component={ProfileScreen} options={{
+        headerShown: false,
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="account-outline" color={color} size={26} />
+        ),
+      }} />
+
+    </Tab.Navigator>
     // <Tabs tabBar={props => <BottomTab {...props} />}>
 
     //   <Tabs.Screen name="ShootScreen" options={{ title: "Shoot" }} />
@@ -65,63 +65,63 @@ export default function HomeScreen() {
     //   );
     // };
 
-    <Tab.Navigator activeColor="#FF4A22"
-      activeIndicatorStyle={{ backgroundColor: '#020202' }}
-      inactiveColor="#ffffff"
-      // screenOptions={{
-      //   tabBarStyle: { position: 'absolute' },
-      // }}
+    // <Tab.Navigator activeColor="#FF4A22"
+    //   activeIndicatorStyle={{ backgroundColor: '#020202' }}
+    //   inactiveColor="#ffffff"
+    //   // screenOptions={{
+    //   //   tabBarStyle: { position: 'absolute' },
+    //   // }}
 
-      // shifting={true}
-      barStyle={{
+    //   // shifting={true}
+    //   barStyle={{
 
-        backgroundColor: 'transparent',
-        position: 'absolute',
-        bottom: 5,
-        borderColor: '#FF4A22',
-        borderWidth: 2,
-        borderTopRightRadius: 60,
-        borderTopLeftRadius: 60,
-        borderBottomLeftRadius: 40,
-        borderBottomRightRadius: 40,
-        transform: [{ scaleY: .8 }],
+    //     backgroundColor: 'transparent',
+    //     position: 'absolute',
+    //     bottom: 5,
+    //     borderColor: '#FF4A22',
+    //     borderWidth: 2,
+    //     borderTopRightRadius: 60,
+    //     borderTopLeftRadius: 60,
+    //     borderBottomLeftRadius: 40,
+    //     borderBottomRightRadius: 40,
+    //     transform: [{ scaleY: .8 }],
 
 
-      }}
-    >
+    //   }}
+    // >
 
-      <Tab.Screen name="Shoot" component={ShootScreen}
-        options={{
-          title: 'Shoot',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="camera-outline" color={color} size={26} />
-          ),
+    //   <Tab.Screen name="Shoot" component={ShootScreen}
+    //     options={{
+    //       title: 'Shoot',
+    //       tabBarIcon: ({ color }) => (
+    //         <MaterialCommunityIcons name="camera-outline" color={color} size={26} />
+    //       ),
 
-        }} />
-      <Tab.Screen name="Order" component={OrderScreen}
+    //     }} />
+    //   <Tab.Screen name="Order" component={OrderScreen}
 
-        options={{
-          // tabBarBadge: true,
-          tabBarLabel: 'Order',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="note-outline" color={color} size={26} />
-          ),
-        }} />
-      <Tab.Screen name="Guide" component={GuideAdd}
-        options={{
+    //     options={{
+    //       // tabBarBadge: true,
+    //       tabBarLabel: 'Order',
+    //       tabBarIcon: ({ color }) => (
+    //         <MaterialCommunityIcons name="note-outline" color={color} size={26} />
+    //       ),
+    //     }} />
+    //   <Tab.Screen name="Guide" component={GuideAdd}
+    //     options={{
 
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="folder-open-outline" color={color} size={26} />
-          ),
-        }} />
-      <Tab.Screen name="Profile" component={ProfileScreen}
-        options={{
-          tabBarLabel: 'Profile',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account-outline" color={color} size={26} />
-          ),
-        }} />
-    </Tab.Navigator>
+    //       tabBarIcon: ({ color }) => (
+    //         <MaterialCommunityIcons name="folder-open-outline" color={color} size={26} />
+    //       ),
+    //     }} />
+    //   <Tab.Screen name="Profile" component={ProfileScreen}
+    //     options={{
+    //       tabBarLabel: 'Profile',
+    //       tabBarIcon: ({ color }) => (
+    //         <MaterialCommunityIcons name="account-outline" color={color} size={26} />
+    //       ),
+    //     }} />
+    // </Tab.Navigator>
 
   )
 }
