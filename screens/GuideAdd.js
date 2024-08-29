@@ -9,7 +9,7 @@ import Button from '../component/Button';
 export default function GuideAdd({ navigation, route }) {
   const bgswitch = route.params;
   const id = route.params;
-  const  image = route.params;
+  const npimage = route.params;
   const backgroundImage = route.params;
 
   const [isEnabled, setIsEnabled] = useState(false);
@@ -75,7 +75,7 @@ export default function GuideAdd({ navigation, route }) {
               <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("BackgroundType", { bgswitch })} >
                 <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
               </TouchableOpacity>
-               <Image source={backgroundImage} style={styles.logo1} />
+             { backgroundImage && <Image source={backgroundImage} style={styles.logo1} />}
               {/* <Text  style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}> Id : {id}</Text> */}
 
               {/* <Image
@@ -130,29 +130,29 @@ export default function GuideAdd({ navigation, route }) {
           </View>
           <View style={styles.InstructionView}>
 
-          <View style={styles.OptionView} onPress={() => navigation.navigate("#")}>
-            <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
-              {" "}
-              Number Plate{" "} 
-            </Text>
-            <Switch
-              trackColor={{ false: '#767577', true: '#81b0ff' }}
-              thumbColor={npSwitch ? '#FF4A22' : '#ffffff'}
-              ios_backgroundColor="#3e3e3e"
-              onValueChange={togglenpSwitch}
-              value={npSwitch}
-            />
-          </View>
-{npSwitch && <View style={styles.imageContainer}>
-  <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("NpList")} >
-  <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
+            <View style={styles.OptionView} onPress={() => navigation.navigate("#")}>
+              <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
+                {" "}
+                Number Plate{" "}
+              </Text>
+              <Switch
+                trackColor={{ false: '#767577', true: '#81b0ff' }}
+                thumbColor={npSwitch ? '#FF4A22' : '#ffffff'}
+                ios_backgroundColor="#3e3e3e"
+                onValueChange={togglenpSwitch}
+                value={npSwitch}
+              />
+            </View>
+            {npSwitch && <View style={styles.imageContainer}>
+              <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("NpList")} >
+                <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
 
-  </TouchableOpacity>
-  <Image source={image} style={styles.logo1}/>
-  
-  
-</View>}
-</View>
+              </TouchableOpacity>
+              {/* <Image source={npimage} style={styles.logo1} /> */}
+
+
+            </View>}
+          </View>
           {/* <View style={styles.InstructionView}>
 
             <View style={styles.OptionView} onPress={() => navigation.navigate("#")}>
@@ -184,7 +184,8 @@ export default function GuideAdd({ navigation, route }) {
           <Text style={styles.CardText}>License Plate : Yes /  No</Text>
         </View> */}
           <View style={styles.Bottom}>
-            {(backgroundSwitch || npSwitch || logoSwitch || floorSwitch) && <Button label="Create Instruction" onPress={() => navigation.navigate("GuideScreen")} />}
+            {(backgroundSwitch || npSwitch || logoSwitch || floorSwitch) && 
+            <Button label="Create Instruction" onPress={() => navigation.navigate("GuideScreen")} />}
 
           </View>
         </ScrollView>
@@ -237,7 +238,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: 20,
     borderRadius: 5,
-    
+
 
   },
   imageContainer: {

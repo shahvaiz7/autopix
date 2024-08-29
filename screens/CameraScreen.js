@@ -1,4 +1,4 @@
-import { CameraView, CameraType, useCameraPermissions,Camera } from 'expo-camera';
+import { CameraView, CameraType, useCameraPermissions, Camera } from 'expo-camera';
 import React, { useRef, useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -11,16 +11,13 @@ export default function CameraScreen({ navigation }) {
   const [permission, requestPermission] = useCameraPermissions();
   const [photo, setPhoto] = useState(null);
   const cameraRef = useRef(null);
- // const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
+  // const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const [isTorchOn, setIsTorchOn] = useState(false);
   const [isLightOn, setLightOn] = useState('off');
   const flashFunction = () => {
     console.log('checking state', isTorchOn);
     setIsTorchOn(!isTorchOn);
-    setLightOn( flashMode => (flashMode === 'off' ? 'on': 'off'))
-
-    
-    
+    setLightOn(flashMode => (flashMode === 'off' ? 'on' : 'off'))
   };
 
 
@@ -42,29 +39,27 @@ export default function CameraScreen({ navigation }) {
   function toggleCameraFacing() {
     setFacing(current => (current === 'back' ? 'front' : 'back'));
   }
- 
+
   const handleTakePhoto = async () => {
     if (cameraRef.current) {
       const options = {
         quality: 1,
-        base64: false,
+        base64: true,
         exif: false,
-        
+
+
+
       };
       const takedPhoto = await cameraRef.current.takePictureAsync(options);
-
-       setPhoto(takedPhoto);
-       console.log(takedPhoto);
-      
+      setPhoto(takedPhoto);
+      console.log(takedPhoto.uri);
     }
-
-   
   };
 
   const handleRetakePhoto = () => setPhoto(null);
-  if (photo) 
-  return 
-  <PreviewImage photo={photo} handleRetakePhoto={handleRetakePhoto} />
+  if (photo)
+    return (
+      <PreviewImage photo={photo} handleRetakePhoto={handleRetakePhoto} />)
 
 
   return (

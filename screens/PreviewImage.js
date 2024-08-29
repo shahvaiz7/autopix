@@ -1,59 +1,105 @@
 import { Fontisto } from '@expo/vector-icons';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import React from 'react';
-import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View } from 'react-native';
+import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View, Text, ImageBackground } from 'react-native';
+import Button from '../component/Button';
 
-const PreviewImage = ({ photo, handleRetakePhoto }) => (
-    <View style={styles.container}>
-        <View style={styles.box}>
-            <Image
-                style={styles.previewContainer}
-                source={{ uri: 'data:image/jpg;base64,' + photo}}
-            />
-        </View>
 
-        <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={handleRetakePhoto}>
-                <MaterialCommunityIcons name="camera-plus" size={44} color={"white"} />
-            </TouchableOpacity>
-        </View>
-    </View>
-);
+export default function PreviewImage({ photo, handleRetakePhoto }) {
+    return (
+        <SafeAreaView style={styles.container}>
+            <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>
+                <View style={{
+                    color: 'white',
+                    width: '100%',
+                    justifyContent: 'space-between',
+                    flexDirection: 'row',
+                    paddingTop: 40,
+                    paddingLeft: 10,
+                    paddingBottom: 5
+                }}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={handleRetakePhoto}>
+                        <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
+                        <Text style={{
+                            color: "#ffffff",
+                            fontFamily: 'DMSans_500Medium', fontSize: 18
+                        }}> </Text>
+                    </TouchableOpacity>
+                    <Text style={{
+                        color: "#ffffff",
+                        fontFamily: 'DMSans_500Medium', fontSize: 18
+                    }}> Your Photo  </Text>
+                    <Text>       </Text>
+
+                </View>
+                <View style={styles.box}>
+                    <Image
+                        style={styles.previewContainer}
+                        source={{ uri: 'data:image/jpg;base64,' + photo.base64 }}
+                    />
+                </View>
+
+                <View style={styles.Bottom}>
+                    <Button label="Accept" />
+                    <TouchableOpacity style={{
+                        borderWidth: 1,
+                        borderColor: 'gray',
+                        margin: 10,
+                        borderRadius: 15,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: '96%',
+                        height: 54,
+                        
+
+
+                    }} onPress={handleRetakePhoto}>
+
+                        <Text style={{
+                            color: 'white',
+                            fontSize: 14,
+                            fontFamily: 'DMSans_400Regular',
+
+
+                        }}> Retake </Text>
+                    </TouchableOpacity>
+                </View>
+            </ImageBackground>
+        </SafeAreaView>
+    )
+}
 
 const styles = StyleSheet.create({
+
+    containerView: {
+        flex: 1,
+        backgroundColor: "#020202",
+
+
+    },
     container: {
-        height: 300,
-        backgroundColor: 'black',
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+
     },
     box: {
-        borderRadius: 15,
-        padding: 1,
-        width: '95%',
+        flex: .9,
+        margin: 15,
         backgroundColor: 'darkgray',
         justifyContent: 'center',
         alignItems: "center",
     },
     previewContainer: {
-        height: 300,
-        width: '95%',
-        height: '85%',
-        borderRadius: 15
-    },
-    buttonContainer: {
-        marginTop: '4%',
-        flexDirection: 'row',
-        justifyContent: "center",
         width: '100%',
+        height: '100%',
     },
-    button: {
-        backgroundColor: 'gray',
-        borderRadius: 25,
-        padding: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-    }
+    Bottom: {
+        padding: 15,
+        
+
+
+    },
 });
 
-export default PreviewImage;
+

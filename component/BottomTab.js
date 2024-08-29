@@ -3,10 +3,10 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 export default function BottomTab({ state, descriptors, navigation }) {
     const icon = {
-        Shoot: (props) => <MaterialCommunityIcons name="camera-outline" size={26} {...props} />,
-        Order: (props) => <MaterialCommunityIcons name="note-outline" size={26} {...props} />,
-        Guide: (props) => <MaterialCommunityIcons name="folder-open-outline" size={26} {...props} />,
-        Profile: (props) => <MaterialCommunityIcons name="account-outline" size={26} {...props} />
+        Shoot: (props) => <MaterialCommunityIcons name="camera-outline" size={20} {...props} />,
+        Order: (props) => <MaterialCommunityIcons name="note-outline" size={20} {...props} />,
+        Guide: (props) => <MaterialCommunityIcons name="folder-open-outline" size={20} {...props} />,
+        Profile: (props) => <MaterialCommunityIcons name="account-outline" size={20} {...props} />
 
     }
     // const icon = {
@@ -25,7 +25,7 @@ export default function BottomTab({ state, descriptors, navigation }) {
     // };
     return (
         <View>
-            <ImageBackground source={require("../assets/bottomtab.png")} style={styles.tabbar} imageStyle={{resizeMode:'stretch',marginTop:-30}} >
+            <ImageBackground source={require("../assets/bottomtab.png")} style={styles.tabbar} imageStyle={{ resizeMode: 'stretch', marginTop: -30 }} >
                 {state.routes.map((route, index) => {
                     const { options } = descriptors[route.key];
                     const label =
@@ -68,12 +68,15 @@ export default function BottomTab({ state, descriptors, navigation }) {
                             style={styles.tabbarItem}
                         >
                             {
-                            icon[route.name]({
-                                color: isFocused ? '#FF4A22' : '#ffffff'
-                            })
+                                icon[route.name]({
+                                    color: isFocused ? '#FF4A22' : '#ffffff'
+                                })
                             }
                             {/* <MaterialCommunityIcons name="camera-outline" size={18} color={isFocused ? '#FF4A22' : '#ffffff'} /> */}
-                            <Text style={{ color: isFocused ? '#FF4A22' : '#ffffff' }}>
+                            <Text style={{
+                                color: isFocused ? '#FF4A22' : '#ffffff', fontSize: 12,
+                                fontFamily: 'DMSans_400Regular',
+                            }}>
                                 {label}
                             </Text>
                         </TouchableOpacity>
@@ -89,8 +92,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#000000',
-        paddingBottom:15,
-        
+        paddingBottom: 15,
+
 
 
 

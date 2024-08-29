@@ -29,7 +29,11 @@ export default function NotificationScreen({ navigation }) {
                             <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
                         </TouchableOpacity>
                         <Text style={styles.CardText}>Notification </Text>
-                        <MaterialCommunityIcons name="format-list-bulleted" size={24} color={"#ffffff"} />
+                        <Image
+                            style={{ width: 24, height: 24 }}
+                            source={require("../assets/notification.png")}
+                            resizeMode='contain'
+                        />
 
                     </View>
 
@@ -116,13 +120,13 @@ const styles = StyleSheet.create({
     containerView: {
         flex: 1,
         justifyContent: 'flex-start',
-        
+
 
     },
     HeadBlock: {
         padding: 20,
         marginTop: 20,
-    
+
 
     },
     FullBlock: {
@@ -134,13 +138,13 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'gray',
         padding: 10,
-        marginLeft:10,
-        marginRight:10,
-        margin:10
+        marginLeft: 10,
+        marginRight: 10,
+        margin: 10
         // backgroundColor:'black'
 
     },
-    TitleBar:{
+    TitleBar: {
         color: 'white',
         width: '100%',
         justifyContent: 'space-between',

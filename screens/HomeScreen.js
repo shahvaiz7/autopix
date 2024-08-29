@@ -21,36 +21,17 @@ export default function HomeScreen() {
   return (
     <Tab.Navigator tabBar={props => <BottomTab {...props} />}>
 
-      <Tab.Screen
-        name="Shoot"
-        component={ShootScreen}
-        options={{
-          headerShown: false,
-          tabBarLabel: 'Shoot',
-          tabBarIcon: () => (
-            <MaterialCommunityIcons name="camera-outline" size={24} />
-          ),
-
-        }}
-
-      />
+      <Tab.Screen name="Shoot" component={ShootScreen} options={{
+        headerShown: false
+      }} />
       <Tab.Screen name="Order" component={OrderScreen} options={{
-        headerShown: false,
-        tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="note-outline" color={color} size={26} />
-        ),
+        headerShown: false
       }} />
       <Tab.Screen name="Guide" component={GuideAdd} options={{
-        headerShown: false,
-        tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="folder-open-outline" color={color} size={26} />
-        ),
+        headerShown: false
       }} />
       <Tab.Screen name="Profile" component={ProfileScreen} options={{
-        headerShown: false,
-        tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="account-outline" color={color} size={26} />
-        ),
+        headerShown: false
       }} />
 
     </Tab.Navigator>
