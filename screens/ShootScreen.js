@@ -10,11 +10,11 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
-import {
-  useFonts, DMSans_400Regular,
-  DMSans_500Medium,
-  DMSans_700Bold,
-} from "@expo-google-fonts/dm-sans";
+// import {
+//   useFonts, DMSans_400Regular,
+//   DMSans_500Medium,
+//   DMSans_700Bold,
+// } from "@expo-google-fonts/dm-sans";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { LinearGradient } from 'expo-linear-gradient';
 

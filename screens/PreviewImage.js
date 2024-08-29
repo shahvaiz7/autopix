@@ -4,11 +4,11 @@ import React from 'react';
 import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View } from 'react-native';
 
 const PreviewImage = ({ photo, handleRetakePhoto }) => (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
         <View style={styles.box}>
             <Image
                 style={styles.previewContainer}
-                source={{ uri: 'data:image/jpg;base64,' + photo.base64 }}
+                source={{ uri: 'data:image/jpg;base64,' + photo}}
             />
         </View>
 
@@ -17,12 +17,12 @@ const PreviewImage = ({ photo, handleRetakePhoto }) => (
                 <MaterialCommunityIcons name="camera-plus" size={44} color={"white"} />
             </TouchableOpacity>
         </View>
-    </SafeAreaView>
+    </View>
 );
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        height: 300,
         backgroundColor: 'black',
         alignItems: 'center',
         justifyContent: 'center',
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     previewContainer: {
+        height: 300,
         width: '95%',
         height: '85%',
         borderRadius: 15

@@ -22,11 +22,7 @@ export default function PrivecySetting({ navigation }) {
     const togglebackgroundSwitch = () => setBackgroundSwitch(previousState => !previousState);
     const [floorSwitch, setFloorSwitch] = useState(false);
     const togglefloorSwitch = () => setFloorSwitch(previousState => !previousState);
-    useFonts({
-        DMSans_400Regular,
-        DMSans_500Medium,
-        DMSans_700Bold,
-    });
+    
     return (
         <View style={styles.containerView}>
             <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>

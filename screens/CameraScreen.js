@@ -4,6 +4,7 @@ import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Torch from 'react-native-torch';
 import PreviewImage from './PreviewImage';
+import { FlashMode } from 'expo-camera/build/legacy/Camera.types';
 
 export default function CameraScreen({ navigation }) {
   const [facing, setFacing] = useState('back');
@@ -12,9 +13,12 @@ export default function CameraScreen({ navigation }) {
   const cameraRef = useRef(null);
  // const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const [isTorchOn, setIsTorchOn] = useState(false);
+  const [isLightOn, setLightOn] = useState('off');
   const flashFunction = () => {
     console.log('checking state', isTorchOn);
     setIsTorchOn(!isTorchOn);
+    setLightOn( flashMode => (flashMode === 'off' ? 'on': 'off'))
+
     
     
   };
@@ -43,22 +47,29 @@ export default function CameraScreen({ navigation }) {
     if (cameraRef.current) {
       const options = {
         quality: 1,
-        base64: true,
+        base64: false,
         exif: false,
+        
       };
       const takedPhoto = await cameraRef.current.takePictureAsync(options);
 
-      setPhoto(takedPhoto);
+       setPhoto(takedPhoto);
+       console.log(takedPhoto);
+      
     }
+
+   
   };
 
   const handleRetakePhoto = () => setPhoto(null);
-  if (photo) return <PreviewImage photo={photo} handleRetakePhoto={handleRetakePhoto} />
+  if (photo) 
+  return 
+  <PreviewImage photo={photo} handleRetakePhoto={handleRetakePhoto} />
 
 
   return (
     <View style={styles.container}>
-      <CameraView style={styles.camera} facing={facing}>
+      <CameraView style={styles.camera} facing={facing} ref={cameraRef} flash={isLightOn}>
         <View style={styles.topContainer}>
           <TouchableOpacity onPress={flashFunction}>
             <MaterialCommunityIcons name={isTorchOn ? 'flash-outline' : 'flash-off'} size={24} color={"white"} />
