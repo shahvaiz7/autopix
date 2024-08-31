@@ -1,15 +1,18 @@
-import { CameraView, CameraType, useCameraPermissions, Camera } from 'expo-camera';
-import React, { useRef, useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { CameraView, CameraType, useCameraPermissions, Camera,  } from 'expo-camera';
+import React, { useRef, useState, useEffect } from 'react';
+import { Button, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Torch from 'react-native-torch';
 import PreviewImage from './PreviewImage';
 import { FlashMode } from 'expo-camera/build/legacy/Camera.types';
+import * as MediaLibrary from 'expo-media-library';
 
 export default function CameraScreen({ navigation }) {
   const [facing, setFacing] = useState('back');
   const [permission, requestPermission] = useCameraPermissions();
   const [photo, setPhoto] = useState(null);
+  //const [hasMediaPermission, setHasMediaPermission] = useEffect(null);
+
   const cameraRef = useRef(null);
   // const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const [isTorchOn, setIsTorchOn] = useState(false);
@@ -46,9 +49,6 @@ export default function CameraScreen({ navigation }) {
         quality: 1,
         base64: true,
         exif: false,
-
-
-
       };
       const takedPhoto = await cameraRef.current.takePictureAsync(options);
       setPhoto(takedPhoto);
@@ -56,10 +56,33 @@ export default function CameraScreen({ navigation }) {
     }
   };
 
+  // useEffect(() => {
+  //   (
+  //     async () => {
+  //       MediaLibrary.requestPermissionsAsync();
+  //       const mediaStatus = await Camera.requestCameraPermissionsAsync();
+  //       setHasMediaPermission(mediaStatus.status === 'granted');
+  //     })();
+
+  // }, [])
+
+  const savePhoto = async () => {
+    if (photo) {
+      try {
+        await MediaLibrary.createAssetAsync(photo.uri);
+        alert('Saved Successfully!')
+        setPhoto(null);
+      } catch (error) {
+        console.log(error)
+
+      }
+    }
+  }
+
   const handleRetakePhoto = () => setPhoto(null);
   if (photo)
     return (
-      <PreviewImage photo={photo} handleRetakePhoto={handleRetakePhoto} />)
+      <PreviewImage photo={photo} handleRetakePhoto={handleRetakePhoto} savePhoto={savePhoto} />)
 
 
   return (
@@ -77,13 +100,22 @@ export default function CameraScreen({ navigation }) {
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} >
-            <MaterialCommunityIcons name="camera-plus" size={44} color={"white"} />
+            <Image
+              style={{ width: 44, height: 44, borderRadius: 50, resizeMode: 'contain' }}
+              source={require("../assets/Fillter.png")}
+            />
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={handleTakePhoto} >
-            <MaterialCommunityIcons name="camera-iris" size={70} color={"#FF4A22"} />
+            <Image
+              style={{ width: 70, height: 70, borderRadius: 50, resizeMode: 'contain' }}
+              source={require("../assets/Shutter.png")}
+            />
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
-            <MaterialCommunityIcons name="camera-flip" size={44} color={"white"} />
+            <Image
+              style={{ width: 44, height: 44, borderRadius: 50, resizeMode: 'contain' }}
+              source={require("../assets/Switch.png")}
+            />
           </TouchableOpacity>
         </View>
       </CameraView>

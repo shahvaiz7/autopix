@@ -21,22 +21,22 @@ export default function ShareApp({ navigation }) {
   const [email, setEmail] = useState();
   return (
     <View style={styles.containerView}>
-       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>
+      <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>
         <View style={styles.HeaderView}>
-        <View style={{
+          <View style={{
             color: 'white',
             width: '100%',
             justifyContent: 'space-between',
             flexDirection: 'row',
             paddingTop: 40,
-            paddingLeft:10
+            paddingLeft: 10
           }}>
-            <TouchableOpacity onPress={() => navigation.navigate("ProfileScreen")}  style={{flexDirection:'row'}}>
+            <TouchableOpacity onPress={() => navigation.navigate("Home")} style={{ flexDirection: 'row' }}>
               <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
               <Text style={{
-              color: "#ffffff",
-              fontFamily: 'DMSans_500Medium', fontSize: 18
-            }}> </Text>
+                color: "#ffffff",
+                fontFamily: 'DMSans_500Medium', fontSize: 18
+              }}> </Text>
             </TouchableOpacity>
             <Text style={{
               color: "#ffffff",
@@ -44,23 +44,25 @@ export default function ShareApp({ navigation }) {
             }}> Share App</Text>
             <Text>       </Text>
 
+          </View>
+
         </View>
         <View style={{
-            paddingTop: 25,
-            paddingLeft:5
-          }}> 
+          paddingTop: 5,
+          paddingLeft: 5
+        }}>
           <Text style={styles.AllText}>Share App  </Text>
-          <Text style={{ color: "#ffffff", marginLeft: 10 ,fontFamily:'DMSans_500Medium',fontSize:14}}>
+
+        </View>
+        <View style={styles.optionList}>
+          <Text style={styles.InputHead}>
             {" "}
             Email{" "}
           </Text>
-          </View>
-        </View>
-        <View style={styles.optionList}>
 
           <TextInput
-              inputHieght={54}
-              inputAlign={'center'}
+            inputHieght={54}
+            inputAlign={'center'}
             placeholder="Enter email.."
             autoCapitalize="none"
             autoCompleteType="email"
@@ -83,32 +85,36 @@ export default function ShareApp({ navigation }) {
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    
+
   },
   HeaderView: {
-    flex: .22,
-    marginTop:10
+    flex: .1,
+    marginTop: 10
+  },
+  InputHead: {
+    fontSize: 16,
+    fontFamily: 'DMSans_500Medium',
+    paddingTop: 10,
+    color: "#ffffff",
+    paddingBottom: 5
   },
 
 
   optionList: {
-    alignContent: "center",
-    alignItems: "center",
-    justifyContent: "center",
+
     flex: 0.1,
     padding: 10,
-    paddingTop:40,
 
   },
 
   AllText: {
     color: "#ffffff",
-    fontFamily:'DMSans_500Medium',
-    fontSize:24,
+    fontFamily: 'DMSans_500Medium',
+    fontSize: 24,
     padding: 10
   },
   Bottom: {
-    padding:10,
+    padding: 10,
     width: "100%",
   }
 });

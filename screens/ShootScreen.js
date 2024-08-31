@@ -91,15 +91,15 @@ export default function ShootScreen({ navigation }) {
 
             </View>
             <TouchableOpacity onPress={() => navigation.navigate("NotificationScreen")} style={{
-                  backgroundColor:'#653024',borderRadius:25,height:30,width:30,justifyContent:'center',alignContent:'center',alignItems:'center'
-                }} >
+              backgroundColor: '#653024', borderRadius: 25, height: 30, width: 30, justifyContent: 'center', alignContent: 'center', alignItems: 'center'
+            }} >
               <MaterialCommunityIcons name="bell-badge-outline" size={18} color={"#ffffff"} />
             </TouchableOpacity>
           </View>
           <View style={styles.bodyContent}>
 
             <TouchableOpacity style={styles.blockContent} onPress={() => navigation.navigate("CameraScreen")} >
-              <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
+              <ImageBackground source={require("../assets/shootback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
                 <View style={{
                   paddingTop: 40
                 }}>
@@ -118,7 +118,8 @@ export default function ShootScreen({ navigation }) {
                     color: 'white',
                     fontSize: 16,
                     fontFamily: 'DMSans_500Medium',
-                    margin: 10
+                    marginLeft: 20,
+                    paddingTop: 30,
                   }}> Shoot </Text>
                 </View>
               </ImageBackground>
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     backgroundColor: "#020202",
-    paddingBottom: 10
+    paddingBottom: 15
   },
   image: {
     height: 188,
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     margin: 10,
     justifyContent: "space-between",
-    paddingTop: 40
+    paddingTop: 30
   },
   ProfileDetails: {
     flexDirection: 'row'
@@ -191,14 +192,14 @@ const styles = StyleSheet.create({
   },
   blockContent: {
     flex: .2,
-    borderWidth: 1,
+    borderWidth: .35,
     borderColor: 'gray',
     width: '100%',
     height: 192,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 25,
-    margin: 15
+    margin: 5
   },
   imageBack: {
 

@@ -37,14 +37,13 @@ export default function CarLine({ navigation }) {
                         {/* <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} > */}
 
                         <View style={{
-                            padding: 10
+                            padding: 5
 
                         }}>
                             <Text style={{
                                 color: 'white',
                                 fontSize: 16,
                                 fontFamily: 'DMSans_500Medium',
-                                paddingLeft: 10
                             }}> Automotive </Text>
                             <Image
                                 style={{ width: 300, height: 200, borderRadius: 25 }}
@@ -56,7 +55,7 @@ export default function CarLine({ navigation }) {
                             borderWidth: 1,
                             borderColor: 'white',
                             margin: 10,
-                            borderRadius: 15,
+                            borderRadius: 8,
                             justifyContent: 'center',
                             alignItems: 'center',
                             width: 161,
@@ -81,9 +80,9 @@ export default function CarLine({ navigation }) {
 
 
 
-                    <TouchableOpacity style={styles.blockContent} >
+                    <TouchableOpacity style={styles.blockContent2} >
                         <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }}
-                            style={{ width: 315, height: 250 }} >
+                            style={{ width: 343, height: 318 }} >
                             <View
                                 style={{
                                     flex: 1,
@@ -127,8 +126,8 @@ const styles = StyleSheet.create({
     bodyContent: {
         flex: 1,
         alignItems: "center",
-        margin: 10,
-        padding: 20
+        marginTop: 45,
+
     },
     blockContent: {
 
@@ -139,9 +138,24 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
 
-        margin: 20
+        width: 343,
+
 
 
     },
+    blockContent2: {
+
+        borderWidth: .5,
+        borderColor: 'gray',
+        borderRadius: 25,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center',
+        margin: 15,
+        height: 320
+
+
+    },
+
 
 });

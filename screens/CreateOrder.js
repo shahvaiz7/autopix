@@ -7,17 +7,39 @@ import {
   Image,
   ImageBackground
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../component/Button";
 import TextInput from "../component/TextInput";
 import { Picker } from "@react-native-picker/picker";
 import { LinearGradient } from "expo-linear-gradient";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import {
+  BottomSheetModal,
+  BottomSheetView,
+  BottomSheetModalProvider,
+} from '@gorhom/bottom-sheet';
+
 //npx expo install @react-native-picker/picker
 
 export default function CreateOrder({ navigation }) {
+  // ref
+  const bottomSheetModalRef = useRef < BottomSheetModal > (null);
+
+  // variables
+  const snapPoints = useMemo(() => ['50%'], []);
+
+  // callbacks
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
+  const handleSheetChanges = useCallback(() => {
+    console.log('handleSheetChanges', index);
+  }, []);
   const [selectedTime, setselectedTime] = useState();
+  const handleClosePress = useCallback(() => {
+    sheetRef.current?.close();
+  }, []);
 
   return (
     <ScrollView style={styles.containerView}>
@@ -30,9 +52,9 @@ export default function CreateOrder({ navigation }) {
             justifyContent: 'space-between',
             flexDirection: 'row',
             paddingTop: 30,
-            paddingBottom:20
+            paddingBottom: 20
           }}>
-            <TouchableOpacity onPress={() => navigation.navigate("OrderScreen")} >
+            <TouchableOpacity onPress={() => navigation.navigate("Home")} >
               <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
             </TouchableOpacity>
             <Text style={{
@@ -65,7 +87,7 @@ export default function CreateOrder({ navigation }) {
             returnKeyType="next"
             returnKeyLabel="next"
             inputHieght={54}
-           paddingTop={12}
+            paddingTop={12}
           />
           <Text style={{
             fontSize: 16,
@@ -140,22 +162,34 @@ export default function CreateOrder({ navigation }) {
               <Picker.Item label="3 Days" value="js" />
               <Picker.Item label="7 Days" value="js" />
             </Picker>
-            </ImageBackground>
-          </View>
+          </ImageBackground>
+        </View>
 
-          {/* <Picker>
+        {/* <Picker>
           <Picker.Item label="Next Day" value="java"/>
           <Picker.Item label="2 Days " value="js" />
           <Picker.Item label="Next week" value="java" />
           <Picker.Item label="5 Days " value="js" />
         </Picker> */}
-        
+
         <View style={styles.SubmitView}>
           <Button
             label="Next"
-            onPress={() => navigation.navigate("UploadingScreen")}
+            //onPress={handlePresentModalPress}
+           onPress={() => navigation.navigate("UploadingScreen")}
           />
         </View>
+
+        {/* <BottomSheetModal
+          ref={bottomSheetModalRef}
+          index={1}
+          snapPoints={snapPoints}
+          onChange={handleSheetChanges}
+        >
+          <BottomSheetView style={styles.contentContainer}>
+            <Text>Awesome 🎉</Text>
+          </BottomSheetView>
+        </BottomSheetModal> */}
 
       </ImageBackground>
     </ScrollView>
@@ -176,11 +210,11 @@ const styles = StyleSheet.create({
     borderRadius: 15
 
   },
-  pickerBack:{
+  pickerBack: {
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 15,
-    
+
 
   },
   HeaderView: {

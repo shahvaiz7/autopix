@@ -139,17 +139,17 @@ export default function SignupScreen({ navigation }) {
           <Button label="sign up" onPress={() => navigation.navigate("Login")} />
         </View>
         <TouchableOpacity style={styles.BottomView} onPress={() => navigation.navigate("Login")}>
-          <Text style={{ padding: 2, color: "#ffffff", fontSize: 16, fontFamily: 'DMSans_400Regular' }}>
+          <Text style={{ color: "#ffffff", fontSize: 16, fontFamily: 'DMSans_400Regular' }}>
             {" "}
             Already have an account?{" "}
             <Image
-                  style={{ width: 60, height: 25 ,resizeMode:'contain'}}
-                  
-                  source={require("../assets/signin.png")}
-                />
+              style={{ width: 60, height: 25, resizeMode: 'contain' }}
+
+              source={require("../assets/signin.png")}
+            />
           </Text>
-          
-            
+
+
         </TouchableOpacity>
 
       </ImageBackground>
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     padding: 10,
-    paddingTop:40
+    paddingTop: 40
   },
   TitleBar: {
     color: 'white',

@@ -5,7 +5,7 @@ import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View, Text, ImageBac
 import Button from '../component/Button';
 
 
-export default function PreviewImage({ photo, handleRetakePhoto }) {
+export default function PreviewImage({ photo, handleRetakePhoto, savePhoto }) {
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>
@@ -40,7 +40,7 @@ export default function PreviewImage({ photo, handleRetakePhoto }) {
                 </View>
 
                 <View style={styles.Bottom}>
-                    <Button label="Accept" />
+                    <Button label="Accept" onPress={savePhoto} />
                     <TouchableOpacity style={{
                         borderWidth: 1,
                         borderColor: 'gray',
@@ -50,7 +50,7 @@ export default function PreviewImage({ photo, handleRetakePhoto }) {
                         alignItems: 'center',
                         width: '96%',
                         height: 54,
-                        
+
 
 
                     }} onPress={handleRetakePhoto}>
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     },
     Bottom: {
         padding: 15,
-        
+
 
 
     },

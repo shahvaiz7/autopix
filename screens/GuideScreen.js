@@ -479,7 +479,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     margin: 10,
     justifyContent: "space-between",
-    paddingTop: 35
+    paddingTop: 30
   },
   bodyContent: {
     flex: 0.8,

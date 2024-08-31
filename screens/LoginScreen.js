@@ -97,16 +97,18 @@ export default function LoginScreen({ navigation }) {
         </View>
         <View style={styles.SubmitView}>
           <Button label="Login" onPress={() => navigation.navigate("Home")} />
-          <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
-            <Text style={styles.RegularText}>
-              {" "}
-              New User?{" "}
-              <Image
-                  style={{ width: 60, height: 20,resizeMode:'contain' }}
+          <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', alignContent: 'center' }}>
+            <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
+              <Text style={styles.RegularText}>
+                {" "}
+                New User?{" "}
+                <Image
+                  style={{ width: 60, height: 20, resizeMode: 'contain' }}
                   source={require("../assets/signup.png")}
                 />
-            </Text>
-          </TouchableOpacity>
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
         <View style={styles.Bottom}>
           <TouchableOpacity onPress={() => navigation.navigate("#")}>
@@ -166,7 +168,7 @@ const styles = StyleSheet.create({
   },
 
   RegularText: {
-    padding: 10, color: "#ffffff", fontSize: 16, fontFamily: 'DMSans_400Regular'
+    color: "#ffffff", fontSize: 16, fontFamily: 'DMSans_400Regular'
 
   },
 });

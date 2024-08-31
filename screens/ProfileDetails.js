@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
   },
   topBack: {
     flex: .10,
-  },
+    },
   profileAdd: {
     justifyContent: 'center',
     alignItems: 'center',

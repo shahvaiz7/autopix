@@ -20,25 +20,25 @@ import {
 export default function AccountSetting({ navigation }) {
   const [backgroundSwitch, setBackgroundSwitch] = useState(false);
   const togglebackgroundSwitch = () => setBackgroundSwitch(previousState => !previousState);
-  
+
   return (
     <View style={styles.containerView}>
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>
         <View style={styles.HeaderView}>
-        <View style={{
+          <View style={{
             color: 'white',
             width: '100%',
             justifyContent: 'space-between',
             flexDirection: 'row',
             paddingTop: 40,
-            paddingLeft:10
+            paddingLeft: 10
           }}>
-            <TouchableOpacity onPress={() => navigation.navigate("ProfileScreen")}  style={{flexDirection:'row'}}>
+            <TouchableOpacity onPress={() => navigation.navigate("Home")} style={{ flexDirection: 'row' }}>
               <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
               <Text style={{
-              color: "#ffffff",
-              fontFamily: 'DMSans_500Medium', fontSize: 18
-            }}> </Text>
+                color: "#ffffff",
+                fontFamily: 'DMSans_500Medium', fontSize: 18
+              }}> </Text>
             </TouchableOpacity>
             <Text style={{
               color: "#ffffff",
@@ -46,18 +46,18 @@ export default function AccountSetting({ navigation }) {
             }}> Account Settings</Text>
             <Text>       </Text>
 
-        </View>
-        <View style={{
+          </View>
+          <View style={{
             paddingTop: 25,
-            paddingLeft:5
-          }}> 
-          <Text style={styles.AllText}> Account Settings </Text>
-          <Text
-            style={{ color: "#C0CACB", fontSize: 14, fontFamily: 'DMSans_400Regular' }}
-          >
-            {" "}
-            Select your customized setting{" "}
-          </Text>
+            paddingLeft: 5
+          }}>
+            <Text style={styles.AllText}> Account Settings </Text>
+            <Text
+              style={{ color: "#C0CACB", fontSize: 14, fontFamily: 'DMSans_400Regular' }}
+            >
+              {" "}
+              Select your customized setting{" "}
+            </Text>
           </View>
         </View>
         <View style={styles.optionList}>

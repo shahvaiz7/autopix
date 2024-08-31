@@ -75,7 +75,7 @@ export default function GuideAdd({ navigation, route }) {
               <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("BackgroundType", { bgswitch })} >
                 <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
               </TouchableOpacity>
-             { backgroundImage && <Image source={backgroundImage} style={styles.logo1} />}
+              {backgroundImage && <Image source={backgroundImage} style={styles.logo1} />}
               {/* <Text  style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}> Id : {id}</Text> */}
 
               {/* <Image
@@ -184,8 +184,8 @@ export default function GuideAdd({ navigation, route }) {
           <Text style={styles.CardText}>License Plate : Yes /  No</Text>
         </View> */}
           <View style={styles.Bottom}>
-            {(backgroundSwitch || npSwitch || logoSwitch || floorSwitch) && 
-            <Button label="Create Instruction" onPress={() => navigation.navigate("GuideScreen")} />}
+            {(backgroundSwitch || npSwitch || logoSwitch || floorSwitch) &&
+              <Button label="Create Instruction" onPress={() => navigation.navigate("GuideScreen")} />}
 
           </View>
         </ScrollView>
