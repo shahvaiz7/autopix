@@ -99,7 +99,7 @@ export default function ShootScreen({ navigation }) {
           <View style={styles.bodyContent}>
 
             <TouchableOpacity style={styles.blockContent} onPress={() => navigation.navigate("CameraScreen")} >
-              <ImageBackground source={require("../assets/shootback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
+              <ImageBackground source={require("../assets/shootback.png")} imageStyle={{ borderRadius: 20 }} style={styles.imageBack} >
                 <View style={{
                   paddingTop: 40
                 }}>
@@ -127,7 +127,7 @@ export default function ShootScreen({ navigation }) {
 
 
             <TouchableOpacity style={styles.blockContent} onPress={pickImage}>
-              <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
+              <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 20 }} style={styles.imageBack} >
                 <Image
                   style={{ width: 70, height: 70, borderRadius: 25 }}
                   source={require("../assets/upload.png")}
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     height: 192,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 25,
+    borderRadius: 15,
     margin: 5
   },
   imageBack: {
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     height: 190,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 25,
+    borderRadius: 15,
 
 
 

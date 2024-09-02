@@ -5,7 +5,9 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
-  ImageBackground
+  Modal,
+  Pressable,
+  ImageBackground, Linking
 } from "react-native";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -23,23 +25,24 @@ import {
 //npx expo install @react-native-picker/picker
 
 export default function CreateOrder({ navigation }) {
-  // ref
-  const bottomSheetModalRef = useRef < BottomSheetModal > (null);
+  // // ref
+  // const bottomSheetModalRef = useRef < BottomSheetModal > (null);
 
-  // variables
-  const snapPoints = useMemo(() => ['50%'], []);
+  // // variables
+  // const snapPoints = useMemo(() => ['50%'], []);
 
-  // callbacks
-  const handlePresentModalPress = useCallback(() => {
-    bottomSheetModalRef.current?.present();
-  }, []);
-  const handleSheetChanges = useCallback(() => {
-    console.log('handleSheetChanges', index);
-  }, []);
+  // // callbacks
+  // const handlePresentModalPress = useCallback(() => {
+  //   bottomSheetModalRef.current?.present();
+  // }, []);
+  // const handleSheetChanges = useCallback(() => {
+  //   console.log('handleSheetChanges', index);
+  // }, []);
   const [selectedTime, setselectedTime] = useState();
-  const handleClosePress = useCallback(() => {
-    sheetRef.current?.close();
-  }, []);
+  const [modalVisible, setModalVisible] = useState(false);
+  // const handleClosePress = useCallback(() => {
+  //   sheetRef.current?.close();
+  // }, []);
 
   return (
     <ScrollView style={styles.containerView}>
@@ -176,20 +179,68 @@ export default function CreateOrder({ navigation }) {
           <Button
             label="Next"
             //onPress={handlePresentModalPress}
-           onPress={() => navigation.navigate("UploadingScreen")}
+            onPress={() => setModalVisible(true)}
           />
         </View>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+            setModalVisible(!modalVisible);
+          }}>
+          <View style={styles.centeredView}>
 
-        {/* <BottomSheetModal
-          ref={bottomSheetModalRef}
-          index={1}
-          snapPoints={snapPoints}
-          onChange={handleSheetChanges}
-        >
-          <BottomSheetView style={styles.contentContainer}>
-            <Text>Awesome 🎉</Text>
-          </BottomSheetView>
-        </BottomSheetModal> */}
+            <View style={styles.modalView}>
+              {/* setModalVisible(!modalVisible) */}
+
+              <Button label="Send Order" onPress={() => { navigation.navigate("UploadingScreen"), setModalVisible(!modalVisible) }} />
+
+              <TouchableOpacity style={{
+                borderWidth: 1,
+                borderColor: 'gray',
+                margin: 10,
+                borderRadius: 15,
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+                height: 54,
+              }} onPress={() => { Linking.openURL('https://carline.no') }} >
+
+                <Text style={{
+                  color: 'white',
+                  fontSize: 14,
+                  fontFamily: 'DMSans_400Regular',
+
+
+                }}> Access CarLine.no </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{
+                borderWidth: 1,
+                borderColor: 'gray',
+                margin: 10,
+                borderRadius: 15,
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+                height: 54,
+              }} onPress={() => setModalVisible(!modalVisible)}>
+
+                <Text style={{
+                  color: 'white',
+                  fontSize: 14,
+                  fontFamily: 'DMSans_400Regular',
+
+
+                }}> Back </Text>
+              </TouchableOpacity>
+            </View>
+
+          </View>
+
+
+        </Modal>
 
       </ImageBackground>
     </ScrollView>
@@ -250,5 +301,37 @@ const styles = StyleSheet.create({
   },
   InputBlock: {
     justifyContent: "flex-start",
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+
+
+  },
+  modalView: {
+    height: "60%",
+    width: '100%',
+    backgroundColor: '#181C27',
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+    paddingTop: 60,
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderTopColor: 'red',
+    borderWidth: 1,
+    borderColor: 'red'
+
+  },
+
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
   },
 });
