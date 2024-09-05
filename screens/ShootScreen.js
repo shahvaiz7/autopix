@@ -17,6 +17,7 @@ import * as ImagePicker from "expo-image-picker";
 // } from "@expo-google-fonts/dm-sans";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { LinearGradient } from 'expo-linear-gradient';
+import { usersData } from "../controller/usersData";
 
 export default function ShootScreen({ navigation }) {
   const [image, setImage] = useState(null);
@@ -65,6 +66,23 @@ export default function ShootScreen({ navigation }) {
     }
   };
 
+  const [UserList, setUserList] =useState({})
+
+    useEffect(()=>{
+        getData()
+    })
+
+    function getData(){
+        usersData(userRetrived)
+    }
+    function userRetrived(UserList){
+      setUserList(UserList)
+
+    }
+ 
+    
+    
+
   return (
     <View style={styles.containerView}>
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
@@ -75,6 +93,7 @@ export default function ShootScreen({ navigation }) {
                 style={{ width: 40, height: 40, borderRadius: 50 }}
                 source={require("../assets/profile-img.png")}
               />
+            
               <View>
                 <Text style={{
                   fontSize: 12,
@@ -85,9 +104,10 @@ export default function ShootScreen({ navigation }) {
                   fontFamily: 'DMSans_500Medium',
                   fontSize: 16,
                   color: '#ffffff',
-                  fontWeight: 'bold'
-                }}> Mr. Rahim </Text>
+                }}>  Mr X   </Text>
               </View>
+              
+              
 
             </View>
             <TouchableOpacity onPress={() => navigation.navigate("NotificationScreen")} style={{

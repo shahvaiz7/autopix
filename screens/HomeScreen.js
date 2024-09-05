@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, ImageBackground } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 //import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from "@react-navigation/native";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -10,12 +10,34 @@ import GuideScreen from './GuideScreen';
 import ProfileScreen from './ProfileScreen';
 import GuideAdd from './GuideAdd';
 import BottomTab from '../component/BottomTab';
+import firebase from '../component/firebase'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { doc } from 'firebase/firestore';
 //npm install @react-navigation/bottom-tabs
 
 //const Tab = createMaterialBottomTabNavigator();
 const Tab = createBottomTabNavigator();
+
+// const User =()=> {
+//   const [username,setUsername]= useState([]);
+//   const userRef = firebase.firestore().collection('user');
+
+//   useEffect(async()=>{
+//     userRef.onSnapshot(QuerySnapshot=>{
+//       const user = []
+//       QuerySnapshot.forEach((doc)=>{
+//         const {name} = doc.data()
+//         user.push({
+//           id: doc.id,
+//           name
+//         })
+//       })
+//       setUsername(user)
+//     })
+//   } )
+
+// }
 
 export default function HomeScreen() {
   return (

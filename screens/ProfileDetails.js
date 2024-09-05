@@ -54,7 +54,7 @@ export default function ProfileDetails({ navigation }) {
               paddingLeft: 20,
               borderRadius:25
             }}>
-              <TouchableOpacity onPress={() => navigation.navigate("ProfileScreen")} style={{ flexDirection: 'row', backgroundColor: 'transparent' }}>
+              <TouchableOpacity onPress={() => navigation.navigate("Home")} style={{ flexDirection: 'row', backgroundColor: 'transparent' }}>
                 <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
                 <Text style={{
                   color: "#ffffff",
