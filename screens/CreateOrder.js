@@ -122,7 +122,7 @@ export default function CreateOrder({ navigation }) {
           </Text>
           <TouchableOpacity
             style={styles.InstructionView}
-            onPress={() => navigation.navigate("GuideAdd")}
+            onPress={() => navigation.navigate("GuideScreen")}
           >
             <ImageBackground source={require("../assets/cardback.png")} style={styles.imageBack} resizeMode='stretch' borderRadius={15}>
               <Text style={styles.InstructionText}> BG : Yes </Text>
@@ -194,33 +194,44 @@ export default function CreateOrder({ navigation }) {
 
             <View style={styles.modalView}>
               {/* setModalVisible(!modalVisible) */}
+              <View style={styles.modalTop}>
+                <View style={{
 
-              <Button label="Send Order" onPress={() => { navigation.navigate("UploadingScreen"), setModalVisible(!modalVisible) }} />
+                  width: '25%',
+                  height: 1,
+                  paddingTop: 5,
+                  marginBottom: 20,
+                  borderRadius: 10,
+                  backgroundColor: '#FF4A22',
+                }}>
+                </View>
+                <Button label="Send Order" onPress={() => { navigation.navigate("UploadingScreen"), setModalVisible(!modalVisible) }} />
 
+                <TouchableOpacity style={{
+                  borderWidth: 1,
+                  borderColor: 'gray',
+                  margin: 10,
+                  borderRadius: 10,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: '100%',
+                  height: 54,
+                }} onPress={() => { Linking.openURL('https://carline.no') }} >
+
+                  <Text style={{
+                    color: 'white',
+                    fontSize: 14,
+                    fontFamily: 'DMSans_400Regular',
+
+
+                  }}> Access CarLine.no </Text>
+                </TouchableOpacity>
+              </View>
               <TouchableOpacity style={{
                 borderWidth: 1,
                 borderColor: 'gray',
                 margin: 10,
-                borderRadius: 15,
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                height: 54,
-              }} onPress={() => { Linking.openURL('https://carline.no') }} >
-
-                <Text style={{
-                  color: 'white',
-                  fontSize: 14,
-                  fontFamily: 'DMSans_400Regular',
-
-
-                }}> Access CarLine.no </Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={{
-                borderWidth: 1,
-                borderColor: 'gray',
-                margin: 10,
-                borderRadius: 15,
+                borderRadius: 10,
                 justifyContent: 'center',
                 alignItems: 'center',
                 width: '100%',
@@ -310,20 +321,33 @@ const styles = StyleSheet.create({
 
   },
   modalView: {
-    height: "60%",
+    flex: .6,
     width: '100%',
     backgroundColor: '#181C27',
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    paddingTop: 60,
+    paddingTop: 20,
     padding: 10,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     borderTopColor: 'red',
     borderWidth: 1,
-    borderColor: 'red'
+    borderTopColor: '#FF4A22',
+    borderRightColor: '#FF4A22',
+    borderLeftColor: '#FF4A22',
+  },
+  modalTop: {
+    flex: .8,
+    width: '100%',
+    backgroundColor: '#181C27',
+    padding: 2,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    borderTopColor: 'red',
+
 
   },
+  modalBottom: {},
 
   textStyle: {
     color: 'white',

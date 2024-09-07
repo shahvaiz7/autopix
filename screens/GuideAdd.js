@@ -75,7 +75,10 @@ export default function GuideAdd({ navigation, route }) {
               <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("BackgroundType", { bgswitch })} >
                 <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
               </TouchableOpacity>
-              {backgroundImage && <Image source={backgroundImage} style={styles.logo1} />}
+              {backgroundImage &&
+                <TouchableOpacity onPress={() => navigation.navigate("BackgroundList")}>
+                  <Image source={backgroundImage} style={styles.logo1} />
+                </TouchableOpacity>}
               {/* <Text  style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}> Id : {id}</Text> */}
 
               {/* <Image

@@ -15,13 +15,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 export default function GuideScreen({ navigation }) {
   return (
     <View style={styles.containerView}>
-
-      {/* <LinearGradient
-        // Background Linear Gradient
-        colors={['#A52306', '#020202']}
-        locations={[0.1, 0.3]}
-        style={styles.containerView}
-      > */}
       <ImageBackground source={require("../assets/background.png")} style={styles.containerView} >
         <View style={styles.topBar}>
           <View>
@@ -459,7 +452,7 @@ export default function GuideScreen({ navigation }) {
 
             </ImageBackground>
           </View>
-         
+
         </ScrollView>
       </ImageBackground>
     </View>
@@ -471,11 +464,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     backgroundColor: "#020202",
-    
+
   },
 
   topBar: {
-    flex: 0.1,
+
+    flex: 0.07,
     flexDirection: "row",
     margin: 10,
     justifyContent: "space-between",

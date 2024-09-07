@@ -5,13 +5,35 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  StatusBar,
   ImageBackground
-
 } from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { LinearGradient } from 'expo-linear-gradient';
+const orderDetails = [
+  {
+    id: 1,
+    image: require('../assets/background1.png'),
+    orderId: 1009001,
+    imageCount: 5,
+    dayCount: 3,
+    orderStatus: 'Pending',
+  },
+  {
+    id: 2,
+    image: require('../assets/background1.png'),
+    orderId: 1009002,
+    imageCount: 3,
+    dayCount: 4,
+    orderStatus: 'Approved',
+  },
+
+
+
+  // ... more items with image, orderId, imageCount, dayCount, orderStatus, onPress 
+];
+
+
+
 export default function OrderScreen({ navigation }) {
   return (
     <View style={styles.containerView}>
@@ -68,10 +90,10 @@ export default function OrderScreen({ navigation }) {
                 paddingBottom: 20
               }}
             >
-              <View  style={{
-               alignContent: 'center',
-               alignItems: 'center',
-               justifyContent: 'center',
+              <View style={{
+                alignContent: 'center',
+                alignItems: 'center',
+                justifyContent: 'center',
                 paddingBottom: 40
               }}>
                 <Text
@@ -314,7 +336,7 @@ const styles = StyleSheet.create({
     padding: 2,
     borderRadius: 25,
   },
-  
+
   OrderCardImage: {
     flex: .40
   },

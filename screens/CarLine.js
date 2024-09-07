@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     Image,
     Alert,
-    ImageBackground
+    ImageBackground, Linking
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
@@ -28,18 +28,10 @@ export default function CarLine({ navigation }) {
     return (
         <View style={styles.containerView}>
             <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView} >
-
-
                 <View style={styles.bodyContent}>
-
                     <TouchableOpacity style={styles.blockContent} onPress={() => navigation.navigate("Login")} >
-
                         {/* <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} > */}
-
-                        <View style={{
-                            padding: 5
-
-                        }}>
+                        <View style={{ padding: 5 }}>
                             <Text style={{
                                 color: 'white',
                                 fontSize: 16,
@@ -60,27 +52,16 @@ export default function CarLine({ navigation }) {
                             alignItems: 'center',
                             width: 161,
                             height: 42,
-
-
                         }}>
-
                             <Text style={{
                                 color: 'white',
                                 fontSize: 14,
                                 fontFamily: 'DMSans_400Regular',
-
-
                             }}> Explore </Text>
                         </View>
-
                         {/* </ImageBackground> */}
-
                     </TouchableOpacity>
-
-
-
-
-                    <TouchableOpacity style={styles.blockContent2} >
+                    <TouchableOpacity style={styles.blockContent2} onPress={() => { Linking.openURL('https://carline.no/') }} >
                         <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }}
                             style={{ width: 343, height: 318 }} >
                             <View

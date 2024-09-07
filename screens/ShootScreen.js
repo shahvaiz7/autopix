@@ -10,11 +10,11 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
-// import {
-//   useFonts, DMSans_400Regular,
-//   DMSans_500Medium,
-//   DMSans_700Bold,
-// } from "@expo-google-fonts/dm-sans";
+import {
+  useFonts, DMSans_400Regular,
+  DMSans_500Medium,
+  DMSans_700Bold,
+} from "@expo-google-fonts/dm-sans";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { LinearGradient } from 'expo-linear-gradient';
 import { usersData } from "../controller/usersData";
@@ -22,6 +22,12 @@ import { usersData } from "../controller/usersData";
 export default function ShootScreen({ navigation }) {
   const [image, setImage] = useState(null);
   const [camera, setCamera] = useState(null);
+
+  useFonts({
+    DMSans_400Regular,
+    DMSans_500Medium,
+    DMSans_700Bold,
+  });
 
   const takeImageHandler = async () => {
     // const hasPermission = await verifyPermissions();
@@ -40,7 +46,10 @@ export default function ShootScreen({ navigation }) {
     );
     if (!cameraphoto.canceled) {
       setImage(cameraphoto.assets[0].uri);
+
+
     }
+
 
   };
 
@@ -63,25 +72,26 @@ export default function ShootScreen({ navigation }) {
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
+
     }
   };
 
-  const [UserList, setUserList] =useState({})
+  const [UserList, setUserList] = useState({})
 
-    useEffect(()=>{
-        getData()
-    })
+  useEffect(() => {
+    getData()
+  })
 
-    function getData(){
-        usersData(userRetrived)
-    }
-    function userRetrived(UserList){
-      setUserList(UserList)
+  function getData() {
+    usersData(userRetrived)
+  }
+  function userRetrived(UserList) {
+    setUserList(UserList)
 
-    }
- 
-    
-    
+  }
+
+
+
 
   return (
     <View style={styles.containerView}>
@@ -93,7 +103,7 @@ export default function ShootScreen({ navigation }) {
                 style={{ width: 40, height: 40, borderRadius: 50 }}
                 source={require("../assets/profile-img.png")}
               />
-            
+
               <View>
                 <Text style={{
                   fontSize: 12,
@@ -106,8 +116,8 @@ export default function ShootScreen({ navigation }) {
                   color: '#ffffff',
                 }}>  Mr X   </Text>
               </View>
-              
-              
+
+
 
             </View>
             <TouchableOpacity onPress={() => navigation.navigate("NotificationScreen")} style={{
@@ -119,7 +129,7 @@ export default function ShootScreen({ navigation }) {
           <View style={styles.bodyContent}>
 
             <TouchableOpacity style={styles.blockContent} onPress={() => navigation.navigate("CameraScreen")} >
-              <ImageBackground source={require("../assets/shootback.png")} imageStyle={{ borderRadius: 20 }} style={styles.imageBack} >
+              <ImageBackground source={require("../assets/shootback.png")} imageStyle={{ borderRadius: 16 }} style={styles.imageBack} >
                 <View style={{
                   paddingTop: 40
                 }}>
@@ -147,7 +157,7 @@ export default function ShootScreen({ navigation }) {
 
 
             <TouchableOpacity style={styles.blockContent} onPress={pickImage}>
-              <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 20 }} style={styles.imageBack} >
+              <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 16 }} style={styles.imageBack} >
                 <Image
                   style={{ width: 70, height: 70, borderRadius: 25 }}
                   source={require("../assets/upload.png")}
@@ -169,8 +179,9 @@ export default function ShootScreen({ navigation }) {
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity style={styles.blockContent} >
+              <Image source={require("../assets/logo-orange.png")} style={styles.logo} />
 
-              {image && <Image source={{ uri: image }} style={styles.image} />}
+              {/* {image && <Image source={{ uri: image }} style={styles.image} />} */}
 
             </TouchableOpacity>
 
@@ -192,6 +203,12 @@ const styles = StyleSheet.create({
     height: 188,
     width: '100%',
     resizeMode: 'stretch',
+    borderRadius: 25
+  },
+  logo: {
+    height: 188,
+    width: '100%',
+    resizeMode: 'contain',
     borderRadius: 25
   },
   topBar: {

@@ -47,14 +47,12 @@ export default function BackgroundList({ navigation, route }) {
   //   }
   // };
   return (
-    <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
+    <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.BackList} >
       <View style={{
-        color: 'white',
-        width: '100%',
         justifyContent: 'space-between',
         flexDirection: 'row',
         paddingTop: 40,
-        paddingLeft: 10
+        paddingLeft: 10,
       }}>
         <TouchableOpacity onPress={() => navigation.navigate("GuideAdd")} style={{ flexDirection: 'row' }}>
           <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
@@ -77,16 +75,16 @@ export default function BackgroundList({ navigation, route }) {
           <TouchableOpacity
             onPress={() => navigation.navigate("GuideAdd", item.backgroundImage)}
             style={{
-              backgroundColor: 'transparent', borderRadius: 35, padding: 10, margin: 10
+              backgroundColor: 'transparent', borderRadius: 35, margin: 5
             }}
           >
 
-            <View>
-              <Image style={styles.imageBox} source={item.backgroundImage} />
-              {<View style={styles.SelectIcon}>
+
+            <Image style={styles.imageBox} source={item.backgroundImage} />
+            {/* {<View style={styles.SelectIcon}>
                 <MaterialCommunityIcons name="check-circle" size={24} color={"white"} />
-              </View>}
-            </View>
+              </View>} */}
+
           </TouchableOpacity>
         )}
         keyExtractor={item => item.id}
