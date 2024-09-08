@@ -9,22 +9,28 @@ import {
     ImageBackground, Linking
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import * as ImagePicker from "expo-image-picker";
-import {
-    useFonts, DMSans_400Regular,
-    DMSans_500Medium,
-    DMSans_700Bold,
-} from "@expo-google-fonts/dm-sans";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { LinearGradient } from 'expo-linear-gradient';
+import { useFonts } from "expo-font";
 
+import * as SplashScreen from 'expo-splash-screen';
+SplashScreen.preventAutoHideAsync();
 export default function CarLine({ navigation }) {
-
-    useFonts({
-        DMSans_400Regular,
-        DMSans_500Medium,
-        DMSans_700Bold,
-    });
+   
+    const [loaded, error] = useFonts({
+        "DMSans_400Regular": require("../assets/fonts/DMSans-Regular.ttf"),
+        " DMSans_500Medium":  require("../assets/fonts/DMSans-Medium.ttf"),
+         "DMSans_700Bold" : require("../assets/fonts/DMSans-Bold.ttf"),
+      });
+    
+      useEffect(() => {
+        if (loaded || error) {
+          SplashScreen.hideAsync();
+        }
+      }, [loaded, error]);
+    
+      if (!loaded && !error) {
+        return null;
+      }
+    
     return (
         <View style={styles.containerView}>
             <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView} >

@@ -2,18 +2,8 @@ import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import Button from '../component/Button'
 
-import { LinearGradient } from 'expo-linear-gradient';
-//npx expo install expo-linear-gradient
-
 export default function WelcomeScreen({ navigation }) {
   return (
-    // <LinearGradient
-    //     // Button Linear Gradient
-    //     colors={['#2199F3', '#39D0A1','#34C4B2','#1D6167']}
-    //     style={styles.Container}>
-
-
-
     <View style={styles.Container}>
       <View style={styles.logoblock}>
         <Image

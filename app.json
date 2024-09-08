@@ -2,7 +2,7 @@
   "expo": {
     "name": "carline",
     "slug": "autopix",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo-orange.png",
     "userInterfaceStyle": "light",
@@ -19,7 +19,8 @@
         "foregroundImage": "./assets/logo-orange.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.gitbd.carline"
+      "package": "com.testcarline.carline",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"

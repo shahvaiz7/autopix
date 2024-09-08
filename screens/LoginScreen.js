@@ -6,12 +6,8 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
-  StatusBar
-
 } from "react-native";
 import React, { useState, useEffect } from "react";
-// import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "../component/Button";
 
 
@@ -19,11 +15,8 @@ import Button from "../component/Button";
 //import GradientText from "react-native-gradient-texts";
 
 import TextInput from "../component/TextInput";
-import { LinearGradient } from 'expo-linear-gradient';
 
 export default function LoginScreen({ navigation }) {
-  //const image = require("../assets/background.png");
-
   const [password, setPassword] = useState('');
 
   // State variable to track password visibility
@@ -38,19 +31,8 @@ export default function LoginScreen({ navigation }) {
     <ScrollView style={styles.containerView}>
 
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
-        {/* <LinearGradient
-        // Background Linear Gradient
-        colors={['#A52306', '#020202']}
-        locations={[0.1, 0.3]}
-        style={styles.containerView}
-      > */}
-
-        <View style={styles.HeaderView}>
+      <View style={styles.HeaderView}>
           <Text style={{ fontFamily: 'DMSans_500Medium', padding: 10, color: "#ffffff", fontSize: 30 }}> CarLine </Text>
-          {/* <Image
-          style={{ width: 80, height: 80 }}
-          source={require("../assets/logoblack.jpeg")}
-        /> */}
           <Text style={styles.AllText}> Welcome Back! </Text>
         </View>
         <View style={styles.FormView}>
@@ -147,8 +129,6 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     alignItems: "center",
     padding: 20,
-
-
 
   },
   Bottom: {

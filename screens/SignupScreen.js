@@ -9,16 +9,9 @@ import {
   ImageBackground
 } from "react-native";
 import React, { useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Button from "../component/Button";
 import TextInput from "../component/TextInput";
-import { LinearGradient } from 'expo-linear-gradient';
-import {
-  useFonts, DMSans_400Regular,
-  DMSans_500Medium,
-  DMSans_700Bold,
-} from "@expo-google-fonts/dm-sans";
 //npm install react-native-gradient-texts
 //import GradientText from "react-native-gradient-texts";
 
@@ -38,28 +31,23 @@ export default function SignupScreen({ navigation }) {
 
     <ScrollView style={styles.containerView}>
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
-        {/* <StatusBar backgroundColor={"#A52306"}/> */}
-
-
-
         <View style={styles.HeaderView}>
-          <View style={{
+          <TouchableOpacity style={{
             color: 'white',
             width: '100%',
             justifyContent: 'space-between',
             flexDirection: 'row',
             paddingBottom: 10
-          }}>
-            <TouchableOpacity onPress={() => navigation.navigate("Login")} >
+          }} onPress={() => navigation.navigate("Login")} >
+           
               <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
-            </TouchableOpacity>
             <Text style={{
               color: "#ffffff",
               fontFamily: 'DMSans_500Medium', fontSize: 18
             }}>sign up </Text>
             <Text>       </Text>
 
-          </View>
+          </TouchableOpacity>
           <View style={styles.welcomeBar}>
 
             <Text style={styles.AllText}>Sing Up </Text>

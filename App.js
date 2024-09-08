@@ -1,5 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
-
 import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from "@react-navigation/native";
@@ -33,16 +31,36 @@ import NotificationScreen from './screens/NotificationScreen';
 
 import CameraScreen from './screens/CameraScreen';
 import OrderScreen from './screens/OrderScreen';
+import { useFonts } from "expo-font";
+import React, { useState, useEffect } from "react";
+
+import * as SplashScreen from 'expo-splash-screen';
+SplashScreen.preventAutoHideAsync();
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 export default function App() {
+  const [loaded, error] = useFonts({
+    "DMSans_400Regular": require("./assets/fonts/DMSans-Regular.ttf"),
+    " DMSans_500Medium":  require("./assets/fonts/DMSans-Medium.ttf"),
+     "DMSans_700Bold" : require("./assets/fonts/DMSans-Bold.ttf"),
+  });
+
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
+ 
   return (
     <NavigationContainer>
       <Stack.Navigator>
         {/* <Stack.Screen name="Welcome" component={WelcomeScreen} /> */}
         <Stack.Screen name="CarLine" component={CarLine} options={{ header: () => null }} />
-
         <Stack.Screen name="Login" component={LoginScreen} options={{ header: () => null }} />
         <Stack.Screen name="Signup" component={SignupScreen} options={{ header: () => null }} />
         <Stack.Screen name="Home" component={HomeScreen} options={{ header: () => null }} />
@@ -87,14 +105,3 @@ const styles = StyleSheet.create({
   },
 });
 
-// After Successful clone from Git hub just run :# npm install -i  to get all the node modules
-// Bottom tab navigator#  npm install @react-navigation/bottom-tabs
-// Import :::import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-//            const Tab = createBottomTabNavigator();
-
-
-// git reset --hard :: if any local change happen and you forgot the and also undo the changes and pull the new changes from git 
-// I uninstalled expo-font and used the command npx expo install expo-font to install expo-font and the issue disappeared
-// Generate APK :  eas build --platform android --profile  preview 
-// need to create eas.json 

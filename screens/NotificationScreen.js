@@ -11,15 +11,12 @@ import {
 import React, { useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { LinearGradient } from 'expo-linear-gradient';
-import {
-    useFonts, DMSans_400Regular,
-    DMSans_500Medium,
-    DMSans_700Bold,
-} from "@expo-google-fonts/dm-sans";
-
+// import {
+//     useFonts, DMSans_400Regular,
+//     DMSans_500Medium,
+//     DMSans_700Bold,
+// } from "@expo-google-fonts/dm-sans";
 export default function NotificationScreen({ navigation }) {
-    const birthday = new Date();
-
     return (
         <View style={styles.containerView}>
             <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>
@@ -38,7 +35,6 @@ export default function NotificationScreen({ navigation }) {
                     </View>
 
                 </View>
-
                 <ImageBackground source={require("../assets/notification1.png")} resizeMode='stretch' style={styles.FullBlock} borderRadius={15}>
                     <View  >
                         <View style={styles.SwitchBlock}>
@@ -109,8 +105,6 @@ export default function NotificationScreen({ navigation }) {
                     </View>
 
                 </ImageBackground>
-
-
             </ImageBackground>
         </View>
     );

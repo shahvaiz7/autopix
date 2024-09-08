@@ -10,24 +10,22 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import * as ImagePicker from "expo-image-picker";
-import {
-  useFonts, DMSans_400Regular,
-  DMSans_500Medium,
-  DMSans_700Bold,
-} from "@expo-google-fonts/dm-sans";
+// import {
+//   useFonts, DMSans_400Regular,
+//   DMSans_500Medium,
+//   DMSans_700Bold,
+// } from "@expo-google-fonts/dm-sans";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { LinearGradient } from 'expo-linear-gradient';
-import { usersData } from "../controller/usersData";
 
 export default function ShootScreen({ navigation }) {
   const [image, setImage] = useState(null);
   const [camera, setCamera] = useState(null);
 
-  useFonts({
-    DMSans_400Regular,
-    DMSans_500Medium,
-    DMSans_700Bold,
-  });
+  // useFonts({
+  //   DMSans_400Regular,
+  //   DMSans_500Medium,
+  //   DMSans_700Bold,
+  // });
 
   const takeImageHandler = async () => {
     // const hasPermission = await verifyPermissions();
@@ -41,16 +39,11 @@ export default function ShootScreen({ navigation }) {
         mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsMultipleSelection: true,
         allowsEditing: true,
-
       }
     );
     if (!cameraphoto.canceled) {
       setImage(cameraphoto.assets[0].uri);
-
-
     }
-
-
   };
 
 
@@ -64,33 +57,14 @@ export default function ShootScreen({ navigation }) {
       aspect: [4, 3],
       quality: 1,
       orderedSelection: true,
-
       // mediaTypes:ImagePicker.MediaTypeOptions.Images,
     });
-
     console.log(result);
-
     if (!result.canceled) {
       setImage(result.assets[0].uri);
 
     }
   };
-
-  const [UserList, setUserList] = useState({})
-
-  useEffect(() => {
-    getData()
-  })
-
-  function getData() {
-    usersData(userRetrived)
-  }
-  function userRetrived(UserList) {
-    setUserList(UserList)
-
-  }
-
-
 
 
   return (
@@ -169,22 +143,13 @@ export default function ShootScreen({ navigation }) {
                     justifyContent: "flex-start",
                   }}
                 >
-                  {/* <Text style={{
-                  color: 'white',
-                  fontSize: 16,
-                  fontFamily:'DMSans_500Medium',
-                  margin: 10
-                }}> Upload </Text> */}
                 </View>
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity style={styles.blockContent} >
               <Image source={require("../assets/logo-orange.png")} style={styles.logo} />
-
               {/* {image && <Image source={{ uri: image }} style={styles.image} />} */}
-
             </TouchableOpacity>
-
           </View>
         </ScrollView>
       </ImageBackground>
