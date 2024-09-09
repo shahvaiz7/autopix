@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, ImageBackground } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, ImageBackground,Image, TouchableOpacity } from 'react-native'
+import React from 'react';
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function OrderCard({ image, orderId, imageCount, dayCount, orderStatus, onPress }) {
     return (
@@ -17,13 +18,13 @@ export default function OrderCard({ image, orderId, imageCount, dayCount, orderS
                         fontSize: 16,
                         fontFamily: 'DMSans_500Medium',
                         paddingLeft: 4
-                    }}> {orderId}</Text>
+                    }}> # {orderId}</Text>
                     <Text style={{
                         color: "#ffffff",
                         fontSize: 14,
                         fontFamily: 'DMSans_400Regular',
                         paddingLeft: 4
-                    }}> {imageCount} </Text>
+                    }}> {imageCount} Images </Text>
                     <View style={{ paddingTop: 45, paddingLeft: 10 }}>
                         <Text style={{
                             color: "#ffffff",

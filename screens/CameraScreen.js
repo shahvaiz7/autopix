@@ -6,6 +6,7 @@ import Torch from 'react-native-torch';
 import PreviewImage from './PreviewImage';
 import { FlashMode } from 'expo-camera/build/legacy/Camera.types';
 import * as MediaLibrary from 'expo-media-library';
+import ImageList from '../component/ImageList';
 
 export default function CameraScreen({ navigation }) {
   const [facing, setFacing] = useState('back');
@@ -56,16 +57,6 @@ export default function CameraScreen({ navigation }) {
     }
   };
 
-  // useEffect(() => {
-  //   (
-  //     async () => {
-  //       MediaLibrary.requestPermissionsAsync();
-  //       const mediaStatus = await Camera.requestCameraPermissionsAsync();
-  //       setHasMediaPermission(mediaStatus.status === 'granted');
-  //     })();
-
-  // }, [])
-
   const savePhoto = async () => {
     if (photo) {
       try {
@@ -78,11 +69,12 @@ export default function CameraScreen({ navigation }) {
       }
     }
   }
+  const imageList = () => <ImageList photo={photo}/>;
 
   const handleRetakePhoto = () => setPhoto(null);
   if (photo)
     return (
-      <PreviewImage photo={photo} handleRetakePhoto={handleRetakePhoto} savePhoto={savePhoto} />)
+      <PreviewImage photo={photo} handleRetakePhoto={handleRetakePhoto} savePhoto={savePhoto} imageList={imageList} />)
 
 
   return (

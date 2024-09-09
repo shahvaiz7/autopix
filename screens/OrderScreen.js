@@ -5,10 +5,13 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  ImageBackground
+  ImageBackground,
+  FlatList,
+  
 } from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import OrderCard from "../component/OrderCard";
 const orderDetails = [
   {
     id: 1,
@@ -20,20 +23,46 @@ const orderDetails = [
   },
   {
     id: 2,
-    image: require('../assets/background1.png'),
+    image: require('../assets/background2.png'),
     orderId: 1009002,
     imageCount: 3,
     dayCount: 4,
     orderStatus: 'Approved',
   },
-
-
-
+  {
+    id: 3,
+    image: require('../assets/background3.png'),
+    orderId: 1009002,
+    imageCount: 3,
+    dayCount: 4,
+    orderStatus: 'Approved',
+  },
+  {
+    id: 4,
+    image: require('../assets/floor1.png'),
+    orderId: 1009002,
+    imageCount: 3,
+    dayCount: 4,
+    orderStatus: 'Approved',
+  },
+  {
+    id: 5,
+    image: require('../assets/background2.png'),
+    orderId: 1009002,
+    imageCount: 3,
+    dayCount: 4,
+    orderStatus: 'Approved',
+  },
+  {
+    id: 6,
+    image: require('../assets/background3.png'),
+    orderId: 1009002,
+    imageCount: 3,
+    dayCount: 4,
+    orderStatus: 'Approved',
+  },
   // ... more items with image, orderId, imageCount, dayCount, orderStatus, onPress 
 ];
-
-
-
 export default function OrderScreen({ navigation }) {
   return (
     <View style={styles.containerView}>
@@ -65,244 +94,14 @@ export default function OrderScreen({ navigation }) {
             <Text style={{ color: "#ffffff" }}> Create Order </Text>
           </TouchableOpacity>
         </View>
-        <ScrollView style={styles.bodyContent}>
-          <View style={styles.OrderCard}>
-            <View style={{ flex: 0.4 }}>
-              <Image
-                style={{ width: 119, height: 124, borderRadius: 22 }}
-                source={require("../assets/Rectangle 17 (3).png")}
-              />
-            </View>
-            <View style={{ flex: 0.4, flexDirection: 'row' }}>
-              <View>
-                <Text style={styles.IDText}> #5625554 </Text>
-                <Text style={styles.ImageCount}> 5 Images </Text>
-                <View style={{ paddingTop: 45, paddingLeft: 10 }}>
-                  <Text style={styles.DayCount}>2 Days ago </Text>
-                </View>
-              </View>
-            </View>
-
-            <View
-              style={{
-                flex: 0.3,
-                justifyContent: 'flex-end',
-                paddingBottom: 20
-              }}
-            >
-              <View style={{
-                alignContent: 'center',
-                alignItems: 'center',
-                justifyContent: 'center',
-                paddingBottom: 40
-              }}>
-                <Text
-                  style={{
-                    color: "yellow",
-                    fontSize: 14,
-                    fontFamily: 'DMSans_500Medium',
-                  }}
-                >
-                  Pending{" "}
-                </Text>
-              </View>
-
-              <TouchableOpacity style={{
-                borderWidth: 1,
-                borderColor: 'gray',
-                borderRadius: 15,
-                width: 80,
-                height: 30,
-                alignContent: 'center',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                <Text style={styles.CardText}>
-                  Option{" "}
-                  <MaterialCommunityIcons
-                    name="ship-wheel"
-                    size={14}
-                    color={"#ffffff"}
-                  />
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.OrderCard}>
-            <View style={{ flex: 0.4 }}>
-              <Image
-                style={{ width: 119, height: 124, borderRadius: 22 }}
-                source={require("../assets/Rectangle 17 (3).png")}
-              />
-            </View>
-            <View style={{ flex: 0.4, flexDirection: 'row' }}>
-              <View>
-                <Text style={styles.IDText}> #5625554 </Text>
-                <Text style={styles.ImageCount}> 5 Images </Text>
-                <View style={{ paddingTop: 45, paddingLeft: 10 }}>
-                  <Text style={styles.DayCount}>2 Days ago </Text>
-                </View>
-              </View>
-              <View style={{ paddingTop: 20, paddingLeft: 45 }}>
-                <Text
-                  style={{
-                    color: "red",
-                    fontSize: 14,
-                    fontFamily: 'DMSans_500Medium',
-                  }}
-                >
-                  Cancel{" "}
-                </Text>
-              </View>
-
-            </View>
-
-            <View
-              style={{
-                flex: 0.3,
-                justifyContent: 'flex-end',
-                paddingBottom: 20
-              }}
-            >
-
-              <TouchableOpacity style={{
-                borderWidth: 1,
-                borderColor: 'gray',
-                borderRadius: 15,
-                width: 80,
-                height: 30,
-                alignContent: 'center',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                <Text style={styles.CardText}>
-                  Option{" "}
-                  <MaterialCommunityIcons
-                    name="ship-wheel"
-                    size={14}
-                    color={"#ffffff"}
-                  />
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.OrderCard}>
-            <View style={{ flex: 0.4 }}>
-              <Image
-                style={{ width: 119, height: 124, borderRadius: 22 }}
-                source={require("../assets/Rectangle 17 (3).png")}
-              />
-            </View>
-            <View style={{ flex: 0.4, flexDirection: 'row' }}>
-              <View>
-                <Text style={styles.IDText}> #5625554 </Text>
-                <Text style={styles.ImageCount}> 5 Images </Text>
-                <View style={{ paddingTop: 45, paddingLeft: 10 }}>
-                  <Text style={styles.DayCount}>2 Days ago </Text>
-                </View>
-              </View>
-              <View style={{ paddingTop: 20, paddingLeft: 45 }}>
-                <Text
-                  style={{
-                    color: "#71F6B3",
-                    fontSize: 14,
-                    fontFamily: 'DMSans_500Medium',
-                  }}
-                >
-                  Approved{" "}
-                </Text>
-              </View>
-
-            </View>
-
-            <View
-              style={{
-                flex: 0.3,
-                justifyContent: 'flex-end',
-                paddingBottom: 20
-              }}
-            >
-
-              <TouchableOpacity style={{
-                borderWidth: 1,
-                borderColor: 'gray',
-                borderRadius: 15,
-                width: 80,
-                height: 30,
-                alignContent: 'center',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                <Text style={styles.CardText}>
-                  Option{" "}
-                  <MaterialCommunityIcons
-                    name="ship-wheel"
-                    size={14}
-                    color={"#ffffff"}
-                  />
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.OrderCard}>
-            <View style={{ flex: 0.4 }}>
-              <Image
-                style={{ width: 119, height: 124, borderRadius: 22 }}
-                source={require("../assets/Rectangle 17 (3).png")}
-              />
-            </View>
-            <View style={{ flex: 0.4, flexDirection: 'row' }}>
-              <View>
-                <Text style={styles.IDText}> #5625554 </Text>
-                <Text style={styles.ImageCount}> 5 Images </Text>
-                <View style={{ paddingTop: 45, paddingLeft: 10 }}>
-                  <Text style={styles.DayCount}>2 Days ago </Text>
-                </View>
-              </View>
-              <View style={{ paddingTop: 20, paddingLeft: 45 }}>
-                <Text
-                  style={{
-                    color: "yellow",
-                    fontSize: 14,
-                    fontFamily: 'DMSans_500Medium',
-                  }}
-                >
-                  Pending{" "}
-                </Text>
-              </View>
-
-            </View>
-
-            <View
-              style={{
-                flex: 0.3,
-                justifyContent: 'flex-end',
-                paddingBottom: 20
-              }}
-            >
-
-              <TouchableOpacity style={{
-                borderWidth: 1,
-                borderColor: 'gray',
-                borderRadius: 15,
-                width: 80,
-                height: 30,
-                alignContent: 'center',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                <Text style={styles.CardText}>
-                  Option{" "}
-                  <MaterialCommunityIcons
-                    name="ship-wheel"
-                    size={16}
-                    color={"#ffffff"}
-                  />
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </ScrollView>
+        <FlatList 
+        style={styles.bodyContent}
+        data={orderDetails}
+        renderItem={({ item }) => (
+          <OrderCard image={item.image} orderId ={item.id} orderStatus={item.orderStatus} imageCount={item.imageCount} dayCount={item.dayCount}/>
+        )}
+        keyExtractor={item => item.id}
+      />  
       </ImageBackground>
     </View>
   );

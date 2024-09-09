@@ -16,8 +16,10 @@ import * as ImagePicker from "expo-image-picker";
 //   DMSans_700Bold,
 // } from "@expo-google-fonts/dm-sans";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import ImageList from "../component/ImageList";
+import NpList from "./NpList";
 
-export default function ShootScreen({ navigation }) {
+export default function ShootScreen({ navigation}) {
   const [image, setImage] = useState(null);
   const [camera, setCamera] = useState(null);
 
@@ -61,11 +63,10 @@ export default function ShootScreen({ navigation }) {
     });
     console.log(result);
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
-
+      setImage(result.assets[0].uri)
     }
   };
-
+  
 
   return (
     <View style={styles.containerView}>

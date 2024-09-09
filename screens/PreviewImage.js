@@ -1,11 +1,13 @@
 import { Fontisto } from '@expo/vector-icons';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import React from 'react';
-import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View, Text, ImageBackground } from 'react-native';
+import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View, Text, ImageBackground,Alert } from 'react-native';
 import Button from '../component/Button';
+import ImageList from '../component/ImageList';
 
+export default function PreviewImage({ photo, handleRetakePhoto, savePhoto,imageList }) {
 
-export default function PreviewImage({ photo, handleRetakePhoto, savePhoto }) {
+    
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>
@@ -14,7 +16,7 @@ export default function PreviewImage({ photo, handleRetakePhoto, savePhoto }) {
                     width: '100%',
                     justifyContent: 'space-between',
                     flexDirection: 'row',
-                    paddingTop: 40,
+                    paddingTop: 20,
                     paddingLeft: 10,
                     paddingBottom: 5
                 }}>
@@ -40,7 +42,7 @@ export default function PreviewImage({ photo, handleRetakePhoto, savePhoto }) {
                 </View>
 
                 <View style={styles.Bottom}>
-                    <Button label="Accept" onPress={savePhoto} />
+                    <Button label="Accept and Take More" onPress={savePhoto} />
                     <TouchableOpacity style={{
                         borderWidth: 1,
                         borderColor: 'gray',
@@ -50,9 +52,6 @@ export default function PreviewImage({ photo, handleRetakePhoto, savePhoto }) {
                         alignItems: 'center',
                         width: '96%',
                         height: 54,
-
-
-
                     }} onPress={handleRetakePhoto}>
 
                         <Text style={{
@@ -62,6 +61,25 @@ export default function PreviewImage({ photo, handleRetakePhoto, savePhoto }) {
 
 
                         }}> Retake </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{
+                        borderWidth: 1,
+                        borderColor: 'gray',
+                        margin: 10,
+                        borderRadius: 15,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: '96%',
+                        height: 54,
+                    }} onPress={imageList}>
+
+                        <Text style={{
+                            color: 'white',
+                            fontSize: 14,
+                            fontFamily: 'DMSans_400Regular',
+
+
+                        }}> Preview and Select  </Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
@@ -95,7 +113,7 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     Bottom: {
-        padding: 15,
+        padding: 10,
 
 
 

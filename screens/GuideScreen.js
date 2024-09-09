@@ -44,7 +44,7 @@ export default function GuideScreen({ navigation }) {
           </TouchableOpacity>
         </View>
         <ScrollView style={styles.bodyContent}>
-          <View style={styles.OrderCard}>
+        <View style={styles.OrderCard}>
             <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
               <View style={styles.OrderCardImage}>
                 <Image
