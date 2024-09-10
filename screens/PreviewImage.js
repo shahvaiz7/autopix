@@ -3,7 +3,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import React from 'react';
 import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View, Text, ImageBackground,Alert } from 'react-native';
 import Button from '../component/Button';
-import ImageList from '../component/ImageList';
+import ImageList from './ImageList';
 
 export default function PreviewImage({ photo, handleRetakePhoto, savePhoto,imageList }) {
 

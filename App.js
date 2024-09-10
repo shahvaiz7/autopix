@@ -35,6 +35,8 @@ import { useFonts } from "expo-font";
 import React, { useState, useEffect } from "react";
 
 import * as SplashScreen from 'expo-splash-screen';
+import ImageList from './screens/ImageList';
+import FloorType from './screens/FloorType';
 SplashScreen.preventAutoHideAsync();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -88,6 +90,8 @@ export default function App() {
         <Stack.Screen name="GuideScreen" component={GuideScreen} options={{ header: () => null }} />
         <Stack.Screen name="CameraScreen" component={CameraScreen} options={{ header: () => null }} />
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{ header: () => null }} />
+        <Stack.Screen name="ImageList" component={ImageList} options={{ header: () => null }} />
+        <Stack.Screen name="FloorType" component={FloorType} options={{ header: () => null }} />
 
 
       </Stack.Navigator>

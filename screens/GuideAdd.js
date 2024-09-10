@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Switch, Image, ScrollView, ImageBackground } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Switch, Image, ScrollView, ImageBackground, Alert } from 'react-native'
 import React, { useState } from 'react';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import * as ImagePicker from "expo-image-picker";
@@ -39,6 +39,7 @@ export default function GuideAdd({ navigation, route }) {
       setBackground(result.assets[0].uri);
     }
   };
+  
   return (
     <View style={styles.containerView}>
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>
@@ -103,7 +104,7 @@ export default function GuideAdd({ navigation, route }) {
               />
             </View>
             {floorSwitch && <View style={styles.imageContainer}>
-              <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("FloorList")} >
+              <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("FloorType")} >
                 <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
               </TouchableOpacity>
               {background && <Image source={{ uri: background }} style={styles.logo1} />}
@@ -156,41 +157,15 @@ export default function GuideAdd({ navigation, route }) {
 
             </View>}
           </View>
-          {/* <View style={styles.InstructionView}>
-
-            <View style={styles.OptionView} onPress={() => navigation.navigate("#")}>
-              <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
-                {" "}
-                Number Plate{" "}
-              </Text>
-              <Switch
-                trackColor={{ false: '#767577', true: '#81b0ff' }}
-                thumbColor={npSwitch ? '#FF4A22' : '#ffffff'}
-                ios_backgroundColor="#3e3e3e"
-                onValueChange={togglenpSwitch}
-                value={npSwitch}
-              />
-            </View>
-            {npSwitch && <View style={styles.imageContainer}>
-              <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("NpList")} >
-                <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
-              </TouchableOpacity>
-              {background && <Image source={{ uri: background }} style={styles.logo1} />}
-            </View>}
-          </View> */}
-          {/* <View
-          style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center', margin: 10 }}
-        >
-          <Text style={styles.CardText}> Background : 05</Text>
-          <Text style={styles.CardText}> Floor : 02 </Text>
-          <Text style={styles.CardText}>Logo : Yes /.. No  </Text>
-          <Text style={styles.CardText}>License Plate : Yes /  No</Text>
-        </View> */}
+          
           <View style={styles.Bottom}>
             {(backgroundSwitch || npSwitch || logoSwitch || floorSwitch) &&
-              <Button label="Create Instruction" onPress={() => navigation.navigate("GuideScreen")} />}
-
+              <Button label="Create Instruction" onPress={() => Alert.alert(
+                'SuccessFull',
+                'Your Instruction is created',
+              )}  />}
           </View>
+         
         </ScrollView>
       </ImageBackground>
 

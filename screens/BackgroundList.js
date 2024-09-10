@@ -35,17 +35,7 @@ const data = [
 
 export default function BackgroundList({ navigation, route }) {
   const [selectedIds, setSelectedIds] = useState([]);
-  //const {bg,id} = route.params.BackgroundList;
 
-
-  // const toggleItemSelect = (id) => {
-  //   if (selectedIds.includes(id)) {
-  //     setSelectedIds(prevIds => prevIds.filter(itemId => itemId !== id));
-  //     navigation.navigate("Home",)
-  //   } else {
-  //     setSelectedIds(prevIds => [...prevIds, id]);
-  //   }
-  // };
   return (
     <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.BackList} >
       <View style={{

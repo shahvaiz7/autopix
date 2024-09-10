@@ -6,7 +6,7 @@ import Torch from 'react-native-torch';
 import PreviewImage from './PreviewImage';
 import { FlashMode } from 'expo-camera/build/legacy/Camera.types';
 import * as MediaLibrary from 'expo-media-library';
-import ImageList from '../component/ImageList';
+import ImageList from './ImageList';
 
 export default function CameraScreen({ navigation }) {
   const [facing, setFacing] = useState('back');
@@ -69,7 +69,7 @@ export default function CameraScreen({ navigation }) {
       }
     }
   }
-  const imageList = () => <ImageList photo={photo}/>;
+  const imageList = () =>   navigation.navigate('ImageList');
 
   const handleRetakePhoto = () => setPhoto(null);
   if (photo)

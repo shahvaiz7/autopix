@@ -16,7 +16,7 @@ import * as ImagePicker from "expo-image-picker";
 //   DMSans_700Bold,
 // } from "@expo-google-fonts/dm-sans";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import ImageList from "../component/ImageList";
+import ImageList from "./ImageList";
 import NpList from "./NpList";
 
 export default function ShootScreen({ navigation}) {
@@ -62,6 +62,7 @@ export default function ShootScreen({ navigation}) {
       // mediaTypes:ImagePicker.MediaTypeOptions.Images,
     });
     console.log(result);
+    navigation.navigate('CreateOrder');
     if (!result.canceled) {
       setImage(result.assets[0].uri)
     }
