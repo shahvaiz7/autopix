@@ -66,7 +66,7 @@ export default function FloorList({ navigation }) {
             data={data}
             renderItem={({ item }) => (
                 <TouchableOpacity
-                onPress={() => navigation.navigate("GuideAdd")}
+                onPress={() => navigation.navigate("Home")}
                 style={{
                   backgroundColor: 'transparent', borderRadius: 35, padding: 10, margin: 10
                 }}

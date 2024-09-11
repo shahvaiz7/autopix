@@ -26,7 +26,7 @@ const BgType = [
 ];
 export default function BackgroundType({navigation,image,TypeName}) {
   return (
-    <ScrollView style={styles.containerView}>
+    <View style={styles.containerView}>
        <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
        <View style={{
             color: 'white',
@@ -88,7 +88,7 @@ export default function BackgroundType({navigation,image,TypeName}) {
       />
      </TouchableOpacity> */}
      </ImageBackground>
-    </ScrollView>
+    </View>
   )
 }
 

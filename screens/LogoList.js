@@ -63,7 +63,7 @@ export default function LogoList({ navigation }) {
             data={data}
             renderItem={({ item }) => (
                 <TouchableOpacity
-                onPress={() => navigation.navigate("GuideAdd")}
+                onPress={() => navigation.navigate("Home")}
                     style={{
                         backgroundColor: 'white', borderRadius: 25, padding: 10, margin: 10
                     }}

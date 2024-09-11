@@ -12,8 +12,8 @@ const FlrType = [
   ];
 export default function FloorType({navigation}) {
   return (
-    <ScrollView style={styles.containerView}>
-       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
+ 
+       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView} >
        <View style={{
             color: 'white',
             width: '100%',
@@ -22,7 +22,7 @@ export default function FloorType({navigation}) {
             paddingTop: 40,
             paddingLeft:10
           }}>
-            <TouchableOpacity onPress={() => navigation.navigate("ProfileScreen")}  style={{flexDirection:'row'}}>
+            <TouchableOpacity onPress={() => navigation.navigate("Home")}  style={{flexDirection:'row'}}>
               <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
               <Text style={{
               color: "#ffffff",
@@ -52,7 +52,7 @@ export default function FloorType({navigation}) {
       />  
     
      </ImageBackground>
-    </ScrollView>
+
   )
 }
 
