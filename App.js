@@ -109,3 +109,8 @@ const styles = StyleSheet.create({
   },
 });
 
+//npx expo export -p android
+//publish dist 
+// expo publish  
+// eas build:configure
+//eas update 

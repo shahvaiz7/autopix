@@ -15,9 +15,13 @@ import Button from "../component/Button";
 //import GradientText from "react-native-gradient-texts";
 
 import TextInput from "../component/TextInput";
+import { user_login } from "../auth/UserApi";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { err } from "react-native-svg";
 
 export default function LoginScreen({ navigation }) {
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
 
   // State variable to track password visibility
   const [showPassword, setShowPassword] = useState(false);
@@ -26,6 +30,24 @@ export default function LoginScreen({ navigation }) {
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+const handelLogin=() => {
+    user_login({
+      email: email,
+      password: password,
+    }).then((result)=> {
+      console.log(result + "Test...........");
+      if(result.status ==200){
+        AsyncStorage.setItem("AccessToken", result.data.token)
+        navigation.navigate("Home")
+      }
+    }).catch(err=> {
+      console.error( err + "Test...........");
+      
+    })
+  
+}
+
 
   return (
     <ScrollView style={styles.containerView}>
@@ -43,7 +65,6 @@ export default function LoginScreen({ navigation }) {
           <TextInput
             inputHieght={54}
             inputAlign={'center'}
-
             placeholder="Enter here...."
             autoCapitalize="none"
             autoCompleteType="email"
@@ -51,6 +72,8 @@ export default function LoginScreen({ navigation }) {
             keyboardAppearance="dark"
             returnKeyType="next"
             returnKeyLabel="next"
+            value={email}
+            onChangeText={setEmail}
             style={{ fontSize: 14 }}
           />
           <Text style={{ fontFamily: 'DMSans_500Medium', fontSize: 16, paddingBottom: 8, paddingTop: 15, color: "#ffffff" }}>
@@ -60,7 +83,6 @@ export default function LoginScreen({ navigation }) {
           <TextInput
             inputHieght={54}
             inputAlign={'center'}
-
             onPress={toggleShowPassword}
             icon={showPassword ? 'eye-off' : 'eye'}
             placeholder="*******"
@@ -78,7 +100,7 @@ export default function LoginScreen({ navigation }) {
 
         </View>
         <View style={styles.SubmitView}>
-          <Button label="Login" onPress={() => navigation.navigate("Home")} />
+          <Button label="Login" onPress={()=>  navigation.navigate("Home")} />
           <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', alignContent: 'center' }}>
             <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
               <Text style={styles.RegularText}>

@@ -12,7 +12,10 @@
       "backgroundColor": "#000000"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -20,7 +23,8 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.testcarline.carline",
-      "versionCode": 1
+      "versionCode": 1,
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -36,6 +40,9 @@
       "eas": {
         "projectId": "a211d57f-55f4-474c-8cfe-6e1563922959"
       }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/a211d57f-55f4-474c-8cfe-6e1563922959"
     }
   }
 }
