@@ -4,6 +4,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import * as ImagePicker from "expo-image-picker";
 import { LinearGradient } from 'expo-linear-gradient';
 import Button from '../component/Button';
+import TextInput from '../component/TextInput';
 
 
 export default function GuideAdd({ navigation, route }) {
@@ -39,7 +40,7 @@ export default function GuideAdd({ navigation, route }) {
       setBackground(result.assets[0].uri);
     }
   };
-  
+
   return (
     <View style={styles.containerView}>
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>
@@ -57,7 +58,23 @@ export default function GuideAdd({ navigation, route }) {
               Instruction{" "}
             </Text>
           </View>
+          <View style={styles.optionList}>
+            <Text style={styles.InputHead}>
+              {" "}
+              Instruction nameaa{" "}
+            </Text>
+
+            <TextInput
+              inputHieght={54}
+              inputAlign={'center'}
+              placeholder="Enter a name.."
+              autoCapitalize="none"
+              returnKeyType="next"
+              returnKeyLabel="done"
+            />
+          </View>
           <View style={styles.InstructionView}>
+
             <View style={styles.OptionView}>
               <Text style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}>
                 {" "}
@@ -147,25 +164,27 @@ export default function GuideAdd({ navigation, route }) {
                 value={npSwitch}
               />
             </View>
-            {npSwitch && <View style={styles.imageContainer}>
+            {/* {npSwitch && 
+            <View style={styles.imageContainer}>
               <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("NpList")} >
                 <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
 
               </TouchableOpacity>
-              {/* <Image source={npimage} style={styles.logo1} /> */}
+              
 
 
-            </View>}
+            </View>} */}
           </View>
-          
+
+
           <View style={styles.Bottom}>
             {(backgroundSwitch || npSwitch || logoSwitch || floorSwitch) &&
               <Button label="Create Instruction" onPress={() => Alert.alert(
                 'SuccessFull',
                 'Your Instruction is created',
-              )}  />}
+              )} />}
           </View>
-         
+
         </ScrollView>
       </ImageBackground>
 
@@ -186,8 +205,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#020202",
     paddingBottom: 10
 
-
-
   },
   InstructionView: {
     borderWidth: 1,
@@ -206,6 +223,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingRight: 10,
     paddingTop: 10
+
+  },
+  InputHead: {
+    fontSize: 16,
+    fontFamily: 'DMSans_500Medium',
+    paddingTop: 10,
+    color: "#ffffff",
+    paddingBottom: 5,
+    padding: 10
+  },
+
+
+  optionList: {
+
+    flex: 0.1,
+    padding: 20,
 
   },
   addImage: {
