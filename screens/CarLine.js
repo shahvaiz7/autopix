@@ -6,6 +6,7 @@ import {
     TouchableOpacity,
     Image,
     Alert,
+    StatusBar,
     ImageBackground, Linking
 } from "react-native";
 import React, { useState, useEffect } from "react";
@@ -14,26 +15,28 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from 'expo-splash-screen';
 SplashScreen.preventAutoHideAsync();
 export default function CarLine({ navigation }) {
-   
+
     const [loaded, error] = useFonts({
         "DMSans_400Regular": require("../assets/fonts/DMSans-Regular.ttf"),
-        " DMSans_500Medium":  require("../assets/fonts/DMSans-Medium.ttf"),
-         "DMSans_700Bold" : require("../assets/fonts/DMSans-Bold.ttf"),
-      });
-    
-      useEffect(() => {
+        " DMSans_500Medium": require("../assets/fonts/DMSans-Medium.ttf"),
+        "DMSans_700Bold": require("../assets/fonts/DMSans-Bold.ttf"),
+    });
+
+    useEffect(() => {
         if (loaded || error) {
-          SplashScreen.hideAsync();
+            SplashScreen.hideAsync();
         }
-      }, [loaded, error]);
-    
-      if (!loaded && !error) {
+    }, [loaded, error]);
+
+    if (!loaded && !error) {
         return null;
-      }
-    
+    }
+
     return (
-        <View style={styles.containerView}>
+       
+
             <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView} >
+                <StatusBar hidden={true} backgroundColor={'blue'}/>
                 <View style={styles.bodyContent}>
                     <TouchableOpacity style={styles.blockContent} onPress={() => navigation.navigate("Login")} >
                         {/* <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} > */}
@@ -95,7 +98,7 @@ export default function CarLine({ navigation }) {
                 </View>
 
             </ImageBackground>
-        </View>
+       
     );
 }
 
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
     containerView: {
         flex: 1,
         justifyContent: "space-between",
-        backgroundColor: "#020202",
+
 
 
 

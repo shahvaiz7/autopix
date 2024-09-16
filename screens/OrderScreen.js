@@ -7,7 +7,7 @@ import {
   ScrollView,
   ImageBackground,
   FlatList,
-  
+
 } from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -89,19 +89,19 @@ export default function OrderScreen({ navigation }) {
               width: 120,
               alignItems: "center",
               justifyContent: 'center'
-            }} onPress={() => navigation.navigate("CreateOrder")}
+            }} onPress={() => navigation.navigate("Shoot")}
           >
             <Text style={{ color: "#ffffff" }}> Create Order </Text>
           </TouchableOpacity>
         </View>
-        <FlatList 
-        style={styles.bodyContent}
-        data={orderDetails}
-        renderItem={({ item }) => (
-          <OrderCard image={item.image} orderId ={item.id} orderStatus={item.orderStatus} imageCount={item.imageCount} dayCount={item.dayCount}/>
-        )}
-        keyExtractor={item => item.id}
-      />  
+        <FlatList
+          style={styles.bodyContent}
+          data={orderDetails}
+          renderItem={({ item }) => (
+            <OrderCard image={item.image} orderId={item.id} orderStatus={item.orderStatus} imageCount={item.imageCount} dayCount={item.dayCount} />
+          )}
+          keyExtractor={item => item.id}
+        />
       </ImageBackground>
     </View>
   );

@@ -16,6 +16,7 @@ import TextInput from "../component/TextInput";
 import { Picker } from "@react-native-picker/picker";
 import { LinearGradient } from "expo-linear-gradient";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { StatusBar } from 'react-native';
 import {
   BottomSheetModal,
   BottomSheetView,
@@ -46,27 +47,28 @@ export default function CreateOrder({ navigation }) {
 
   return (
     <ScrollView style={styles.containerView}>
+
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
 
         <View style={styles.HeaderView}>
-          <View style={{
+
+          <TouchableOpacity onPress={() => navigation.navigate("Home")} style={{
             color: 'white',
             width: '100%',
             justifyContent: 'space-between',
             flexDirection: 'row',
             paddingTop: 30,
             paddingBottom: 20
-          }}>
-            <TouchableOpacity onPress={() => navigation.navigate("Home")} >
-              <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
-            </TouchableOpacity>
+          }} >
+            <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
+
             <Text style={{
               color: "#ffffff",
               fontFamily: 'DMSans_500Medium', fontSize: 18
             }}>Create order </Text>
             <Text>       </Text>
 
-          </View>
+          </TouchableOpacity>
           <Text style={styles.AllText}> Create a new order </Text>
           <Text style={{
             padding: 5, color: "#b6b6b6", fontSize: 14,
@@ -101,14 +103,14 @@ export default function CreateOrder({ navigation }) {
           </Text>
 
           <TextInput
-
             placeholder="Enter here...."
             autoCapitalize="none"
             keyboardAppearance="dark"
             returnKeyType="next"
             returnKeyLabel="next"
             inputHieght={78}
-            numberOfLines={5}
+
+            linenumber={2}
 
 
           />
@@ -162,8 +164,8 @@ export default function CreateOrder({ navigation }) {
               style={{ color: '#ffffff' }}
             >
               <Picker.Item label="24 Hours" value="24" />
-              <Picker.Item label="3 Days" value="js" />
-              <Picker.Item label="7 Days" value="js" />
+              <Picker.Item label="3 Days" value="3" />
+              <Picker.Item label="7 Days" value="7" />
             </Picker>
           </ImageBackground>
         </View>

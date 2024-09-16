@@ -44,8 +44,8 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [loaded, error] = useFonts({
     "DMSans_400Regular": require("./assets/fonts/DMSans-Regular.ttf"),
-    " DMSans_500Medium":  require("./assets/fonts/DMSans-Medium.ttf"),
-     "DMSans_700Bold" : require("./assets/fonts/DMSans-Bold.ttf"),
+    "DMSans_500Medium": require("./assets/fonts/DMSans-Medium.ttf"),
+    "DMSans_700Bold": require("./assets/fonts/DMSans-Bold.ttf"),
   });
 
   useEffect(() => {
@@ -57,9 +57,10 @@ export default function App() {
   if (!loaded && !error) {
     return null;
   }
- 
+
   return (
     <NavigationContainer>
+
       <Stack.Navigator>
         {/* <Stack.Screen name="Welcome" component={WelcomeScreen} /> */}
         <Stack.Screen name="CarLine" component={CarLine} options={{ header: () => null }} />
@@ -67,8 +68,8 @@ export default function App() {
         <Stack.Screen name="Signup" component={SignupScreen} options={{ header: () => null }} />
         <Stack.Screen name="Home" component={HomeScreen} options={{ header: () => null }} />
         <Stack.Screen name="Profile" component={ProfileScreen} options={{ header: () => null }} />
-        <Stack.Screen name="Profiledetails" component={ProfileDetails} options={{ header: () => null }}/>
-        <Stack.Screen name="AccountSetting" component={AccountSetting} options={{ header: () => null }}/>
+        <Stack.Screen name="Profiledetails" component={ProfileDetails} options={{ header: () => null }} />
+        <Stack.Screen name="AccountSetting" component={AccountSetting} options={{ header: () => null }} />
         <Stack.Screen name="Shareapp" component={ShareApp} options={{ header: () => null }} />
         <Stack.Screen name="Support" component={SupportPage} />
         <Stack.Screen name="About" component={AboutScreen} options={{ header: () => null }} />
@@ -78,15 +79,15 @@ export default function App() {
         <Stack.Screen name="GuideAdd" component={GuideAdd} options={{ header: () => null }} />
         <Stack.Screen name="BackgroundType" component={BackgroundType} options={{ header: () => null }} />
         <Stack.Screen name="BackgroundList" component={BackgroundList} options={{ header: () => null }} />
-        <Stack.Screen name="FloorList" component={FloorList} options={{ header: () => null }}/>
-        <Stack.Screen name="LogoList" component={LogoList} options={{ header: () => null }}/>
+        <Stack.Screen name="FloorList" component={FloorList} options={{ header: () => null }} />
+        <Stack.Screen name="LogoList" component={LogoList} options={{ header: () => null }} />
         <Stack.Screen name="NpList" component={NpList} options={{ header: () => null }} />
         <Stack.Screen name="SuccessScreen" component={SuccessScreen} options={{ header: () => null }} />
         <Stack.Screen name="UploadingScreen" component={UploadingScreen} options={{ header: () => null }} />
         <Stack.Screen name="NotificationScreen" component={NotificationScreen} options={{ header: () => null }} />
         <Stack.Screen name="OrderScreen" component={OrderScreen} options={{ header: () => null }} />
 
-        <Stack.Screen name="PrivecySetting" component={PrivecySetting} options={{ header: () => null }}/>
+        <Stack.Screen name="PrivecySetting" component={PrivecySetting} options={{ header: () => null }} />
         <Stack.Screen name="GuideScreen" component={GuideScreen} options={{ header: () => null }} />
         <Stack.Screen name="CameraScreen" component={CameraScreen} options={{ header: () => null }} />
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{ header: () => null }} />

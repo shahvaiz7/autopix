@@ -31,29 +31,29 @@ export default function LoginScreen({ navigation }) {
     setShowPassword(!showPassword);
   };
 
-const handelLogin=() => {
+  const handelLogin = () => {
     user_login({
-      email: email,
-      password: password,
-    }).then((result)=> {
-      console.log(result + "Test...........");
-      if(result.status ==200){
+      email: "testapi@gmail.com",
+      password: "TestApi",
+    }).then((result) => {
+      console.log(result + "Tes");
+      if (result.status == 200) {
         AsyncStorage.setItem("AccessToken", result.data.token)
         navigation.navigate("Home")
       }
-    }).catch(err=> {
-      console.error( err + "Test...........");
-      
+    }).catch(err => {
+      console.error(err);
+
     })
-  
-}
+
+  }
 
 
   return (
     <ScrollView style={styles.containerView}>
 
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
-      <View style={styles.HeaderView}>
+        <View style={styles.HeaderView}>
           <Text style={{ fontFamily: 'DMSans_500Medium', padding: 10, color: "#ffffff", fontSize: 30 }}> CarLine </Text>
           <Text style={styles.AllText}> Welcome Back! </Text>
         </View>
@@ -100,7 +100,7 @@ const handelLogin=() => {
 
         </View>
         <View style={styles.SubmitView}>
-          <Button label="Login" onPress={()=>  navigation.navigate("Home")} />
+          <Button label="Login" onPress={() => navigation.navigate("Home")} />
           <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', alignContent: 'center' }}>
             <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
               <Text style={styles.RegularText}>
@@ -115,7 +115,7 @@ const handelLogin=() => {
           </View>
         </View>
         <View style={styles.Bottom}>
-          <TouchableOpacity onPress={() => navigation.navigate("#")}>
+          <TouchableOpacity onPress={handelLogin}>
             <Text style={styles.RegularText}>
               {" "}
               Forget Password?{" "}

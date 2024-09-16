@@ -17,7 +17,11 @@ import TextInput from "../component/TextInput";
 
 export default function SignupScreen({ navigation }) {
 
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [company_name, setCompany_name] = useState('');
   const [password, setPassword] = useState('');
+
 
   // State variable to track password visibility
   const [showPassword, setShowPassword] = useState(false);
@@ -69,6 +73,8 @@ export default function SignupScreen({ navigation }) {
             keyboardAppearance="dark"
             returnKeyType="next"
             returnKeyLabel="next"
+            value={name}
+            onChangeText={setName}
           />
           <Text style={styles.InputHead}>
             {" "}
@@ -84,6 +90,8 @@ export default function SignupScreen({ navigation }) {
             keyboardAppearance="dark"
             returnKeyType="next"
             returnKeyLabel="next"
+            value={email}
+            onChangeText={setEmail}
           />
           <Text style={styles.InputHead}>
             {" "}
@@ -121,6 +129,8 @@ export default function SignupScreen({ navigation }) {
             returnKeyLabel="next"
             inputHieght={54}
             inputAlign={'center'}
+            value={company_name}
+            onChangeText={setCompany_name}
           />
         </View>
         <View style={styles.SubmitView}>

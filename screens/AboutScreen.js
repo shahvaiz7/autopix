@@ -57,7 +57,7 @@ export default function AboutScreen({ navigation }) {
 
         <TouchableOpacity
           style={styles.options}
-          onPress={() => { Linking.openURL('https://autopix.no/privacy-policy/') }}
+          onPress={() => { Linking.openURL('https://carline.no') }}
         >
           <Text style={styles.CardText}>Privacy Policy </Text>
           <MaterialCommunityIcons
@@ -68,7 +68,7 @@ export default function AboutScreen({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.options}
-          onPress={() => { Linking.openURL('https://autopix.no/terms-of-service') }}
+          onPress={() => { Linking.openURL('https://carline.no') }}
         >
           <Text style={styles.CardText}>Terms & Conditions</Text>
           <MaterialCommunityIcons

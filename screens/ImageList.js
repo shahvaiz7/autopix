@@ -92,7 +92,7 @@ export default function ImageList({ navigation }) {
             paddingBottom: 5,
           }}
         >
-          <TouchableOpacity style={{ flexDirection: "row" }}>
+          <TouchableOpacity style={{ flexDirection: "row" }} onPress={() => navigation.navigate("CameraScreen")}>
             <MaterialCommunityIcons
               name="arrow-left"
               size={24}
@@ -126,23 +126,23 @@ export default function ImageList({ navigation }) {
             data={imageList}
             renderItem={({ item }) => (
               <TouchableOpacity style={styles.ImageBox}>
-              <Image
-                style={{
-                  width: 168,
-                  height: 150,
-                  borderRadius: 15,
-                  padding: 10,
-                }}
-                source={item.image}
-              />
+                <Image
+                  style={{
+                    width: 168,
+                    height: 150,
+                    borderRadius: 15,
+                    padding: 10,
+                  }}
+                  source={item.image}
+                />
               </TouchableOpacity>
             )}
             numColumns={2}
             keyExtractor={(item) => item.id}
           />
-           <Button label="Create Order" onPress={() => navigation.navigate("CreateOrder")}  />
+          <Button label="Create Order" onPress={() => navigation.navigate("CreateOrder")} />
         </View>
-        
+
       </ImageBackground>
     </View>
   );
@@ -151,25 +151,25 @@ export default function ImageList({ navigation }) {
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    paddingTop:30,
-    paddingBottom:50
-    
+    paddingTop: 30,
+    paddingBottom: 50
+
   },
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
-  ImageBox:{
-    padding:10,
-    paddingBottom:20
+  ImageBox: {
+    padding: 10,
+    paddingBottom: 20
 
   },
- 
+
   Bottom: {
     alignItems: "center",
     justifyContent: "center",
-    paddingBottom:30
+    paddingBottom: 30
   },
   item: {
     flex: 1,
