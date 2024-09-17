@@ -1,0 +1,1 @@
+export default BaseUrl = 'https://app.carline.no/api'

@@ -2,103 +2,119 @@ import {
     StyleSheet,
     Text,
     View,
-    ScrollView,
     TouchableOpacity,
     Image,
-    Alert,
     StatusBar,
     ImageBackground, Linking
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useFonts } from "expo-font";
 
 import * as SplashScreen from 'expo-splash-screen';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import UserContext from "../auth/UserContext";
 SplashScreen.preventAutoHideAsync();
-export default function CarLine({ navigation }) {
 
-    const [loaded, error] = useFonts({
-        "DMSans_400Regular": require("../assets/fonts/DMSans-Regular.ttf"),
-        " DMSans_500Medium": require("../assets/fonts/DMSans-Medium.ttf"),
-        "DMSans_700Bold": require("../assets/fonts/DMSans-Bold.ttf"),
-    });
+export default function CarLine({ navigation }) {
+    const { userData, setUserData } = useContext(UserContext)
+    // const [loaded, error] = useFonts({
+    //     "DMSans_400Regular": require("../assets/fonts/DMSans-Regular.ttf"),
+    //     " DMSans_500Medium": require("../assets/fonts/DMSans-Medium.ttf"),
+    //     "DMSans_700Bold": require("../assets/fonts/DMSans-Bold.ttf"),
+    // });
+
+    // useEffect(() => {
+    //     if (loaded || error) {
+    //         SplashScreen.hideAsync();
+    //     }
+    // }, [loaded, error]);
+
+    // if (!loaded && !error) {
+    //     return null;
+    // }
+
 
     useEffect(() => {
-        if (loaded || error) {
-            SplashScreen.hideAsync();
-        }
-    }, [loaded, error]);
+        const getData = async () => {
+            try {
+                const value = await AsyncStorage.getItem('AccessToken');
+                if (value !== null) {
+                    setUserData(value);
+                }
+            } catch (error) {
+                console.error('Error retrieving data from AsyncStorage:', error);
+            }
+        };
 
-    if (!loaded && !error) {
-        return null;
-    }
+        getData();
+    }, []);
+
 
     return (
-       
+        <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView} >
+            <StatusBar hidden={true} backgroundColor={'blue'} />
+            <View style={styles.bodyContent}>
+                <TouchableOpacity style={styles.blockContent} onPress={() => navigation.navigate(userData ? "Home" : "Login")} >
+                    {/* <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} > */}
+                    <View style={{ padding: 5 }}>
+                        <Text style={{
+                            color: 'white',
+                            fontSize: 16,
+                            fontFamily: 'DMSans_500Medium',
+                        }}> Automotive </Text>
+                        <Image
+                            style={{ width: 300, height: 200, borderRadius: 25 }}
+                            source={require("../assets/carline.png")}
+                            resizeMode='contain'
+                        />
+                    </View>
+                    <View style={{
+                        borderWidth: 1,
+                        borderColor: 'white',
+                        margin: 10,
+                        borderRadius: 8,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: 161,
+                        height: 42,
+                    }}>
+                        <Text style={{
+                            color: 'white',
+                            fontSize: 14,
+                            fontFamily: 'DMSans_400Regular',
+                        }}> Explore </Text>
+                    </View>
+                    {/* </ImageBackground> */}
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.blockContent2} onPress={() => { Linking.openURL('https://carline.no/') }} >
+                    <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }}
+                        style={{ width: 343, height: 318 }} >
+                        <View
+                            style={{
+                                flex: 1,
+                                justifyContent: 'center',
+                                alignItems: 'center',
 
-            <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView} >
-                <StatusBar hidden={true} backgroundColor={'blue'}/>
-                <View style={styles.bodyContent}>
-                    <TouchableOpacity style={styles.blockContent} onPress={() => navigation.navigate("Login")} >
-                        {/* <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} > */}
-                        <View style={{ padding: 5 }}>
+                            }}
+                        >
                             <Text style={{
                                 color: 'white',
-                                fontSize: 16,
+                                fontSize: 36,
                                 fontFamily: 'DMSans_500Medium',
-                            }}> Automotive </Text>
-                            <Image
-                                style={{ width: 300, height: 200, borderRadius: 25 }}
-                                source={require("../assets/carline.png")}
-                                resizeMode='contain'
-                            />
+
+                            }}> Carline </Text>
+
                         </View>
-                        <View style={{
-                            borderWidth: 1,
-                            borderColor: 'white',
-                            margin: 10,
-                            borderRadius: 8,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            width: 161,
-                            height: 42,
-                        }}>
-                            <Text style={{
-                                color: 'white',
-                                fontSize: 14,
-                                fontFamily: 'DMSans_400Regular',
-                            }}> Explore </Text>
-                        </View>
-                        {/* </ImageBackground> */}
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.blockContent2} onPress={() => { Linking.openURL('https://carline.no/') }} >
-                        <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }}
-                            style={{ width: 343, height: 318 }} >
-                            <View
-                                style={{
-                                    flex: 1,
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-
-                                }}
-                            >
-                                <Text style={{
-                                    color: 'white',
-                                    fontSize: 36,
-                                    fontFamily: 'DMSans_500Medium',
-
-                                }}> Carline </Text>
-
-                            </View>
-                        </ImageBackground>
-                    </TouchableOpacity>
+                    </ImageBackground>
+                </TouchableOpacity>
 
 
 
 
-                </View>
+            </View>
 
-            </ImageBackground>
-       
+        </ImageBackground>
+
     );
 }
 

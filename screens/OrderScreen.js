@@ -2,16 +2,15 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   TouchableOpacity,
-  ScrollView,
   ImageBackground,
   FlatList,
-
 } from "react-native";
-import React from "react";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import React, { useEffect ,useState} from "react";
 import OrderCard from "../component/OrderCard";
+import BaseUrl from "../auth/BaseUrl";
+import axios from "axios";
+
 const orderDetails = [
   {
     id: 1,
@@ -63,7 +62,35 @@ const orderDetails = [
   },
   // ... more items with image, orderId, imageCount, dayCount, orderStatus, onPress 
 ];
+
 export default function OrderScreen({ navigation }) {
+  const [OrderList, setOrderList] = useState([])
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const token = '5fd4ff2756dfcfc2b0bdfab39478898e318d52fc';  // Your provided token
+        const response = await axios.get(`${BaseUrl}/orders/`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,  // Pass the token here
+            'Content-Type': 'application/json',
+          }
+        });
+
+        setOrderList(response.data);
+        console.log(JSON.stringify(response.data))
+      } catch (err) {
+        console.log(err.message);  // Catch and display error if any
+      } finally {
+        console.log(false);  // Set loading to false after request completes
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+
+
   return (
     <View style={styles.containerView}>
       <ImageBackground source={require("../assets/background.png")} style={styles.containerView} >
@@ -96,9 +123,9 @@ export default function OrderScreen({ navigation }) {
         </View>
         <FlatList
           style={styles.bodyContent}
-          data={orderDetails}
+          data={OrderList}
           renderItem={({ item }) => (
-            <OrderCard image={item.image} orderId={item.id} orderStatus={item.orderStatus} imageCount={item.imageCount} dayCount={item.dayCount} />
+            <OrderCard image={item?.instruction_id?.background?.image} orderId={item.id} orderStatus={item.orderStatus} imageCount={item.imageCount} dayCount={item.dayCount} />
           )}
           keyExtractor={item => item.id}
         />
