@@ -45,12 +45,12 @@ export default function SuccessScreen({ navigation }) {
             height: 54,
             width: '90%',
             alignItems: "center",
-          }} onPress={() => navigation.navigate("Home")}
+          }} onPress={() => navigation.navigate("OrderScreen")}
         >
           <Text style={{
             color: "#ffffff", fontSize: 16,
             fontFamily: 'DMSans_500Medium',
-          }}> Create New Order </Text>
+          }}> View Order List </Text>
         </TouchableOpacity>
 
 

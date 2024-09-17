@@ -3,6 +3,24 @@ import React from 'react';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function OrderCard({ image, orderId, imageCount, dayCount, orderStatus, onPress }) {
+   
+   let statusColor;
+
+  if (orderStatus=="Approved") {
+    statusColor = '#0CFFB3';
+  } else if (orderStatus=="Pending") {
+    statusColor = '#FFCA0C';
+  } else if (orderStatus=="Cancel") {
+    statusColor = '#FC381E';
+  } else if (orderStatus=="In Progress") {
+    statusColor = '#D0F0C0';
+  }
+  else if (orderStatus=="Archive") {
+    statusColor = 'gray';
+  }
+  else {
+    statusColor = 'white';
+  }
     return (
         <View style={styles.OrderCard}>
             <View style={{ flex: 0.4 }}>
@@ -37,7 +55,7 @@ export default function OrderCard({ image, orderId, imageCount, dayCount, orderS
 
             <View style={{ flex: 0.3, justifyContent: 'flex-end', paddingBottom: 20 }}>
                 <View style={{ alignContent: 'center', alignItems: 'center', justifyContent: 'center', paddingBottom: 40 }}>
-                    <Text style={{ color: "yellow", fontSize: 14, fontFamily: 'DMSans_500Medium', }}>
+                    <Text style={{ color: statusColor, fontSize: 14, fontFamily: 'DMSans_500Medium', }}>
                         {orderStatus}
                     </Text>
                 </View>

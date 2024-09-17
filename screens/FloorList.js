@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { FlatList, View, Text, TouchableOpacity, StyleSheet, Image ,ImageBackground} from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 const data = [
@@ -27,8 +27,26 @@ const data = [
 ];
 
 
+
 export default function FloorList({ navigation }) {
     const [selectedIds, setSelectedIds] = useState([]);
+    const [imageList, setImageList] = useState(null);
+useEffect(() => {
+  getFloor();
+}, []);
+
+const getFloor = () => {
+  const URL = "https://app.carline.no/api/floors/";
+
+  fetch(URL)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      setImageList(data);
+      // console.log(data);
+    });
+};
 
     // const toggleItemSelect = (id) => {
     //     if (selectedIds.includes(id)) {
@@ -39,7 +57,7 @@ export default function FloorList({ navigation }) {
     //     }
     // };
     return (
-        <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
+        <ImageBackground source={require("../assets/background.png")} resizeMode='stretch'  style={styles.BackList} >
              <View style={{
             color: 'white',
             width: '100%',
@@ -63,39 +81,36 @@ export default function FloorList({ navigation }) {
 
         </View>
         <FlatList
-            data={data}
-            renderItem={({ item }) => (
-                <TouchableOpacity
-                onPress={() => navigation.navigate("Home")}
-                style={{
-                  backgroundColor: 'transparent', borderRadius: 35, padding: 10, margin: 10
-                }}
-              >
-             
-                <View>
-                  <Image style={styles.imageBox} source={item.image} />
-                {/* <View style={styles.SelectIcon}> 
-                  <MaterialCommunityIcons name="check-circle" size={24} color={"white"} />
-                </View>  */}
-                </View>
-              </TouchableOpacity>
-            )}
-            keyExtractor={item => item.id}
-            extraData={selectedIds} // Important! This ensures FlatList re-renders when state changes
-        />
+        data={imageList}
+        renderItem={({ item }) => (
+          
+          <TouchableOpacity
+            onPress={() => navigation.navigate("GuideAdd", item.image)}
+            style={{
+              backgroundColor: 'transparent', borderRadius: 35, margin: 5
+            }}
+          >
+          <Image style={styles.ImageList} source={{uri: item.image}} />
+          </TouchableOpacity>
+          
+        )}
+        keyExtractor={(item) => item.id}
+      />
         </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
-    imageBox: {
-        width: '100%',
-        height: 150,
-        borderRadius:25
-
-    },
-    selectIcon:{
-        justifyContent:'flex-start',alignItems:'flex-start',alignSelf:'flex-start', position:'absolute'
-
-    },
+  BackList: {
+    flex: 1,
+  },
+    
+    ImageList:{
+      width:'auto',
+     height:150,
+      margin:5,
+      borderRadius:15
+    
+          
+      },
 })

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { FlatList, View, Text, TouchableOpacity, StyleSheet, Image,ImageBackground } from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 const data = [
@@ -33,9 +33,26 @@ const data = [
 
 export default function LogoList({ navigation }) {
     const [selectedIds, setSelectedIds] = useState([]);
+    const [imageList, setImageList] = useState(null);
+useEffect(() => {
+  getLogo();
+}, []);
+
+const getLogo = () => {
+  const URL = "https://app.carline.no/api/logo-placements/";
+
+  fetch(URL)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      setImageList(data);
+    //   console.log(data);
+    });
+};
 
     return (
-        <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
+        <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.BackList} >
              <View style={{
             color: 'white',
             width: '100%',
@@ -60,20 +77,24 @@ export default function LogoList({ navigation }) {
 
         </View>
         <FlatList
-            data={data}
-            renderItem={({ item }) => (
-                <TouchableOpacity
-                onPress={() => navigation.navigate("Home")}
-                    style={{
-                        backgroundColor: 'white', borderRadius: 25, padding: 10, margin: 10
-                    }}
-                >
-                    {item.image && <Image style={styles.imageBox} source={item.image} />}
-                </TouchableOpacity>
-            )}
-            keyExtractor={item => item.id}
-             // Important! This ensures FlatList re-renders when state changes
-        />
+        data={imageList}
+        renderItem={({ item }) => (
+          
+          <TouchableOpacity
+            onPress={() => navigation.navigate("GuideAdd", item.image)}
+            style={{
+              backgroundColor: 'transparent', borderRadius: 35, margin: 5
+            }}
+          >
+          <Image style={styles.ImageList} source={{uri: item.image}} />
+          <Text style={{
+              color: 'white'}} > 
+              {item.name}</Text>
+          </TouchableOpacity>
+          
+        )}
+        keyExtractor={(item) => item.id}
+      />
         </ImageBackground>
 
     )
@@ -85,5 +106,16 @@ const styles = StyleSheet.create({
         height: 207,
         borderRadius: 85
 
-    }
+    },
+    BackList: {
+        flex: 1,
+      },
+      ImageList:{
+        width:'auto',
+       height:150,
+        margin:5,
+        borderRadius:15
+      
+            
+        },
 })

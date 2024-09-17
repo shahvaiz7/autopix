@@ -36,7 +36,7 @@ export default function SignupScreen({ navigation }) {
     <ScrollView style={styles.containerView}>
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
         <View style={styles.HeaderView}>
-          <TouchableOpacity style={{
+          {/* <TouchableOpacity style={{
             color: 'white',
             width: '100%',
             justifyContent: 'space-between',
@@ -51,7 +51,7 @@ export default function SignupScreen({ navigation }) {
             }}>sign up </Text>
             <Text>       </Text>
 
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <View style={styles.welcomeBar}>
 
             <Text style={styles.AllText}>Sing Up </Text>

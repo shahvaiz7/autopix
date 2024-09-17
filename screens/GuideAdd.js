@@ -11,7 +11,7 @@ export default function GuideAdd({ navigation, route }) {
   const bgswitch = route.params;
   const id = route.params;
   const npimage = route.params;
-  const backgroundImage = route.params;
+  const image = route.params;
 
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
@@ -61,7 +61,7 @@ export default function GuideAdd({ navigation, route }) {
           <View style={styles.optionList}>
             <Text style={styles.InputHead}>
               {" "}
-              Instruction nameaa{" "}
+              Instruction name{" "}
             </Text>
 
             <TextInput
@@ -93,9 +93,9 @@ export default function GuideAdd({ navigation, route }) {
               <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("BackgroundType", { bgswitch })} >
                 <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
               </TouchableOpacity>
-              {backgroundImage &&
+              {image &&
                 <TouchableOpacity onPress={() => navigation.navigate("BackgroundList")}>
-                  <Image source={backgroundImage} style={styles.logo1} />
+                  <Image source={image} style={styles.logo1} />
                 </TouchableOpacity>}
               {/* <Text  style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}> Id : {id}</Text> */}
 

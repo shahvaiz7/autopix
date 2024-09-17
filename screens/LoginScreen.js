@@ -101,7 +101,7 @@ export default function LoginScreen({ navigation }) {
         </View>
         <View style={styles.SubmitView}>
           <Button label="Login" onPress={() => navigation.navigate("Home")} />
-          <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', alignContent: 'center' }}>
+          <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', alignContent: 'center',paddingTop:20 }}>
             <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
               <Text style={styles.RegularText}>
                 {" "}

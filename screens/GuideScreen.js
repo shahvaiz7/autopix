@@ -16,7 +16,7 @@ import GuideCard from "../component/GuideCard";
 
 const guideDetails = [
   { 
-    guideId: 1,
+    id: 1,
     image: require('../assets/Rectangle 17 (3).png'),
     orderId: 1009001,
     BGCheck: 'check-circle',
@@ -27,7 +27,7 @@ const guideDetails = [
     orderStatus: 'Pending',
   },
   { 
-    guideId: 2,
+    id: 2,
     image: require('../assets/Rectangle 17 (3).png'),
     orderId: 1009001,
     BGCheck: 'check-circle',
@@ -38,7 +38,7 @@ const guideDetails = [
     orderStatus: 'Pending',
   },
   { 
-    guideId: 3,
+    id: 3,
     image: require('../assets/Rectangle 17 (3).png'),
     orderId: 1009001,
     BGCheck: 'check-circle',
@@ -49,7 +49,7 @@ const guideDetails = [
     orderStatus: 'Pending',
   },
   { 
-    guideId: 4,
+    id: 4,
     image: require('../assets/Rectangle 17 (3).png'),
     orderId: 1009001,
     BGCheck: 'check-circle',
@@ -101,7 +101,7 @@ export default function GuideScreen({ navigation }) {
         data={guideDetails}
         renderItem={({ item }) => (
           <TouchableOpacity   onPress={() => navigation.navigate("CreateOrder")}>
-          <GuideCard image={item.image} guideId={item.guideId} BGCheck={item.BGCheck}
+          <GuideCard image={item.image} guideId={item.id} BGCheck={item.BGCheck}
                       NPCheck={item.NPCheck} FloorCheck={item.FloorCheck} LogoCheck={item.LogoCheck} createdOn={item.createdOn} />
                        </TouchableOpacity>
         )}

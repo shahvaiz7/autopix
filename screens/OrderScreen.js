@@ -35,7 +35,7 @@ const orderDetails = [
     orderId: 1009002,
     imageCount: 3,
     dayCount: 4,
-    orderStatus: 'Approved',
+    orderStatus: 'Cancel',
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const orderDetails = [
     orderId: 1009002,
     imageCount: 3,
     dayCount: 4,
-    orderStatus: 'Approved',
+    orderStatus: 'In Progress',
   },
   {
     id: 5,
@@ -59,7 +59,15 @@ const orderDetails = [
     orderId: 1009002,
     imageCount: 3,
     dayCount: 4,
-    orderStatus: 'Approved',
+    orderStatus: 'Archive',
+  },
+  {
+    id: 7,
+    image: require('../assets/background3.png'),
+    orderId: 1009002,
+    imageCount: 3,
+    dayCount: 4,
+    orderStatus: 'Others',
   },
   // ... more items with image, orderId, imageCount, dayCount, orderStatus, onPress 
 ];
@@ -98,7 +106,9 @@ export default function OrderScreen({ navigation }) {
           style={styles.bodyContent}
           data={orderDetails}
           renderItem={({ item }) => (
-            <OrderCard image={item.image} orderId={item.id} orderStatus={item.orderStatus} imageCount={item.imageCount} dayCount={item.dayCount} />
+            <OrderCard image={item.image} orderId={item.id} 
+            orderStatus={item.orderStatus} 
+            imageCount={item.imageCount} dayCount={item.dayCount} />
           )}
           keyExtractor={item => item.id}
         />
