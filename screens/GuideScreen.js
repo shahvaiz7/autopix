@@ -2,68 +2,87 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   TouchableOpacity,
-  ScrollView,
-  StatusBar,
   ImageBackground,
   FlatList
-
 } from "react-native";
-import React from "react";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import React, { useContext, useState, useEffect } from "react";
 import GuideCard from "../component/GuideCard";
+import UserContext from '../auth/UserContext'
+import BaseUrl from "../auth/BaseUrl";
+import axios from "axios";
 
 const guideDetails = [
-  { 
+  {
     guideId: 1,
     image: require('../assets/Rectangle 17 (3).png'),
     orderId: 1009001,
     BGCheck: 'check-circle',
-    NPCheck:'bookmark-remove-outline',
-    FloorCheck:'check-circle',
-    LogoCheck:'bookmark-remove-outline',
+    NPCheck: 'bookmark-remove-outline',
+    FloorCheck: 'check-circle',
+    LogoCheck: 'bookmark-remove-outline',
     createdOn: 3,
     orderStatus: 'Pending',
   },
-  { 
+  {
     guideId: 2,
     image: require('../assets/Rectangle 17 (3).png'),
     orderId: 1009001,
     BGCheck: 'check-circle',
-    NPCheck:'bookmark-remove-outline',
-    FloorCheck:'check-circle',
-    LogoCheck:'bookmark-remove-outline',
+    NPCheck: 'bookmark-remove-outline',
+    FloorCheck: 'check-circle',
+    LogoCheck: 'bookmark-remove-outline',
     createdOn: 3,
     orderStatus: 'Pending',
   },
-  { 
+  {
     guideId: 3,
     image: require('../assets/Rectangle 17 (3).png'),
     orderId: 1009001,
     BGCheck: 'check-circle',
-    NPCheck:'bookmark-remove-outline',
-    FloorCheck:'check-circle',
-    LogoCheck:'bookmark-remove-outline',
+    NPCheck: 'bookmark-remove-outline',
+    FloorCheck: 'check-circle',
+    LogoCheck: 'bookmark-remove-outline',
     createdOn: 3,
     orderStatus: 'Pending',
   },
-  { 
+  {
     guideId: 4,
     image: require('../assets/Rectangle 17 (3).png'),
     orderId: 1009001,
     BGCheck: 'check-circle',
-    NPCheck:'bookmark-remove-outline',
-    FloorCheck:'check-circle',
-    LogoCheck:'bookmark-remove-outline',
+    NPCheck: 'bookmark-remove-outline',
+    FloorCheck: 'check-circle',
+    LogoCheck: 'bookmark-remove-outline',
     createdOn: 3,
     orderStatus: 'Pending',
   },
-
 ];
 
 
 export default function GuideScreen({ navigation }) {
+  const [instructions, setInstructions] = useState([])
+  const { userData } = useContext(UserContext)
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await axios.get(`${BaseUrl}/orders/`, {
+          headers: {
+            'Authorization': `Bearer ${userData?.token}`,  // Pass the token here
+            'Content-Type': 'application/json',
+          }
+        });
+        setInstructions(response.data);
+      } catch (err) {
+        alert(err.message);  // Catch and display error if any
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+  
   return (
     <View style={styles.containerView}>
       <ImageBackground source={require("../assets/background.png")} style={styles.containerView} >
@@ -94,20 +113,20 @@ export default function GuideScreen({ navigation }) {
             <Text style={{ color: "#ffffff" }}> Create Instruction </Text>
           </TouchableOpacity>
         </View>
-       
-        
-        <FlatList 
-        style={styles.bodyContent}
-        data={guideDetails}
-        renderItem={({ item }) => (
-          <TouchableOpacity   onPress={() => navigation.navigate("CreateOrder")}>
-          <GuideCard image={item.image} guideId={item.guideId} BGCheck={item.BGCheck}
-                      NPCheck={item.NPCheck} FloorCheck={item.FloorCheck} LogoCheck={item.LogoCheck} createdOn={item.createdOn} />
-                       </TouchableOpacity>
-        )}
-        keyExtractor={item => item.id}
-      />  
-     
+
+
+        <FlatList
+          style={styles.bodyContent}
+          data={instructions}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => navigation.navigate("CreateOrder")}>
+              <GuideCard image={item.instruction_id?.background?.image} guideId={item.id} BGCheck={item.BGCheck}
+                NPCheck={item.NPCheck} FloorCheck={item.FloorCheck} LogoCheck={item.LogoCheck} createdOn={item.createdOn} />
+            </TouchableOpacity>
+          )}
+          keyExtractor={item => item.id}
+        />
+
 
         {/* <View style={styles.GuideCard}>
             <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
@@ -515,7 +534,7 @@ export default function GuideScreen({ navigation }) {
             </ImageBackground>
           </View> */}
 
-       
+
       </ImageBackground>
     </View>
   );

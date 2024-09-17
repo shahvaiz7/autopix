@@ -6,10 +6,11 @@ import {
   ImageBackground,
   FlatList,
 } from "react-native";
-import React, { useEffect ,useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import OrderCard from "../component/OrderCard";
 import BaseUrl from "../auth/BaseUrl";
 import axios from "axios";
+import UserContext from '../auth/UserContext'
 
 const orderDetails = [
   {
@@ -65,24 +66,20 @@ const orderDetails = [
 
 export default function OrderScreen({ navigation }) {
   const [OrderList, setOrderList] = useState([])
+  const { userData } = useContext(UserContext)
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const token = '5fd4ff2756dfcfc2b0bdfab39478898e318d52fc';  // Your provided token
         const response = await axios.get(`${BaseUrl}/orders/`, {
           headers: {
-            'Authorization': `Bearer ${token}`,  // Pass the token here
+            'Authorization': `Bearer ${userData?.token}`,  // Pass the token here
             'Content-Type': 'application/json',
           }
         });
-
         setOrderList(response.data);
-        console.log(JSON.stringify(response.data))
       } catch (err) {
-        console.log(err.message);  // Catch and display error if any
-      } finally {
-        console.log(false);  // Set loading to false after request completes
+        alert(err.message);  // Catch and display error if any
       }
     };
 

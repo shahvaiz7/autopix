@@ -13,6 +13,8 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from 'expo-splash-screen';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import UserContext from "../auth/UserContext";
+import axios from "axios";
+import BaseUrl from "../auth/BaseUrl";
 SplashScreen.preventAutoHideAsync();
 
 export default function CarLine({ navigation }) {
@@ -39,13 +41,25 @@ export default function CarLine({ navigation }) {
             try {
                 const value = await AsyncStorage.getItem('AccessToken');
                 if (value !== null) {
-                    setUserData(value);
+                    const convertValue = JSON.parse(value)
+                    try {
+                        const response = await axios.get(`${BaseUrl}/auths/${convertValue.user_id}`, {
+                            headers: {
+                                'Authorization': `Bearer ${convertValue?.token}`,  // Pass the token here
+                                'Content-Type': 'application/json',
+                            }
+                        });
+                        const userData = response.data
+                        const mergedObj = Object.assign({}, convertValue, userData);
+                        setUserData(mergedObj);
+                    } catch (err) {
+                        alert(err.message);  // Catch and display error if any
+                    }
                 }
             } catch (error) {
                 console.error('Error retrieving data from AsyncStorage:', error);
             }
         };
-
         getData();
     }, []);
 
