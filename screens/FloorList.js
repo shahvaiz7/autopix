@@ -38,6 +38,7 @@ export default function FloorList({ navigation }) {
     //         setSelectedIds(prevIds => [...prevIds, id]);
     //     }
     // };
+    
     return (
         <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
              <View style={{

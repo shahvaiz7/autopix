@@ -7,7 +7,7 @@ import {
     StatusBar,
     ImageBackground, Linking
 } from "react-native";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useFonts } from "expo-font";
 
 import * as SplashScreen from 'expo-splash-screen';
@@ -19,6 +19,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function CarLine({ navigation }) {
     const { userData, setUserData } = useContext(UserContext)
+    const [loader, setloader] = useState(true)
     // const [loaded, error] = useFonts({
     //     "DMSans_400Regular": require("../assets/fonts/DMSans-Regular.ttf"),
     //     " DMSans_500Medium": require("../assets/fonts/DMSans-Medium.ttf"),
@@ -56,6 +57,7 @@ export default function CarLine({ navigation }) {
                         alert(err.message);  // Catch and display error if any
                     }
                 }
+                setloader(false)
             } catch (error) {
                 console.error('Error retrieving data from AsyncStorage:', error);
             }
@@ -68,7 +70,7 @@ export default function CarLine({ navigation }) {
         <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView} >
             <StatusBar hidden={true} backgroundColor={'blue'} />
             <View style={styles.bodyContent}>
-                <TouchableOpacity style={styles.blockContent} onPress={() => navigation.navigate(userData ? "Home" : "Login")} >
+                <TouchableOpacity style={styles.blockContent} disabled={loader} onPress={() => navigation.navigate(userData ? "Home" : "Login")} >
                     {/* <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} > */}
                     <View style={{ padding: 5 }}>
                         <Text style={{

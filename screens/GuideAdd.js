@@ -41,6 +41,8 @@ export default function GuideAdd({ navigation, route }) {
     }
   };
 
+
+
   return (
     <View style={styles.containerView}>
       <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>
@@ -61,7 +63,7 @@ export default function GuideAdd({ navigation, route }) {
           <View style={styles.optionList}>
             <Text style={styles.InputHead}>
               {" "}
-              Instruction nameaa{" "}
+              Instruction name{" "}
             </Text>
 
             <TextInput
@@ -89,7 +91,6 @@ export default function GuideAdd({ navigation, route }) {
               />
             </View>
             {backgroundSwitch && <View style={styles.imageContainer}>
-              {/* <TouchableOpacity  style={styles.addImage} onPress={pickBackground} > */}
               <TouchableOpacity style={styles.addImage} onPress={() => navigation.navigate("BackgroundType", { bgswitch })} >
                 <MaterialCommunityIcons name="plus" size={30} color={"#ffffff"} />
               </TouchableOpacity>
@@ -97,12 +98,7 @@ export default function GuideAdd({ navigation, route }) {
                 <TouchableOpacity onPress={() => navigation.navigate("BackgroundList")}>
                   <Image source={backgroundImage} style={styles.logo1} />
                 </TouchableOpacity>}
-              {/* <Text  style={{ fontWeight: "bold", padding: 10, color: "#ffffff" }}> Id : {id}</Text> */}
 
-              {/* <Image
-        style={styles.logo1}
-        source={require("../assets/logoblack.jpeg")}
-      /> */}
             </View>}
           </View>
           <View style={styles.InstructionView}>
