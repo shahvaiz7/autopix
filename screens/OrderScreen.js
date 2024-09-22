@@ -130,13 +130,7 @@ export default function OrderScreen({ navigation }) {
           style={styles.bodyContent}
           data={OrderList}
           renderItem={({ item }) => (
-<<<<<<< HEAD
-            <OrderCard image={item.image} orderId={item.id} 
-            orderStatus={item.orderStatus} 
-            imageCount={item.imageCount} dayCount={item.dayCount} />
-=======
             <OrderCard image={item?.instruction_id?.background?.image} orderId={item.id} orderStatus={item.orderStatus} imageCount={item.imageCount} dayCount={item.dayCount} />
->>>>>>> ee14c572b33a431b13208d3785aa00ba75645317
           )}
           keyExtractor={item => item.id}
         />
