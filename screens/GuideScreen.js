@@ -13,13 +13,8 @@ import BaseUrl from "../auth/BaseUrl";
 import axios from "axios";
 
 const guideDetails = [
-<<<<<<< HEAD
-  { 
-    id: 1,
-=======
   {
     guideId: 1,
->>>>>>> ee14c572b33a431b13208d3785aa00ba75645317
     image: require('../assets/Rectangle 17 (3).png'),
     orderId: 1009001,
     BGCheck: 'check-circle',
@@ -29,13 +24,8 @@ const guideDetails = [
     createdOn: 3,
     orderStatus: 'Pending',
   },
-<<<<<<< HEAD
-  { 
-    id: 2,
-=======
   {
     guideId: 2,
->>>>>>> ee14c572b33a431b13208d3785aa00ba75645317
     image: require('../assets/Rectangle 17 (3).png'),
     orderId: 1009001,
     BGCheck: 'check-circle',
@@ -45,13 +35,8 @@ const guideDetails = [
     createdOn: 3,
     orderStatus: 'Pending',
   },
-<<<<<<< HEAD
-  { 
-    id: 3,
-=======
   {
     guideId: 3,
->>>>>>> ee14c572b33a431b13208d3785aa00ba75645317
     image: require('../assets/Rectangle 17 (3).png'),
     orderId: 1009001,
     BGCheck: 'check-circle',
@@ -61,13 +46,8 @@ const guideDetails = [
     createdOn: 3,
     orderStatus: 'Pending',
   },
-<<<<<<< HEAD
-  { 
-    id: 4,
-=======
   {
     guideId: 4,
->>>>>>> ee14c572b33a431b13208d3785aa00ba75645317
     image: require('../assets/Rectangle 17 (3).png'),
     orderId: 1009001,
     BGCheck: 'check-circle',
@@ -133,22 +113,6 @@ export default function GuideScreen({ navigation }) {
             <Text style={{ color: "#ffffff" }}> Create Instruction </Text>
           </TouchableOpacity>
         </View>
-<<<<<<< HEAD
-       
-        
-        <FlatList 
-        style={styles.bodyContent}
-        data={guideDetails}
-        renderItem={({ item }) => (
-          <TouchableOpacity   onPress={() => navigation.navigate("CreateOrder")}>
-          <GuideCard image={item.image} guideId={item.id} BGCheck={item.BGCheck}
-                      NPCheck={item.NPCheck} FloorCheck={item.FloorCheck} LogoCheck={item.LogoCheck} createdOn={item.createdOn} />
-                       </TouchableOpacity>
-        )}
-        keyExtractor={item => item.id}
-      />  
-     
-=======
 
 
         <FlatList
@@ -163,7 +127,6 @@ export default function GuideScreen({ navigation }) {
           keyExtractor={item => item.id}
         />
 
->>>>>>> ee14c572b33a431b13208d3785aa00ba75645317
 
         {/* <View style={styles.GuideCard}>
             <ImageBackground source={require("../assets/cardback.png")} imageStyle={{ borderRadius: 25 }} style={styles.imageBack} >
