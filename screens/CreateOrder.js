@@ -18,7 +18,12 @@ import { Picker } from "@react-native-picker/picker";
 import RNPickerSelect from "react-native-picker-select";
 import { LinearGradient } from "expo-linear-gradient";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { StatusBar } from "react-native";
+import { StatusBar } from 'react-native';
+import {
+  BottomSheetModal,
+  BottomSheetView,
+  BottomSheetModalProvider,
+} from '@gorhom/bottom-sheet';
 
 //npx expo install @react-native-picker/picker
 import PickerSelect from "react-native-picker-select";
@@ -56,29 +61,64 @@ export default function CreateOrder({ navigation }) {
     },
   });
 
+
+
+
+  const sendOrderData = async () => {
+    // Define the data object with only the required fields
+    const data = {
+      job_name: "Sample Job", // Required field
+      instruction_id: {
+        instruction_name: "Sample Instruction", // Required field
+        background: {
+          name: "Sample Background", // Required field
+        },
+      },
+      massage: "Sample massage", // Required field
+    };
+  
+    try {
+      // Send POST request using axios
+      const response = await axios.post(`${BaseUrl}/orders/`, data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      // Check the response
+      console.log('Response:', response.data);
+    } catch (error) {
+      // Handle errors
+      if (error.response) {
+        // Server responded with a status other than 200 range
+        console.error('Error response data:', error.response.data);
+        console.error('Error response status:', error.response.status);
+      } else if (error.request) {
+        // No response was received
+        console.error('No response received:', error.request);
+      } else {
+        // Something went wrong in setting up the request
+        console.error('Error:', error.message);
+      }
+    }
+  };
+
   return (
     <ScrollView style={styles.containerView}>
-      <ImageBackground
-        source={require("../assets/background.png")}
-        resizeMode="stretch"
-      >
+
+      <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
+
         <View style={styles.HeaderView}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Home")}
-            style={{
-              color: "white",
-              width: "100%",
-              justifyContent: "space-between",
-              flexDirection: "row",
-              paddingTop: 30,
-              paddingBottom: 20,
-            }}
-          >
-            <MaterialCommunityIcons
-              name="arrow-left"
-              size={24}
-              color={"#ffffff"}
-            />
+
+          <TouchableOpacity onPress={() => navigation.navigate("Home")} style={{
+            color: 'white',
+            width: '100%',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            paddingTop: 30,
+            paddingBottom: 20
+          }} >
+            <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
 
             <Text
               style={{
@@ -234,7 +274,7 @@ export default function CreateOrder({ navigation }) {
           <Button
             label="Next"
             //onPress={handlePresentModalPress}
-            onPress={() => setModalVisible(true)}
+            onPress={() => sendOrderData(true)}
           />
         </View>
         <Modal

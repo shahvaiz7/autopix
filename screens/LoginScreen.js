@@ -7,21 +7,19 @@ import {
   Image,
   ImageBackground,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Button from "../component/Button";
-
-
-//npm install react-native-gradient-texts
-//import GradientText from "react-native-gradient-texts";
-
 import TextInput from "../component/TextInput";
 import { user_login } from "../auth/UserApi";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { err } from "react-native-svg";
+import axios from "axios";
+import BaseUrl from "../auth/BaseUrl";
+import UserContext from "../auth/UserContext";
 
 export default function LoginScreen({ navigation }) {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const { userData, setUserData } = useContext(UserContext)
 
   // State variable to track password visibility
   const [showPassword, setShowPassword] = useState(false);
@@ -32,20 +30,37 @@ export default function LoginScreen({ navigation }) {
   };
 
   const handelLogin = () => {
-    user_login({
-      email: "testapi@gmail.com",
-      password: "TestApi",
-    }).then((result) => {
-      console.log(result + "Tes");
-      if (result.status == 200) {
-        AsyncStorage.setItem("AccessToken", result.data.token)
-        navigation.navigate("Home")
-      }
-    }).catch(err => {
-      console.error(err);
+    if (!email && !password) {
+      alert("Please Enter Email and Password")
+      return
+    }
+    let data = JSON.stringify({
+      "email": email,
+      "password": password
+    });
 
-    })
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `${BaseUrl}/auths/login/`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': 'csrftoken=CH8HzIULQdGpZESH58Pav5ulF8BT6q4s; sessionid=4v67h0saqwxa3571v4o0stfz8v1bl7o3'
+      },
+      data: data
+    };
 
+    axios.request(config)
+      .then((result) => {
+        if (result.status == 200) {
+          AsyncStorage.setItem("AccessToken", JSON.stringify(result.data))
+          setUserData(result.data)
+          navigation.navigate("Home")
+        }
+      })
+      .catch((error) => {
+        alert("Wrong Email And Password");
+      });
   }
 
 
@@ -100,8 +115,13 @@ export default function LoginScreen({ navigation }) {
 
         </View>
         <View style={styles.SubmitView}>
+<<<<<<< HEAD
           <Button label="Login" onPress={() => navigation.navigate("Home")} />
           <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', alignContent: 'center',paddingTop:20 }}>
+=======
+          <Button label="Login" onPress={() => handelLogin()} />
+          <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', alignContent: 'center' }}>
+>>>>>>> ee14c572b33a431b13208d3785aa00ba75645317
             <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
               <Text style={styles.RegularText}>
                 {" "}

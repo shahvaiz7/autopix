@@ -1,5 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -32,11 +31,12 @@ import NotificationScreen from './screens/NotificationScreen';
 import CameraScreen from './screens/CameraScreen';
 import OrderScreen from './screens/OrderScreen';
 import { useFonts } from "expo-font";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import * as SplashScreen from 'expo-splash-screen';
 import ImageList from './screens/ImageList';
 import FloorType from './screens/FloorType';
+import { UserProvider } from './auth/UserContext';
 SplashScreen.preventAutoHideAsync();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -59,45 +59,46 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
+    <UserProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          {/* <Stack.Screen name="Welcome" component={WelcomeScreen} /> */}
+          <Stack.Screen name="CarLine" component={CarLine} options={{ header: () => null }} />
+          <Stack.Screen name="Login" component={LoginScreen} options={{ header: () => null }} />
+          <Stack.Screen name="Signup" component={SignupScreen} options={{ header: () => null }} />
+          <Stack.Screen name="Home" component={HomeScreen} options={{ header: () => null }} />
+          <Stack.Screen name="Profile" component={ProfileScreen} options={{ header: () => null }} />
+          <Stack.Screen name="Profiledetails" component={ProfileDetails} options={{ header: () => null }} />
+          <Stack.Screen name="AccountSetting" component={AccountSetting} options={{ header: () => null }} />
+          <Stack.Screen name="Shareapp" component={ShareApp} options={{ header: () => null }} />
+          <Stack.Screen name="Support" component={SupportPage} />
+          <Stack.Screen name="About" component={AboutScreen} options={{ header: () => null }} />
+          <Stack.Screen name="CreateOrder" component={CreateOrder} options={{ header: () => null }} />
+          <Stack.Screen name="Guide" component={GuideScreen} />
+          <Stack.Screen name="Guidesteps" component={GuideSteps} />
+          <Stack.Screen name="GuideAdd" component={GuideAdd} options={{ header: () => null }} />
+          <Stack.Screen name="BackgroundType" component={BackgroundType} options={{ header: () => null }} />
+          <Stack.Screen name="BackgroundList" component={BackgroundList} options={{ header: () => null }} />
+          <Stack.Screen name="FloorList" component={FloorList} options={{ header: () => null }} />
+          <Stack.Screen name="LogoList" component={LogoList} options={{ header: () => null }} />
+          <Stack.Screen name="NpList" component={NpList} options={{ header: () => null }} />
+          <Stack.Screen name="SuccessScreen" component={SuccessScreen} options={{ header: () => null }} />
+          <Stack.Screen name="UploadingScreen" component={UploadingScreen} options={{ header: () => null }} />
+          <Stack.Screen name="NotificationScreen" component={NotificationScreen} options={{ header: () => null }} />
+          <Stack.Screen name="OrderScreen" component={OrderScreen} options={{ header: () => null }} />
 
-      <Stack.Navigator>
-        {/* <Stack.Screen name="Welcome" component={WelcomeScreen} /> */}
-        <Stack.Screen name="CarLine" component={CarLine} options={{ header: () => null }} />
-        <Stack.Screen name="Login" component={LoginScreen} options={{ header: () => null }} />
-        <Stack.Screen name="Signup" component={SignupScreen} options={{ header: () => null }} />
-        <Stack.Screen name="Home" component={HomeScreen} options={{ header: () => null }} />
-        <Stack.Screen name="Profile" component={ProfileScreen} options={{ header: () => null }} />
-        <Stack.Screen name="Profiledetails" component={ProfileDetails} options={{ header: () => null }} />
-        <Stack.Screen name="AccountSetting" component={AccountSetting} options={{ header: () => null }} />
-        <Stack.Screen name="Shareapp" component={ShareApp} options={{ header: () => null }} />
-        <Stack.Screen name="Support" component={SupportPage} />
-        <Stack.Screen name="About" component={AboutScreen} options={{ header: () => null }} />
-        <Stack.Screen name="CreateOrder" component={CreateOrder} options={{ header: () => null }} />
-        <Stack.Screen name="Guide" component={GuideScreen} />
-        <Stack.Screen name="Guidesteps" component={GuideSteps} />
-        <Stack.Screen name="GuideAdd" component={GuideAdd} options={{ header: () => null }} />
-        <Stack.Screen name="BackgroundType" component={BackgroundType} options={{ header: () => null }} />
-        <Stack.Screen name="BackgroundList" component={BackgroundList} options={{ header: () => null }} />
-        <Stack.Screen name="FloorList" component={FloorList} options={{ header: () => null }} />
-        <Stack.Screen name="LogoList" component={LogoList} options={{ header: () => null }} />
-        <Stack.Screen name="NpList" component={NpList} options={{ header: () => null }} />
-        <Stack.Screen name="SuccessScreen" component={SuccessScreen} options={{ header: () => null }} />
-        <Stack.Screen name="UploadingScreen" component={UploadingScreen} options={{ header: () => null }} />
-        <Stack.Screen name="NotificationScreen" component={NotificationScreen} options={{ header: () => null }} />
-        <Stack.Screen name="OrderScreen" component={OrderScreen} options={{ header: () => null }} />
-
-        <Stack.Screen name="PrivecySetting" component={PrivecySetting} options={{ header: () => null }} />
-        <Stack.Screen name="GuideScreen" component={GuideScreen} options={{ header: () => null }} />
-        <Stack.Screen name="CameraScreen" component={CameraScreen} options={{ header: () => null }} />
-        <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{ header: () => null }} />
-        <Stack.Screen name="ImageList" component={ImageList} options={{ header: () => null }} />
-        <Stack.Screen name="FloorType" component={FloorType} options={{ header: () => null }} />
+          <Stack.Screen name="PrivecySetting" component={PrivecySetting} options={{ header: () => null }} />
+          <Stack.Screen name="GuideScreen" component={GuideScreen} options={{ header: () => null }} />
+          <Stack.Screen name="CameraScreen" component={CameraScreen} options={{ header: () => null }} />
+          <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{ header: () => null }} />
+          <Stack.Screen name="ImageList" component={ImageList} options={{ header: () => null }} />
+          <Stack.Screen name="FloorType" component={FloorType} options={{ header: () => null }} />
 
 
-      </Stack.Navigator>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </UserProvider>
 
-    </NavigationContainer>
   );
 }
 
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
 });
 
 //npx expo export -p android
-//publish dist 
-// expo publish  
+//publish dist
+// expo publish
 // eas build:configure
 //eas update 

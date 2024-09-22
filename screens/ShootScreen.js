@@ -8,7 +8,7 @@ import {
   Alert,
   ImageBackground
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import * as ImagePicker from "expo-image-picker";
 // import {
 //   useFonts, DMSans_400Regular,
@@ -18,8 +18,10 @@ import * as ImagePicker from "expo-image-picker";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import ImageList from "./ImageList";
 import NpList from "./NpList";
+import UserContext from "../auth/UserContext";
 
 export default function ShootScreen({ navigation}) {
+  const { userData } = useContext(UserContext)
   const [image, setImage] = useState(null);
   const [camera, setCamera] = useState(null);
 
@@ -90,7 +92,7 @@ export default function ShootScreen({ navigation}) {
                   fontFamily: 'DMSans_500Medium',
                   fontSize: 16,
                   color: '#ffffff',
-                }}>  Mr X   </Text>
+                }}>  {userData?.name}   </Text>
               </View>
 
 

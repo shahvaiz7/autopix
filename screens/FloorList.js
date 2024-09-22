@@ -56,6 +56,7 @@ const getFloor = () => {
     //         setSelectedIds(prevIds => [...prevIds, id]);
     //     }
     // };
+    
     return (
         <ImageBackground source={require("../assets/background.png")} resizeMode='stretch'  style={styles.BackList} >
              <View style={{
