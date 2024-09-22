@@ -1,17 +1,20 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView, KeyboardAvoidingView, Platform, ImageBackground } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import * as ImagePicker from "expo-image-picker";
-import { LinearGradient } from 'expo-linear-gradient';
 import {
   useFonts, DMSans_400Regular,
   DMSans_500Medium,
   DMSans_700Bold,
 } from "@expo-google-fonts/dm-sans";
+import UserContext from '../auth/UserContext';
+
+
 export default function ProfileDetails({ navigation }) {
   const [image, setImage] = useState(null);
+  const { userData } = useContext(UserContext)
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -42,33 +45,33 @@ export default function ProfileDetails({ navigation }) {
         <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
 
           <View style={styles.topBack}>
-          <ImageBackground source={require("../assets/profileback.png")} resizeMode='stretch' >
+            <ImageBackground source={require("../assets/profileback.png")} resizeMode='stretch' >
 
-            <View style={{
-              color: 'white',
-              width: '100%',
-              height:172,
-              justifyContent: 'space-between',
-              flexDirection: 'row',
-              paddingTop: 40,
-              paddingLeft: 20,
-              borderRadius:25
-            }}>
-              <TouchableOpacity onPress={() => navigation.navigate("Home")} style={{ flexDirection: 'row', backgroundColor: 'transparent' }}>
-                <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
+              <View style={{
+                color: 'white',
+                width: '100%',
+                height: 172,
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                paddingTop: 40,
+                paddingLeft: 20,
+                borderRadius: 25
+              }}>
+                <TouchableOpacity onPress={() => navigation.navigate("Home")} style={{ flexDirection: 'row', backgroundColor: 'transparent' }}>
+                  <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
+                  <Text style={{
+                    color: "#ffffff",
+                    fontFamily: 'DMSans_500Medium', fontSize: 18
+                  }}> Back</Text>
+                </TouchableOpacity>
                 <Text style={{
                   color: "#ffffff",
                   fontFamily: 'DMSans_500Medium', fontSize: 18
-                }}> Back</Text>
-              </TouchableOpacity>
-              <Text style={{
-                color: "#ffffff",
-                fontFamily: 'DMSans_500Medium', fontSize: 18
-              }}> </Text>
-              <Text>       </Text>
+                }}> </Text>
+                <Text>       </Text>
 
-            </View>
-            {/* <Image
+              </View>
+              {/* <Image
               style={{ width: "100%", height: 160 }}
               source={require("../assets/profileback.png")}
             /> */}
@@ -85,8 +88,8 @@ export default function ProfileDetails({ navigation }) {
               </View>
 
             </TouchableOpacity>
-            <Text style={{ color: 'white', fontSize: 20, fontFamily: 'DMSans_500Medium' }}> Md Rohim Miya  </Text>
-            <Text style={{ color: '#C0CACB', fontSize: 16, fontFamily: 'DMSans_400Regular' }}> Company: Graphic IT BD  </Text>
+            <Text style={{ color: 'white', fontSize: 20, fontFamily: 'DMSans_500Medium' }}> {userData?.name}</Text>
+            <Text style={{ color: '#C0CACB', fontSize: 16, fontFamily: 'DMSans_400Regular' }}>{userData?.company_name}  </Text>
 
           </View>
           <View style={styles.optionList}>
@@ -179,7 +182,7 @@ const styles = StyleSheet.create({
   },
   topBack: {
     flex: .10,
-    },
+  },
   profileAdd: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -197,8 +200,8 @@ const styles = StyleSheet.create({
   InputHead: {
     fontSize: 16,
     fontFamily: 'DMSans_500Medium',
-    paddingTop:10,
-    
+    paddingTop: 10,
+
     color: "#ffffff",
     paddingBottom: 5
   },

@@ -14,6 +14,8 @@ import Button from "../component/Button";
 import TextInput from "../component/TextInput";
 //npm install react-native-gradient-texts
 //import GradientText from "react-native-gradient-texts";
+import BaseUrl from "../auth/BaseUrl";
+import axios from "axios";
 
 export default function SignupScreen({ navigation }) {
 
@@ -31,6 +33,43 @@ export default function SignupScreen({ navigation }) {
     setShowPassword(!showPassword);
   };
 
+
+
+  const handleSignUp = () => {
+    if (!name && !email && !password && !company_name){
+      alert('All filled is required')
+      return
+    }
+      let data = JSON.stringify({
+        "email": email,
+        "name": name,
+        "company_name": company_name,
+        "password": password
+      });
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `${BaseUrl}/auths/register/`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': 'csrftoken=CH8HzIULQdGpZESH58Pav5ulF8BT6q4s; sessionid=4v67h0saqwxa3571v4o0stfz8v1bl7o3'
+      },
+      data: data
+    };
+
+    axios.request(config)
+      .then((result) => {
+        alert(result.data.message)
+          navigation.navigate("Login")
+      })
+      .catch((error) => {
+        console.log(error)
+        alert("Fill Correct Field");
+      });
+  }
+
+
   return (
 
     <ScrollView style={styles.containerView}>
@@ -43,8 +82,8 @@ export default function SignupScreen({ navigation }) {
             flexDirection: 'row',
             paddingBottom: 10
           }} onPress={() => navigation.navigate("Login")} >
-           
-              <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
+
+            <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
             <Text style={{
               color: "#ffffff",
               fontFamily: 'DMSans_500Medium', fontSize: 18
@@ -134,7 +173,7 @@ export default function SignupScreen({ navigation }) {
           />
         </View>
         <View style={styles.SubmitView}>
-          <Button label="sign up" onPress={() => navigation.navigate("Login")} />
+          <Button label="sign up" onPress={() => handleSignUp()} />
         </View>
         <TouchableOpacity style={styles.BottomView} onPress={() => navigation.navigate("Login")}>
           <Text style={{ color: "#ffffff", fontSize: 16, fontFamily: 'DMSans_400Regular' }}>

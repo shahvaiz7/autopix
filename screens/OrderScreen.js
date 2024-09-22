@@ -2,16 +2,16 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   TouchableOpacity,
-  ScrollView,
   ImageBackground,
   FlatList,
-
 } from "react-native";
-import React from "react";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import React, { useContext, useEffect, useState } from "react";
 import OrderCard from "../component/OrderCard";
+import BaseUrl from "../auth/BaseUrl";
+import axios from "axios";
+import UserContext from '../auth/UserContext'
+
 const orderDetails = [
   {
     id: 1,
@@ -71,7 +71,31 @@ const orderDetails = [
   },
   // ... more items with image, orderId, imageCount, dayCount, orderStatus, onPress 
 ];
+
 export default function OrderScreen({ navigation }) {
+  const [OrderList, setOrderList] = useState([])
+  const { userData } = useContext(UserContext)
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await axios.get(`${BaseUrl}/orders/`, {
+          headers: {
+            'Authorization': `Bearer ${userData?.token}`,  // Pass the token here
+            'Content-Type': 'application/json',
+          }
+        });
+        setOrderList(response.data);
+      } catch (err) {
+        alert(err.message);  // Catch and display error if any
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+
+
   return (
     <View style={styles.containerView}>
       <ImageBackground source={require("../assets/background.png")} style={styles.containerView} >
@@ -104,11 +128,15 @@ export default function OrderScreen({ navigation }) {
         </View>
         <FlatList
           style={styles.bodyContent}
-          data={orderDetails}
+          data={OrderList}
           renderItem={({ item }) => (
+<<<<<<< HEAD
             <OrderCard image={item.image} orderId={item.id} 
             orderStatus={item.orderStatus} 
             imageCount={item.imageCount} dayCount={item.dayCount} />
+=======
+            <OrderCard image={item?.instruction_id?.background?.image} orderId={item.id} orderStatus={item.orderStatus} imageCount={item.imageCount} dayCount={item.dayCount} />
+>>>>>>> ee14c572b33a431b13208d3785aa00ba75645317
           )}
           keyExtractor={item => item.id}
         />

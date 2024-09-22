@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground,Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity } from 'react-native'
 import React from 'react';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
@@ -26,7 +26,7 @@ export default function OrderCard({ image, orderId, imageCount, dayCount, orderS
             <View style={{ flex: 0.4 }}>
                 <Image
                     style={{ width: 119, height: 124, borderRadius: 22 }}
-                    source={image}
+                    source={{ uri: image }}
                 />
             </View>
             <View style={{ flex: 0.4, flexDirection: 'row' }}>
