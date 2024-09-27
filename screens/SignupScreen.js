@@ -12,8 +12,6 @@ import React, { useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Button from "../component/Button";
 import TextInput from "../component/TextInput";
-//npm install react-native-gradient-texts
-//import GradientText from "react-native-gradient-texts";
 import BaseUrl from "../auth/BaseUrl";
 import axios from "axios";
 
@@ -23,7 +21,6 @@ export default function SignupScreen({ navigation }) {
   const [name, setName] = useState('');
   const [company_name, setCompany_name] = useState('');
   const [password, setPassword] = useState('');
-
 
   // State variable to track password visibility
   const [showPassword, setShowPassword] = useState(false);
@@ -36,16 +33,16 @@ export default function SignupScreen({ navigation }) {
 
 
   const handleSignUp = () => {
-    if (!name && !email && !password && !company_name){
+    if (!name && !email && !password && !company_name) {
       alert('All filled is required')
       return
     }
-      let data = JSON.stringify({
-        "email": email,
-        "name": name,
-        "company_name": company_name,
-        "password": password
-      });
+    let data = JSON.stringify({
+      "email": email,
+      "name": name,
+      "company_name": company_name,
+      "password": password
+    });
 
     let config = {
       method: 'post',
@@ -61,7 +58,9 @@ export default function SignupScreen({ navigation }) {
     axios.request(config)
       .then((result) => {
         alert(result.data.message)
-          navigation.navigate("Login")
+        alert("Please Confirm the verification code")
+
+        //  navigation.navigate("Login")
       })
       .catch((error) => {
         console.log(error)

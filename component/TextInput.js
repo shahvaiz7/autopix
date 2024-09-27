@@ -24,7 +24,7 @@ export default function TextInput({ onPress, inputHieght, inputAlign, icon, line
                     underlineColorAndroid="transparent"
                     placeholderTextColor="gray"
                     color='white'
-                    
+
 
                     {...otherProps}
                 />

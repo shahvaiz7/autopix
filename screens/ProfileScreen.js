@@ -87,16 +87,6 @@ export default function ProfileScreen({ navigation }) {
             </TouchableOpacity>
           </View>
         </View>
-        {/* <ImageBackground source={image2}>
-     
-     <View style={styles.profileInfo}>
-     <TouchableOpacity>
-    <Text>test </Text>
-         </TouchableOpacity>
-    
-      
-     </View>
-     </ImageBackground> */}
       </ImageBackground>
     </ScrollView>
   )

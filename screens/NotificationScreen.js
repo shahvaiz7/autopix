@@ -11,11 +11,7 @@ import {
 import React, { useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { LinearGradient } from 'expo-linear-gradient';
-// import {
-//     useFonts, DMSans_400Regular,
-//     DMSans_500Medium,
-//     DMSans_700Bold,
-// } from "@expo-google-fonts/dm-sans";
+
 export default function NotificationScreen({ navigation }) {
     return (
         <View style={styles.containerView}>

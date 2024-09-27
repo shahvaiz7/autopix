@@ -86,7 +86,6 @@ export default function App() {
           <Stack.Screen name="UploadingScreen" component={UploadingScreen} options={{ header: () => null }} />
           <Stack.Screen name="NotificationScreen" component={NotificationScreen} options={{ header: () => null }} />
           <Stack.Screen name="OrderScreen" component={OrderScreen} options={{ header: () => null }} />
-
           <Stack.Screen name="PrivecySetting" component={PrivecySetting} options={{ header: () => null }} />
           <Stack.Screen name="GuideScreen" component={GuideScreen} options={{ header: () => null }} />
           <Stack.Screen name="CameraScreen" component={CameraScreen} options={{ header: () => null }} />
@@ -110,9 +109,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-//npx expo export -p android
-//publish dist
-// expo publish
-// eas build:configure
-//eas update 

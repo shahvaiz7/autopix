@@ -28,7 +28,7 @@ import {
 //npx expo install @react-native-picker/picker
 import PickerSelect from "react-native-picker-select";
 export default function CreateOrder({ navigation }) {
-  
+
   const [selectedTime, setselectedTime] = useState();
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
@@ -76,7 +76,7 @@ export default function CreateOrder({ navigation }) {
       },
       massage: "Sample massage", // Required field
     };
-  
+
     try {
       // Send POST request using axios
       const response = await axios.post(`${BaseUrl}/orders/`, data, {
@@ -84,7 +84,7 @@ export default function CreateOrder({ navigation }) {
           'Content-Type': 'application/json',
         },
       });
-  
+
       // Check the response
       console.log('Response:', response.data);
     } catch (error) {
@@ -252,29 +252,15 @@ export default function CreateOrder({ navigation }) {
               onValueChange={(value) => setSelectedValue(value)}
               value={selectedValue}
             />
-            {/* <Picker
-              selectedValue={selectedTime}
-              onValueChange={(itemValue, itemIndex) =>
-                setselectedTime(itemValue)
-              }
-              dropdownIconColor={"white"}
-              selectionColor={"white"}
-              mode={"dialog"}
-              color={"red"}
-              style={{ color: "#ffffff" }}
-            >
-              <Picker.Item label="24 Hours" value="24" />
-              <Picker.Item label="3 Days" value="3" />
-              <Picker.Item label="7 Days" value="7" />
-            </Picker> */}
           </ImageBackground>
         </View>
 
         <View style={styles.SubmitView}>
           <Button
             label="Next"
-            //onPress={handlePresentModalPress}
-            onPress={() => sendOrderData(true)}
+            onPress={() => setModalVisible(!modalVisible)}
+          // onPress={handlePresentModalPress}
+          // onPress={() => sendOrderData(true)}
           />
         </View>
         <Modal

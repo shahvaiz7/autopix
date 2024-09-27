@@ -149,11 +149,9 @@ const styles = StyleSheet.create({
     },
     InnerBlock: {
         paddingLeft: 5,
-        paddingBottom:20
-        
+        paddingBottom:20     
 
     },
-
 
     CardText: {
         color: "#ffffff",

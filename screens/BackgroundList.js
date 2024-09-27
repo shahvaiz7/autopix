@@ -108,16 +108,16 @@ export default function BackgroundList({ navigation, route }) {
       <FlatList
         data={imageList}
         renderItem={({ item }) => (
-          
+
           <TouchableOpacity
             onPress={() => navigation.navigate("GuideAdd", item.image)}
             style={{
               backgroundColor: 'transparent', borderRadius: 35, margin: 5
             }}
           >
-          <Image style={styles.ImageList} source={{uri: item.image}} />
+            <Image style={styles.ImageList} source={{ uri: item.image }} />
           </TouchableOpacity>
-          
+
         )}
         keyExtractor={(item) => item.id}
       />
@@ -129,14 +129,14 @@ const styles = StyleSheet.create({
   BackList: {
     flex: 1,
   },
-  ImageList:{
-    width:'auto',
-   height:150,
-    margin:5,
-    borderRadius:15
-  
-        
-    },
+  ImageList: {
+    width: 'auto',
+    height: 150,
+    margin: 5,
+    borderRadius: 15
+
+
+  },
   imageBox: {
     width: "100%",
     height: 170,

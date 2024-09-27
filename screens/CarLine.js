@@ -20,22 +20,6 @@ SplashScreen.preventAutoHideAsync();
 export default function CarLine({ navigation }) {
     const { userData, setUserData } = useContext(UserContext)
     const [loader, setloader] = useState(true)
-    // const [loaded, error] = useFonts({
-    //     "DMSans_400Regular": require("../assets/fonts/DMSans-Regular.ttf"),
-    //     " DMSans_500Medium": require("../assets/fonts/DMSans-Medium.ttf"),
-    //     "DMSans_700Bold": require("../assets/fonts/DMSans-Bold.ttf"),
-    // });
-
-    // useEffect(() => {
-    //     if (loaded || error) {
-    //         SplashScreen.hideAsync();
-    //     }
-    // }, [loaded, error]);
-
-    // if (!loaded && !error) {
-    //     return null;
-    // }
-
 
     useEffect(() => {
         const getData = async () => {

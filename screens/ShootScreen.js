@@ -10,34 +10,17 @@ import {
 } from "react-native";
 import React, { useState, useEffect, useContext } from "react";
 import * as ImagePicker from "expo-image-picker";
-// import {
-//   useFonts, DMSans_400Regular,
-//   DMSans_500Medium,
-//   DMSans_700Bold,
-// } from "@expo-google-fonts/dm-sans";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import ImageList from "./ImageList";
 import NpList from "./NpList";
 import UserContext from "../auth/UserContext";
 
-export default function ShootScreen({ navigation}) {
+export default function ShootScreen({ navigation }) {
   const { userData } = useContext(UserContext)
   const [image, setImage] = useState(null);
   const [camera, setCamera] = useState(null);
 
-  // useFonts({
-  //   DMSans_400Regular,
-  //   DMSans_500Medium,
-  //   DMSans_700Bold,
-  // });
-
   const takeImageHandler = async () => {
-    // const hasPermission = await verifyPermissions();
-    // if(!hasPermission){
-    //   return;
-    // }
-
-    //ImagePicker.PermissionStatus.GRANTED;
     const cameraphoto = await ImagePicker.launchCameraAsync(
       {
         mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -69,7 +52,7 @@ export default function ShootScreen({ navigation}) {
       setImage(result.assets[0].uri)
     }
   };
-  
+
 
   return (
     <View style={styles.containerView}>
