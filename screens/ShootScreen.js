@@ -75,7 +75,8 @@ export default function ShootScreen({ navigation }) {
                   fontFamily: 'DMSans_500Medium',
                   fontSize: 16,
                   color: '#ffffff',
-                }}>  {userData?.name}   </Text>
+                }}>  {userData?.name}  Mr Ali </Text>
+
               </View>
 
 

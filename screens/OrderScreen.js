@@ -128,9 +128,10 @@ export default function OrderScreen({ navigation }) {
         </View>
         <FlatList
           style={styles.bodyContent}
-          data={OrderList}
+         // data={OrderList}
+         data={orderDetails}
           renderItem={({ item }) => (
-            <OrderCard image={item?.instruction_id?.background?.image} orderId={item.id} orderStatus={item.orderStatus} imageCount={item.imageCount} dayCount={item.dayCount} />
+            <OrderCard image={item.image} orderId={item.id} orderStatus={item.orderStatus} imageCount={item.imageCount} dayCount={item.dayCount} />
           )}
           keyExtractor={item => item.id}
         />

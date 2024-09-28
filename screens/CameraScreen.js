@@ -1,4 +1,4 @@
-import { CameraView, CameraType, useCameraPermissions, Camera,  } from 'expo-camera';
+import { CameraView, CameraType, useCameraPermissions, Camera, } from 'expo-camera';
 import React, { useRef, useState, useEffect } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -7,7 +7,7 @@ import PreviewImage from './PreviewImage';
 import { FlashMode } from 'expo-camera/build/legacy/Camera.types';
 import * as MediaLibrary from 'expo-media-library';
 import ImageList from './ImageList';
-
+import * as ImagePicker from "expo-image-picker";
 export default function CameraScreen({ navigation }) {
   const [facing, setFacing] = useState('back');
   const [permission, requestPermission] = useCameraPermissions();
@@ -69,7 +69,25 @@ export default function CameraScreen({ navigation }) {
       }
     }
   }
-  const imageList = () =>   navigation.navigate('ImageList');
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      // allowsEditing: true,
+      allowsMultipleSelection: true,
+      // cameraType: CameraType.back,
+      aspect: [4, 3],
+      quality: 1,
+      orderedSelection: true,
+      // mediaTypes:ImagePicker.MediaTypeOptions.Images,
+    });
+    console.log(result);
+    navigation.navigate('CreateOrder');
+    if (!result.canceled) {
+      setImage(result.assets[0].uri)
+    }
+  };
+  const imageList = () => navigation.navigate('ImageList');
 
   const handleRetakePhoto = () => setPhoto(null);
   if (photo)
@@ -91,7 +109,7 @@ export default function CameraScreen({ navigation }) {
           </TouchableOpacity>
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} >
+          <TouchableOpacity style={styles.button} onPress={pickImage} >
             <Image
               style={{ width: 44, height: 44, borderRadius: 50, resizeMode: 'contain' }}
               source={require("../assets/Fillter.png")}

@@ -45,7 +45,10 @@ export default function SuccessScreen({ navigation }) {
             height: 54,
             width: '90%',
             alignItems: "center",
-          }} onPress={() => navigation.navigate("OrderScreen")}
+          }} onPress={() => navigation.navigate("Home", {
+            screen: "Order",
+            initial: true
+          })}
         >
           <Text style={{
             color: "#ffffff", fontSize: 16,

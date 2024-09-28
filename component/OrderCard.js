@@ -1,33 +1,38 @@
-import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, ScrollView, Image, TouchableOpacity } from 'react-native'
 import React from 'react';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function OrderCard({ image, orderId, imageCount, dayCount, orderStatus, onPress }) {
-   
-   let statusColor;
 
-  if (orderStatus=="Approved") {
-    statusColor = '#0CFFB3';
-  } else if (orderStatus=="Pending") {
-    statusColor = '#FFCA0C';
-  } else if (orderStatus=="Cancel") {
-    statusColor = '#FC381E';
-  } else if (orderStatus=="In Progress") {
-    statusColor = '#D0F0C0';
-  }
-  else if (orderStatus=="Archive") {
-    statusColor = 'gray';
-  }
-  else {
-    statusColor = 'white';
-  }
+    let statusColor;
+
+    if (orderStatus == "Approved") {
+        statusColor = '#0CFFB3';
+    } else if (orderStatus == "Pending") {
+        statusColor = '#FFCA0C';
+    } else if (orderStatus == "Cancel") {
+        statusColor = '#FC381E';
+    } else if (orderStatus == "In Progress") {
+        statusColor = '#D0F0C0';
+    }
+    else if (orderStatus == "Archive") {
+        statusColor = 'gray';
+    }
+    else {
+        statusColor = 'white';
+    }
     return (
         <View style={styles.OrderCard}>
             <View style={{ flex: 0.4 }}>
-                <Image
-                    style={{ width: 119, height: 124, borderRadius: 22 }}
-                    source={{ uri: image }}
-                />
+                <ScrollView style={styles.imageList} horizontal={true}>
+                    <Image
+
+                        source={image} style={styles.imageList}
+                    />
+
+                </ScrollView>
+
+
             </View>
             <View style={{ flex: 0.4, flexDirection: 'row' }}>
                 <View>
@@ -98,6 +103,11 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         padding: 2,
         borderRadius: 25,
+    },
+    imageList: {
+        width: 119, height: 124, borderRadius: 22,
+
+
     },
 
     OrderCardImage: {
