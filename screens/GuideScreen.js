@@ -69,13 +69,15 @@ export default function GuideScreen({ navigation }) {
       try {
         const response = await axios.get(`${BaseUrl}/orders/`, {
           headers: {
-            'Authorization': `Bearer ${userData?.token}`,  // Pass the token here
+            'Authorization': `token ${userData?.token}`,  // Pass the token here
             'Content-Type': 'application/json',
           }
+          
         });
         setInstructions(response.data);
       } catch (err) {
         alert(err.message);  // Catch and display error if any
+        console.log(err);  // Catch and display error if any
       }
     };
 

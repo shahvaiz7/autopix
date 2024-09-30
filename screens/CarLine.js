@@ -30,7 +30,7 @@ export default function CarLine({ navigation }) {
                     try {
                         const response = await axios.get(`${BaseUrl}/auths/${convertValue.user_id}`, {
                             headers: {
-                                'Authorization': `Bearer ${convertValue?.token}`,  // Pass the token here
+                                'Authorization': `token ${convertValue?.token}`,  // Pass the token here
                                 'Content-Type': 'application/json',
                             }
                         });

@@ -81,7 +81,7 @@ export default function OrderScreen({ navigation }) {
       try {
         const response = await axios.get(`${BaseUrl}/orders/`, {
           headers: {
-            'Authorization': `Bearer ${userData?.token}`,  // Pass the token here
+            'Authorization': `token ${userData?.token}`,  // Pass the token here
             'Content-Type': 'application/json',
           }
         });
@@ -128,8 +128,8 @@ export default function OrderScreen({ navigation }) {
         </View>
         <FlatList
           style={styles.bodyContent}
-         // data={OrderList}
-         data={orderDetails}
+         data={OrderList}
+        //  data={orderDetails}
           renderItem={({ item }) => (
             <OrderCard image={item.image} orderId={item.id} orderStatus={item.orderStatus} imageCount={item.imageCount} dayCount={item.dayCount} />
           )}
