@@ -4,34 +4,25 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
-  Image,
   Modal,
-  Pressable,
   ImageBackground,
   Linking,
 } from "react-native";
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import React, { useContext, useState } from "react";
 import Button from "../component/Button";
 import TextInput from "../component/TextInput";
-import { Picker } from "@react-native-picker/picker";
-import RNPickerSelect from "react-native-picker-select";
-import { LinearGradient } from "expo-linear-gradient";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { StatusBar } from 'react-native';
-import {
-  BottomSheetModal,
-  BottomSheetView,
-  BottomSheetModalProvider,
-} from '@gorhom/bottom-sheet';
+import UserContext from "../auth/UserContext";
 
 //npx expo install @react-native-picker/picker
 import PickerSelect from "react-native-picker-select";
 export default function CreateOrder({ navigation }) {
-
+  const { userData, Instruction, setInstruction } = useContext(UserContext);
   const [selectedTime, setselectedTime] = useState();
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
+  const [regCarId, setRegCarId] = useState("");
+  const [message, setMessage] = useState("");
 
   const items = [
     { label: "24 Hours", value: "1" },
@@ -61,64 +52,74 @@ export default function CreateOrder({ navigation }) {
     },
   });
 
-
-
-
   const sendOrderData = async () => {
+    console.log(
+      "regCarId",
+      regCarId,
+      "message",
+      message,
+      "Instruction",
+      Instruction
+    );
+    if (!regCarId || !message || !Instruction) {
+      alert("Fill The required Field");
+      setModalVisible(false);
+      return;
+    }
     // Define the data object with only the required fields
-    const data = {
-      job_name: "Sample Job", // Required field
-      instruction_id: {
-        instruction_name: "Sample Instruction", // Required field
-        background: {
-          name: "Sample Background", // Required field
-        },
-      },
-      massage: "Sample massage", // Required field
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", `Token ${userData?.token}`);
+    myHeaders.append(
+      "Cookie",
+      "csrftoken=ASTAfJ6pYzH8nZpIHUf5SIJWuXrLAPe8; sessionid=lnupp2l3rm3a6se4vwr6uj5xlnp291b7"
+    );
+
+    const formdata = new FormData();
+    formdata.append("job_name", regCarId);
+    formdata.append("instruction_id", Instruction.instruction_id);
+    formdata.append("massage", message);
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: formdata,
+      redirect: "follow",
     };
 
-    try {
-      // Send POST request using axios
-      const response = await axios.post(`${BaseUrl}/orders/`, data, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      // Check the response
-      console.log('Response:', response.data);
-    } catch (error) {
-      // Handle errors
-      if (error.response) {
-        // Server responded with a status other than 200 range
-        console.error('Error response data:', error.response.data);
-        console.error('Error response status:', error.response.status);
-      } else if (error.request) {
-        // No response was received
-        console.error('No response received:', error.request);
-      } else {
-        // Something went wrong in setting up the request
-        console.error('Error:', error.message);
-      }
-    }
+    fetch("https://app.carline.no/api/orders/", requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        console.log("sss", result),
+          setModalVisible(false),
+          setInstruction(""),
+          navigation.navigate("UploadingScreen");
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
     <ScrollView style={styles.containerView}>
-
-      <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' >
-
+      <ImageBackground
+        source={require("../assets/background.png")}
+        resizeMode="stretch"
+      >
         <View style={styles.HeaderView}>
-
-          <TouchableOpacity onPress={() => navigation.navigate("Home")} style={{
-            color: 'white',
-            width: '100%',
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-            paddingTop: 30,
-            paddingBottom: 20
-          }} >
-            <MaterialCommunityIcons name="arrow-left" size={24} color={"#ffffff"} />
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Home")}
+            style={{
+              color: "white",
+              width: "100%",
+              justifyContent: "space-between",
+              flexDirection: "row",
+              paddingTop: 30,
+              paddingBottom: 20,
+            }}
+          >
+            <MaterialCommunityIcons
+              name="arrow-left"
+              size={24}
+              color={"#ffffff"}
+            />
 
             <Text
               style={{
@@ -154,7 +155,7 @@ export default function CreateOrder({ navigation }) {
             }}
           >
             {" "}
-            Enter Registration or Car ID{" "}
+            Enter Registration or Car ID *
           </Text>
           <TextInput
             placeholder="Enter here..."
@@ -163,6 +164,7 @@ export default function CreateOrder({ navigation }) {
             returnKeyLabel="next"
             inputHieght={54}
             paddingTop={12}
+            onChangeText={setRegCarId}
           />
           <Text
             style={{
@@ -173,7 +175,7 @@ export default function CreateOrder({ navigation }) {
             }}
           >
             {" "}
-            Enter Message{" "}
+            Enter Message *
           </Text>
 
           <TextInput
@@ -184,6 +186,7 @@ export default function CreateOrder({ navigation }) {
             returnKeyLabel="next"
             inputHieght={78}
             linenumber={2}
+            onChangeText={setMessage}
           />
 
           <Text
@@ -195,7 +198,7 @@ export default function CreateOrder({ navigation }) {
             }}
           >
             {" "}
-            Instructions{" "}
+            Instructions *
           </Text>
           <TouchableOpacity
             style={styles.InstructionView}
@@ -207,10 +210,23 @@ export default function CreateOrder({ navigation }) {
               resizeMode="stretch"
               borderRadius={15}
             >
-              <Text style={styles.InstructionText}> BG : Yes </Text>
-              <Text style={styles.InstructionText}> Floor : Not Selected </Text>
-              <Text style={styles.InstructionText}> Logo : Yes </Text>
-              <Text style={styles.InstructionText}> Licence Plate : No </Text>
+              {Instruction ? (
+                <>
+                  <Text style={styles.InstructionText}>
+                    instruction id : {Instruction.instruction_id}{" "}
+                  </Text>
+                  <Text style={styles.InstructionText}>BG : Yes </Text>
+                  <Text style={styles.InstructionText}>
+                    Floor : Not Selected
+                  </Text>
+                  <Text style={styles.InstructionText}>Logo : Yes </Text>
+                  <Text style={styles.InstructionText}>
+                    Licence Plate : No{" "}
+                  </Text>
+                </>
+              ) : (
+                <Text style={styles.InstructionText}>Select Instruction</Text>
+              )}
             </ImageBackground>
           </TouchableOpacity>
           <Text
@@ -259,8 +275,8 @@ export default function CreateOrder({ navigation }) {
           <Button
             label="Next"
             onPress={() => setModalVisible(!modalVisible)}
-          // onPress={handlePresentModalPress}
-          // onPress={() => sendOrderData(true)}
+            // onPress={handlePresentModalPress}
+            // onPress={() => sendOrderData(true)}
           />
         </View>
         <Modal
@@ -268,7 +284,7 @@ export default function CreateOrder({ navigation }) {
           transparent={true}
           visible={modalVisible}
           onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
+            alert("Modal has been closed.");
             setModalVisible(!modalVisible);
           }}
         >
@@ -286,13 +302,7 @@ export default function CreateOrder({ navigation }) {
                     backgroundColor: "#FF4A22",
                   }}
                 ></View>
-                <Button
-                  label="Send Order"
-                  onPress={() => {
-                    navigation.navigate("UploadingScreen"),
-                      setModalVisible(!modalVisible);
-                  }}
-                />
+                <Button label="Send Order" onPress={() => sendOrderData()} />
 
                 <TouchableOpacity
                   style={{

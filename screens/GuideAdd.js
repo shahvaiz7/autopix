@@ -44,21 +44,28 @@ export default function GuideAdd({ navigation, route }) {
   const [npSwitch, setNpSwitch] = useState(false);
   const togglenpSwitch = () => setNpSwitch((previousState) => !previousState);
   const [numberplate, setNumberplate] = useState(null);
+  const [InstructionName, setInstructionName] = useState("");
 
   const pickBackground = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync();
-    console.log(result);
     if (!result.canceled) {
       setBackground(result.assets[0].uri);
     }
   };
 
+  console.log(floorSwitch);
+
   const PostInstructions = () => {
+    if(!InstructionName){
+      alert("Enter Instruction name")
+      return
+    }
+
     const myHeaders = new Headers();
     myHeaders.append(
       "Authorization",
-      "Token 42b0aa7f0550f6ee73c0a3158fa1c4cdfc89a577"
+      `Token ${userData?.token}`
     );
     myHeaders.append(
       "Cookie",
@@ -66,15 +73,18 @@ export default function GuideAdd({ navigation, route }) {
     );
 
     const formdata = new FormData();
-    formdata.append("instruction_name", "test2");
+    formdata.append("instruction_name", InstructionName);
     formdata.append("instruction_details", "testDetails");
     formdata.append("share_instruction", "test@gmail.com");
     formdata.append("approval", "test@gmail.com");
-    formdata.append("addlicenseplate", "no");
     formdata.append("logo_placement", "null");
-    formdata.append("logo", "Dontaddlogo");
-    formdata.append("floor", "null");
-    formdata.append("background", "null");
+    formdata.append("logo", logoSwitch ? "Addlogo" : "Dontaddlogo");
+    formdata.append("floor", floorSwitch ? "Add Floor" : "Don't Add Floor");
+    formdata.append("background", backgroundSwitch ? "Add Background" : "Don't Add Background");
+    formdata.append(
+      "addlicenseplate",
+      npSwitch ? "Add License Plate" : "Don't Add License Plate"
+    );
 
     const requestOptions = {
       method: "POST",
@@ -83,10 +93,10 @@ export default function GuideAdd({ navigation, route }) {
       redirect: "follow",
     };
 
-    fetch("https://app.carline.no/api/instructions/", requestOptions)
+    fetch(`${BaseUrl}/instructions/`, requestOptions)
       .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.error(error));
+      .then((result) => alert(result))
+      .catch((error) => alert(error));
   };
 
   return (
@@ -119,6 +129,7 @@ export default function GuideAdd({ navigation, route }) {
               autoCapitalize="none"
               returnKeyType="next"
               returnKeyLabel="done"
+              onChangeText={setInstructionName}
             />
           </View>
           <View style={styles.InstructionView}>
