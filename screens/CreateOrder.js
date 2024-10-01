@@ -213,7 +213,7 @@ export default function CreateOrder({ navigation }) {
               {Instruction ? (
                 <>
                   <Text style={styles.InstructionText}>
-                    instruction id : {Instruction.instruction_id}{" "}
+                    instruction id : {Instruction.id}{" "}
                   </Text>
                   <Text style={styles.InstructionText}>BG : Yes </Text>
                   <Text style={styles.InstructionText}>

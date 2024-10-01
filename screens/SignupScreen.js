@@ -30,10 +30,15 @@ export default function SignupScreen({ navigation }) {
     setShowPassword(!showPassword);
   };
 
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
 
 
   const handleSignUp = () => {
-    if (!name && !email && !password && !company_name) {
+    if (!name && !validateEmail(email) && !password && !company_name) {
       alert('All filled is required')
       return
     }
