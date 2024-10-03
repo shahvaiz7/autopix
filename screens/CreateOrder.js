@@ -16,8 +16,15 @@ import UserContext from "../auth/UserContext";
 
 //npx expo install @react-native-picker/picker
 import PickerSelect from "react-native-picker-select";
+import BaseUrl from "../auth/BaseUrl";
 export default function CreateOrder({ navigation }) {
-  const { userData, Instruction, setInstruction } = useContext(UserContext);
+  const {
+    userData,
+    Instruction,
+    setInstruction,
+    SelectedOrderImage,
+    setSelectedOrderImage,
+  } = useContext(UserContext);
   const [selectedTime, setselectedTime] = useState();
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
@@ -86,17 +93,50 @@ export default function CreateOrder({ navigation }) {
       redirect: "follow",
     };
 
-    fetch("https://app.carline.no/api/orders/", requestOptions)
+    fetch(`${BaseUrl}/orders/`, requestOptions)
       .then((response) => response.text())
       .then((result) => {
         console.log("sss", result),
           setModalVisible(false),
           setInstruction(""),
           navigation.navigate("UploadingScreen");
+        uploadImages(result);
       })
       .catch((error) => console.error(error));
   };
 
+  const uploadImages = async (Oid) => {
+    console.log("Oid", Oid);
+    const formData = new FormData();
+    formData.append("order", Oid?.id); // Add your order ID
+
+    for (const imageUri of SelectedOrderImage) {
+      const fileInfo = await FileSystem.getInfoAsync(imageUri.uri);
+      formData.append("file", {
+        uri: imageUri.uri,
+        name: fileInfo.uri.split("/").pop(),
+        type: "image/jpeg", // You can modify the type based on the image type
+      });
+    }
+    console.log("formData",formData);
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        Authorization: `Token ${userData?.token}`,
+        "Content-Type": "multipart/form-data", // Important for file uploads
+      },
+      body: formData,
+    };
+
+    try {
+      const response = await fetch(`${BaseUrl}/order-upload/`, requestOptions);
+      const result = await response.text();
+      console.log("result", result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <ScrollView style={styles.containerView}>
       <ImageBackground

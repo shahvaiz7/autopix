@@ -1,76 +1,77 @@
-import { CameraView, CameraType, useCameraPermissions, Camera, } from 'expo-camera';
-import React, { useRef, useState, useEffect } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import { CameraView, useCameraPermissions } from "expo-camera";
+import React, { useRef, useState, useContext } from "react";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+} from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Torch from 'react-native-torch';
-import PreviewImage from './PreviewImage';
-import { FlashMode } from 'expo-camera/build/legacy/Camera.types';
-import * as MediaLibrary from 'expo-media-library';
-import ImageList from './ImageList';
+import PreviewImage from "./PreviewImage";
+import * as MediaLibrary from "expo-media-library";
 import * as ImagePicker from "expo-image-picker";
+import UserContext from "../auth/UserContext";
+
 export default function CameraScreen({ navigation }) {
-  const [facing, setFacing] = useState('back');
+  const { SelectedImage, setSelectedImage } = useContext(UserContext);
+  const [facing, setFacing] = useState("back");
   const [permission, requestPermission] = useCameraPermissions();
   const [photo, setPhoto] = useState(null);
-  //const [hasMediaPermission, setHasMediaPermission] = useEffect(null);
 
   const cameraRef = useRef(null);
-  // const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const [isTorchOn, setIsTorchOn] = useState(false);
-  const [isLightOn, setLightOn] = useState('off');
+  const [isLightOn, setLightOn] = useState("off");
   const flashFunction = () => {
-    console.log('checking state', isTorchOn);
     setIsTorchOn(!isTorchOn);
-    setLightOn(flashMode => (flashMode === 'off' ? 'on' : 'off'))
+    setLightOn((flashMode) => (flashMode === "off" ? "on" : "off"));
   };
 
-
   if (!permission) {
-    // Camera permissions are still loading.
     return <View />;
   }
 
   if (!permission.granted) {
-    // Camera permissions are not granted yet.
     return (
       <View style={styles.container}>
-        <Text style={styles.message}>We need your permission to show the camera</Text>
+        <Text style={styles.message}>
+          We need your permission to show the camera
+        </Text>
         <Button onPress={requestPermission} title="grant permission" />
       </View>
     );
   }
 
   function toggleCameraFacing() {
-    setFacing(current => (current === 'back' ? 'front' : 'back'));
+    setFacing((current) => (current === "back" ? "front" : "back"));
   }
 
   const handleTakePhoto = async () => {
     if (cameraRef.current) {
       const options = {
         quality: 1,
-        base64: true,
+        // base64: true,
         exif: false,
       };
       const takedPhoto = await cameraRef.current.takePictureAsync(options);
       setPhoto(takedPhoto);
-      console.log(takedPhoto.uri);
     }
   };
 
   const savePhoto = async () => {
     if (photo) {
       try {
+        setSelectedImage([...SelectedImage, photo]);
         await MediaLibrary.createAssetAsync(photo.uri);
-        alert('Saved Successfully!')
+        alert("Saved Successfully!");
         setPhoto(null);
       } catch (error) {
-        console.log(error)
-
+        console.log(error);
       }
     }
-  }
+  };
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       // allowsEditing: true,
@@ -82,48 +83,82 @@ export default function CameraScreen({ navigation }) {
       // mediaTypes:ImagePicker.MediaTypeOptions.Images,
     });
     console.log(result);
-    navigation.navigate('CreateOrder');
+    navigation.navigate("CreateOrder");
     if (!result.canceled) {
-      setImage(result.assets[0].uri)
+      setImage(result.assets[0].uri);
     }
   };
-  const imageList = () => navigation.navigate('ImageList');
 
-  const handleRetakePhoto = () => setPhoto(null);
   if (photo)
     return (
-      <PreviewImage photo={photo} handleRetakePhoto={handleRetakePhoto} savePhoto={savePhoto} imageList={imageList} />)
-
+      <PreviewImage
+        photo={photo}
+        handleRetakePhoto={() => setPhoto(null)}
+        savePhoto={savePhoto}
+        imageList={() => [
+          setSelectedImage([...SelectedImage, photo]),
+          navigation.navigate("ImageList"),
+        ]}
+      />
+    );
 
   return (
     <View style={styles.container}>
-      <CameraView style={styles.camera} facing={facing} ref={cameraRef} flash={isLightOn}>
+      <CameraView
+        style={styles.camera}
+        facing={facing}
+        ref={cameraRef}
+        flash={isLightOn}
+      >
         <View style={styles.topContainer}>
           <TouchableOpacity onPress={flashFunction}>
-            <MaterialCommunityIcons name={isTorchOn ? 'flash-outline' : 'flash-off'} size={24} color={"white"} />
+            <MaterialCommunityIcons
+              name={isTorchOn ? "flash-outline" : "flash-off"}
+              size={24}
+              color={"white"}
+            />
           </TouchableOpacity>
           <Text style={styles.HeadText}>Identify the Vehical</Text>
 
           <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-            <MaterialCommunityIcons name="window-close" size={24} color={"white"} />
+            <MaterialCommunityIcons
+              name="window-close"
+              size={24}
+              color={"white"}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={pickImage} >
+          <TouchableOpacity style={styles.button} onPress={pickImage}>
             <Image
-              style={{ width: 44, height: 44, borderRadius: 50, resizeMode: 'contain' }}
+              style={{
+                width: 44,
+                height: 44,
+                borderRadius: 50,
+                resizeMode: "contain",
+              }}
               source={require("../assets/Fillter.png")}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={handleTakePhoto} >
+          <TouchableOpacity style={styles.button} onPress={handleTakePhoto}>
             <Image
-              style={{ width: 70, height: 70, borderRadius: 50, resizeMode: 'contain' }}
+              style={{
+                width: 70,
+                height: 70,
+                borderRadius: 50,
+                resizeMode: "contain",
+              }}
               source={require("../assets/Shutter.png")}
             />
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
             <Image
-              style={{ width: 44, height: 44, borderRadius: 50, resizeMode: 'contain' }}
+              style={{
+                width: 44,
+                height: 44,
+                borderRadius: 50,
+                resizeMode: "contain",
+              }}
               source={require("../assets/Switch.png")}
             />
           </TouchableOpacity>
@@ -136,47 +171,46 @@ export default function CameraScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   message: {
-    textAlign: 'center',
+    textAlign: "center",
     paddingBottom: 10,
   },
   camera: {
     flex: 1,
   },
   topContainer: {
-    flex: .1,
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
-    justifyContent: 'space-between',
+    flex: 0.1,
+    flexDirection: "row",
+    backgroundColor: "transparent",
+    justifyContent: "space-between",
     marginTop: 40,
     padding: 10,
-
   },
   buttonContainer: {
     flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    backgroundColor: "transparent",
+    justifyContent: "space-around",
     marginBottom: 40,
   },
   button: {
     flex: 1,
-    alignSelf: 'flex-end',
-    alignItems: 'center',
-    justifyContent: 'space-between'
+    alignSelf: "flex-end",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   text: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
   },
   HeadText: {
     fontSize: 16,
-    fontFamily: 'DMSans_500Medium',
+    fontFamily: "DMSans_500Medium",
     padding: 5,
     color: "#ffffff",
-    paddingBottom: 10
+    paddingBottom: 10,
   },
 });

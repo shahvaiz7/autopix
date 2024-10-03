@@ -1,13 +1,10 @@
-import { Fontisto } from '@expo/vector-icons';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import React from 'react';
 import { TouchableOpacity, SafeAreaView, Image, StyleSheet, View, Text, ImageBackground,Alert } from 'react-native';
 import Button from '../component/Button';
-import ImageList from './ImageList';
 
-export default function PreviewImage({ photo, handleRetakePhoto, savePhoto,imageList }) {
 
-    
+export default function PreviewImage({ photo, handleRetakePhoto, savePhoto,imageList }) {    
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground source={require("../assets/background.png")} resizeMode='stretch' style={styles.containerView}>
@@ -31,8 +28,6 @@ export default function PreviewImage({ photo, handleRetakePhoto, savePhoto,image
                         color: "#ffffff",
                         fontFamily: 'DMSans_500Medium', fontSize: 18
                     }}> Your Photo  </Text>
-                    <Text>       </Text>
-
                 </View>
                 <View style={styles.box}>
                     <Image

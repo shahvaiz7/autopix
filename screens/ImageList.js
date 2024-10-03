@@ -1,79 +1,44 @@
 import { Fontisto } from "@expo/vector-icons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import React from "react";
+import React, { useState } from "react"; // Import useState
 import {
   TouchableOpacity,
-  SafeAreaView,
   Image,
   StyleSheet,
   View,
   Text,
   ImageBackground,
-  Alert,
   FlatList,
 } from "react-native";
 import Button from "../component/Button";
-
-const imageList = [
-  {
-    id: 1,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-  {
-    id: 2,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-  {
-    id: 3,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-  {
-    id: 4,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-  {
-    id: 5,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-  {
-    id: 6,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-  {
-    id: 7,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-  {
-    id: 8,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-  {
-    id: 9,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-  {
-    id: 10,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-  {
-    id: 11,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-  {
-    id: 12,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-  {
-    id: 13,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-  {
-    id: 14,
-    image: require("../assets/Rectangle 17 (3).png"),
-  },
-];
+import UserContext from "../auth/UserContext";
 
 export default function ImageList({ navigation }) {
+  const { SelectedImage,setSelectedOrderImage } = React.useContext(UserContext);
+  const [selectedImages, setSelectedImages] = useState([]); // State to track selected images
+
+  const toggleImageSelection = (image) => {
+    setSelectedImages((prevSelected) => {
+      const alreadySelected = prevSelected.find(
+        (selectedImage) => selectedImage.uri === image.uri
+      );
+      if (alreadySelected) {
+        // Unselect image
+        return prevSelected.filter(
+          (selectedImage) => selectedImage.uri !== image.uri
+        );
+      } else {
+        // Select new image
+        return [...prevSelected, image];
+      }
+    });
+  };
+
+  const isSelected = (imageUri) => {
+    return selectedImages.some((selectedImage) => selectedImage.uri === imageUri);
+  };
+
+  
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -92,7 +57,10 @@ export default function ImageList({ navigation }) {
             paddingBottom: 5,
           }}
         >
-          <TouchableOpacity style={{ flexDirection: "row" }} onPress={() => navigation.navigate("CameraScreen")}>
+          <TouchableOpacity
+            style={{ flexDirection: "row" }}
+            onPress={() => navigation.navigate("CameraScreen")}
+          >
             <MaterialCommunityIcons
               name="arrow-left"
               size={24}
@@ -123,9 +91,15 @@ export default function ImageList({ navigation }) {
 
         <View style={styles.Bottom}>
           <FlatList
-            data={imageList}
+            data={SelectedImage}
             renderItem={({ item }) => (
-              <TouchableOpacity style={styles.ImageBox}>
+              <TouchableOpacity
+                onPress={() => toggleImageSelection(item)} // Toggle selection on press
+                style={[
+                  styles.ImageBox,
+                  isSelected(item.uri) && styles.selectedImageBox,
+                ]}
+              >
                 <Image
                   style={{
                     width: 168,
@@ -133,16 +107,23 @@ export default function ImageList({ navigation }) {
                     borderRadius: 15,
                     padding: 10,
                   }}
-                  source={item.image}
+                  source={{ uri: item.uri }}
                 />
+                {isSelected(item.uri) && ( // Show check icon if selected
+                  <View style={styles.checkIconContainer}>
+                    <Fontisto name="check" size={20} color={"green"} />
+                  </View>
+                )}
               </TouchableOpacity>
             )}
             numColumns={2}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item, index) => index.toString()} // Use toString for key
           />
-          <Button label="Create Order" onPress={() => navigation.navigate("CreateOrder")} />
+          <Button
+            label="Create Order"
+            onPress={() =>{navigation.navigate("CreateOrder"),setSelectedOrderImage(selectedImages)}}
+          />
         </View>
-
       </ImageBackground>
     </View>
   );
@@ -152,8 +133,7 @@ const styles = StyleSheet.create({
   containerView: {
     flex: 1,
     paddingTop: 30,
-    paddingBottom: 50
-
+    paddingBottom: 50,
   },
   container: {
     flex: 1,
@@ -161,22 +141,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   ImageBox: {
-    padding: 10,
-    paddingBottom: 20
-
+    margin: 10,
+    borderRadius: 15,
+    paddingBottom: 20,
   },
-
+  selectedImageBox: {
+    // New style for selected images
+    borderWidth: 3,
+    borderColor: "green",
+  },
+  checkIconContainer: {
+    // Style for check icon container
+    position: "absolute",
+    top: 10,
+    right: 10,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    borderRadius: 10,
+    padding: 5,
+  },
   Bottom: {
     alignItems: "center",
     justifyContent: "center",
-    paddingBottom: 30
-  },
-  item: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 1,
-    borderColor: "gray",
-    margin: 5,
+    paddingBottom: 30,
   },
 });
