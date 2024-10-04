@@ -96,35 +96,33 @@ export default function CreateOrder({ navigation }) {
     fetch(`${BaseUrl}/orders/`, requestOptions)
       .then((response) => response.text())
       .then((result) => {
-        console.log("sss", result),
-          setModalVisible(false),
-          setInstruction(""),
+        console.log("sss", result);
+        setModalVisible(false);
+        setInstruction("");
+        if (SelectedOrderImage?.length > 0) {
+          uploadImages(result);
+        } else {
           navigation.navigate("UploadingScreen");
-        uploadImages(result);
+        }
       })
       .catch((error) => console.error(error));
   };
 
   const uploadImages = async (Oid) => {
-    console.log("Oid", Oid);
     const formData = new FormData();
-    formData.append("order", Oid?.id); // Add your order ID
-
-    for (const imageUri of SelectedOrderImage) {
-      const fileInfo = await FileSystem.getInfoAsync(imageUri.uri);
+    formData.append("order", Oid?.id);
+    for (const image of SelectedOrderImage) {
       formData.append("file", {
-        uri: imageUri.uri,
-        name: fileInfo.uri.split("/").pop(),
-        type: "image/jpeg", // You can modify the type based on the image type
+        uri: image.uri,
+        name: image.uri.split("/").pop(),
+        type: "image/jpeg",
       });
     }
-    console.log("formData",formData);
 
     const requestOptions = {
       method: "POST",
       headers: {
         Authorization: `Token ${userData?.token}`,
-        "Content-Type": "multipart/form-data", // Important for file uploads
       },
       body: formData,
     };
@@ -132,11 +130,13 @@ export default function CreateOrder({ navigation }) {
     try {
       const response = await fetch(`${BaseUrl}/order-upload/`, requestOptions);
       const result = await response.text();
-      console.log("result", result);
+      navigation.navigate("UploadingScreen");
+      console.log(result);
     } catch (error) {
       console.error(error);
     }
   };
+
   return (
     <ScrollView style={styles.containerView}>
       <ImageBackground
