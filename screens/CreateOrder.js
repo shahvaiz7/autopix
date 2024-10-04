@@ -100,7 +100,8 @@ export default function CreateOrder({ navigation }) {
         setModalVisible(false);
         setInstruction("");
         if (SelectedOrderImage?.length > 0) {
-          uploadImages(result);
+          const convert = JSON.parse(result);
+          uploadImages(convert.id);
         } else {
           navigation.navigate("UploadingScreen");
         }
@@ -110,7 +111,7 @@ export default function CreateOrder({ navigation }) {
 
   const uploadImages = async (Oid) => {
     const formData = new FormData();
-    formData.append("order", Oid?.id);
+    formData.append("order", Oid);
     for (const image of SelectedOrderImage) {
       formData.append("file", {
         uri: image.uri,
@@ -132,6 +133,7 @@ export default function CreateOrder({ navigation }) {
       const result = await response.text();
       navigation.navigate("UploadingScreen");
       console.log(result);
+      setSelectedOrderImage([]);
     } catch (error) {
       console.error(error);
     }
