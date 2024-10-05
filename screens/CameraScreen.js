@@ -15,7 +15,7 @@ import * as ImagePicker from "expo-image-picker";
 import UserContext from "../auth/UserContext";
 
 export default function CameraScreen({ navigation }) {
-  const { SelectedImage, setSelectedImage } = useContext(UserContext);
+  const { SelectedImage, setSelectedImage,setSelectedOrderImage } = useContext(UserContext);
   const [facing, setFacing] = useState("back");
   const [permission, requestPermission] = useCameraPermissions();
   const [photo, setPhoto] = useState(null);
@@ -82,11 +82,8 @@ export default function CameraScreen({ navigation }) {
       orderedSelection: true,
       // mediaTypes:ImagePicker.MediaTypeOptions.Images,
     });
-    console.log(result);
+    setSelectedOrderImage(result.assets);
     navigation.navigate("CreateOrder");
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
-    }
   };
 
   if (photo)
