@@ -22,6 +22,7 @@ export default function GuideAdd({ navigation, route }) {
   const { userData } = useContext(UserContext);
   const bgswitch = route.params;
   const image = route.params;
+  const name = route.params;
 
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
@@ -54,19 +55,15 @@ export default function GuideAdd({ navigation, route }) {
     }
   };
 
-  console.log(floorSwitch);
 
   const PostInstructions = () => {
-    if(!InstructionName){
-      alert("Enter Instruction name")
-      return
+    if (!InstructionName) {
+      alert("Enter Instruction name");
+      return;
     }
 
     const myHeaders = new Headers();
-    myHeaders.append(
-      "Authorization",
-      `Token ${userData?.token}`
-    );
+    myHeaders.append("Authorization", `Token ${userData?.token}`);
     myHeaders.append(
       "Cookie",
       "csrftoken=ASTAfJ6pYzH8nZpIHUf5SIJWuXrLAPe8; sessionid=lnupp2l3rm3a6se4vwr6uj5xlnp291b7"
@@ -75,12 +72,15 @@ export default function GuideAdd({ navigation, route }) {
     const formdata = new FormData();
     formdata.append("instruction_name", InstructionName);
     formdata.append("instruction_details", "testDetails");
-    formdata.append("share_instruction", "test@gmail.com");
-    formdata.append("approval", "test@gmail.com");
+    formdata.append("share_instruction", userData?.email);
+    formdata.append("approval", userData?.email);
     formdata.append("logo_placement", "null");
     formdata.append("logo", logoSwitch ? "Addlogo" : "Dontaddlogo");
     formdata.append("floor", floorSwitch ? "Add Floor" : "Don't Add Floor");
-    formdata.append("background", backgroundSwitch ? "Add Background" : "Don't Add Background");
+    formdata.append(
+      "background",
+      backgroundSwitch ? image : "Don't Add Background"
+    );
     formdata.append(
       "addlicenseplate",
       npSwitch ? "Add License Plate" : "Don't Add License Plate"
@@ -95,8 +95,14 @@ export default function GuideAdd({ navigation, route }) {
 
     fetch(`${BaseUrl}/instructions/`, requestOptions)
       .then((response) => response.text())
-      .then((result) => alert(result))
-      .catch((error) => alert(error));
+      .then((result) => {
+        Alert.alert("Instruction Created Successfull", result);
+        console.log("Instruction Created Successfull", result);
+      })
+      .catch((error) => {
+        alert(error);
+        console.log("Instruction Error", result);
+      });
   };
 
   return (
@@ -162,11 +168,16 @@ export default function GuideAdd({ navigation, route }) {
                     color={"#ffffff"}
                   />
                 </TouchableOpacity>
+                {/* <Text style={{
+              color: "#ffffff",
+              fontFamily: "DMSans_500Medium",
+              fontSize: 18,
+            }}> {name} </Text> */}
                 {image && (
                   <TouchableOpacity
                     onPress={() => navigation.navigate("BackgroundList")}
                   >
-                    <Image source={image} style={styles.logo1} />
+                    <Image source={{ uri: image }} style={styles.logo1} />
                   </TouchableOpacity>
                 )}
               </View>

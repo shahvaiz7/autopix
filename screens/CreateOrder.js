@@ -7,6 +7,8 @@ import {
   Modal,
   ImageBackground,
   Linking,
+  Alert,
+  ActivityIndicator,
 } from "react-native";
 import React, { useContext, useState } from "react";
 import Button from "../component/Button";
@@ -30,6 +32,7 @@ export default function CreateOrder({ navigation }) {
   const [selectedValue, setSelectedValue] = useState(null);
   const [regCarId, setRegCarId] = useState("");
   const [message, setMessage] = useState("");
+  const [Loader, setLoader] = useState(false);
 
   const items = [
     { label: "24 Hours", value: "1" },
@@ -60,19 +63,21 @@ export default function CreateOrder({ navigation }) {
   });
 
   const sendOrderData = async () => {
-    console.log(
-      "regCarId",
-      regCarId,
-      "message",
-      message,
-      "Instruction",
-      Instruction
-    );
     if (!regCarId || !message || !Instruction) {
       alert("Fill The required Field");
       setModalVisible(false);
       return;
     }
+
+    if (SelectedOrderImage?.length <= 0) {
+      alert("Please Select The Image");
+      setModalVisible(false);
+      return;
+    }
+
+    
+
+    setLoader(true);
     // Define the data object with only the required fields
     const myHeaders = new Headers();
     myHeaders.append("Authorization", `Token ${userData?.token}`);
@@ -96,7 +101,7 @@ export default function CreateOrder({ navigation }) {
     fetch(`${BaseUrl}/orders/`, requestOptions)
       .then((response) => response.text())
       .then((result) => {
-        console.log("sss", result);
+        console.log("orderssss", result);
         setModalVisible(false);
         setInstruction("");
         if (SelectedOrderImage?.length > 0) {
@@ -104,43 +109,52 @@ export default function CreateOrder({ navigation }) {
           uploadImages(convert.id);
         } else {
           navigation.navigate("UploadingScreen");
+          setLoader(false);
         }
       })
-      .catch((error) => console.error(error));
+      .catch((error) => Alert.alert("Create Order Failed", error.message));
   };
 
   const uploadImages = async (Oid) => {
-    const formData = new FormData();
-    formData.append("order", Oid);
-    for (const image of SelectedOrderImage) {
-      formData.append("file", {
-        uri: image.uri,
-        name: image.uri.split("/").pop(),
-        type: "image/jpeg",
-      });
-    }
-
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        Authorization: `Token ${userData?.token}`,
-      },
-      body: formData,
-    };
-
     try {
-      const response = await fetch(`${BaseUrl}/order-upload/`, requestOptions);
-      const result = await response.text();
+      for (const image of SelectedOrderImage) {
+        const formData = new FormData();
+        formData.append("order", Oid);
+        formData.append("file", {
+          uri: image.uri,
+          name: image.uri.split("/").pop(),
+          type: "image/jpeg",
+        });
+
+        const requestOptions = {
+          method: "POST",
+          headers: {
+            Authorization: `Token ${userData?.token}`,
+          },
+          body: formData,
+        };
+
+        const response = await fetch(
+          `${BaseUrl}/order-upload/`,
+          requestOptions
+        );
+        const result = await response.text();
+        console.log("image.uri", result);
+      }
+      console.log("uploaded Images");
+      setLoader(false);
       navigation.navigate("UploadingScreen");
-      console.log(result);
       setSelectedOrderImage([]);
     } catch (error) {
-      console.error(error);
+      Alert.alert("Failed Image Upload", error.message);
     }
   };
 
   return (
     <ScrollView style={styles.containerView}>
+      {Loader && (
+        <ActivityIndicator size="large" color={"#fff"} style={styles.loader} />
+      )}
       <ImageBackground
         source={require("../assets/background.png")}
         resizeMode="stretch"
@@ -255,7 +269,7 @@ export default function CreateOrder({ navigation }) {
               {Instruction ? (
                 <>
                   <Text style={styles.InstructionText}>
-                    instruction id : {Instruction.id}{" "}
+                    instruction id : {Instruction.instruction_id}{" "}
                   </Text>
                   <Text style={styles.InstructionText}>BG : Yes </Text>
                   <Text style={styles.InstructionText}>
@@ -494,5 +508,11 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: "center",
+  },
+  loader: {
+    position: "absolute",
+    zIndex: 2,
+    top: "50%",
+    left: "50%",
   },
 });

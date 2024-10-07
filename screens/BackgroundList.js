@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   FlatList,
   View,
@@ -9,6 +9,9 @@ import {
   ImageBackground,
 } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import UserContext from '../auth/UserContext';
+import BaseUrl from "../auth/BaseUrl";
+import axios from "axios";
 
 // const data = [
 //   {
@@ -42,24 +45,49 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 export default function BackgroundList({ navigation, route }) {
   const [selectedIds, setSelectedIds] = useState([]);
   const [imageList, setImageList] = useState(null);
-
+  const { userData } = useContext(UserContext);
 
   useEffect(() => {
-    getBackground();
+    const fetchBackground = async () => {
+      try {
+        const response = await axios.get(`${BaseUrl}/backgrounds/`, {
+          headers: {
+            'Authorization': `token ${userData?.token}`,  // Pass the token here
+            'Content-Type': 'application/json',
+          }
+        });
+        setImageList(response.data);
+        console.log(response.data);
+      } catch (err) {
+        alert(err.message);  // Catch and display error if any
+      }
+    };
+
+    fetchBackground();
   }, []);
 
-  const getBackground = () => {
-    const URL = "https://app.carline.no/api/backgrounds/";
+  // useEffect(() => {
+  //   getBackground();
+  // }, []);
 
-    fetch(URL)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setImageList(data);
-        // console.log(data);
-      });
-  };
+  // const getBackground = () => {
+  //  // const URL = "https://app.carline.no/api/backgrounds/";
+  //   const URL =  axios.get(`${BaseUrl}/backgrounds/`, {
+  //     headers: {
+  //       'Authorization': `token ${userData?.token}`,  // Pass the token here
+  //       'Content-Type': 'application/json',
+  //     }
+  //   });
+
+  //   fetch(URL)
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       setImageList(data);
+  //       // console.log(data);
+  //     });
+  // };
 
   return (
     <ImageBackground
@@ -116,6 +144,11 @@ export default function BackgroundList({ navigation, route }) {
             }}
           >
             <Image style={styles.ImageList} source={{ uri: item.image }} />
+            <Text style={{
+              color: "#ffffff",
+              fontFamily: "DMSans_500Medium",
+              fontSize: 18,
+            }}> {item.name} </Text>
           </TouchableOpacity>
 
         )}

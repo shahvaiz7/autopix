@@ -31,7 +31,7 @@ import NotificationScreen from './screens/NotificationScreen';
 import CameraScreen from './screens/CameraScreen';
 import OrderScreen from './screens/OrderScreen';
 import { useFonts } from "expo-font";
-import React, { useState, useEffect, useContext } from "react";
+import React, {useEffect } from "react";
 
 import * as SplashScreen from 'expo-splash-screen';
 import ImageList from './screens/ImageList';
