@@ -66,9 +66,9 @@ export default function GuideScreen({ navigation }) {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get(`${BaseUrl}/orders/`, {
+        const response = await axios.get(`${BaseUrl}/instructions/`, {
           headers: {
-            Authorization: `token ${userData?.token}`, // Pass the token here
+            Authorization: `Token ${userData?.token}`, // Pass the token here
             "Content-Type": "application/json",
           },
         });
@@ -133,7 +133,7 @@ export default function GuideScreen({ navigation }) {
                 NPCheck={item.NPCheck}
                 FloorCheck={item.FloorCheck}
                 LogoCheck={item.LogoCheck}
-                createdOn={item.createdOn}
+                createdOn={item.created_at}
               />
             </TouchableOpacity>
           )}

@@ -85,7 +85,7 @@ export default function GuideCard({ image, guideId, BGCheck, NPCheck, FloorCheck
         </View>
         <View style={styles.OrderCardDetailsFour}>
 
-          <Text style={styles.CardText}>{createdOn} Days ago </Text>
+          <Text style={styles.CardText}>{createdOn?.split('T')[0]} Days ago </Text>
           <TouchableOpacity style={{
             borderWidth: 1,
             borderColor: 'gray',
