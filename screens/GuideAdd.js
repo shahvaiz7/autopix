@@ -81,10 +81,7 @@ export default function GuideAdd({ navigation, route }) {
         "background",
         backgroundSwitch ? image.id : "Don't Add Background"
       );
-      formdata.append(
-        "addlicenseplate",
-        npSwitch ? "Add License Plate" : "Don't Add License Plate"
-      );
+      formdata.append("license_plate", npSwitch ? "Add License Plate" : "Don't Add License Plate");
 
       const requestOptions = {
         method: "POST",

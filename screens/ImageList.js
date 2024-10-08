@@ -38,7 +38,9 @@ export default function ImageList({ navigation }) {
     return selectedImages.some((selectedImage) => selectedImage.uri === imageUri);
   };
 
-  
+  const uniqueImages = SelectedImage?.filter((image, index, self) =>
+    index === self.findIndex((t) => t.uri === image.uri)
+  );
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -91,7 +93,7 @@ export default function ImageList({ navigation }) {
 
         <View style={styles.Bottom}>
           <FlatList
-            data={SelectedImage}
+            data={uniqueImages}
             renderItem={({ item }) => (
               <TouchableOpacity
                 onPress={() => toggleImageSelection(item)} // Toggle selection on press
