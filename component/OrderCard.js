@@ -7,8 +7,11 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import UserContext from "../auth/UserContext";
+import BaseUrl from "../auth/BaseUrl";
+import axios from "axios";
 
 export default function OrderCard({
   image,
@@ -33,17 +36,33 @@ export default function OrderCard({
   } else {
     statusColor = "white";
   }
+  const { userData } = useContext(UserContext);
+  const [Img, setImg] = useState("");
 
-  const Filterimage = image?.filter((item) => item.order === orderId);
+  useEffect(() => {
+    {
+      orderId &&
+        axios
+          .get(`${BaseUrl}/order-upload/${orderId}/files/`, {
+            headers: {
+              Authorization: `token ${userData?.token}`, // Pass the token here
+              "Content-Type": "application/json",
+            },
+          })
+          .then((response) => {
+            setImg(response.data[0]);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    }
+  }, [orderId]);
 
   return (
     <View style={styles.OrderCard}>
       <View style={{ flex: 0.4 }}>
         <ScrollView style={styles.imageList} horizontal={true}>
-          <Image
-            source={{ uri: Filterimage[0]?.file }}
-            style={styles.imageList}
-          />
+          <Image source={{ uri: Img?.file }} style={styles.imageList} />
         </ScrollView>
       </View>
       <View style={{ flex: 0.4, flexDirection: "row" }}>
