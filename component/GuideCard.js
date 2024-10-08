@@ -1,14 +1,41 @@
-import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity } from 'react-native'
-import React from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import React, { useContext, useState, useEffect } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import axios from 'axios';
+import UserContext from "../auth/UserContext";
+import BaseUrl from "../auth/BaseUrl";
 
-export default function GuideCard({ image, guideId, BGCheck, NPCheck, FloorCheck, LogoCheck, createdOn, onPress }) {
+export default function GuideCard({BgId,  guideId, BGCheck, NPCheck, FloorCheck, LogoCheck, createdOn, onPress }) {
+  const { userData } = useContext(UserContext);
+  const [img,setImg] = useState()
+ 
+ useEffect(() => {
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: `${BaseUrl}/backgrounds/${BgId}`,
+    headers: { 
+      "Authorization": `Token ${userData?.token}`, // Pass the token here
+      'Cookie': 'csrftoken=NJChvjOxebFsuddDFi8waFmFFeWWLsBm; sessionid=pewl7aqbu7dwierg2uy7yipixdz05r7s'
+    }
+  };
+  
+  axios.request(config)
+  .then((response) => {
+    setImg(response.data);
+  })
+  .catch((error) => {
+    console.log('backgrounds',error);
+  }); 
+ }, [])
+
+ 
   return (
     <View style={styles.GuideCard}>
       <View style={styles.OrderCardImage}>
         <Image
           style={{ width: 119, height: 153, borderRadius: 22 }}
-          source={{ uri: image }}
+          source={{ uri: img?.image }}
         />
       </View>
       <View style={styles.OrderCardDetails}>

@@ -81,7 +81,10 @@ export default function GuideAdd({ navigation, route }) {
         "background",
         backgroundSwitch ? image.id : "Don't Add Background"
       );
-      formdata.append("license_plate", npSwitch ? "Add License Plate" : "Don't Add License Plate");
+      formdata.append(
+        "license_plate",
+        npSwitch ? "addLicensePlate" : "DontaddLicensePlate"
+      );
 
       const requestOptions = {
         method: "POST",
@@ -90,9 +93,14 @@ export default function GuideAdd({ navigation, route }) {
         redirect: "follow",
       };
 
-      console.log(formdata);
       fetch(`${BaseUrl}/instructions/`, requestOptions)
-        .then((response) => response.text())
+        .then((response) => {
+          if (response.ok) {
+            return response.text(); // Parse the response body
+          } else {
+            throw new Error(`Error: ${response.status} ${response.statusText}`);
+          }
+        })
         .then((result) => {
           Alert.alert("Instruction Created Successfull", result);
           console.log("Instruction Created Successfull", result);

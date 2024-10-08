@@ -75,8 +75,6 @@ export default function CreateOrder({ navigation }) {
       return;
     }
 
-    
-
     setLoader(true);
     // Define the data object with only the required fields
     const myHeaders = new Headers();
@@ -134,17 +132,26 @@ export default function CreateOrder({ navigation }) {
           body: formData,
         };
 
-        const response = await fetch(
-          `${BaseUrl}/order-upload/`,
-          requestOptions
-        );
-        const result = await response.text();
-        console.log("image.uri", result);
+        fetch(`${BaseUrl}/order-upload/`, requestOptions)
+          .then((response) => {
+            if (response.ok) {
+              return response.text(); // Parse the response body
+            } else {
+              throw new Error(
+                `Error: ${response.status} ${response.statusText}`
+              );
+            }
+          })
+          .then((result) => {
+            setLoader(false);
+            navigation.navigate("UploadingScreen");
+            setSelectedOrderImage([]);
+          })
+          .catch((error) => {
+            alert(error);
+            Alert.alert("Order Failed", error.message);
+          });
       }
-      console.log("uploaded Images");
-      setLoader(false);
-      navigation.navigate("UploadingScreen");
-      setSelectedOrderImage([]);
     } catch (error) {
       Alert.alert("Failed Image Upload", error.message);
     }

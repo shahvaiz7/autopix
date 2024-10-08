@@ -127,7 +127,7 @@ export default function GuideScreen({ navigation }) {
               }}
             >
               <GuideCard
-                image={item.instruction_id?.background?.image}
+                BgId={item.background}
                 guideId={item.id}
                 BGCheck={item.BGCheck}
                 NPCheck={item.NPCheck}
