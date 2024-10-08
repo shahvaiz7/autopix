@@ -55,54 +55,58 @@ export default function GuideAdd({ navigation, route }) {
     }
   };
 
-
   const PostInstructions = () => {
-    if (!InstructionName) {
-      alert("Enter Instruction name");
-      return;
+    try {
+      if (!InstructionName) {
+        alert("Enter Instruction name");
+        return;
+      }
+
+      const myHeaders = new Headers();
+      myHeaders.append("Authorization", `Token ${userData?.token}`);
+      myHeaders.append(
+        "Cookie",
+        "csrftoken=ASTAfJ6pYzH8nZpIHUf5SIJWuXrLAPe8; sessionid=lnupp2l3rm3a6se4vwr6uj5xlnp291b7"
+      );
+
+      const formdata = new FormData();
+      formdata.append("instruction_name", InstructionName);
+      formdata.append("instruction_details", "testDetails");
+      formdata.append("share_instruction", userData?.email);
+      formdata.append("approval", userData?.email);
+      formdata.append("logo_placement", 11);
+      formdata.append("logo", logoSwitch ? "Addlogo" : "Dontaddlogo");
+      formdata.append("floor", floorSwitch ? "Add Floor" : 11);
+      formdata.append(
+        "background",
+        backgroundSwitch ? image.id : "Don't Add Background"
+      );
+      formdata.append(
+        "addlicenseplate",
+        npSwitch ? "Add License Plate" : "Don't Add License Plate"
+      );
+
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: formdata,
+        redirect: "follow",
+      };
+
+      console.log(formdata);
+      fetch(`${BaseUrl}/instructions/`, requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+          Alert.alert("Instruction Created Successfull", result);
+          console.log("Instruction Created Successfull", result);
+        })
+        .catch((error) => {
+          alert(error);
+          console.log("Instruction Error", result);
+        });
+    } catch (error) {
+      Alert.alert("Failed Create Instruction", error?.message);
     }
-
-    const myHeaders = new Headers();
-    myHeaders.append("Authorization", `Token ${userData?.token}`);
-    myHeaders.append(
-      "Cookie",
-      "csrftoken=ASTAfJ6pYzH8nZpIHUf5SIJWuXrLAPe8; sessionid=lnupp2l3rm3a6se4vwr6uj5xlnp291b7"
-    );
-
-    const formdata = new FormData();
-    formdata.append("instruction_name", InstructionName);
-    formdata.append("instruction_details", "testDetails");
-    formdata.append("share_instruction", userData?.email);
-    formdata.append("approval", userData?.email);
-    formdata.append("logo_placement", "null");
-    formdata.append("logo", logoSwitch ? "Addlogo" : "Dontaddlogo");
-    formdata.append("floor", floorSwitch ? "Add Floor" : "Don't Add Floor");
-    formdata.append(
-      "background",
-      backgroundSwitch ? image : "Don't Add Background"
-    );
-    formdata.append(
-      "addlicenseplate",
-      npSwitch ? "Add License Plate" : "Don't Add License Plate"
-    );
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: formdata,
-      redirect: "follow",
-    };
-
-    fetch(`${BaseUrl}/instructions/`, requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        Alert.alert("Instruction Created Successfull", result);
-        console.log("Instruction Created Successfull", result);
-      })
-      .catch((error) => {
-        alert(error);
-        console.log("Instruction Error", result);
-      });
   };
 
   return (
@@ -177,7 +181,10 @@ export default function GuideAdd({ navigation, route }) {
                   <TouchableOpacity
                     onPress={() => navigation.navigate("BackgroundList")}
                   >
-                    <Image source={{ uri: image }} style={styles.logo1} />
+                    <Image
+                      source={{ uri: image?.image }}
+                      style={styles.logo1}
+                    />
                   </TouchableOpacity>
                 )}
               </View>

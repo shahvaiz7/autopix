@@ -57,7 +57,6 @@ export default function BackgroundList({ navigation, route }) {
           }
         });
         setImageList(response.data);
-        console.log(response.data);
       } catch (err) {
         alert(err.message);  // Catch and display error if any
       }
@@ -138,7 +137,7 @@ export default function BackgroundList({ navigation, route }) {
         renderItem={({ item }) => (
 
           <TouchableOpacity
-            onPress={() => navigation.navigate("GuideAdd", item.image)}
+            onPress={() => navigation.navigate("GuideAdd", {"image": item.image,"id": item.id})}
             style={{
               backgroundColor: 'transparent', borderRadius: 35, margin: 5
             }}
