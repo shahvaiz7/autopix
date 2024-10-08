@@ -273,10 +273,11 @@ export default function CreateOrder({ navigation }) {
               resizeMode="stretch"
               borderRadius={15}
             >
+              {console.log(Instruction)}
               {Instruction ? (
                 <>
                   <Text style={styles.InstructionText}>
-                    instruction id : {Instruction.instruction_id}{" "}
+                    instruction id : {Instruction.id}{" "}
                   </Text>
                   <Text style={styles.InstructionText}>BG : Yes </Text>
                   <Text style={styles.InstructionText}>
