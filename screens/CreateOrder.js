@@ -86,7 +86,7 @@ export default function CreateOrder({ navigation }) {
 
     const formdata = new FormData();
     formdata.append("job_name", regCarId);
-    formdata.append("instruction_id", Instruction.instruction_id);
+    formdata.append("instruction_id", Instruction.id);
     formdata.append("massage", message);
 
     const requestOptions = {
@@ -97,7 +97,13 @@ export default function CreateOrder({ navigation }) {
     };
 
     fetch(`${BaseUrl}/orders/`, requestOptions)
-      .then((response) => response.text())
+      .then((response) => {
+        if (response.ok) {
+          return response.text(); // Parse the response body
+        } else {
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+      })
       .then((result) => {
         console.log("orderssss", result);
         setModalVisible(false);
@@ -117,7 +123,6 @@ export default function CreateOrder({ navigation }) {
     try {
       for (const image of SelectedOrderImage) {
         const formData = new FormData();
-        formData.append("order", Oid);
         formData.append("file", {
           uri: image.uri,
           name: image.uri.split("/").pop(),
@@ -132,7 +137,7 @@ export default function CreateOrder({ navigation }) {
           body: formData,
         };
 
-        fetch(`${BaseUrl}/order-upload/`, requestOptions)
+        fetch(`${BaseUrl}/order-upload/${Oid}/upload/`, requestOptions)
           .then((response) => {
             if (response.ok) {
               return response.text(); // Parse the response body
@@ -148,8 +153,9 @@ export default function CreateOrder({ navigation }) {
             setSelectedOrderImage([]);
           })
           .catch((error) => {
-            alert(error);
-            Alert.alert("Order Failed", error.message);
+            Alert.alert("Image Upload Failed", error.message);
+            console.log("Image Upload Failed", error);
+            setLoader(false);
           });
       }
     } catch (error) {
@@ -273,7 +279,6 @@ export default function CreateOrder({ navigation }) {
               resizeMode="stretch"
               borderRadius={15}
             >
-              {console.log(Instruction)}
               {Instruction ? (
                 <>
                   <Text style={styles.InstructionText}>

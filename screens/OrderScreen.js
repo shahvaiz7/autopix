@@ -77,6 +77,7 @@ export default function OrderScreen({ navigation }) {
   const [OrderImage, setOrderImage] = useState();
   const { userData } = useContext(UserContext);
 
+  
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -100,8 +101,13 @@ export default function OrderScreen({ navigation }) {
       }
     };
 
-    fetchOrders();
-  }, []);
+    // Adding event listener for focus
+    const unsubscribe = navigation.addListener('focus', fetchOrders);
+
+    // Cleanup function to remove the listener
+    return unsubscribe;
+  }, [navigation, userData]); // Add userData as a dependency if it can change
+
 
   return (
     <View style={styles.containerView}>
