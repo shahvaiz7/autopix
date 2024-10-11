@@ -46,6 +46,7 @@ export default function CarLine({ navigation }) {
         }
         setloader(false);
       } catch (error) {
+        setloader(false);
         console.error("Error retrieving data from AsyncStorage:", error);
       }
     };

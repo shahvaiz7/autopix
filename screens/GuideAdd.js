@@ -106,8 +106,8 @@ export default function GuideAdd({ navigation, route }) {
           console.log("Instruction Created Successfull", result);
         })
         .catch((error) => {
-          alert(error);
-          console.log("Instruction Error", result);
+          Alert.alert("Instruction Error", error.message);
+          console.log("Instruction Error", error.message);
         });
     } catch (error) {
       Alert.alert("Failed Create Instruction", error?.message);
